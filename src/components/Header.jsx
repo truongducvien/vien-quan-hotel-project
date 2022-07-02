@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import { Carousel } from 'antd';
 
 import '../style/Header.scss'
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 import logo from '../assets/images/ocean_villas_logo_6.png';
 import header1 from '../assets/images/header-image-1.jpg'
 import header2 from '../assets/images/header-image-2.jpg'
@@ -37,7 +37,7 @@ export default function Header () {
          </div>
          <button className='bookNowButton'>Book now</button>
          
-         <SearchBar />
+         {/* <SearchBar /> */}
       </div>
    )
 }

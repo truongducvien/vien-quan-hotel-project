@@ -1,6 +1,9 @@
+$themeColor: #026082;
+$labelColor: #b6b6b6;
+
 .header{
    width: 100%;
-   height: 100vh;
+   height: calc(100vh - 70px);
 
    .images-slide{
       height: calc(100vh - 70px);
@@ -35,7 +38,56 @@
       transition: all .3s ease-in-out;
    }
    .bookNowButton:hover{
-      background-color: #026082;
+      background-color: $themeColor;
       cursor: pointer
    }
+}
+
+
+.searchBar{
+   width: 100%;
+   height: 70px;
+   overflow: hidden;
+
+   form{
+      display: flex;
+      justify-content: center;
+
+      .form-group{
+         width: 205px;
+         margin: 10px;
+
+         .ant-picker, .ant-select-selector{
+            border: unset;
+         }
+
+         p{
+            padding-left: 40px;
+            margin: unset;
+            font-size: 12px;
+            font-weight: 700;
+            color: #b6b6b6;
+            text-align: left;
+         }
+         input, .ant-select-selection-item{
+            color: $themeColor;
+            font-weight: 700;
+            font-size: 17px;
+            text-align: left;
+         }
+      }
+
+      .bookNowButton{
+         width: 170px;
+         height: 45px;
+         margin: 12px;
+         border: unset;
+         background-color:  $themeColor;
+         color: white;
+      }
+      .bookNowButton:hover{
+         background-color:#036f96;
+         cursor: pointer
+      }
+   }  
 }
