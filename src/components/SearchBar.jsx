@@ -55,7 +55,7 @@ export default function SearchBar () {
             endDay: endDay,
             adult: adultCount,
             children: childrenCount
-         }
+         } 
       })
    }
 
