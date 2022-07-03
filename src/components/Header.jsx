@@ -44,7 +44,7 @@ export default function Header () {
             <img src={logo} alt="" />
          </div>
 
-         <NavLink to='/roomlist'>
+         <NavLink to='/booking'>
             <button className='bookNowButton'>Book now</button>
          </NavLink>
          
