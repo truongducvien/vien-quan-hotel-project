@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import ImageCarousel from "./ImageCarousel";
-import "./room-list.css";
 
 function RoomType({ room }) {
   const [ellipsisConvenient, setEllipsisConvenient] = useState(false);

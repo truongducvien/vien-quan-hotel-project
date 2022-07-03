@@ -1,27 +1,27 @@
 import { useReducer } from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import "./App.css";
 
 import { AppContext } from "./providers/AppContext";
 import reducer from "./stores/Reducer";
 import customerState from "./stores/customerState";
-import MainBooking from "./components/main-booking/MainBooking";
+import HomePage from "./components/HomePage";
+
 import PaymentPage from "./components/payment-page/PaymentPage";
-import { BrowserRouter, Route } from "react-router-dom";
-import { Routes } from "react-router";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, customerState);
 
   return (
     <AppContext.Provider value={[state, dispatch]}>
-      <div className="App">
-        <BrowserRouter>
+      <BrowserRouter>
+        <div className="App">
           <Routes>
-            <Route path="/" element={<MainBooking />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/payment" element={<PaymentPage />} />
           </Routes>
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     </AppContext.Provider>
   );
 }

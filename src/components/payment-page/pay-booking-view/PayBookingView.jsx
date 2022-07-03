@@ -1,5 +1,5 @@
 import React from "react";
-import "./pay-booking-view.css";
+import "../style/pay-booking-view.css";
 import RoomSelect from "./RoomSelect";
 import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";

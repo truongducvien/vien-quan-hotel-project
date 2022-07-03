@@ -1,5 +1,5 @@
 import React from "react";
-import "./main-booking.css";
+import "./style/main-booking.css";
 
 import "antd/dist/antd.css";
 import { Row, Col } from "antd";

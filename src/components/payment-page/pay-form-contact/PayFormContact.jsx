@@ -5,7 +5,7 @@ import {
   PlusCircleOutlined,
   MinusCircleOutlined,
 } from "@ant-design/icons";
-import "./pay-form-contact.css";
+import "../style/pay-form-contact.css";
 
 const { Panel } = Collapse;
 const { Option } = Select;

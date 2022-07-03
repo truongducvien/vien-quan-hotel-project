@@ -1,11 +1,11 @@
 .main-container {
   width: 100%;
   line-height: 1.618;
+  margin-top: 20px;
 }
 .room-booking {
   max-width: 1128px;
   margin: auto;
-  margin-top: 20px;
 }
 .room-booking,
 .booking-view {

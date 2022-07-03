@@ -1,5 +1,5 @@
 import React from "react";
-import "./room-list.css";
+import "../style/room-list.css";
 
 import "antd/dist/antd.css";
 import RoomType from "./RoomType";
