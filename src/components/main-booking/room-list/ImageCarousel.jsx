@@ -14,8 +14,8 @@ function ImageCarousel({ room }) {
         //   spaceBetween={50}
         slidesPerView={1}
         navigation
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log("slide change")}
       >
         <SwiperSlide>
           <img src={room.imageUrl[0]} alt="" />

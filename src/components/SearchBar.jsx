@@ -57,6 +57,10 @@ export default function SearchBar() {
     });
   };
 
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
+
   return (
     <div className="searchBar">
       <form action="" onSubmit={(e) => e.preventDefault()}>
