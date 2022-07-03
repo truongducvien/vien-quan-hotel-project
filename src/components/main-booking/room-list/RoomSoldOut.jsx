@@ -5,16 +5,16 @@ function RoomSoldOut({ room }) {
   const [rateCalendar, setRateCalendar] = useState(false);
   return (
     <div className="room-rate-list">
-      <div className="room-rate-name">{room.rateList.nameRate}</div>
+      <div className="room-rate-name">{room?.rateList.nameRate}</div>
       <div className="room-rate-wrapper flex">
         <div className="rate-inclusions">
           <p>
             {room.iconCancelRate}
-            {room.rateList.refundable}
+            {room?.rateList.refundable}
           </p>
           <p>
             {room.iconCancelRate}
-            {room.rateList.payTimes}
+            {room?.rateList.payTimes}
           </p>
         </div>
 
