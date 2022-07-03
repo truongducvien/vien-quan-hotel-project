@@ -9,6 +9,7 @@ import header1 from '../assets/images/header-image-1.jpg'
 import header2 from '../assets/images/header-image-2.jpg'
 import header3 from '../assets/images/header-image-3.jpg'
 import header4 from '../assets/images/header-image-4.jpg'
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -44,7 +45,9 @@ export default function Header () {
             <img src={logo} alt="" />
          </div>
 
-         <button className='bookNowButton'>Book now</button>
+         <NavLink to='/roomlist'>
+            <button className='bookNowButton'>Book now</button>
+         </NavLink>
          
          {/* <SearchBar /> */}
       </div>

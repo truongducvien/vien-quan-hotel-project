@@ -12,19 +12,14 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
+
     "react-icons": "^4.4.0",
-=======
     "react-responsive-carousel": "^3.2.23",
->>>>>>> test0307
     "react-router": "^6.3.0",
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
     "swiper": "^8.2.6",
-=======
     "sass": "^1.53.0",
->>>>>>> test0307
     "web-vitals": "^2.1.4"
   },
   "scripts": {
