@@ -25,7 +25,7 @@ export default function SearchBar () {
 
    useEffect(() => {
       console.log(state);
-   }, [state]);
+   },[state]);
 
 
    const handleChange = (e, inputType) => {
