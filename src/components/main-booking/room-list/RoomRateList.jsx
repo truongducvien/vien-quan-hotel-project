@@ -7,11 +7,11 @@ function RoomRateList({ room }) {
       <div className="room-rate-wrapper flex">
         <div className="rate-inclusions">
           <p>
-            {room.iconWarning}
+            {room.iconCancelRate}
             {room.rateList.refundable}
           </p>
           <p>
-            {room.iconWarning}
+            {room.iconCancelRate}
             {room.rateList.payTimes}
           </p>
         </div>

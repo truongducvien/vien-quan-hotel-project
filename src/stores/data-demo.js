@@ -18,8 +18,7 @@ export const DataRoomsDemo = [
     iconPerson: <MdIcons.MdPerson />,
     iconBed: <MdIcons.MdKingBed />,
     iconBath: <FaIcons.FaBath />,
-    iconWarning: <RiIcons.RiErrorWarningLine />,
-    iconCheck: <FiIcons.FiCheckCircle />,
+    iconCancelRate: <RiIcons.RiErrorWarningLine />,
     convenient:
       "56m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
     introduction:
@@ -50,6 +49,7 @@ export const DataRoomsDemo = [
     iconPerson: <MdIcons.MdPerson />,
     iconBed: <MdIcons.MdKingBed />,
     iconBath: <FaIcons.FaBath />,
+    iconCancelRate: <FiIcons.FiCheckCircle />,
     convenient:
       "56m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
     introduction:
@@ -80,6 +80,7 @@ export const DataRoomsDemo = [
     iconPerson: <MdIcons.MdPerson />,
     iconBed: <MdIcons.MdKingBed />,
     iconBath: <FaIcons.FaBath />,
+    iconCancelRate: <FiIcons.FiCheckCircle />,
     convenient:
       "56m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
     introduction:
@@ -110,6 +111,7 @@ export const DataRoomsDemo = [
     iconPerson: <MdIcons.MdPerson />,
     iconBed: <MdIcons.MdKingBed />,
     iconBath: <FaIcons.FaBath />,
+    iconCancelRate: <FiIcons.FiCheckCircle />,
     convenient:
       "56m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
     introduction:

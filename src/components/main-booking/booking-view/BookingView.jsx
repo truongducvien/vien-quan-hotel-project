@@ -2,12 +2,12 @@ import React from "react";
 import "./booking-view.css";
 import RoomSelect from "./RoomSelect";
 import { Collapse } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+
 const { Panel } = Collapse;
 
 function BookingView() {
-  const onChange = (key) => {
-    console.log(key);
-  };
   return (
     <div className="booking-box">
       <div className="booking-heading">VND&nbsp;3,628,969 total</div>
@@ -28,7 +28,14 @@ function BookingView() {
           <div className="line-total name">Total</div>
           <div className="line-total value">VND 7,871,532</div>
         </div>
-        <Collapse defaultActiveKey={["1"]} onChange={onChange} bordered={false}>
+        <Collapse
+          defaultActiveKey={["1"]}
+          bordered={false}
+          expandIcon={({ isActive }) => (
+            <DownOutlined rotate={isActive ? 180 : 0} />
+          )}
+          expandIconPosition="end"
+        >
           <Panel header="Includes taxes + fees" key="1">
             <div className="flex">
               <div className="date">TAX</div>
@@ -45,9 +52,11 @@ function BookingView() {
           <p className="balance">Outstanding balance: VND 0</p>
         </div>
       </div>
-      <div className="btn-sticky">
-        <button className="booking-btn">Book</button>
-      </div>
+      <Link to="/payment">
+        <div className="btn-sticky">
+          <button className="booking-btn">Book</button>
+        </div>
+      </Link>
     </div>
   );
 }

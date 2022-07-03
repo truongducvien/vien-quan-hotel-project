@@ -1,0 +1,96 @@
+.pay-booking-box {
+  text-align: left;
+  --offset: 458px;
+  --adjustedMaxHeight: 224px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: #fff;
+  box-shadow: 0 7px 30px -10px #96aab480;
+  border: 1px solid #c6ceda;
+  border-radius: 10px;
+  padding: 16px;
+}
+.fs1-fw7 {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 16px 0;
+}
+.fw7-fs1125 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 16px 0;
+}
+.fs0875 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+.collapse-header {
+  padding: 0;
+}
+.pay-booking-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.875;
+  color: #333;
+}
+.pay-section-info {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.pay-section-info,
+.pay-room-select {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 16px;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.pay-booking-heading-room {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.375rem;
+}
+p {
+  margin-bottom: 0;
+}
+.room-select-price {
+  font-weight: 400;
+  font-size: 1rem;
+  padding-left: 2px;
+  padding-right: 2px;
+  color: #333;
+  line-height: normal;
+}
+.tip-content {
+  background-color: #e7f5f5;
+  border: 1px solid #c6ceda;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border-radius: 4px;
+}
+.balance {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+}
+.ant-collapse-borderless > .ant-collapse-item > .ant-collapse-content {
+  background-color: #fff;
+}
+.pay-form {
+  text-align: left;
+}
+.pay-form-subtext {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  margin-bottom: 1rem;
+}
+.ant-col-16 {
+  min-width: 100% !important;
+}
+.ant-form-item-with-help {
+  margin-bottom: 24px;
+}

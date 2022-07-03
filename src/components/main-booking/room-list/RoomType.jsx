@@ -40,6 +40,7 @@ function RoomType({ room }) {
               {room.convenient}
             </div>
             <div
+              style={{ marginTop: "16px" }}
               className={ellipsisIntroduction ? "" : "ellipsis-text"}
               onClick={() => {
                 setEllipsisIntroduction(!ellipsisIntroduction);
@@ -48,7 +49,11 @@ function RoomType({ room }) {
               {room.introduction}
             </div>
             <div
-              style={{ textDecoration: "underline", marginTop: "10px" }}
+              style={{
+                textDecoration: "underline",
+                marginTop: "10px",
+                cursor: "pointer",
+              }}
               onClick={() => {
                 setEllipsisIntroduction(!ellipsisIntroduction);
               }}

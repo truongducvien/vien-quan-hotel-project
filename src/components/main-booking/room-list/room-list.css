@@ -1,25 +1,3 @@
-.main-container {
-  width: 100%;
-  line-height: 1.618;
-}
-.room-booking {
-  max-width: 1128px;
-  margin: auto;
-  margin-top: 20px;
-}
-.room-booking,
-.booking-view {
-  padding: 0 8px;
-  border-radius: 4px;
-  line-height: 1.618;
-}
-.booking-view {
-  position: -webkit-sticky;
-  position: sticky !important;
-  top: 40px;
-  width: 100%;
-  height: 100%;
-}
 .rooms {
   width: 100%;
   height: 100%;

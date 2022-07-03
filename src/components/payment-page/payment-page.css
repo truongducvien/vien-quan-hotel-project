@@ -1,0 +1,14 @@
+.pay-main {
+  max-width: 64rem;
+  margin: 40px auto;
+  padding: 0 40px;
+}
+.pay-wrapper {
+  width: 100%;
+}
+.pay-form,
+.pay-booking-view {
+  padding: 0 8px;
+  border-radius: 4px;
+  line-height: 1.618;
+}
