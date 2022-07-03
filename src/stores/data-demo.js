@@ -18,7 +18,7 @@ export const DataRoomsDemo = [
       "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/477241/477241/1BR_Apartment.4.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
       "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/477242/477242/1BR_Apartment.5.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
       "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/floor_plans/476419/476419/1-bedroom-apartment-1.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
-    ],
+    ], 
   },
   {
     id: 2,

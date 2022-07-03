@@ -17,7 +17,14 @@ export default function Header () {
    return (
       <div className="header">
          <div className="images-slide">
-            <Carousel autoplay autoplaySpeed={5000} speed={3000} effect='fade' pauseOnHover={false}>
+            <Carousel 
+               autoplay 
+               autoplaySpeed={6000} 
+               speed={2000} 
+               effect='fade' 
+               arrows
+               pauseOnHover={false}
+            >
                <div className='header-image'>
                   <img src={header1} />
                </div>
@@ -32,9 +39,11 @@ export default function Header () {
                </div> 
             </Carousel>
          </div>
+
          <div className="logo">
             <img src={logo} alt="" />
          </div>
+
          <button className='bookNowButton'>Book now</button>
          
          {/* <SearchBar /> */}
