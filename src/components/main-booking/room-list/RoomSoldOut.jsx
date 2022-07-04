@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import * as BsIcons from "react-icons/bs";
+// import DateRangePicker from "react-bootstrap-daterangepicker";
+// import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap-daterangepicker/daterangepicker.css";
 
 function RoomSoldOut({ room }) {
   const [rateCalendar, setRateCalendar] = useState(false);
@@ -44,3 +47,11 @@ function RoomSoldOut({ room }) {
 }
 
 export default RoomSoldOut;
+
+//  <DateRangePicker
+//    initialSettings={{ startDate: "1/1/2014", endDate: "3/1/2014" }}
+//  >
+//    <button>
+//      <input type="text" className="form-control" />
+//    </button>
+//  </DateRangePicker>;

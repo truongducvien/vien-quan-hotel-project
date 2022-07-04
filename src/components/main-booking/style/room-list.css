@@ -8,12 +8,9 @@
   margin-bottom: 16px;
   box-shadow: 0 7px 30px -10px #96aab480;
 }
-.room-type {
-  display: flex;
-  text-align: left;
-}
 .room-type-carousel {
-  width: 300px;
+  width: 100%;
+  object-fit: cover;
 }
 .room-type-list {
   display: flex;
@@ -25,13 +22,9 @@
 .swiper-slide {
   background: #fff;
   text-align: center;
-  font-size: 18px;
-  line-height: 200px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
 }
 .room-type-intro {
-  text-align-last: left;
+  text-align: left;
   padding: 10px;
 }
 .room-type-heading {
@@ -78,22 +71,20 @@
 .room-rate-name:hover {
   color: #007dbb;
 }
-.rate-price {
-  margin-right: 16px;
+.rate-price-select {
+  text-align: right;
+  justify-content: end;
 }
-
 .rate-select-btn {
   line-height: 36px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding: 3px 24px;
   border-radius: 4px;
   transition: all 0.1s;
   white-space: nowrap;
   border: 2px solid;
   font-size: 1rem;
   font-weight: 700;
-  margin-bottom: 7px;
-  margin-top: 10px;
+  margin: 5px 0;
   background: #066a92;
   color: #fff;
   cursor: pointer;
@@ -137,4 +128,7 @@
 .sold-out-btn:hover {
   background: #066a92;
   color: #fff;
+}
+.room-rate-list p {
+  margin-bottom: 0 !important;
 }

@@ -17,22 +17,22 @@ function ImageCarousel({ room }) {
         // onSwiper={(swiper) => console.log(swiper)}
         // onSlideChange={() => console.log("slide change")}
       >
-        <SwiperSlide>
+        <SwiperSlide style={{ flexShrink: 1 }}>
           <img src={room.imageUrl[0]} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide style={{ flexShrink: 1 }}>
           <img src={room.imageUrl[1]} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide style={{ flexShrink: 1 }}>
           <img src={room.imageUrl[2]} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide style={{ flexShrink: 1 }}>
           <img src={room.imageUrl[3]} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide style={{ flexShrink: 1 }}>
           <img src={room.imageUrl[4]} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide style={{ flexShrink: 1 }}>
           <img src={room.imageUrl[5]} alt="" />
         </SwiperSlide>
       </Swiper>

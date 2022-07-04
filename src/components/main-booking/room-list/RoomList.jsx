@@ -14,8 +14,7 @@ function RoomList() {
         <div key={room.id} className="room">
           <RoomType room={room} />
           <RoomRateList room={room} />
-          <RoomRateList room={room} />
-          <RoomSoldOut room={room} />
+          {/* <RoomSoldOut room={room} /> */}
         </div>
       ))}
     </div>

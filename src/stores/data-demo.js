@@ -1,7 +1,5 @@
 // Rooms
 import React from "react";
-// import { MdKingBed, MdPerson } from "react-icons/md";
-// import FaBath from "react-icons/fa";
 import * as MdIcons from "react-icons/md";
 import * as FaIcons from "react-icons/fa";
 import * as RiIcons from "react-icons/ri";
