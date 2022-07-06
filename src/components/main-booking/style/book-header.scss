@@ -1,108 +1,62 @@
 $themeColor: #026082;
+$bookHeader: #00729c;
 $labelColor: #b6b6b6;
 
-.book-searchbar {
+.book-header {
+  cursor: pointer;
+  height: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   .book-nav {
-  }
-  .book-search {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    .headerBtn {
-      width: 170px;
-      height: 45px;
-      margin: 12px;
-      border: unset;
-      background-color: $themeColor;
-      color: white;
-      font-size: 18px;
-      border-radius: 5px;
-    }
-    .headerBtn:hover {
-      background-color: #004964;
-      cursor: pointer;
-    }
-
-    .headerSearch {
-      background-color: white;
-      border: 3px solid $themeColor;
+    color: #fff;
+    background-color: $bookHeader;
+    .text-logo {
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      padding: 10px 0px;
-      border-radius: 5px;
-      width: 100%;
-      max-width: 1110px;
-      min-height: 92px;
-      margin-bottom: 30px;
+      justify-content: space-evenly;
+      p {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 0;
+        span {
+          font-size: 1.25rem;
+          font-weight: 500;
+        }
+      }
     }
-
-    .headerIcon {
-      color: lightgray;
-    }
-
-    .headerSearchItem {
+    ul {
+      margin-bottom: 0;
+      list-style-type: none;
       display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 16px;
-      border: 1px, solid $labelColor;
-      padding: 10px;
-    }
-
-    .headerSearchInput {
-      border: none;
-      outline: none;
-    }
-
-    .headerSearchText {
-      color: lightgray;
-      cursor: pointer;
-    }
-
-    .date {
-      position: absolute;
-      z-index: 2;
-      top: 120px;
-    }
-
-    .options {
-      z-index: 2;
-      position: absolute;
-      top: 120px;
-      background-color: white;
-      color: gray;
-      border-radius: 5px;
-      -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
-      box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
-    }
-
-    .optionItem {
-      width: 200px;
-      display: flex;
+      text-align: center;
       justify-content: space-between;
-      margin: 10px;
+      font-size: 1.125rem;
+      font-weight: 400;
     }
-
-    .optionCounter {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      color: black;
+    .sub-nav {
+      border-left: 1px solid $labelColor;
+      li {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      li.active {
+        border-bottom: 2px solid #fff;
+      }
     }
-
-    .optionCounterButton {
-      width: 30px;
-      height: 30px;
-      border: 1px solid #0071c2;
-      color: #0071c2;
-      cursor: pointer;
-      background-color: white;
+    .right-nav {
+      li {
+        padding: 0px 10px;
+        margin: 10px 0;
+      }
+      li.first {
+        border-right: 1px solid #fff;
+      }
     }
-
-    .optionCounterButton:disabled {
-      cursor: not-allowed;
+    .logo {
+      img {
+        width: 100%;
+      }
     }
   }
 }

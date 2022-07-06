@@ -6,15 +6,16 @@ import { Row, Col } from "antd";
 import BookingView from "./booking-view/BookingView";
 import RoomList from "./room-list/RoomList";
 import BookHeader from "./BookHeader";
-import BookSearchbar from "./BookSearchbar";
+import BookSearch from "./BookSearch";
+import BookSearchTesting from "./BookSearchTesting";
 
 function MainBooking() {
   return (
     <div>
       <main className="main-container">
         <BookHeader />
-        <BookSearchbar />
-
+        {/* <BookSearch /> */}
+        <BookSearchTesting />
         <Row className="room-booking">
           <Col className="room-list" xs={24} sm={24} md={14} xl={16}>
             <RoomList />

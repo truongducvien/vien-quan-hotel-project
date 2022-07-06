@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 
 import PaymentPage from "./components/payment-page/PaymentPage";
 import MainBooking from "./components/main-booking/MainBooking";
+import UserRegisterLogin from "./components/user-login-register/UserRegisterLogin";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, customerState);
@@ -19,6 +20,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/login-register" element={<UserRegisterLogin />} />
             <Route path="/booking" element={<MainBooking />} />
             <Route path="/payment" element={<PaymentPage />} />
           </Routes>
