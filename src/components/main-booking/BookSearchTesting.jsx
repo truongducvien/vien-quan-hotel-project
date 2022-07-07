@@ -1,6 +1,6 @@
 import { faCalendarDays, faUserLarge } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import "bootstrap/dist/css/bootstrap.css";
@@ -10,19 +10,36 @@ import { Col, Row } from "antd";
 import { v4 } from "uuid";
 import { DeleteFilled } from "@ant-design/icons";
 import "./style/book-searchbar.scss";
-import { useCustomerTesting } from "../../hooks/useCustomerTesting";
+import { CustomerContext } from "../../providers/CustomerContext";
 
 function BookSearchTesting() {
-  const [state, dispatch] = useCustomerTesting();
-
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
-
+  const { customer, setCustomer } = useContext(CustomerContext);
   const [dates, setDates] = useState({
     startDate: new Date(),
     endDate: new Date(),
   });
+  const [options, setOptions] = useState([{ id: v4(), adult: 1, children: 0 }]);
+  const [sumOptions, setSumOptions] = useState({
+    sumRoom: 1,
+    sumAdult: 1,
+    sumChildren: 0,
+  });
+
+  useEffect(() => {
+    const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
+    if (storedCustomer === null) {
+      setCustomer({});
+      return;
+    }
+    setCustomer(JSON.parse(storedCustomer));
+    console.log("searchCustomer:", customer);
+  }, []);
+
+  useEffect(() => {
+    setCustomer(customer);
+    // setOptions(customer.options);
+    // setDates(customer.date);
+  }, [customer]);
 
   useEffect(() => {
     const nights = Math.floor(
@@ -37,14 +54,6 @@ function BookSearchTesting() {
       endDate: picker.endDate,
     });
   };
-
-  const [options, setOptions] = useState([{ id: v4(), adult: 1, children: 0 }]);
-
-  const [sumOptions, setSumOptions] = useState({
-    sumRoom: 1,
-    sumAdult: 1,
-    sumChildren: 0,
-  });
 
   useEffect(() => {
     let sumAdult = 0;
@@ -65,15 +74,15 @@ function BookSearchTesting() {
   }, [options]);
 
   const handleBookNowButton = () => {
-    dispatch({
-      type: "set_book_now_info",
-      payload: {
-        startDay: dates.startDate,
-        endDay: dates.endDate,
-        roomNum: options.length,
-        options: options,
-      },
-    });
+    let newCustomer = {
+      date: { startDay: dates.startDate, endDay: dates.endDate },
+      roomNum: options.length,
+      options: options,
+    };
+
+    setCustomer(newCustomer);
+    localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(newCustomer));
+    console.log("btnSearch:", customer);
   };
   //format date:  format("ddd, DD MMM YY")
 

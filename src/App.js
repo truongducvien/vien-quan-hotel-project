@@ -1,21 +1,26 @@
-import { useReducer } from "react";
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-
-import { AppContext } from "./providers/AppContext";
-import reducer from "./stores/Reducer";
-import customerState from "./stores/customerState";
 import HomePage from "./components/HomePage";
-
 import PaymentPage from "./components/payment-page/PaymentPage";
 import MainBooking from "./components/main-booking/MainBooking";
 import UserRegisterLogin from "./components/user-login-register/UserRegisterLogin";
+import { CustomerContext } from "./providers/CustomerContext";
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, customerState);
+  const [customer, setCustomer] = useState({});
+
+  useEffect(() => {
+    const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
+    if (storedCustomer === null) {
+      setCustomer({});
+      return;
+    }
+    setCustomer(JSON.parse(storedCustomer));
+  }, []);
 
   return (
-    <AppContext.Provider value={[state, dispatch]}>
+    <CustomerContext.Provider value={{ customer, setCustomer }}>
       <BrowserRouter>
         <div className="App">
           <Routes>
@@ -26,7 +31,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
-    </AppContext.Provider>
+    </CustomerContext.Provider>
   );
 }
 
