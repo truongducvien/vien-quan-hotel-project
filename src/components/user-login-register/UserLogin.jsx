@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Input, Col, Row } from "antd";
+import { Form, Input, Col, Row, Checkbox } from "antd";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
 
 export default function UserLogin() {
   const validateMessages = {
@@ -14,12 +15,6 @@ export default function UserLogin() {
     <div className="user-form-contact">
       <Form
         name="complex-form"
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
         initialValues={{
           remember: true,
         }}
@@ -39,7 +34,11 @@ export default function UserLogin() {
                 },
               ]}
             >
-              <Input size="large" placeholder="Email" />
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                size="large"
+                placeholder="Email"
+              />
             </Form.Item>
           </Col>
           <Col xs={22} sm={20} md={18} xl={18}>
@@ -51,9 +50,22 @@ export default function UserLogin() {
                 },
               ]}
             >
-              <Input.Password size="large" placeholder="Password" />
+              <Input.Password
+                prefix={<LockOutlined className="site-form-item-icon" />}
+                size="large"
+                placeholder="Password"
+              />
             </Form.Item>
           </Col>
+          <Col xs={22} sm={20} md={18} xl={18}>
+            <Row justify="space-between">
+              <Form.Item name="remember" valuePropName="checked">
+                <Checkbox>Remember me</Checkbox>
+              </Form.Item>
+              <a href="">Forgot password</a>
+            </Row>
+          </Col>
+
           <Col xs={22} sm={20} md={18} xl={18}>
             <div className="user-submit-contact">
               <button type="submit" className="user-submit-btn">
@@ -61,6 +73,9 @@ export default function UserLogin() {
               </button>
             </div>
           </Col>
+          <p>
+            Didn't have account? <a href="">Register</a>
+          </p>
         </Row>
       </Form>
     </div>

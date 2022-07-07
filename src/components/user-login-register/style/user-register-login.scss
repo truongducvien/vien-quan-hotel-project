@@ -5,7 +5,7 @@ $labelColor: #b6b6b6;
   width: 100%;
   .register-login-center {
     max-width: 600px;
-    margin: 100px auto 0;
+    margin: 50px auto 0;
     padding: 20px;
     .register-login {
       border: 1px solid $themeColor;
@@ -18,10 +18,11 @@ $labelColor: #b6b6b6;
           padding: 16px;
           input {
             padding: 10px 10px;
+            border-radius: 8px;
           }
           .user-submit-contact {
             width: 90%;
-            margin: 0 auto;
+            margin: 0 auto 30px;
 
             .user-submit-btn {
               text-align: center;
@@ -43,9 +44,14 @@ $labelColor: #b6b6b6;
               background: #005e84;
             }
           }
+          .ant-input-prefix {
+            margin-left: 10px;
+            color: $labelColor;
+          }
         }
         .ant-input-affix-wrapper-lg {
-          padding: 0 11px;
+          padding: 0 11px 0 0;
+          border-radius: 8px;
         }
         .ant-col-md-12,
         .ant-col-sm-12 {

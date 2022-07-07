@@ -3,8 +3,7 @@ import "../style/room-list.css";
 
 import "antd/dist/antd.css";
 import RoomType from "./RoomType";
-import RoomRateList from "./RoomRateList";
-import RoomSoldOut from "./RoomSoldOut";
+import RoomItem from "./RoomItem";
 import { DataRoomsDemo } from "../../../stores/data-demo";
 
 function RoomList() {
@@ -13,8 +12,7 @@ function RoomList() {
       {DataRoomsDemo.map((room) => (
         <div key={room.id} className="room">
           <RoomType room={room} />
-          <RoomRateList room={room} />
-          {/* <RoomSoldOut room={room} /> */}
+          <RoomItem room={room} />
         </div>
       ))}
     </div>

@@ -6,10 +6,15 @@ const customerTest = {
   //   [
   //   {
   //     id: "",
-  //     room: 1,
   //     guests: { adult: 0, children: 0 },
   //     roomName: "",
-  //     totalRoomPrice: 0,
+  //     roomPrice: 0,
+  //   },
+  //   {
+  //     id: "",
+  //     guests: { adult: 0, children: 0 },
+  //     roomName: "",
+  //     roomPrice: 0,
   //   },
   // ],
   payment: {

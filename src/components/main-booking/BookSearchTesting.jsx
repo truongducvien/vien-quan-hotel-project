@@ -14,15 +14,23 @@ import { useCustomerTesting } from "../../hooks/useCustomerTesting";
 
 function BookSearchTesting() {
   const [state, dispatch] = useCustomerTesting();
-  // console.log(
-  //   "🚀 ~ file: BookSearchTesting.jsx ~ line 17 ~ BookSearchTesting ~ state",
-  //   state
-  // );
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   const [dates, setDates] = useState({
     startDate: new Date(),
     endDate: new Date(),
   });
+
+  useEffect(() => {
+    const nights = Math.floor(
+      (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
+    );
+    console.log("nights:", nights);
+  }, [dates]);
+
   const handleApply = (event, picker) => {
     setDates({
       startDate: picker.startDate,
@@ -38,24 +46,7 @@ function BookSearchTesting() {
     sumChildren: 0,
   });
 
-  const handleBookNowButton = () => {
-    dispatch({
-      type: "set_book_now_info",
-      payload: {
-        startDay: dates.startDate,
-        endDay: dates.endDate,
-        roomNum: options.length,
-        options: options,
-      },
-    });
-  };
-  // format("ddd, DD MMM YY")
-
   useEffect(() => {
-    let guests = 0;
-    options.forEach((option) => {
-      guests += parseFloat(option.adult) + parseFloat(option.children);
-    });
     let sumAdult = 0;
     options.forEach((option) => {
       sumAdult += parseFloat(option.adult);
@@ -73,10 +64,21 @@ function BookSearchTesting() {
     });
   }, [options]);
 
+  const handleBookNowButton = () => {
+    dispatch({
+      type: "set_book_now_info",
+      payload: {
+        startDay: dates.startDate,
+        endDay: dates.endDate,
+        roomNum: options.length,
+        options: options,
+      },
+    });
+  };
+  //format date:  format("ddd, DD MMM YY")
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit Options", options);
-    console.log("submit SumOptions", sumOptions);
   };
 
   const handleChangeInput = (id, event) => {
@@ -86,7 +88,6 @@ function BookSearchTesting() {
       }
       return op;
     });
-
     setOptions(newOptions);
   };
 
@@ -97,9 +98,9 @@ function BookSearchTesting() {
       }
       return op;
     });
-
     setOptions(newOptions);
   };
+
   const handlePlusChildren = (id) => {
     const newOptions = options.map((op) => {
       if (id === op.id) {
@@ -107,9 +108,9 @@ function BookSearchTesting() {
       }
       return op;
     });
-
     setOptions(newOptions);
   };
+
   const handleMinusAdult = (id) => {
     const newOptions = options.map((op) => {
       if (id === op.id) {
@@ -117,9 +118,9 @@ function BookSearchTesting() {
       }
       return op;
     });
-
     setOptions(newOptions);
   };
+
   const handleMinusChildren = (id) => {
     const newOptions = options.map((op) => {
       if (id === op.id) {
@@ -127,7 +128,6 @@ function BookSearchTesting() {
       }
       return op;
     });
-
     setOptions(newOptions);
   };
 
@@ -138,23 +138,7 @@ function BookSearchTesting() {
   const handleRemoveFields = (id) => {
     let removeOption = options.filter((op) => op.id !== id);
     setOptions(removeOption);
-    console.log("remove Option", options);
-    console.log("remove sumOption", sumOptions);
   };
-
-  useEffect(() => {
-    console.log(options);
-  }, [options]);
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
-
-  useEffect(() => {
-    const nights = Math.floor(
-      (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
-    );
-    console.log("nights:", nights);
-  }, [dates]);
 
   return (
     <div>

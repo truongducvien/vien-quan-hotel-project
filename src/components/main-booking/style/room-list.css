@@ -46,8 +46,8 @@
 }
 .room-rate-list {
   text-align: left;
-  min-height: 130px;
-  padding: 0 16px 24px 16px;
+  min-height: 80px;
+  padding: 16px 16px 24px;
   font-size: 1rem;
   display: block;
   position: relative;
@@ -98,14 +98,14 @@
   background: #eaeaf2;
   color: #383b3e;
   border-radius: 4px;
-  font-size: 0.875em;
+  font-size: 1rem;
   line-height: 24px;
   padding-left: 6px;
   padding-right: 6px;
   align-self: flex-end;
   margin-top: 8px;
   position: absolute;
-  top: 16px;
+  top: 0px;
   right: 16px;
 }
 .sold-out-btn {
@@ -124,7 +124,7 @@
   color: #000000d9;
   cursor: pointer;
   position: absolute;
-  top: 50px;
+  top: 10px;
   right: 16px;
 }
 .sold-out-btn:hover {

@@ -74,8 +74,6 @@ function UserRegister() {
               rules={[
                 {
                   required: true,
-                  // message:
-                  //   "This doesn't look like a correct e-mail address",
                 },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
@@ -94,7 +92,6 @@ function UserRegister() {
             </Form.Item>
           </Col>
         </Row>
-
         <Row>
           <Col xs={24} sm={24} md={12} xl={12}>
             <Form.Item
@@ -128,6 +125,11 @@ function UserRegister() {
             Register
           </button>
         </div>
+        <Row justify="center">
+          <span>
+            Already have account? <a href=""> Login</a>
+          </span>
+        </Row>
       </Form>
     </div>
   );
