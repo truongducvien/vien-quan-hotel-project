@@ -38,6 +38,12 @@
   padding-bottom: 16px;
   padding-top: 16px;
 }
+.room-select {
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
 .flex {
   display: flex;
   justify-content: space-between;
@@ -48,6 +54,7 @@
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.375rem;
+  margin-bottom: 16px;
 }
 p {
   margin-bottom: 0;
