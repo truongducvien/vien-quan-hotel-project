@@ -26,7 +26,7 @@ function BookSearchTesting() {
 
   useEffect(() => {
     const nights = Math.floor(
-      (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
+      (dates?.endDate - dates?.startDate) / (24 * 60 * 60 * 1000)
     );
     console.log("nights:", nights);
   }, [dates]);

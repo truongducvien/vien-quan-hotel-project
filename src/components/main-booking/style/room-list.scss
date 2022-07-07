@@ -134,3 +134,36 @@
 .room-rate-list p {
   margin-bottom: 0 !important;
 }
+.room-img-carousel {
+  .ant-carousel .slick-prev,
+  .ant-carousel .slick-next {
+    opacity: 0.4;
+    color: #363636;
+    background: #fff;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    font-size: 39px;
+    line-height: 38px;
+    border-radius: 50%;
+    transition: opacity 0.3s;
+  }
+  .ant-carousel .slick-prev:hover,
+  .ant-carousel .slick-next:hover {
+    background: #fff;
+    color: #000;
+    opacity: 1;
+  }
+
+  .ant-carousel .slick-prev,
+  .ant-carousel .slick-prev:hover {
+    left: 16px;
+    z-index: 2;
+  }
+
+  .ant-carousel .slick-next,
+  .ant-carousel .slick-next:hover {
+    right: 16px;
+    z-index: 2;
+  }
+}

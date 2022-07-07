@@ -12,8 +12,8 @@ function reducerTesting(state, action) {
       return {
         ...state,
         date: {
-          startDay: data.startDay,
-          endDay: data.endDay,
+          startDay: data?.startDay,
+          endDay: data?.endDay,
         },
         roomNum: data?.options.length,
         options: [data.options],
