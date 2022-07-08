@@ -262,12 +262,6 @@ function BookSearch() {
                         ) : (
                           ""
                         )}
-                        {/* <button
-                          className="noBorder-btn"
-                          onClick={() => handleRemoveFields(option.id)}
-                        >
-                          {options.length > 1 ? <DeleteFilled /> : ""}
-                        </button> */}
                       </Col>
                     </Row>
                   ))}

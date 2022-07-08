@@ -14,7 +14,8 @@ $labelColor: #b6b6b6;
     .text-logo {
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: space-between;
+      text-align: center;
       p {
         font-size: 2rem;
         font-weight: 500;

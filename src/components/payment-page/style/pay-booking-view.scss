@@ -20,6 +20,9 @@
   font-weight: 700;
   padding: 16px 0;
 }
+.fs1-fw4 {
+  font-weight: 400;
+}
 .fs0875 {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -43,6 +46,9 @@
 .pay-room-select {
   border-bottom: 1px solid #e5e5e5;
   padding-bottom: 16px;
+  p {
+    margin-bottom: 0;
+  }
 }
 .flex {
   display: flex;

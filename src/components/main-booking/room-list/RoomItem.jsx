@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Row, Col } from "antd";
 import ImageCarousel from "./ImageCarousel";
 import RoomInfo from "./RoomInfo";

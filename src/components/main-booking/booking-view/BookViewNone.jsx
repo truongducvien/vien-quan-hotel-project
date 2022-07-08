@@ -1,27 +1,15 @@
 import React, { useContext } from "react";
 import "../style/booking-view.scss";
-import RoomSelect from "./RoomSelect";
-import { Button, Collapse } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Button } from "antd";
 import { CustomerContext } from "../../../providers/CustomerContext";
 
-const { Panel } = Collapse;
-
 function BookViewNone() {
-  const { customerBook, setCustomerBook, options, setOptions } =
-    useContext(CustomerContext);
+  const { customerBook, options } = useContext(CustomerContext);
 
   let sumGuests = 0;
   options.forEach((option) => {
     sumGuests += parseFloat(option.adult) + parseFloat(option.children);
   });
-
-  let totalPrice = 0;
-  options.forEach((option) => {
-    totalPrice += option.roomPrice * customerBook.nights;
-  });
-  let totalPriceString = String(totalPrice).replace(/(.)(?=(\d{3})+$)/g, "$1,");
 
   return (
     <div>

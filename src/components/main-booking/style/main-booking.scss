@@ -2,11 +2,15 @@
   width: 100%;
   height: 100%;
   line-height: 1.618;
+  .room-booking {
+    max-width: 1128px;
+    margin: auto;
+    .ant-tabs-top > .ant-tabs-nav {
+      margin: 0;
+    }
+  }
 }
-.room-booking {
-  max-width: 1128px;
-  margin: auto;
-}
+
 .room-list,
 .booking-view {
   padding: 0 8px;

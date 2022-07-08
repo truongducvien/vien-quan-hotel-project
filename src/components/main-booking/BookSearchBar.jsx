@@ -11,8 +11,7 @@ import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import "./style/book-searchbar.scss";
 
 function BookSearchBar() {
-  const { customerBook, setCustomerBook, options } =
-    useContext(CustomerContext);
+  const { setCustomerBook, options } = useContext(CustomerContext);
   const [dates, setDates] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -46,7 +45,7 @@ function BookSearchBar() {
     };
 
     setCustomerBook(newCustomer);
-    localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(newCustomer));
+    // localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(newCustomer));
   };
   return (
     <div>
@@ -78,13 +77,13 @@ function BookSearchBar() {
               </div>
             </Col>
 
-            <Col xs={24} sm={24} md={6} lg={7}>
+            <Col xs={24} sm={24} md={8} lg={7}>
               <BookSearchInput />
             </Col>
-            <Col xs={24} sm={24} md={6} lg={6}>
+            <Col xs={24} sm={24} md={5} lg={6}>
               <span>Have a promo code?</span>
             </Col>
-            <Col xs={24} sm={24} md={6} lg={4}>
+            <Col xs={24} sm={24} md={5} lg={4}>
               <button className="headerBtn" onClick={handleBookNowButton}>
                 Search
               </button>

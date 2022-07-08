@@ -12,6 +12,16 @@
 .room-type-carousel {
   width: 100%;
   object-fit: cover;
+  .room-img-carousel {
+    .image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 100%;
+      }
+    }
+  }
 }
 .room-type-list {
   display: flex;

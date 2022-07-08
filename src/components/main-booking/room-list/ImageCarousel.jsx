@@ -14,7 +14,7 @@ function ImageCarousel({ room }) {
       >
         {room.imageUrl.map((link, index) => (
           <div className="image" key={index}>
-            <img style={{ width: "300px" }} src={link} alt="" />
+            <img src={link} alt="" />
           </div>
         ))}
       </Carousel>

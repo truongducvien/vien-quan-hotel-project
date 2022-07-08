@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
 import "../style/booking-view.scss";
-import RoomSelect from "./RoomSelect";
-import { Button, Collapse } from "antd";
+import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../providers/CustomerContext";
+import RoomOrdered from "./RoomOrdered";
 
 const { Panel } = Collapse;
 
 function BookingView() {
-  const { customerBook, setCustomerBook, options, setOptions } =
-    useContext(CustomerContext);
+  const { customerBook, options } = useContext(CustomerContext);
 
   let sumGuests = 0;
   options.forEach((option) => {
@@ -23,10 +22,10 @@ function BookingView() {
   });
   let totalPriceString = String(totalPrice).replace(/(.)(?=(\d{3})+$)/g, "$1,");
 
-  let tax = (totalPrice * 10) / 100;
+  let tax = parseFloat((totalPrice * 10) / 100).toFixed(0);
   let taxString = String(tax).replace(/(.)(?=(\d{3})+$)/g, "$1,");
 
-  let serviceCharge = (totalPrice * 5) / 100;
+  let serviceCharge = parseFloat((totalPrice * 5) / 100).toFixed(0);
   let serviceChargeString = String(serviceCharge).replace(
     /(.)(?=(\d{3})+$)/g,
     "$1,"
@@ -49,9 +48,9 @@ function BookingView() {
         </div>
 
         <div className="room-select-list">
-          {options.map((option) => (
+          {options.map((option, index) => (
             <div key={option.id}>
-              <RoomSelect option={option} />
+              <RoomOrdered option={option} index={index} />
             </div>
           ))}
         </div>

@@ -1,22 +1,50 @@
-import React from "react";
-import "../style/pay-booking-view.css";
-import RoomSelect from "./RoomSelect";
+import React, { useContext } from "react";
+import "../style/pay-booking-view.scss";
 import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import { CustomerContext } from "../../../providers/CustomerContext";
+import PayRoomOrdered from "./PayRoomOdered";
 
 const { Panel } = Collapse;
 
 function PayBookingView() {
+  const { customerBook, options } = useContext(CustomerContext);
+  let sumGuests = 0;
+  options.forEach((option) => {
+    sumGuests += parseFloat(option.adult) + parseFloat(option.children);
+  });
+
+  let totalPrice = 0;
+  options.forEach((option) => {
+    totalPrice += option.roomPrice * customerBook.nights;
+  });
+  let totalPriceString = String(totalPrice).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+
+  let tax = parseFloat((totalPrice * 10) / 100).toFixed(0);
+  let taxString = String(tax).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+
+  let serviceCharge = parseFloat((totalPrice * 5) / 100).toFixed(0);
+  let serviceChargeString = String(serviceCharge).replace(
+    /(.)(?=(\d{3})+$)/g,
+    "$1,"
+  );
+
   return (
     <div className="pay-booking-box">
       <div className="pay-booking-heading">
-        <div className="pay-booking-total">VND&nbsp;3,628,969 total</div>
+        <div className="pay-booking-total">
+          VND&nbsp; {totalPriceString} total
+        </div>
         <div className="pay-section-info">
           <div className="flex">
-            <p className="date">Tue, 5 July 22 – Wed, 6 July 22</p>
-            <p className="total-nights">1 night</p>
+            <div className="date">
+              {customerBook.date.startDay} – {customerBook.date.endDay}
+            </div>
+            <div className="total-nights">{customerBook.nights} night</div>
           </div>
-          <div className="occupancy-rooms">1 room, 2 guests</div>
+          <div className="occupancy-rooms">
+            {options.length} room, {sumGuests} guests
+          </div>
         </div>
       </div>
 
@@ -35,13 +63,15 @@ function PayBookingView() {
         >
           <div className="pay-booking-body">
             <div className="room-select-list">
-              <RoomSelect />
-              <RoomSelect />
-              <RoomSelect />
+              {options.map((option, index) => (
+                <div key={option.id}>
+                  <PayRoomOrdered option={option} index={index} />
+                </div>
+              ))}
             </div>
             <div className="line-total flex">
               <div className="fw7-fs1125">Total</div>
-              <div className="fw7-fs1125">VND 7,871,532</div>
+              <div className="fw7-fs1125">VND {totalPriceString}</div>
             </div>
             <Collapse
               defaultActiveKey={["1"]}
@@ -51,19 +81,23 @@ function PayBookingView() {
               )}
               expandIconPosition="end"
             >
-              <Panel header="Includes taxes + fees" key="1">
+              <Panel
+                header="Includes taxes + fees"
+                key="1"
+                className=" fs1-fw4"
+              >
                 <div className="flex">
                   <div className="date">TAX</div>
-                  <div className="total-nights">VND 715,593.82</div>
+                  <div className="total-nights">VND {taxString}</div>
                 </div>
-                <div className="flex">
+                <div className="flex ">
                   <div className="date">SERVICE CHARGE</div>
-                  <div className="total-nights">VND 340,758.96</div>
+                  <div className="total-nights">VND {serviceChargeString}</div>
                 </div>
               </Panel>
             </Collapse>
             <div className="tip-content">
-              <p className="balance">Deposit: VND 7,871,532</p>
+              <p className="balance">Deposit: VND {totalPriceString}</p>
               <p className="balance">Outstanding balance: VND 0</p>
             </div>
           </div>

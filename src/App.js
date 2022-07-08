@@ -8,8 +8,6 @@ import UserRegisterLogin from "./components/user-login-register/UserRegisterLogi
 import { CustomerContext } from "./providers/CustomerContext";
 import { v4 } from "uuid";
 function App() {
-  const newDate = new Date();
-  console.log("newDate App", newDate);
   const [options, setOptions] = useState([
     {
       id: v4(),
@@ -47,19 +45,19 @@ function App() {
     console.log("nights:", nights);
   }, [customerBook]);
 
-  useEffect(() => {
-    const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
-    if (storedCustomer === null) {
-      setCustomerBook({
-        date: { startDay: "", endDay: "" },
-        nights: 0,
-        roomNum: 1,
-        options: options,
-      });
-      return;
-    }
-    setCustomerBook(JSON.parse(storedCustomer));
-  }, []);
+  // useEffect(() => {
+  //   const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
+  //   if (storedCustomer === null) {
+  //     setCustomerBook({
+  //       date: { startDay: "", endDay: "" },
+  //       nights: 0,
+  //       roomNum: 1,
+  //       options: options,
+  //     });
+  //     return;
+  //   }
+  //   setCustomerBook(JSON.parse(storedCustomer));
+  // }, []);
 
   return (
     <CustomerContext.Provider

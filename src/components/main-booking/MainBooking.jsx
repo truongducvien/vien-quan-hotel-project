@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./style/main-booking.css";
+import "./style/main-booking.scss";
 import "antd/dist/antd.css";
 import { Row, Col } from "antd";
 import BookingView from "./booking-view/BookingView";
