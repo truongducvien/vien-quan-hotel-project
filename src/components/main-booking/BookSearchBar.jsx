@@ -11,8 +11,8 @@ import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import "./style/book-searchbar.scss";
 
 function BookSearchBar() {
-  const { setCustomerBook, options } = useContext(CustomerContext);
-
+  const { customerBook, setCustomerBook, options } =
+    useContext(CustomerContext);
   const [dates, setDates] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -22,7 +22,7 @@ function BookSearchBar() {
       (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
     );
     console.log("nights:", nights);
-    console.log("date:", dates.endDate._d, dates.startDate._d);
+    console.log("date package:", dates.endDate._d, dates.startDate._d);
   }, [dates]);
 
   const handleApply = (event, picker) => {
@@ -48,7 +48,6 @@ function BookSearchBar() {
     setCustomerBook(newCustomer);
     localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(newCustomer));
   };
-
   return (
     <div>
       <div className="book-header-img">

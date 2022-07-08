@@ -8,10 +8,15 @@ import { CustomerContext } from "../../providers/CustomerContext";
 import RoomListOption from "./room-list/RoomListOption";
 import { Tabs } from "antd";
 import BookSearchBar from "./BookSearchBar";
+import BookViewNone from "./booking-view/BookViewNone";
 const { TabPane } = Tabs;
 
 function MainBooking() {
-  const { options } = useContext(CustomerContext);
+  const { customerBook, options } = useContext(CustomerContext);
+  let totalPrice = 0;
+  options.forEach((option) => {
+    totalPrice += option.roomPrice * customerBook.nights;
+  });
 
   return (
     <div>
@@ -34,7 +39,7 @@ function MainBooking() {
             </Tabs>
           </Col>
           <Col className="booking-view" xs={24} sm={24} md={10} xl={8}>
-            <BookingView />
+            {totalPrice === 0 ? <BookViewNone /> : <BookingView />}
           </Col>
         </Row>
       </main>

@@ -8,20 +8,44 @@ import UserRegisterLogin from "./components/user-login-register/UserRegisterLogi
 import { CustomerContext } from "./providers/CustomerContext";
 import { v4 } from "uuid";
 function App() {
+  const newDate = new Date();
+  console.log("newDate App", newDate);
   const [options, setOptions] = useState([
     {
       id: v4(),
       adult: 2,
       children: 0,
       roomName: "",
-      roomPrice: "",
+      roomPrice: 0,
     },
   ]);
   const [customerBook, setCustomerBook] = useState({
-    date: { startDay: "", endDay: "" },
+    date: {
+      startDay: new Date().toLocaleDateString("en-us", {
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+      endDay: new Date().toLocaleDateString("en-us", {
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+    },
+    nights: 0,
     roomNum: 1,
     options: options,
   });
+
+  useEffect(() => {
+    const nights = Math.floor(
+      (customerBook.date.endDay - customerBook.date.startDay) /
+        (24 * 60 * 60 * 1000)
+    );
+    console.log("nights:", nights);
+  }, [customerBook]);
 
   useEffect(() => {
     const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");

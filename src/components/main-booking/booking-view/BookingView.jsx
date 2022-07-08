@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "../style/booking-view.scss";
 import RoomSelect from "./RoomSelect";
-import { Collapse } from "antd";
+import { Button, Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../providers/CustomerContext";
@@ -19,13 +19,14 @@ function BookingView() {
 
   let totalPrice = 0;
   options.forEach((option) => {
-    totalPrice += parseFloat(option.roomPrice).toFixed(2) * customerBook.nights;
+    totalPrice += option.roomPrice * customerBook.nights;
   });
   let totalPriceString = String(totalPrice).replace(/(.)(?=(\d{3})+$)/g, "$1,");
 
-  let tax = parseFloat((totalPrice * 10) / 100).toFixed(0);
+  let tax = (totalPrice * 10) / 100;
   let taxString = String(tax).replace(/(.)(?=(\d{3})+$)/g, "$1,");
-  let serviceCharge = parseFloat((totalPrice * 5) / 100).toFixed(0);
+
+  let serviceCharge = (totalPrice * 5) / 100;
   let serviceChargeString = String(serviceCharge).replace(
     /(.)(?=(\d{3})+$)/g,
     "$1,"
@@ -46,6 +47,7 @@ function BookingView() {
             {options.length} room, {sumGuests} guests
           </div>
         </div>
+
         <div className="room-select-list">
           {options.map((option) => (
             <div key={option.id}>
@@ -53,6 +55,7 @@ function BookingView() {
             </div>
           ))}
         </div>
+
         <div className="line-total flex">
           <div className="line-total name">Total</div>
           <div className="line-total value">VND {totalPriceString}</div>

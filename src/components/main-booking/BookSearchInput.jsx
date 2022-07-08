@@ -98,7 +98,7 @@ function BookSearchInput() {
   const handleAddFields = () => {
     setOptions([
       ...options,
-      { id: v4(), adult: 1, children: 0, roomName: "", roomPrice: "" },
+      { id: v4(), adult: 1, children: 0, roomName: "", roomPrice: 0 },
     ]);
   };
 

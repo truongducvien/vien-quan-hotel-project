@@ -1,7 +1,5 @@
 import React from "react";
-
 import "../style/room-list.scss";
-
 import "antd/dist/antd.css";
 import RoomItem from "./RoomItem";
 import { DataRoomsDemo } from "../../../stores/data-demo";
