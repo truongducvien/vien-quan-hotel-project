@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import * as RiIcons from "react-icons/ri";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import { v4 } from "uuid";
@@ -13,16 +13,18 @@ function RoomOrdered({ option, index }) {
   const handleRemoveRoomBook = (id) => {
     const filterOption = options.filter((option) => option.id !== id);
     setOptions(filterOption);
-    if (options.length === 0) {
-      setOptions({
-        id: v4(),
-        adult: 2,
-        children: 0,
-        roomName: "",
-        roomPrice: 0,
-      });
-    }
+    console.log("id delete", id);
   };
+
+  if (options.length === 0) {
+    setOptions({
+      id: v4(),
+      adult: 2,
+      children: 0,
+      roomName: "",
+      roomPrice: 0,
+    });
+  }
 
   return (
     <div className="room-select">

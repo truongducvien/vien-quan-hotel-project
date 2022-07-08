@@ -11,7 +11,8 @@ import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import "./style/book-searchbar.scss";
 
 function BookSearchBar() {
-  const { setCustomerBook, options } = useContext(CustomerContext);
+  const { customerBook, setCustomerBook, options } =
+    useContext(CustomerContext);
   const [dates, setDates] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -20,8 +21,7 @@ function BookSearchBar() {
     const nights = Math.floor(
       (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
     );
-    console.log("nights:", nights);
-    console.log("date package:", dates.endDate._d, dates.startDate._d);
+    setCustomerBook({ ...customerBook, nights: nights });
   }, [dates]);
 
   const handleApply = (event, picker) => {
@@ -32,6 +32,11 @@ function BookSearchBar() {
   };
 
   const handleBookNowButton = () => {
+    if (customerBook.nights === 0) {
+      alert("Please select the dates");
+      return;
+    }
+
     let newCustomer = {
       date: {
         startDay: dates.startDate.format("ddd, DD MMM YY"),
@@ -65,7 +70,6 @@ function BookSearchBar() {
                   <DateRangePicker
                     onApply={handleApply}
                     initialSettings={{
-                      timePicker: true,
                       locale: {
                         format: "ddd, DD MMM",
                       },

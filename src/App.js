@@ -37,13 +37,13 @@ function App() {
     options: options,
   });
 
-  useEffect(() => {
-    const nights = Math.floor(
-      (customerBook.date.endDay - customerBook.date.startDay) /
-        (24 * 60 * 60 * 1000)
-    );
-    console.log("nights:", nights);
-  }, [customerBook]);
+  // useEffect(() => {
+  //   const nights = Math.floor(
+  //     (customerBook.date.endDay - customerBook.date.startDay) /
+  //       (24 * 60 * 60 * 1000)
+  //   );
+  //   console.log("nights start:", nights);
+  // }, [customerBook]);
 
   // useEffect(() => {
   //   const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");

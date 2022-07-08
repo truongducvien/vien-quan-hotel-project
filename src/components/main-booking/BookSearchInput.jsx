@@ -34,6 +34,7 @@ function BookSearchInput() {
       sumAdult: sumAdult,
       sumChildren: sumChildren,
     });
+    setOptions(options);
   }, [options]);
   useEffect(() => {
     setCustomerBook(customerBook);
