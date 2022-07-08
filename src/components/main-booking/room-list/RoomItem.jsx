@@ -19,14 +19,19 @@ function RoomItem({ room, idOption }) {
   }, [options]);
 
   const handleSelect = (room) => {
+    if (customerBook.nights === 0) {
+      alert("Please select the dates");
+      return;
+    }
+
     const newOptions = options.map((option) => {
       if (option.id === idOption) {
         return { ...option, roomName: room.nameRoom, roomPrice: room.price };
       }
       return option;
     });
-
     setOptions(newOptions);
+
     setCustomerBook({ ...customerBook, options });
   };
 
