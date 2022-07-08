@@ -1,56 +1,37 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./style/main-booking.css";
 import "antd/dist/antd.css";
 import { Row, Col } from "antd";
 import BookingView from "./booking-view/BookingView";
-import RoomList from "./room-list/RoomList";
 import BookHeader from "./BookHeader";
-import BookSearchTesting from "./BookSearchTesting";
 import { CustomerContext } from "../../providers/CustomerContext";
-import { DataRoomsDemo } from "../../stores/data-demo";
+import RoomListOption from "./room-list/RoomListOption";
+import { Tabs } from "antd";
+import BookSearchBar from "./BookSearchBar";
+const { TabPane } = Tabs;
 
 function MainBooking() {
-  const { customer, setCustomer } = useContext(CustomerContext);
+  const { options } = useContext(CustomerContext);
 
-  useEffect(() => {
-    const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
-    if (storedCustomer === null) {
-      setCustomer({});
-      return;
-    }
-    setCustomer(JSON.parse(storedCustomer));
-    console.log("mainBook:", customer);
-  }, []);
-
-  // console.log("DataRoomsDemo:", DataRoomsDemo);
-
-  // const handleFilterRoom = (option) => {
-  //   console.log(option);
-  //   let filterRoom = DataRoomsDemo.filter(
-  //     (room) => room.maxPerson <= option.adult + option.children
-  //   );
-  //   console.log("filterRoom", filterRoom);
-  // };
   return (
     <div>
       <main className="main-container">
         <BookHeader />
-        <BookSearchTesting />
+        <BookSearchBar />
         <Row className="room-booking">
           <Col className="room-list" xs={24} sm={24} md={14} xl={16}>
-            {customer === null || customer === undefined || customer === {} ? (
-              <RoomList />
-            ) : (
-              ""
-            )}
-            {/*  customer.options.map((option, index) => (
-                <div key={option.id}>
-                  <h6 onClick={() => handleFilterRoom(option)}>
-                    Room {index + 1}
-                  </h6>
-                </div>
-              ))
-            )} */}
+            <Tabs defaultActiveKey="1">
+              (
+              {options.map((option, index) => (
+                <TabPane key={index + 1} tab={`Room ${index + 1}`}>
+                  <RoomListOption
+                    maxPerson={option.adult + option.children}
+                    idOption={option.id}
+                  />
+                </TabPane>
+              ))}
+              )
+            </Tabs>
           </Col>
           <Col className="booking-view" xs={24} sm={24} md={10} xl={8}>
             <BookingView />

@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Row, Col } from "antd";
 import ImageCarousel from "./ImageCarousel";
 import RoomInfo from "./RoomInfo";
 import * as RiIcons from "react-icons/ri";
+import { CustomerContext } from "../../../providers/CustomerContext";
 
-function RoomItem({ room }) {
-  const handleSelect = () => {
-    console.log(room);
+function RoomItem({ room, idOption }) {
+  const { customerBook, setCustomerBook, options, setOptions } =
+    useContext(CustomerContext);
+
+  let roomPriceString = String(room.price).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+
+  useEffect(() => {
+    setCustomerBook({ ...customerBook, options });
+    localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(customerBook));
+    console.log("options Room", options);
+    console.log("customerBook Room", customerBook);
+  }, [options]);
+
+  const handleSelect = (room) => {
+    const newOptions = options.map((option) => {
+      if (option.id === idOption) {
+        return { ...option, roomName: room.nameRoom, roomPrice: room.price };
+      }
+      return option;
+    });
+
+    setOptions(newOptions);
+    setCustomerBook({ ...customerBook, options });
   };
 
   return (
@@ -37,13 +58,17 @@ function RoomItem({ room }) {
             {room.quantity !== 0 ? (
               <Row className="rate-price-select">
                 <Col xs={24} sm={16} md={16} xl={16}>
-                  <p style={{ fontWeight: 700 }}>VND 3,673,214.72 </p>
+                  <p style={{ fontWeight: 700 }}>VND {roomPriceString} </p>
                   <p>2guests, 1 night</p>
                 </Col>
 
                 <Col sx={24} sm={8} md={8} xl={8}>
                   <div>
-                    <button onClick={handleSelect} className="rate-select-btn">
+                    <button
+                      type="button"
+                      onClick={() => handleSelect(room)}
+                      className="rate-select-btn"
+                    >
                       Select
                     </button>
                   </div>

@@ -6,21 +6,46 @@ import PaymentPage from "./components/payment-page/PaymentPage";
 import MainBooking from "./components/main-booking/MainBooking";
 import UserRegisterLogin from "./components/user-login-register/UserRegisterLogin";
 import { CustomerContext } from "./providers/CustomerContext";
-
+import { v4 } from "uuid";
 function App() {
-  const [customer, setCustomer] = useState({});
+  const [options, setOptions] = useState([
+    {
+      id: v4(),
+      adult: 2,
+      children: 0,
+      roomName: "",
+      roomPrice: "",
+    },
+  ]);
+  const [customerBook, setCustomerBook] = useState({
+    date: { startDay: "", endDay: "" },
+    roomNum: 1,
+    options: options,
+  });
 
   useEffect(() => {
     const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
     if (storedCustomer === null) {
-      setCustomer({});
+      setCustomerBook({
+        date: { startDay: "", endDay: "" },
+        nights: 0,
+        roomNum: 1,
+        options: options,
+      });
       return;
     }
-    setCustomer(JSON.parse(storedCustomer));
+    setCustomerBook(JSON.parse(storedCustomer));
   }, []);
 
   return (
-    <CustomerContext.Provider value={{ customer, setCustomer }}>
+    <CustomerContext.Provider
+      value={{
+        customerBook,
+        setCustomerBook,
+        options,
+        setOptions,
+      }}
+    >
       <BrowserRouter>
         <div className="App">
           <Routes>

@@ -2,6 +2,7 @@ const customerTest = {
   customerInfo: { name: "", email: "" },
   date: { startDay: "", endDay: "" },
   roomNum: 0,
+  nights: 0,
   options: [],
   //   [
   //   {

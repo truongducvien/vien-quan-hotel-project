@@ -13,37 +13,46 @@ import "./style/book-searchbar.scss";
 import { CustomerContext } from "../../providers/CustomerContext";
 
 function BookSearchTesting() {
-  const { customer, setCustomer } = useContext(CustomerContext);
+  const { customerBook, setCustomerBook, optionsSearch, setOptionsSearch } =
+    useContext(CustomerContext);
+
+  console.log("search1", customerBook);
+  console.log("search1", optionsSearch);
+
   const [dates, setDates] = useState({
     startDate: new Date(),
     endDate: new Date(),
   });
-  const [options, setOptions] = useState([{ id: v4(), adult: 1, children: 0 }]);
+
   const [sumOptions, setSumOptions] = useState({
     sumRoom: 1,
     sumAdult: 1,
     sumChildren: 0,
   });
 
-  useEffect(() => {
-    const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
-    if (storedCustomer === null) {
-      setCustomer({});
-      return;
-    }
-    setCustomer(JSON.parse(storedCustomer));
-    console.log("searchCustomer:", customer);
-  }, []);
+  const [showSelectOption, setShowSelectOption] = useState(false);
+
+  // useEffect(() => {
+  //   const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
+  //   if (storedCustomer === null) {
+  //     setCustomerBook({
+  //       date: { startDay: "", endDay: "" },
+  //       roomNum: 1,
+  //       options: optionsSearch,
+  //     });
+  //     return;
+  //   }
+  //   setCustomerBook(JSON.parse(storedCustomer));
+  // }, []);
 
   useEffect(() => {
-    setCustomer(customer);
-    // setOptions(customer.options);
-    // setDates(customer.date);
-  }, [customer]);
+    setCustomerBook(customerBook);
+    setOptionsSearch(optionsSearch);
+  }, [customerBook]);
 
   useEffect(() => {
     const nights = Math.floor(
-      (dates?.endDate - dates?.startDate) / (24 * 60 * 60 * 1000)
+      (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
     );
     console.log("nights:", nights);
   }, [dates]);
@@ -57,96 +66,97 @@ function BookSearchTesting() {
 
   useEffect(() => {
     let sumAdult = 0;
-    options.forEach((option) => {
+    optionsSearch.forEach((option) => {
       sumAdult += parseFloat(option.adult);
     });
     let sumChildren = 0;
-    options.forEach((option) => {
+    optionsSearch.forEach((option) => {
       sumChildren += parseFloat(option.children);
     });
 
     setSumOptions({
       ...sumOptions,
-      sumRoom: options.length,
+      sumRoom: optionsSearch.length,
       sumAdult: sumAdult,
       sumChildren: sumChildren,
     });
-  }, [options]);
+  }, [optionsSearch]);
 
   const handleBookNowButton = () => {
     let newCustomer = {
       date: { startDay: dates.startDate, endDay: dates.endDate },
-      roomNum: options.length,
-      options: options,
+      roomNum: optionsSearch.length,
+      options: optionsSearch,
     };
 
-    setCustomer(newCustomer);
+    setCustomerBook(newCustomer);
     localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(newCustomer));
-    console.log("btnSearch:", customer);
+    console.log("btnSearch:", customerBook);
   };
   //format date:  format("ddd, DD MMM YY")
 
-  const handleSubmit = (e) => {
+  const handleSubmitOptions = (e) => {
     e.preventDefault();
+    console.log("show hide");
   };
 
   const handleChangeInput = (id, event) => {
-    const newOptions = options.map((op) => {
+    const newOptions = optionsSearch.map((op) => {
       if (id === op.id) {
         op[event.target.name] = event.target.value;
       }
       return op;
     });
-    setOptions(newOptions);
+    setOptionsSearch(newOptions);
   };
 
   const handlePlusAdult = (id) => {
-    const newOptions = options.map((op) => {
+    const newOptions = optionsSearch.map((op) => {
       if (id === op.id) {
         op.adult = parseFloat(op.adult) + 1;
       }
       return op;
     });
-    setOptions(newOptions);
+    setOptionsSearch(newOptions);
   };
 
   const handlePlusChildren = (id) => {
-    const newOptions = options.map((op) => {
+    const newOptions = optionsSearch.map((op) => {
       if (id === op.id) {
         op.children = parseFloat(op.children) + 1;
       }
       return op;
     });
-    setOptions(newOptions);
+    setOptionsSearch(newOptions);
   };
 
   const handleMinusAdult = (id) => {
-    const newOptions = options.map((op) => {
+    const newOptions = optionsSearch.map((op) => {
       if (id === op.id) {
         op.adult = parseFloat(op.adult) - 1;
       }
       return op;
     });
-    setOptions(newOptions);
+    setOptionsSearch(newOptions);
   };
 
   const handleMinusChildren = (id) => {
-    const newOptions = options.map((op) => {
+    const newOptions = optionsSearch.map((op) => {
       if (id === op.id) {
         op.children = parseFloat(op.children) - 1;
       }
       return op;
     });
-    setOptions(newOptions);
+    setOptionsSearch(newOptions);
   };
 
   const handleAddFields = () => {
-    setOptions([...options, { id: v4(), adult: 1, children: 0 }]);
+    setOptionsSearch([...optionsSearch, { id: v4(), adult: 1, children: 0 }]);
   };
 
   const handleRemoveFields = (id) => {
-    let removeOption = options.filter((op) => op.id !== id);
-    setOptions(removeOption);
+    let removeOption = optionsSearch.filter((op) => op.id !== id);
+    setOptionsSearch(removeOption);
   };
 
   return (
@@ -181,7 +191,10 @@ function BookSearchTesting() {
             </Col>
 
             <Col xs={24} sm={24} md={6} lg={7}>
-              <div className=" select-rooms">
+              <div
+                className="select-rooms"
+                onClick={() => setShowSelectOption(!showSelectOption)}
+              >
                 <div className="search-select">
                   <label className="search-label" htmlFor="">
                     Select rooms and guests
@@ -199,83 +212,91 @@ function BookSearchTesting() {
                 </div>
               </div>
 
-              <div className="select-dropdown-body">
-                <Row className="select-options-head">
-                  <Col md={5} lg={5}></Col>
-                  <Col md={9} lg={9}>
-                    <h5>Adult</h5>
-                    <p>Ages 12 or more</p>
-                  </Col>
-                  <Col md={9} lg={9}>
-                    <h5>Children</h5>
-                    <p>Ages 1 - 11</p>
-                  </Col>
-                  <Col md={1} lg={1}></Col>
-                </Row>
-                <form onSubmit={handleSubmit}>
-                  {options.map((option, index) => (
-                    <Row key={option.id} className="select-option-row">
-                      <Col md={5} lg={5}>
-                        <span className="option-room-title">
-                          Room {index + 1}
-                        </span>
-                      </Col>
-                      <Col md={9} lg={9}>
-                        <button onClick={() => handleMinusAdult(option.id)}>
-                          -
-                        </button>
+              {showSelectOption && (
+                <div className="select-dropdown-body">
+                  <Row className="select-options-head">
+                    <Col md={5} lg={5}></Col>
+                    <Col md={9} lg={9}>
+                      <h5>Adult</h5>
+                      <p>Ages 12 or more</p>
+                    </Col>
+                    <Col md={9} lg={9}>
+                      <h5>Children</h5>
+                      <p>Ages 1 - 11</p>
+                    </Col>
+                    <Col md={1} lg={1}></Col>
+                  </Row>
+                  <form onSubmit={handleSubmitOptions}>
+                    {optionsSearch.map((option, index) => (
+                      <Row key={option.id} className="select-option-row">
+                        <Col md={5} lg={5}>
+                          <span className="option-room-title">
+                            Room {index + 1}
+                          </span>
+                        </Col>
+                        <Col md={9} lg={9}>
+                          <button onClick={() => handleMinusAdult(option.id)}>
+                            -
+                          </button>
 
-                        <input
-                          name="adult"
-                          value={option.adult}
-                          onChange={(event) =>
-                            handleChangeInput(option.id, event)
-                          }
-                        />
-                        <button onClick={() => handlePlusAdult(option.id)}>
-                          +
-                        </button>
-                      </Col>
-                      <Col md={9} lg={9}>
-                        <button onClick={() => handleMinusChildren(option.id)}>
-                          -
-                        </button>
-
-                        <input
-                          name="children"
-                          value={option.children}
-                          onChange={(event) =>
-                            handleChangeInput(option.id, event)
-                          }
-                        />
-                        <button onClick={() => handlePlusChildren(option.id)}>
-                          +
-                        </button>
-                      </Col>
-                      <Col md={1} lg={1}>
-                        {options.length > 1 ? (
-                          <DeleteFilled
-                            onClick={() => handleRemoveFields(option.id)}
+                          <input
+                            name="adult"
+                            value={option.adult}
+                            onChange={(event) =>
+                              handleChangeInput(option.id, event)
+                            }
                           />
-                        ) : (
-                          ""
-                        )}
-                      </Col>
-                    </Row>
-                  ))}
-                  <div className="option-style-btns">
-                    <button
-                      className="option-add-room-btn"
-                      onClick={handleAddFields}
-                    >
-                      Add additional room
-                    </button>
-                    <button className="option-done-rom-btn" type="submit">
-                      Done
-                    </button>
-                  </div>
-                </form>
-              </div>
+                          <button onClick={() => handlePlusAdult(option.id)}>
+                            +
+                          </button>
+                        </Col>
+                        <Col md={9} lg={9}>
+                          <button
+                            onClick={() => handleMinusChildren(option.id)}
+                          >
+                            -
+                          </button>
+
+                          <input
+                            name="children"
+                            value={option.children}
+                            onChange={(event) =>
+                              handleChangeInput(option.id, event)
+                            }
+                          />
+                          <button onClick={() => handlePlusChildren(option.id)}>
+                            +
+                          </button>
+                        </Col>
+                        <Col md={1} lg={1}>
+                          {optionsSearch.length > 1 ? (
+                            <DeleteFilled
+                              onClick={() => handleRemoveFields(option.id)}
+                            />
+                          ) : (
+                            ""
+                          )}
+                        </Col>
+                      </Row>
+                    ))}
+                    <div className="option-style-btns">
+                      <button
+                        className="option-add-room-btn"
+                        onClick={handleAddFields}
+                      >
+                        Add additional room
+                      </button>
+                      <button
+                        onClick={() => setShowSelectOption(!showSelectOption)}
+                        className="option-done-rom-btn"
+                        type="submit"
+                      >
+                        Done
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              )}
             </Col>
             <Col xs={24} sm={24} md={6} lg={6}>
               <span>Have a promo code?</span>

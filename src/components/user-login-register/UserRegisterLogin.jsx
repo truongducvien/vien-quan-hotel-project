@@ -1,8 +1,8 @@
 import React from "react";
-import { Tabs } from "antd";
 import "./style/user-register-login.scss";
 import UserRegister from "./UserRegister";
 import UserLogin from "./UserLogin";
+import { Tabs } from "antd";
 const { TabPane } = Tabs;
 
 export default function UserRegisterLogin() {
