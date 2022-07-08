@@ -11,7 +11,7 @@ function App() {
   const [options, setOptions] = useState([
     {
       id: v4(),
-      adult: 2,
+      adult: 1,
       children: 0,
       roomName: "",
       roomPrice: 0,
