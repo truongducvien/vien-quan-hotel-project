@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { Row, Col } from "antd";
-import ImageCarousel from "./ImageCarousel";
 import RoomInfo from "./RoomInfo";
 import * as RiIcons from "react-icons/ri";
 import { CustomerContext } from "../../../providers/CustomerContext";
+import ImageCarouselSwiper from "./ImageCarouselSwiper";
 
 function RoomItem({ room, idOption }) {
   const { customerBook, setCustomerBook, options, setOptions } =
@@ -14,8 +14,7 @@ function RoomItem({ room, idOption }) {
   useEffect(() => {
     setCustomerBook({ ...customerBook, options });
     localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(customerBook));
-    console.log("options Room", options);
-    console.log("customerBook Room", customerBook);
+    // console.log("customerBook Room", customerBook);
   }, [options]);
 
   const handleSelect = (room) => {
@@ -40,7 +39,7 @@ function RoomItem({ room, idOption }) {
       <div className="room-type">
         <Row>
           <Col className="room-type-carousel" xs={24} sm={24} md={24} xl={10}>
-            <ImageCarousel room={room} />
+            <ImageCarouselSwiper room={room} />
           </Col>
           <Col className="room-type-intro" xs={24} sm={24} md={24} xl={14}>
             <RoomInfo room={room} />

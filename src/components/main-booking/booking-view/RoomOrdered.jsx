@@ -13,7 +13,6 @@ function RoomOrdered({ option, index }) {
   const handleRemoveRoomBook = (id) => {
     const filterOption = options.filter((option) => option.id !== id);
     setOptions(filterOption);
-    console.log("id delete", id);
   };
 
   if (options.length === 0) {

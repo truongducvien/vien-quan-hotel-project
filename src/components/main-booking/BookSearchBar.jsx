@@ -9,13 +9,17 @@ import bookHeader from "../../assets/images/book-header.avif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import "./style/book-searchbar.scss";
+import moment from "moment";
 
 function BookSearchBar() {
   const { customerBook, setCustomerBook, options } =
     useContext(CustomerContext);
+
+  const tomorrowDate = new Date().getTime() + 24 * 60 * 60 * 1000;
+
   const [dates, setDates] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: new Date().getTime(),
+    endDate: tomorrowDate,
   });
   useEffect(() => {
     const nights = Math.floor(
@@ -32,11 +36,6 @@ function BookSearchBar() {
   };
 
   const handleBookNowButton = () => {
-    if (customerBook.nights === 0) {
-      alert("Please select the dates");
-      return;
-    }
-
     let newCustomer = {
       date: {
         startDay: dates.startDate.format("ddd, DD MMM YY"),
@@ -50,6 +49,7 @@ function BookSearchBar() {
     };
 
     setCustomerBook(newCustomer);
+
     // localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(newCustomer));
   };
   return (
@@ -70,6 +70,11 @@ function BookSearchBar() {
                   <DateRangePicker
                     onApply={handleApply}
                     initialSettings={{
+                      startDate: moment().startOf("hour").toDate(),
+                      endDate: moment()
+                        .startOf("hour")
+                        .add(24, "hour")
+                        .toDate(),
                       locale: {
                         format: "ddd, DD MMM",
                       },

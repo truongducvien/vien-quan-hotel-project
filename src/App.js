@@ -17,22 +17,26 @@ function App() {
       roomPrice: 0,
     },
   ]);
+  const today = new Date().toLocaleDateString("en-us", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
+  var tomorrowDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+  const tomorrow = tomorrowDate.toLocaleDateString("en-us", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
   const [customerBook, setCustomerBook] = useState({
     date: {
-      startDay: new Date().toLocaleDateString("en-us", {
-        weekday: "short",
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      }),
-      endDay: new Date().toLocaleDateString("en-us", {
-        weekday: "short",
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      }),
+      startDay: today,
+      endDay: tomorrow,
     },
-    nights: 0,
+    nights: 1,
     roomNum: 1,
     options: options,
   });

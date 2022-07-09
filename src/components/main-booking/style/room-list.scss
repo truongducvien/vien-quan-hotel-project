@@ -2,7 +2,6 @@
   width: 100%;
   height: 100%;
 }
-
 .room {
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -11,6 +10,7 @@
 }
 .room-type-carousel {
   width: 100%;
+  height: 100%;
   object-fit: cover;
   .room-img-carousel {
     .image {
@@ -19,6 +19,12 @@
       justify-content: center;
       img {
         width: 100%;
+        height: 100%;
+        transition: all 0.3s;
+        // &:hover {
+        //   width: 105%;
+        //   transition: all 0.3s;
+        // }
       }
     }
   }
@@ -145,34 +151,36 @@
   margin-bottom: 0 !important;
 }
 .room-img-carousel {
-  .ant-carousel .slick-prev,
-  .ant-carousel .slick-next {
+  .swiper-button-prev,
+  .swiper-button-next {
     opacity: 0.4;
     color: #363636;
     background: #fff;
     width: 44px;
     height: 44px;
     text-align: center;
-    font-size: 39px;
+    font-size: 24px;
     line-height: 38px;
     border-radius: 50%;
     transition: opacity 0.3s;
   }
-  .ant-carousel .slick-prev:hover,
-  .ant-carousel .slick-next:hover {
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: 24px;
+  }
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
     background: #fff;
     color: #000;
     opacity: 1;
   }
-
-  .ant-carousel .slick-prev,
-  .ant-carousel .slick-prev:hover {
+  .swiper-button-prev,
+  .swiper-button-prev:hover {
     left: 16px;
     z-index: 2;
   }
-
-  .ant-carousel .slick-next,
-  .ant-carousel .slick-next:hover {
+  .swiper-button-next,
+  .swiper-button-next:hover {
     right: 16px;
     z-index: 2;
   }

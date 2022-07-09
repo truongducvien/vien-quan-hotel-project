@@ -43,7 +43,6 @@ function BookSearchInput() {
 
   const handleSubmitOptions = (e) => {
     e.preventDefault();
-    console.log("show hide");
   };
 
   const handleChangeInput = (id, event) => {
