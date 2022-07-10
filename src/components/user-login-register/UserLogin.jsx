@@ -14,7 +14,7 @@ export default function UserLogin() {
   };
 
   const onFinish = (userInfo) => {
-    console.log("Success:", userInfo);
+    console.log("userInfo login:", userInfo);
     usersData.map((user) => {
       if (
         userInfo.email === user.email &&
@@ -29,14 +29,15 @@ export default function UserLogin() {
         };
         setUserLogin(newLogin);
         localStorage.setItem("USERS-LOGIN", JSON.stringify(newLogin));
-      } else if (
-        userInfo.email === user.email &&
-        userInfo.password !== user.password
-      ) {
-        alert("Wrong password");
-      } else {
-        alert("Email is not registered. Please Register!");
       }
+      // else if (
+      //   userInfo.email === user.email &&
+      //   userInfo.password !== user.password
+      // ) {
+      //   alert("Wrong password");
+      // } else if (userInfo.email !== user.email) {
+      //   alert("Email is not registered. Please Register!");
+      // }
     });
   };
 

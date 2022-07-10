@@ -26,9 +26,9 @@ function UserRegister() {
         setUsersData(usersData);
         localStorage.setItem("USERS-DATA", JSON.stringify(usersData));
       } else {
+        alert("Success Register. Please Login");
         setUsersData(newUsersData);
         localStorage.setItem("USERS-DATA", JSON.stringify(newUsersData));
-        // alert("Success Register");
       }
     });
   };

@@ -4,7 +4,6 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import PaymentPage from "./components/payment-page/PaymentPage";
 import MainBooking from "./components/main-booking/MainBooking";
-import UserRegisterLogin from "./components/user-login-register/UserRegisterLogin";
 import { CustomerContext } from "./providers/CustomerContext";
 import { v4 } from "uuid";
 import moment from "moment";
