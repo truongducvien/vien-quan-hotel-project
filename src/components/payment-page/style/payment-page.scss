@@ -1,0 +1,64 @@
+$themeColor: #026082;
+$bookHeader: #00729c;
+$labelColor: #b6b6b6;
+
+.payment-page {
+  background-color: #f2f7f9;
+  .pay-header {
+    color: #fff;
+    background-color: $bookHeader;
+    .ant-row-cente {
+      align-items: center;
+    }
+    .text-logo {
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+      p {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 0;
+      }
+    }
+    .pay-btn-logout {
+      line-height: 36px;
+      padding: 0px 24px;
+      border-radius: 4px;
+      transition: all 0.1s;
+      white-space: nowrap;
+      border: 2px solid;
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin: 5px 0;
+      background: #fff;
+      color: #004862;
+      cursor: pointer;
+      &:hover {
+        color: #fff;
+        background-color: #004a65;
+      }
+    }
+    .anticon svg {
+      font-size: 40px;
+      color: #fff;
+      &:hover {
+        background-color: #0296cc;
+      }
+    }
+  }
+}
+.pay-main {
+  max-width: 64rem;
+  margin: 40px auto;
+  padding: 0 40px;
+}
+.pay-wrapper {
+  width: 100%;
+}
+.pay-form,
+.pay-booking-view {
+  padding: 0 8px;
+  border-radius: 4px;
+  line-height: 1.618;
+}

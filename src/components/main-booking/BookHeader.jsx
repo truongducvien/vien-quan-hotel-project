@@ -1,6 +1,7 @@
 import React from "react";
 import "./style/book-header.scss";
 import { Row, Col } from "antd";
+import { Link } from "react-router-dom";
 
 function BookHeader() {
   return (
@@ -11,7 +12,9 @@ function BookHeader() {
           <Col xs={24} sm={24} md={24} lg={7}>
             <Row justify="center" className="text-logo">
               <Col xs={12} sm={12} md={12} lg={17}>
-                <p>Ocean Villa</p>
+                <Link to="/">
+                  <p>Ocean Villa</p>
+                </Link>
               </Col>
               <Col xs={12} sm={12} md={12} lg={7}>
                 <span>★ ★ ★ ★ ★</span>

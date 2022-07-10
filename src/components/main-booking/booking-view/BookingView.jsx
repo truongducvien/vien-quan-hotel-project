@@ -8,7 +8,7 @@ import RoomOrdered from "./RoomOrdered";
 
 const { Panel } = Collapse;
 
-function BookingView() {
+function BookingView({ handleLoginCheck }) {
   const { customerBook, options } = useContext(CustomerContext);
 
   let sumGuests = 0;
@@ -83,11 +83,18 @@ function BookingView() {
           <p className="balance">Outstanding balance: VND 0</p>
         </div>
       </div>
-      <Link to="/payment">
-        <div className="btn-sticky">
-          <button className="booking-btn">Book</button>
-        </div>
-      </Link>
+
+      <div className="btn-sticky">
+        {localStorage.getItem("login") === null ? (
+          <Link to="/login">
+            <button className="booking-btn">Book</button>
+          </Link>
+        ) : (
+          <Link to="/payment">
+            <button className="booking-btn">Book</button>
+          </Link>
+        )}
+      </div>
     </div>
   );
 }

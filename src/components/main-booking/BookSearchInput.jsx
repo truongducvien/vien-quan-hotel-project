@@ -36,8 +36,11 @@ function BookSearchInput() {
     });
     setOptions(options);
   }, [options]);
+
   useEffect(() => {
     setCustomerBook(customerBook);
+    localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(customerBook));
+
     setOptions(options);
   }, [customerBook]);
 

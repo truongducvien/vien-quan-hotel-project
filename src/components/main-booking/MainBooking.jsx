@@ -9,6 +9,7 @@ import RoomListOption from "./room-list/RoomListOption";
 import { Tabs } from "antd";
 import BookSearchBar from "./BookSearchBar";
 import BookViewNone from "./booking-view/BookViewNone";
+import { Navigate } from "react-router";
 const { TabPane } = Tabs;
 
 function MainBooking() {

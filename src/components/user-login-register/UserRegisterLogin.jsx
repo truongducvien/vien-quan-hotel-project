@@ -3,6 +3,7 @@ import "./style/user-register-login.scss";
 import UserRegister from "./UserRegister";
 import UserLogin from "./UserLogin";
 import { Tabs } from "antd";
+import { Outlet } from "react-router";
 const { TabPane } = Tabs;
 
 export default function UserRegisterLogin() {
@@ -11,15 +12,16 @@ export default function UserRegisterLogin() {
       <div className="register-login-center">
         <div className="register-login">
           <Tabs defaultActiveKey="1">
-            <TabPane tab="Login" key="1" className="r-l-form">
+            <TabPane tab="Login" key="1">
               <UserLogin />
             </TabPane>
-            <TabPane tab="Register" key="2" className="r-l-form">
+            <TabPane tab="Register" key="2">
               <UserRegister />
             </TabPane>
           </Tabs>
         </div>
       </div>
+      <Outlet />
     </div>
   );
 }

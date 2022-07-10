@@ -16,6 +16,10 @@ $labelColor: #b6b6b6;
       align-items: center;
       justify-content: space-between;
       text-align: center;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
       p {
         font-size: 2rem;
         font-weight: 500;

@@ -21,6 +21,7 @@ function BookSearchBar() {
     startDate: new Date().getTime(),
     endDate: tomorrowDate,
   });
+
   useEffect(() => {
     const nights = Math.floor(
       (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
@@ -50,8 +51,9 @@ function BookSearchBar() {
 
     setCustomerBook(newCustomer);
 
-    // localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(newCustomer));
+    localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(newCustomer));
   };
+
   return (
     <div>
       <div className="book-header-img">

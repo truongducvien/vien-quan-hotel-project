@@ -7,7 +7,14 @@ import MainBooking from "./components/main-booking/MainBooking";
 import UserRegisterLogin from "./components/user-login-register/UserRegisterLogin";
 import { CustomerContext } from "./providers/CustomerContext";
 import { v4 } from "uuid";
+import moment from "moment";
+import UserLogin from "./components/user-login-register/UserLogin";
+import UserRegister from "./components/user-login-register/UserRegister";
+
 function App() {
+  const [usersData, setUsersData] = useState([]);
+  const [userLogin, setUserLogin] = useState({});
+
   const [options, setOptions] = useState([
     {
       id: v4(),
@@ -17,51 +24,50 @@ function App() {
       roomPrice: 0,
     },
   ]);
-  const today = new Date().toLocaleDateString("en-us", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-
-  var tomorrowDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-  const tomorrow = tomorrowDate.toLocaleDateString("en-us", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
   const [customerBook, setCustomerBook] = useState({
     date: {
-      startDay: today,
-      endDay: tomorrow,
+      startDay: moment(new Date()).format("ddd, DD MMM YY"),
+      endDay: moment(
+        new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+      ).format("ddd, DD MMM YY"),
     },
     nights: 1,
     roomNum: 1,
     options: options,
   });
 
-  // useEffect(() => {
-  //   const nights = Math.floor(
-  //     (customerBook.date.endDay - customerBook.date.startDay) /
-  //       (24 * 60 * 60 * 1000)
-  //   );
-  //   console.log("nights start:", nights);
-  // }, [customerBook]);
+  useEffect(() => {
+    const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
+    if (storedCustomer === null) {
+      localStorage.setItem(
+        "CUSTOMER-HOTEL",
+        JSON.stringify({
+          date: {
+            startDay: moment(new Date()).format("ddd, DD MMM YY"),
+            endDay: moment(
+              new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+            ).format("ddd, DD MMM YY"),
+          },
+          nights: 1,
+          roomNum: 1,
+          options: options,
+        })
+      );
+    }
+    setCustomerBook(JSON.parse(storedCustomer));
 
-  // useEffect(() => {
-  //   const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
-  //   if (storedCustomer === null) {
-  //     setCustomerBook({
-  //       date: { startDay: "", endDay: "" },
-  //       nights: 0,
-  //       roomNum: 1,
-  //       options: options,
-  //     });
-  //     return;
-  //   }
-  //   setCustomerBook(JSON.parse(storedCustomer));
-  // }, []);
+    let userLocalStorage = localStorage.getItem("USERS-DATA");
+    if (userLocalStorage === null) {
+      return;
+    }
+    setUsersData(JSON.parse(userLocalStorage));
+
+    let loginLocalStorage = localStorage.getItem("USERS-LOGIN");
+    if (loginLocalStorage === null) {
+      return;
+    }
+    setUserLogin(JSON.parse(loginLocalStorage));
+  }, []);
 
   return (
     <CustomerContext.Provider
@@ -70,13 +76,18 @@ function App() {
         setCustomerBook,
         options,
         setOptions,
+        usersData,
+        setUsersData,
+        userLogin,
+        setUserLogin,
       }}
     >
       <BrowserRouter>
         <div className="App">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/login-register" element={<UserRegisterLogin />} />
+            <Route path="/login" element={<UserLogin />} />
+            <Route path="/register" element={<UserRegister />} />
             <Route path="/booking" element={<MainBooking />} />
             <Route path="/payment" element={<PaymentPage />} />
           </Routes>
