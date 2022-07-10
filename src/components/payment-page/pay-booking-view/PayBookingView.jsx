@@ -4,6 +4,7 @@ import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import PayRoomOrdered from "./PayRoomOdered";
+import PayRoomOrderNone from "./PayRoomOrderNone";
 
 const { Panel } = Collapse;
 
@@ -49,7 +50,6 @@ function PayBookingView() {
       </div>
 
       <Collapse
-        defaultActiveKey={["1"]}
         bordered={false}
         expandIcon={({ isActive }) => (
           <DownOutlined rotate={isActive ? 180 : 0} />
@@ -65,7 +65,11 @@ function PayBookingView() {
             <div className="room-select-list">
               {options.map((option, index) => (
                 <div key={option.id}>
-                  <PayRoomOrdered option={option} index={index} />
+                  {option.roomName === "" ? (
+                    <PayRoomOrderNone />
+                  ) : (
+                    <PayRoomOrdered option={option} index={index} />
+                  )}
                 </div>
               ))}
             </div>
@@ -74,7 +78,6 @@ function PayBookingView() {
               <div className="fw7-fs1125">VND {totalPriceString}</div>
             </div>
             <Collapse
-              defaultActiveKey={["1"]}
               bordered={false}
               expandIcon={({ isActive }) => (
                 <DownOutlined rotate={isActive ? 180 : 0} />

@@ -5,10 +5,11 @@ import { DownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import RoomOrdered from "./RoomOrdered";
+import RoomOrderNone from "./RoomOrderNone";
 
 const { Panel } = Collapse;
 
-function BookingView({ handleLoginCheck }) {
+function BookingView() {
   const { customerBook, options } = useContext(CustomerContext);
 
   let sumGuests = 0;
@@ -50,7 +51,11 @@ function BookingView({ handleLoginCheck }) {
         <div className="room-select-list">
           {options.map((option, index) => (
             <div key={option.id}>
-              <RoomOrdered option={option} index={index} />
+              {option.roomName === "" ? (
+                <RoomOrderNone />
+              ) : (
+                <RoomOrdered option={option} index={index} />
+              )}
             </div>
           ))}
         </div>
@@ -60,7 +65,6 @@ function BookingView({ handleLoginCheck }) {
           <div className="line-total value">VND {totalPriceString}</div>
         </div>
         <Collapse
-          defaultActiveKey={["1"]}
           bordered={false}
           expandIcon={({ isActive }) => (
             <DownOutlined rotate={isActive ? 180 : 0} />
