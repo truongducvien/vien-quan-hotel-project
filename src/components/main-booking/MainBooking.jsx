@@ -26,18 +26,25 @@ function MainBooking() {
         <BookSearchBar />
         <Row className="room-booking">
           <Col className="room-list" xs={24} sm={24} md={14} xl={16}>
-            <Tabs defaultActiveKey="1">
-              (
-              {options.map((option, index) => (
-                <TabPane key={index + 1} tab={`Room ${index + 1}`}>
-                  <RoomListOption
-                    maxPerson={option.adult + option.children}
-                    idOption={option.id}
-                  />
-                </TabPane>
-              ))}
-              )
-            </Tabs>
+            {options.length <= 1 ? (
+              options.map((option) => (
+                <RoomListOption
+                  maxPerson={option.adult + option.children}
+                  idOption={option.id}
+                />
+              ))
+            ) : (
+              <Tabs defaultActiveKey="1">
+                {options.map((option, index) => (
+                  <TabPane key={index + 1} tab={`Room ${index + 1}`}>
+                    <RoomListOption
+                      maxPerson={option.adult + option.children}
+                      idOption={option.id}
+                    />
+                  </TabPane>
+                ))}
+              </Tabs>
+            )}
           </Col>
           <Col className="booking-view" xs={24} sm={24} md={10} xl={8}>
             {totalPrice === 0 ? <BookViewNone /> : <BookingView />}
