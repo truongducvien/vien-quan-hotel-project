@@ -30,11 +30,14 @@ function PayBookingView() {
     "$1,"
   );
 
+  let sumTotal = totalPrice + parseFloat(tax) + parseFloat(serviceCharge);
+  let sumTotalString = String(sumTotal).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+
   return (
     <div className="pay-booking-box">
       <div className="pay-booking-heading">
         <div className="pay-booking-total">
-          VND&nbsp; {totalPriceString} total
+          VND&nbsp; {sumTotalString} total
         </div>
         <div className="pay-section-info">
           <div className="flex">
@@ -75,7 +78,7 @@ function PayBookingView() {
             </div>
             <div className="line-total flex">
               <div className="fw7-fs1125">Total</div>
-              <div className="fw7-fs1125">VND {totalPriceString}</div>
+              <div className="fw7-fs1125">VND {sumTotalString}</div>
             </div>
             <Collapse
               bordered={false}
@@ -100,7 +103,7 @@ function PayBookingView() {
               </Panel>
             </Collapse>
             <div className="tip-content">
-              <p className="balance">Deposit: VND {totalPriceString}</p>
+              <p className="balance">Deposit: VND {sumTotalString}</p>
               <p className="balance">Outstanding balance: VND 0</p>
             </div>
           </div>

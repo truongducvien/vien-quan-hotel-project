@@ -28,10 +28,12 @@ function MainBooking() {
           <Col className="room-list" xs={24} sm={24} md={14} xl={16}>
             {options.length <= 1 ? (
               options.map((option) => (
-                <RoomListOption
-                  maxPerson={option.adult + option.children}
-                  idOption={option.id}
-                />
+                <div key={option.id}>
+                  <RoomListOption
+                    maxPerson={option.adult + option.children}
+                    idOption={option.id}
+                  />
+                </div>
               ))
             ) : (
               <Tabs defaultActiveKey="1">
