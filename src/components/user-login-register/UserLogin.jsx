@@ -1,47 +1,26 @@
 import React, { useContext } from "react";
 import { Form, Input, Col, Row, Checkbox } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { CustomerContext } from "../../providers/CustomerContext";
 import { Navigate } from "react-router";
 import "./style/user-register-login.scss";
 import { Link } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useSelector, useDispatch } from "react-redux";
+import { loginAction } from "../../stores/slices/UserSlice";
 
 export default function UserLogin() {
-  const { usersData, setUserLogin } = useContext(CustomerContext);
+  const userInfo = useSelector((state) => state.user.userInfoState);
+  const dispatch = useDispatch();
+
   const validateMessages = {
     required: "This field is required!",
   };
 
-  const onFinish = (userInfo) => {
-    console.log("userInfo login:", userInfo);
-    usersData.map((user) => {
-      if (
-        userInfo.email === user.email &&
-        userInfo.password === user.password
-      ) {
-        localStorage.setItem("login", "User Login");
-        let newLogin = {
-          isLogin: true,
-          isLogOuted: false,
-          email: user.email,
-          password: user.password,
-        };
-        setUserLogin(newLogin);
-        localStorage.setItem("USERS-LOGIN", JSON.stringify(newLogin));
-      }
-      // else if (
-      //   userInfo.email === user.email &&
-      //   userInfo.password !== user.password
-      // ) {
-      //   alert("Wrong password");
-      // } else if (userInfo.email !== user.email) {
-      //   alert("Email is not registered. Please Register!");
-      // }
-    });
+  const onLogin = (values) => {
+    dispatch(loginAction(values));
   };
 
-  if (localStorage.getItem("login")) {
+  if (localStorage.getItem("USER_INFO") !== null) {
     return <Navigate to={"/payment"} />;
   }
 
@@ -72,7 +51,7 @@ export default function UserLogin() {
               }}
               autoComplete="off"
               validateMessages={validateMessages}
-              onFinish={onFinish}
+              onFinish={onLogin}
             >
               <legend>
                 <h2>Login</h2>
@@ -129,7 +108,7 @@ export default function UserLogin() {
                   </div>
                 </Col>
                 <p>
-                  Didn't have account? <a href="register">Register</a>
+                  Didn't have account? <Link to="/register">Register</Link>
                 </p>
               </Row>
             </Form>

@@ -5,7 +5,6 @@ import { DownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import RoomOrdered from "./RoomOrdered";
-import RoomOrderNone from "./RoomOrderNone";
 
 const { Panel } = Collapse;
 
@@ -90,12 +89,12 @@ function BookingView() {
       </div>
 
       <div className="btn-sticky">
-        {localStorage.getItem("login") === null ? (
-          <Link to="/login">
+        {localStorage.getItem("USER_INFO") !== null ? (
+          <Link to="/payment">
             <button className="booking-btn">Book</button>
           </Link>
         ) : (
-          <Link to="/payment">
+          <Link to="/login">
             <button className="booking-btn">Book</button>
           </Link>
         )}

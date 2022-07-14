@@ -1,0 +1,73 @@
+.payment-page {
+  background-color: #f2f7f9;
+}
+
+.payment-page .pay-header {
+  color: #fff;
+  background-color: #00729c;
+}
+
+.payment-page .pay-header .ant-row-cente {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.payment-page .pay-header .text-logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.payment-page .pay-header .text-logo p {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.payment-page .pay-header .pay-btn-logout {
+  line-height: 36px;
+  padding: 0px 24px;
+  border-radius: 4px;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  white-space: nowrap;
+  border: 2px solid;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 5px 0;
+  background: #fff;
+  color: #004862;
+  cursor: pointer;
+}
+
+.payment-page .pay-header .pay-btn-logout:hover {
+  color: #fff;
+  background-color: #004a65;
+}
+
+.payment-page .pay-header .anticon svg {
+  font-size: 40px;
+  color: #fff;
+}
+
+.payment-page .pay-header .anticon svg:hover {
+  background-color: #0296cc;
+}
+
+.pay-main {
+  max-width: 64rem;
+  margin: 40px auto;
+  padding: 0 40px;
+}
+
+.pay-wrapper {
+  width: 100%;
+}
+
+.pay-form,
+.pay-booking-view {
+  padding: 0 8px;
+  border-radius: 4px;
+  line-height: 1.618;
+}
+/*# sourceMappingURL=payment-page.css.map */

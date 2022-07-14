@@ -1,34 +1,27 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./style/payment-page.scss";
 import "antd/dist/antd.css";
 import { Row, Col } from "antd";
 import PayBookingView from "./pay-booking-view/PayBookingView";
 import PayFormContact from "./pay-form-contact/PayFormContact";
-import { CustomerContext } from "../../providers/CustomerContext";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../stores/slices/UserSlice";
+import { useEffect } from "react";
 
 function PaymentPage() {
-  const { userLogin, setUserLogin } = useContext(CustomerContext);
-
+  const dispatch = useDispatch();
   const handleLogOut = () => {
-    localStorage.removeItem("login");
-
-    let newLogin = {
-      isLogin: false,
-      isLogOuted: true,
-      email: "",
-      password: "",
-    };
-    setUserLogin(newLogin);
-    localStorage.setItem("USERS-LOGIN", JSON.stringify(newLogin));
+    dispatch(logoutAction());
   };
-  console.log("userLogin:", userLogin);
 
-  if (localStorage.getItem("login") === null) {
-    return <Navigate to={"/booking"} />;
-  }
+  useEffect(() => {
+    if (localStorage.getItem("USER_INFO") === null) {
+      return <Navigate to={"/booking"} />;
+    }
+  }, [localStorage.getItem("USER_INFO")]);
 
   return (
     <div className="payment-page">

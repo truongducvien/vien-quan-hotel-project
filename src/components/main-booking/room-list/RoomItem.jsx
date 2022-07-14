@@ -14,15 +14,9 @@ function RoomItem({ room, idOption }) {
   useEffect(() => {
     setCustomerBook({ ...customerBook, options });
     localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(customerBook));
-    // console.log("customerBook Room", customerBook);
   }, [options]);
 
   const handleSelect = (room) => {
-    if (customerBook.nights === 0) {
-      alert("Please select the dates");
-      return;
-    }
-
     const newOptions = options.map((option) => {
       if (option.id === idOption) {
         return { ...option, roomName: room.nameRoom, roomPrice: room.price };
@@ -48,16 +42,13 @@ function RoomItem({ room, idOption }) {
       </div>
       <div className="room-rate-list">
         <Row>
-          <Col className="rate-inclusions" xs={24} sm={11} md={11} xl={13}>
-            <div>
-              <p>
-                <RiIcons.RiErrorWarningLine />
-              </p>
-              <p>
-                <RiIcons.RiErrorWarningLine />
-              </p>
-            </div>
-          </Col>
+          <Col
+            className="rate-inclusions"
+            xs={24}
+            sm={11}
+            md={11}
+            xl={13}
+          ></Col>
           <Col xs={24} sm={13} md={13} xl={11}>
             {room.quantity !== 0 ? (
               <Row className="rate-price-select">

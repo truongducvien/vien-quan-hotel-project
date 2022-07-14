@@ -4,33 +4,19 @@ import { CustomerContext } from "../../providers/CustomerContext";
 import "./style/user-register-login.scss";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { registerAction } from "../../stores/slices/UserSlice";
 
 function UserRegister() {
-  const { usersData, setUsersData } = useContext(CustomerContext);
+  const userInfo = useSelector((state) => state.user.userInfoState);
+  const dispatch = useDispatch();
 
   const validateMessages = {
     required: "This field is required!",
   };
 
-  const onFinish = (registerInfo) => {
-    let newUsersData = [
-      ...usersData,
-      { email: registerInfo.email, password: registerInfo.password },
-    ];
-    setUsersData(newUsersData);
-    localStorage.setItem("USERS-DATA", JSON.stringify(newUsersData));
-
-    usersData.map((user) => {
-      if (registerInfo.email === user.email) {
-        alert("You have been account with this email. Please Login");
-        setUsersData(usersData);
-        localStorage.setItem("USERS-DATA", JSON.stringify(usersData));
-      } else {
-        alert("Success Register. Please Login");
-        setUsersData(newUsersData);
-        localStorage.setItem("USERS-DATA", JSON.stringify(newUsersData));
-      }
-    });
+  const onRegister = (values) => {
+    dispatch(registerAction(values));
   };
 
   return (
@@ -66,7 +52,7 @@ function UserRegister() {
               }}
               autoComplete="off"
               validateMessages={validateMessages}
-              onFinish={onFinish}
+              onFinish={onRegister}
             >
               <legend>
                 <h2>Register</h2>
@@ -174,7 +160,7 @@ function UserRegister() {
               </div>
               <Row justify="center">
                 <span>
-                  Already have account? <a href="login"> Login</a>
+                  Already have account? <Link to="/login"> Login</Link>
                 </span>
               </Row>
             </Form>

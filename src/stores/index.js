@@ -3,13 +3,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import { mySaga } from "./sagas";
-import { userReducer } from "./slices/user.slice";
+import { roomReducer } from "./slices/roomsSlice";
+import { userReducer } from "./slices/UserSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
 const rootReducer = {
   user: userReducer,
+  room: roomReducer,
 };
 
 export const appStore = configureStore({

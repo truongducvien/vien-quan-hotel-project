@@ -1,0 +1,83 @@
+.book-header {
+  cursor: pointer;
+  height: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.book-header .book-nav {
+  color: #fff;
+  background-color: #00729c;
+}
+
+.book-header .book-nav .text-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+}
+
+.book-header .book-nav .text-logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.book-header .book-nav .text-logo p {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.book-header .book-nav .text-logo p span {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.book-header .book-nav ul {
+  margin-bottom: 0;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.book-header .book-nav .sub-nav {
+  border-left: 1px solid #b6b6b6;
+}
+
+.book-header .book-nav .sub-nav li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.book-header .book-nav .sub-nav li.active {
+  border-bottom: 2px solid #fff;
+}
+
+.book-header .book-nav .right-nav li {
+  padding: 0px 10px;
+  margin: 10px 0;
+}
+
+.book-header .book-nav .right-nav li.first {
+  border-right: 1px solid #fff;
+}
+
+.book-header .book-nav .logo img {
+  width: 100%;
+}
+/*# sourceMappingURL=book-header.css.map */

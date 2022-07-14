@@ -1,0 +1,35 @@
+.main-container {
+  width: 100%;
+  height: 100%;
+  line-height: 1.618;
+}
+
+.main-container .room-booking {
+  max-width: 1128px;
+  margin: auto;
+}
+
+.main-container .room-booking .ant-tabs-top > .ant-tabs-nav {
+  margin: 0;
+}
+
+.room-list,
+.booking-view {
+  padding: 0 8px;
+  border-radius: 4px;
+  line-height: 1.618;
+}
+
+.booking-view {
+  position: -webkit-sticky;
+  position: sticky !important;
+  top: 76px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 16px;
+}
+
+.daterangepicker {
+  z-index: 999;
+}
+/*# sourceMappingURL=main-booking.css.map */

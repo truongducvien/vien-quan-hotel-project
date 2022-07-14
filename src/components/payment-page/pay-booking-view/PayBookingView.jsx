@@ -4,7 +4,6 @@ import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import PayRoomOrdered from "./PayRoomOdered";
-import PayRoomOrderNone from "./PayRoomOrderNone";
 
 const { Panel } = Collapse;
 

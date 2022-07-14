@@ -9,11 +9,9 @@ import { v4 } from "uuid";
 import moment from "moment";
 import UserLogin from "./components/user-login-register/UserLogin";
 import UserRegister from "./components/user-login-register/UserRegister";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
-  const [usersData, setUsersData] = useState([]);
-  const [userLogin, setUserLogin] = useState({});
-
   const [options, setOptions] = useState([
     {
       id: v4(),
@@ -54,18 +52,6 @@ function App() {
       );
     }
     setCustomerBook(JSON.parse(storedCustomer));
-
-    let userLocalStorage = localStorage.getItem("USERS-DATA");
-    if (userLocalStorage === null) {
-      return;
-    }
-    setUsersData(JSON.parse(userLocalStorage));
-
-    let loginLocalStorage = localStorage.getItem("USERS-LOGIN");
-    if (loginLocalStorage === null) {
-      return;
-    }
-    setUserLogin(JSON.parse(loginLocalStorage));
   }, []);
 
   return (
@@ -75,10 +61,6 @@ function App() {
         setCustomerBook,
         options,
         setOptions,
-        usersData,
-        setUsersData,
-        userLogin,
-        setUserLogin,
       }}
     >
       <BrowserRouter>
@@ -88,7 +70,14 @@ function App() {
             <Route path="/login" element={<UserLogin />} />
             <Route path="/register" element={<UserRegister />} />
             <Route path="/booking" element={<MainBooking />} />
-            <Route path="/payment" element={<PaymentPage />} />
+            <Route
+              path="/payment"
+              element={
+                <ProtectedRoute>
+                  <PaymentPage />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
       </BrowserRouter>

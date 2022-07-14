@@ -1,0 +1,100 @@
+.header {
+  width: 100%;
+  height: calc(100vh - 70px);
+}
+
+.header .images-slide {
+  height: calc(100vh - 70px);
+  overflow: hidden;
+}
+
+.header .images-slide img {
+  width: 100%;
+}
+
+.header .logo {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+}
+
+.header .logo img {
+  width: 400px;
+}
+
+.header .bookNowButton {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  width: 140px;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.header .bookNowButton:hover {
+  background-color: #026082;
+  cursor: pointer;
+}
+
+.searchBar {
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
+}
+
+.searchBar form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.searchBar form .form-group {
+  width: 205px;
+  margin: 10px;
+}
+
+.searchBar form .form-group .ant-picker,
+.searchBar form .form-group .ant-select-selector {
+  border: unset;
+}
+
+.searchBar form .form-group p {
+  padding-left: 40px;
+  margin: unset;
+  font-size: 12px;
+  font-weight: 700;
+  color: #b6b6b6;
+  text-align: left;
+}
+
+.searchBar form .form-group input,
+.searchBar form .form-group .ant-select-selection-item {
+  color: #026082;
+  font-weight: 700;
+  font-size: 17px;
+  text-align: left;
+}
+
+.searchBar form .bookNowButton {
+  width: 170px;
+  height: 45px;
+  margin: 12px;
+  border: unset;
+  background-color: #026082;
+  color: white;
+}
+
+.searchBar form .bookNowButton:hover {
+  background-color: #036f96;
+  cursor: pointer;
+}
+/*# sourceMappingURL=Header.css.map */

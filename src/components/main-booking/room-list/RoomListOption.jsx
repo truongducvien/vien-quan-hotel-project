@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRoomAction } from "../../../stores/slices/roomsSlice";
 import "../style/room-list.scss";
 import "antd/dist/antd.css";
 import RoomItem from "./RoomItem";
-import { DataRoomsDemo } from "../../../stores/data-demo";
 
 function RoomListOption({ maxPerson, idOption }) {
-  let filterRoom = DataRoomsDemo.filter((room) => room.maxPerson >= maxPerson);
+  const roomState = useSelector((state) => state.room.roomState);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRoomAction());
+  }, []);
+
+  const roomList = roomState?.data;
+
+  let filterRoom = roomList.filter((room) => room.maxPerson >= maxPerson);
 
   return (
     <div className="rooms">
