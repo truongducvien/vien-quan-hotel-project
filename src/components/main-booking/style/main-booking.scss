@@ -8,6 +8,14 @@
     .ant-tabs-top > .ant-tabs-nav {
       margin: 0;
     }
+    .ant-tabs-tab {
+      padding: 3px 0;
+    }
+    .room-list {
+      .none-tab-mt {
+        margin-top: 30px;
+      }
+    }
   }
 }
 
@@ -24,6 +32,7 @@
   width: 100%;
   height: 100%;
   margin-bottom: 16px;
+  margin-top: 30px;
 }
 .daterangepicker {
   z-index: 999;

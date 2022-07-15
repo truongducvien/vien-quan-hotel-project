@@ -6,6 +6,9 @@ import { CustomerContext } from "../../../providers/CustomerContext";
 function BookViewNone() {
   const { customerBook, options } = useContext(CustomerContext);
 
+  const startDay = customerBook.date[0].format("ddd, DD MMM YY");
+  const endDay = customerBook.date[1].format("ddd, DD MMM YY");
+
   let sumGuests = 0;
   options.forEach((option) => {
     sumGuests += parseFloat(option.adult) + parseFloat(option.children);
@@ -19,7 +22,7 @@ function BookViewNone() {
           <div className="section-info">
             <div className="flex">
               <div className="date">
-                {customerBook.date.startDay} – {customerBook.date.endDay}
+                {startDay} – {endDay}
               </div>
               <div className="total-nights">{customerBook.nights} night</div>
             </div>
@@ -37,7 +40,7 @@ function BookViewNone() {
         </div>
         <div className="btn-sticky">
           <Button
-            className="booking-btn"
+            className="booking-btn null"
             style={{
               height: "38px",
               padding: 0,

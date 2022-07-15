@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { CustomerContext } from "../../../providers/CustomerContext";
+import { formatPrice } from "../../../utils";
 
 function PayRoomOrdered({ option, index }) {
   const { customerBook } = useContext(CustomerContext);
-  const totalRoomOption = String(
-    option.roomPrice * customerBook.nights
-  ).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+
+  const totalRoomPrice = option.roomPrice * customerBook.nights;
+  const totalRoomPriceString = formatPrice(totalRoomPrice);
 
   return (
     <div className="pay-room-select">
@@ -19,9 +20,8 @@ function PayRoomOrdered({ option, index }) {
           <p className="fs0875">
             {option.adult + option.children} guests {customerBook.nights} night
           </p>
-          <p className="fs0875">Non-refundable</p>
         </div>
-        <span className="room-select-price">VND {totalRoomOption}</span>
+        <span className="room-select-price">VND {totalRoomPriceString}</span>
       </div>
     </div>
   );

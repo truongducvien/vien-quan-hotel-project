@@ -1,29 +1,26 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import * as RiIcons from "react-icons/ri";
 import { CustomerContext } from "../../../providers/CustomerContext";
-import { v4 } from "uuid";
+import { formatPrice } from "../../../utils";
 
 function RoomOrdered({ option, index }) {
-  const { customerBook, options, setOptions } = useContext(CustomerContext);
+  const { customerBook, setCustomerBook, options, setOptions } =
+    useContext(CustomerContext);
 
-  const totalRoomOption = String(
-    option.roomPrice * customerBook.nights
-  ).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+  const totalRoomPrice = option.roomPrice * customerBook.nights;
+  const totalRoomPriceString = formatPrice(totalRoomPrice);
 
   const handleRemoveRoomBook = (id) => {
-    const filterOption = options.filter((option) => option.id !== id);
-    setOptions(filterOption);
-  };
-
-  if (options.length === 0) {
-    setOptions({
-      id: v4(),
-      adult: 2,
-      children: 0,
-      roomName: "",
-      roomPrice: 0,
+    const findOptions = customerBook.options.map((op) => {
+      if (op.id === id) {
+        return { ...op, roomName: "", roomPrice: 0 };
+      }
+      return op;
     });
-  }
+    setOptions(findOptions);
+    setCustomerBook({ ...customerBook, options });
+    localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(customerBook));
+  };
 
   return (
     <div className="room-select">
@@ -43,9 +40,8 @@ function RoomOrdered({ option, index }) {
           <p>
             {option.adult + option.children} guests {customerBook.nights} night
           </p>
-          <p>Non-refundable</p>
         </div>
-        <span className="room-select-price">VND {totalRoomOption}</span>
+        <span className="room-select-price">VND {totalRoomPriceString}</span>
       </div>
     </div>
   );

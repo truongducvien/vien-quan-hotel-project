@@ -9,6 +9,8 @@ import {
 function* fetchRoom(action) {
   try {
     const response = yield RoomAPI;
+    // const response = yield RoomSortAscAPI;
+
     yield put(fetchRoomActionSuccess(response.data));
   } catch (e) {
     yield put(fetchRoomActionFailed(e.response.data));

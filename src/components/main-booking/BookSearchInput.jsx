@@ -12,7 +12,7 @@ function BookSearchInput() {
 
   const [sumOptions, setSumOptions] = useState({
     sumRoom: 1,
-    sumAdult: 1,
+    sumAdult: 2,
     sumChildren: 0,
   });
 
@@ -62,6 +62,7 @@ function BookSearchInput() {
     const newOptions = options.map((op) => {
       if (id === op.id) {
         op.adult = parseFloat(op.adult) + 1;
+        return { ...op, adult: op.adult, roomName: "", roomPrice: 0 };
       }
       return op;
     });
@@ -72,6 +73,7 @@ function BookSearchInput() {
     const newOptions = options.map((op) => {
       if (id === op.id) {
         op.children = parseFloat(op.children) + 1;
+        return { ...op, children: op.children, roomName: "", roomPrice: 0 };
       }
       return op;
     });
@@ -82,6 +84,7 @@ function BookSearchInput() {
     const newOptions = options.map((op) => {
       if (id === op.id) {
         op.adult = parseFloat(op.adult) - 1;
+        return { ...op, adult: op.adult, roomName: "", roomPrice: 0 };
       }
       return op;
     });
@@ -92,6 +95,7 @@ function BookSearchInput() {
     const newOptions = options.map((op) => {
       if (id === op.id) {
         op.children = parseFloat(op.children) - 1;
+        return { ...op, children: op.children, roomName: "", roomPrice: 0 };
       }
       return op;
     });
@@ -101,7 +105,7 @@ function BookSearchInput() {
   const handleAddFields = () => {
     setOptions([
       ...options,
-      { id: v4(), adult: 1, children: 0, roomName: "", roomPrice: 0 },
+      { id: v4(), adult: 2, children: 0, roomName: "", roomPrice: 0 },
     ]);
   };
 
@@ -153,6 +157,7 @@ function BookSearchInput() {
                   <button onClick={() => handleMinusAdult(option.id)}>-</button>
 
                   <input
+                    disabled
                     name="adult"
                     value={option.adult}
                     onChange={(event) => handleChangeInput(option.id, event)}
@@ -165,6 +170,7 @@ function BookSearchInput() {
                   </button>
 
                   <input
+                    disabled
                     name="children"
                     value={option.children}
                     onChange={(event) => handleChangeInput(option.id, event)}

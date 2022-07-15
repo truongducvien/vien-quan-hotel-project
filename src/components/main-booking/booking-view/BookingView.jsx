@@ -1,38 +1,40 @@
 import React, { useContext } from "react";
 import "../style/booking-view.scss";
-import { Collapse } from "antd";
+import { Button, Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import RoomOrdered from "./RoomOrdered";
+import { formatPrice } from "../../../utils";
 
 const { Panel } = Collapse;
 
 function BookingView() {
   const { customerBook, options } = useContext(CustomerContext);
 
+  const startDay = customerBook.date[0].format("ddd, DD MMM YY");
+  const endDay = customerBook.date[1].format("ddd, DD MMM YY");
+
   let sumGuests = 0;
-  options.forEach((option) => {
+  customerBook.options.forEach((option) => {
     sumGuests += parseFloat(option.adult) + parseFloat(option.children);
   });
 
   let totalPrice = 0;
-  options.forEach((option) => {
+  customerBook.options.forEach((option) => {
     totalPrice += option.roomPrice * customerBook.nights;
   });
-  let totalPriceString = String(totalPrice).replace(/(.)(?=(\d{3})+$)/g, "$1,");
 
   let tax = parseFloat((totalPrice * 10) / 100).toFixed(0);
-  let taxString = String(tax).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+  let taxString = formatPrice(tax);
 
   let serviceCharge = parseFloat((totalPrice * 5) / 100).toFixed(0);
-  let serviceChargeString = String(serviceCharge).replace(
-    /(.)(?=(\d{3})+$)/g,
-    "$1,"
-  );
+  let serviceChargeString = formatPrice(serviceCharge);
 
   let sumTotal = totalPrice + parseFloat(tax) + parseFloat(serviceCharge);
-  let sumTotalString = String(sumTotal).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+  let sumTotalString = formatPrice(sumTotal);
+
+  const findRoomNull = customerBook.options.find((op) => op.roomName === "");
 
   return (
     <div className="booking-box">
@@ -41,12 +43,12 @@ function BookingView() {
         <div className="section-info">
           <div className="flex">
             <div className="date">
-              {customerBook.date.startDay} – {customerBook.date.endDay}
+              {startDay} – {endDay}
             </div>
             <div className="total-nights">{customerBook.nights} night</div>
           </div>
           <div className="occupancy-rooms">
-            {options.length} room, {sumGuests} guests
+            {customerBook.options.length} room, {sumGuests} guests
           </div>
         </div>
 
@@ -89,14 +91,29 @@ function BookingView() {
       </div>
 
       <div className="btn-sticky">
-        {localStorage.getItem("USER_INFO") !== null ? (
-          <Link to="/payment">
-            <button className="booking-btn">Book</button>
-          </Link>
+        {!findRoomNull ? (
+          localStorage.getItem("USER_INFO") !== null ? (
+            <Link to="/payment">
+              <button className="booking-btn">Book</button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <button className="booking-btn">Book</button>
+            </Link>
+          )
         ) : (
-          <Link to="/login">
-            <button className="booking-btn">Book</button>
-          </Link>
+          <Button
+            className="booking-btn null"
+            style={{
+              height: "38px",
+              padding: 0,
+              backgroundColor: "#04476180",
+              color: "#ffffff80",
+            }}
+            disabled
+          >
+            Book
+          </Button>
         )}
       </div>
     </div>

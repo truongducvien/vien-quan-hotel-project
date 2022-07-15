@@ -4,33 +4,34 @@ import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import PayRoomOrdered from "./PayRoomOdered";
+import { formatPrice } from "../../../utils";
 
 const { Panel } = Collapse;
 
 function PayBookingView() {
-  const { customerBook, options } = useContext(CustomerContext);
+  const { customerBook } = useContext(CustomerContext);
+
+  const startDay = customerBook.date[0].format("ddd, DD MMM YY");
+  const endDay = customerBook.date[1].format("ddd, DD MMM YY");
+
   let sumGuests = 0;
-  options.forEach((option) => {
+  customerBook.options.forEach((option) => {
     sumGuests += parseFloat(option.adult) + parseFloat(option.children);
   });
 
   let totalPrice = 0;
-  options.forEach((option) => {
+  customerBook.options.forEach((option) => {
     totalPrice += option.roomPrice * customerBook.nights;
   });
-  let totalPriceString = String(totalPrice).replace(/(.)(?=(\d{3})+$)/g, "$1,");
 
   let tax = parseFloat((totalPrice * 10) / 100).toFixed(0);
-  let taxString = String(tax).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+  let taxString = formatPrice(tax);
 
   let serviceCharge = parseFloat((totalPrice * 5) / 100).toFixed(0);
-  let serviceChargeString = String(serviceCharge).replace(
-    /(.)(?=(\d{3})+$)/g,
-    "$1,"
-  );
+  let serviceChargeString = formatPrice(serviceCharge);
 
   let sumTotal = totalPrice + parseFloat(tax) + parseFloat(serviceCharge);
-  let sumTotalString = String(sumTotal).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+  let sumTotalString = formatPrice(sumTotal);
 
   return (
     <div className="pay-booking-box">
@@ -41,12 +42,12 @@ function PayBookingView() {
         <div className="pay-section-info">
           <div className="flex">
             <div className="date">
-              {customerBook.date.startDay} – {customerBook.date.endDay}
+              {startDay} – {endDay}
             </div>
             <div className="total-nights">{customerBook.nights} night</div>
           </div>
           <div className="occupancy-rooms">
-            {options.length} room, {sumGuests} guests
+            {customerBook.options.length} room, {sumGuests} guests
           </div>
         </div>
       </div>
@@ -65,7 +66,7 @@ function PayBookingView() {
         >
           <div className="pay-booking-body">
             <div className="room-select-list">
-              {options.map((option, index) => (
+              {customerBook.options.map((option, index) => (
                 <div key={option.id}>
                   {option.roomName !== "" && (
                     <PayRoomOrdered option={option} index={index} />

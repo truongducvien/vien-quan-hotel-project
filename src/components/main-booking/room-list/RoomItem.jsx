@@ -54,7 +54,7 @@ function RoomItem({ room, idOption }) {
               <Row className="rate-price-select">
                 <Col xs={24} sm={16} md={16} xl={16}>
                   <p style={{ fontWeight: 700 }}>VND {roomPriceString} </p>
-                  <p>2guests, 1 night</p>
+                  <p>Max {room.maxPerson} guests, 1 night</p>
                 </Col>
 
                 <Col sx={24} sm={8} md={8} xl={8}>
@@ -70,9 +70,18 @@ function RoomItem({ room, idOption }) {
                 </Col>
               </Row>
             ) : (
-              <div>
-                <div className="sold-out">Sold out</div>
-              </div>
+              <Row className="rate-price-select">
+                <Col xs={24} sm={16} md={16} xl={16}>
+                  <p style={{ fontWeight: 700 }}>VND {roomPriceString} </p>
+                  <p>Max {room.maxPerson} guests, 1 night</p>
+                </Col>
+
+                <Col sx={24} sm={8} md={8} xl={8}>
+                  <div>
+                    <div className="sold-out">Sold out</div>
+                  </div>
+                </Col>
+              </Row>
             )}
           </Col>
         </Row>

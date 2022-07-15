@@ -15,19 +15,17 @@ function App() {
   const [options, setOptions] = useState([
     {
       id: v4(),
-      adult: 1,
+      adult: 2,
       children: 0,
       roomName: "",
       roomPrice: 0,
     },
   ]);
   const [customerBook, setCustomerBook] = useState({
-    date: {
-      startDay: moment(new Date()).format("ddd, DD MMM YY"),
-      endDay: moment(
-        new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
-      ).format("ddd, DD MMM YY"),
-    },
+    date: [
+      moment(new Date()),
+      moment(new Date(new Date().getTime() + 24 * 60 * 60 * 1000)),
+    ],
     nights: 1,
     roomNum: 1,
     options: options,
@@ -39,12 +37,10 @@ function App() {
       localStorage.setItem(
         "CUSTOMER-HOTEL",
         JSON.stringify({
-          date: {
-            startDay: moment(new Date()).format("ddd, DD MMM YY"),
-            endDay: moment(
-              new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
-            ).format("ddd, DD MMM YY"),
-          },
+          date: [
+            moment(new Date()),
+            moment(new Date(new Date().getTime() + 24 * 60 * 60 * 1000)),
+          ],
           nights: 1,
           roomNum: 1,
           options: options,

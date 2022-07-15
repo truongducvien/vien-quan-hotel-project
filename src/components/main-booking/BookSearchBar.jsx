@@ -17,33 +17,29 @@ function BookSearchBar() {
 
   const tomorrowDate = new Date().getTime() + 24 * 60 * 60 * 1000;
 
-  const [dates, setDates] = useState({
-    startDate: new Date().getTime(),
-    endDate: tomorrowDate,
-  });
+  const [dates, setDates] = useState([
+    moment(new Date()),
+    moment(tomorrowDate),
+  ]);
 
   useEffect(() => {
     const nights = Math.floor(
-      (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
+      (dates[1].toDate().getTime() - dates[0].toDate().getTime()) /
+        (24 * 60 * 60 * 1000)
     );
     setCustomerBook({ ...customerBook, nights: nights });
   }, [dates]);
 
   const handleApply = (event, picker) => {
-    setDates({
-      startDate: picker.startDate,
-      endDate: picker.endDate,
-    });
+    setDates([picker.startDate, picker.endDate]);
   };
-
+  //.format("ddd, DD MMM YY")  //.toDate().getTime()
   const handleBookNowButton = () => {
     let newCustomer = {
-      date: {
-        startDay: dates.startDate.format("ddd, DD MMM YY"),
-        endDay: dates.endDate.format("ddd, DD MMM YY"),
-      },
+      date: [dates[0], dates[1]],
       nights: Math.floor(
-        (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
+        (dates[1].toDate().getTime() - dates[0].toDate().getTime()) /
+          (24 * 60 * 60 * 1000)
       ),
       roomNum: options.length,
       options: options,
