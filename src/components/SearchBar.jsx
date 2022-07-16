@@ -22,9 +22,9 @@ export default function SearchBar() {
 
   const [state, dispatch] = useCustomerState();
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  // useEffect(() => {
+  //   console.log(state);
+  // }, [state]);
 
   const handleChange = (e, inputType) => {
     switch (inputType) {
@@ -57,9 +57,9 @@ export default function SearchBar() {
     });
   };
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  // useEffect(() => {
+  //   console.log(state);
+  // }, [state]);
 
   return (
     <div className="searchBar">

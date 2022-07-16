@@ -7,7 +7,7 @@ import { DeleteFilled } from "@ant-design/icons";
 import { v4 } from "uuid";
 
 function BookSearchInput() {
-  const { customerBook, setCustomerBook, options, setOptions } =
+  const { orderInfo, setOrderInfo, options, setOptions } =
     useContext(CustomerContext);
 
   const [sumOptions, setSumOptions] = useState({
@@ -38,11 +38,11 @@ function BookSearchInput() {
   }, [options]);
 
   useEffect(() => {
-    setCustomerBook(customerBook);
-    localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(customerBook));
+    setOrderInfo(orderInfo);
+    localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
 
     setOptions(options);
-  }, [customerBook]);
+  }, [orderInfo]);
 
   const handleSubmitOptions = (e) => {
     e.preventDefault();
@@ -62,7 +62,13 @@ function BookSearchInput() {
     const newOptions = options.map((op) => {
       if (id === op.id) {
         op.adult = parseFloat(op.adult) + 1;
-        return { ...op, adult: op.adult, roomName: "", roomPrice: 0 };
+        return {
+          ...op,
+          adult: op.adult,
+          roomId: 0,
+          roomName: "",
+          roomPrice: 0,
+        };
       }
       return op;
     });
@@ -73,7 +79,13 @@ function BookSearchInput() {
     const newOptions = options.map((op) => {
       if (id === op.id) {
         op.children = parseFloat(op.children) + 1;
-        return { ...op, children: op.children, roomName: "", roomPrice: 0 };
+        return {
+          ...op,
+          children: op.children,
+          roomId: 0,
+          roomName: "",
+          roomPrice: 0,
+        };
       }
       return op;
     });
@@ -84,7 +96,13 @@ function BookSearchInput() {
     const newOptions = options.map((op) => {
       if (id === op.id) {
         op.adult = parseFloat(op.adult) - 1;
-        return { ...op, adult: op.adult, roomName: "", roomPrice: 0 };
+        return {
+          ...op,
+          adult: op.adult,
+          roomId: 0,
+          roomName: "",
+          roomPrice: 0,
+        };
       }
       return op;
     });
@@ -95,7 +113,13 @@ function BookSearchInput() {
     const newOptions = options.map((op) => {
       if (id === op.id) {
         op.children = parseFloat(op.children) - 1;
-        return { ...op, children: op.children, roomName: "", roomPrice: 0 };
+        return {
+          ...op,
+          children: op.children,
+          roomId: 0,
+          roomName: "",
+          roomPrice: 0,
+        };
       }
       return op;
     });
@@ -105,7 +129,14 @@ function BookSearchInput() {
   const handleAddFields = () => {
     setOptions([
       ...options,
-      { id: v4(), adult: 2, children: 0, roomName: "", roomPrice: 0 },
+      {
+        id: v4(),
+        adult: 2,
+        children: 0,
+        roomId: 0,
+        roomName: "",
+        roomPrice: 0,
+      },
     ]);
   };
 

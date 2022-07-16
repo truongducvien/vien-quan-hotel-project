@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { loginAction } from "../../stores/slices/UserSlice";
+import { CustomerContext } from "../../providers/CustomerContext";
 
 export default function UserLogin() {
+  const { orderInfo, setOrderInfo } = useContext(CustomerContext);
   const userInfo = useSelector((state) => state.user.userInfoState);
   const dispatch = useDispatch();
 
@@ -19,6 +21,8 @@ export default function UserLogin() {
   const onLogin = (values) => {
     dispatch(loginAction(values));
   };
+
+  console.log("orderInfo :>> ", orderInfo);
 
   if (localStorage.getItem("USER_INFO") !== null) {
     return <Navigate to={"/payment"} />;

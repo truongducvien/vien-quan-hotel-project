@@ -4,22 +4,22 @@ import { CustomerContext } from "../../../providers/CustomerContext";
 import { formatPrice } from "../../../utils";
 
 function RoomOrdered({ option, index }) {
-  const { customerBook, setCustomerBook, options, setOptions } =
+  const { orderInfo, setOrderInfo, options, setOptions } =
     useContext(CustomerContext);
 
-  const totalRoomPrice = option.roomPrice * customerBook.nights;
+  const totalRoomPrice = option.roomPrice * orderInfo.nights;
   const totalRoomPriceString = formatPrice(totalRoomPrice);
 
   const handleRemoveRoomBook = (id) => {
-    const findOptions = customerBook.options.map((op) => {
+    const findOptions = orderInfo.options.map((op) => {
       if (op.id === id) {
-        return { ...op, roomName: "", roomPrice: 0 };
+        return { ...op, roomName: "", roomPrice: 0, roomId: 0 };
       }
       return op;
     });
     setOptions(findOptions);
-    setCustomerBook({ ...customerBook, options });
-    localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(customerBook));
+    setOrderInfo({ ...orderInfo, options });
+    localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
   };
 
   return (
@@ -38,7 +38,7 @@ function RoomOrdered({ option, index }) {
       <div className="flex">
         <div>
           <p>
-            {option.adult + option.children} guests {customerBook.nights} night
+            {option.adult + option.children} guests {orderInfo.nights} night
           </p>
         </div>
         <span className="room-select-price">VND {totalRoomPriceString}</span>

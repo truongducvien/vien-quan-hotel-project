@@ -3,9 +3,9 @@ import { CustomerContext } from "../../../providers/CustomerContext";
 import { formatPrice } from "../../../utils";
 
 function PayRoomOrdered({ option, index }) {
-  const { customerBook } = useContext(CustomerContext);
+  const { orderInfo } = useContext(CustomerContext);
 
-  const totalRoomPrice = option.roomPrice * customerBook.nights;
+  const totalRoomPrice = option.roomPrice * orderInfo.nights;
   const totalRoomPriceString = formatPrice(totalRoomPrice);
 
   return (
@@ -18,7 +18,7 @@ function PayRoomOrdered({ option, index }) {
       <div className="flex">
         <div>
           <p className="fs0875">
-            {option.adult + option.children} guests {customerBook.nights} night
+            {option.adult + option.children} guests {orderInfo.nights} night
           </p>
         </div>
         <span className="room-select-price">VND {totalRoomPriceString}</span>

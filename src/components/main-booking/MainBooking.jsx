@@ -9,14 +9,14 @@ import RoomListOption from "./room-list/RoomListOption";
 import { Tabs } from "antd";
 import BookSearchBar from "./BookSearchBar";
 import BookViewNone from "./booking-view/BookViewNone";
-import { Navigate } from "react-router";
 const { TabPane } = Tabs;
 
 function MainBooking() {
-  const { customerBook, options } = useContext(CustomerContext);
+  const { orderInfo, options } = useContext(CustomerContext);
+
   let totalPrice = 0;
   options.forEach((option) => {
-    totalPrice += option.roomPrice * customerBook.nights;
+    totalPrice += option.roomPrice * orderInfo.nights;
   });
 
   return (
@@ -30,7 +30,7 @@ function MainBooking() {
               options.map((option) => (
                 <div className="none-tab-mt" key={option.id}>
                   <RoomListOption
-                    maxPerson={option.adult + option.children}
+                    sumPerson={option.adult + option.children}
                     idOption={option.id}
                   />
                 </div>
@@ -40,7 +40,7 @@ function MainBooking() {
                 {options.map((option, index) => (
                   <TabPane key={index + 1} tab={`Room ${index + 1}`}>
                     <RoomListOption
-                      maxPerson={option.adult + option.children}
+                      sumPerson={option.adult + option.children}
                       idOption={option.id}
                     />
                   </TabPane>

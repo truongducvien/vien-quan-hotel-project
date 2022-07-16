@@ -10,19 +10,19 @@ import { formatPrice } from "../../../utils";
 const { Panel } = Collapse;
 
 function BookingView() {
-  const { customerBook, options } = useContext(CustomerContext);
+  const { orderInfo, options } = useContext(CustomerContext);
 
-  const startDay = customerBook.date[0].format("ddd, DD MMM YY");
-  const endDay = customerBook.date[1].format("ddd, DD MMM YY");
+  const startDay = orderInfo.date.startDay;
+  const endDay = orderInfo.date.endDay;
 
   let sumGuests = 0;
-  customerBook.options.forEach((option) => {
+  orderInfo.options.forEach((option) => {
     sumGuests += parseFloat(option.adult) + parseFloat(option.children);
   });
 
   let totalPrice = 0;
-  customerBook.options.forEach((option) => {
-    totalPrice += option.roomPrice * customerBook.nights;
+  orderInfo.options.forEach((option) => {
+    totalPrice += option.roomPrice * orderInfo.nights;
   });
 
   let tax = parseFloat((totalPrice * 10) / 100).toFixed(0);
@@ -34,7 +34,7 @@ function BookingView() {
   let sumTotal = totalPrice + parseFloat(tax) + parseFloat(serviceCharge);
   let sumTotalString = formatPrice(sumTotal);
 
-  const findRoomNull = customerBook.options.find((op) => op.roomName === "");
+  const findRoomNull = orderInfo.options.find((op) => op.roomName === "");
 
   return (
     <div className="booking-box">
@@ -45,10 +45,10 @@ function BookingView() {
             <div className="date">
               {startDay} – {endDay}
             </div>
-            <div className="total-nights">{customerBook.nights} night</div>
+            <div className="total-nights">{orderInfo.nights} night</div>
           </div>
           <div className="occupancy-rooms">
-            {customerBook.options.length} room, {sumGuests} guests
+            {orderInfo.options.length} room, {sumGuests} guests
           </div>
         </div>
 

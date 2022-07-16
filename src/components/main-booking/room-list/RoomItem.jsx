@@ -1,31 +1,39 @@
 import React, { useContext, useEffect } from "react";
 import { Row, Col } from "antd";
 import RoomInfo from "./RoomInfo";
-import * as RiIcons from "react-icons/ri";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import ImageCarouselSwiper from "./ImageCarouselSwiper";
 
 function RoomItem({ room, idOption }) {
-  const { customerBook, setCustomerBook, options, setOptions } =
+  const { orderInfo, setOrderInfo, options, setOptions } =
     useContext(CustomerContext);
 
   let roomPriceString = String(room.price).replace(/(.)(?=(\d{3})+$)/g, "$1,");
 
   useEffect(() => {
-    setCustomerBook({ ...customerBook, options });
-    localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(customerBook));
+    setOrderInfo({ ...orderInfo, options });
+    localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
   }, [options]);
 
   const handleSelect = (room) => {
     const newOptions = options.map((option) => {
       if (option.id === idOption) {
-        return { ...option, roomName: room.nameRoom, roomPrice: room.price };
+        return {
+          ...option,
+          roomId: room.id,
+          roomName: room.nameRoom,
+          roomPrice: room.price,
+        };
       }
       return option;
     });
     setOptions(newOptions);
 
-    setCustomerBook({ ...customerBook, options });
+    setOrderInfo({ ...orderInfo, options });
+    console.log(
+      "🚀 ~ file: RoomItem.jsx ~ line 33 ~ handleSelect ~ orderInfo",
+      orderInfo
+    );
   };
 
   return (

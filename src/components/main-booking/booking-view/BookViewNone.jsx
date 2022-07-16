@@ -4,13 +4,13 @@ import { Button } from "antd";
 import { CustomerContext } from "../../../providers/CustomerContext";
 
 function BookViewNone() {
-  const { customerBook, options } = useContext(CustomerContext);
+  const { orderInfo, options } = useContext(CustomerContext);
 
-  const startDay = customerBook.date[0].format("ddd, DD MMM YY");
-  const endDay = customerBook.date[1].format("ddd, DD MMM YY");
+  const startDay = orderInfo.date.startDay;
+  const endDay = orderInfo.date.endDay;
 
   let sumGuests = 0;
-  options.forEach((option) => {
+  orderInfo?.options.forEach((option) => {
     sumGuests += parseFloat(option.adult) + parseFloat(option.children);
   });
 
@@ -24,7 +24,7 @@ function BookViewNone() {
               <div className="date">
                 {startDay} – {endDay}
               </div>
-              <div className="total-nights">{customerBook.nights} night</div>
+              <div className="total-nights">{orderInfo.nights} night</div>
             </div>
             <div className="occupancy-rooms">
               {options.length} room, {sumGuests} guests

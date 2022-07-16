@@ -6,57 +6,62 @@ import PaymentPage from "./components/payment-page/PaymentPage";
 import MainBooking from "./components/main-booking/MainBooking";
 import { CustomerContext } from "./providers/CustomerContext";
 import { v4 } from "uuid";
-import moment from "moment";
 import UserLogin from "./components/user-login-register/UserLogin";
 import UserRegister from "./components/user-login-register/UserRegister";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
+  const [availableRooms, setAvailableRooms] = useState([]);
+
   const [options, setOptions] = useState([
     {
       id: v4(),
       adult: 2,
       children: 0,
+      roomId: 0,
       roomName: "",
       roomPrice: 0,
     },
   ]);
-  const [customerBook, setCustomerBook] = useState({
-    date: [
-      moment(new Date()),
-      moment(new Date(new Date().getTime() + 24 * 60 * 60 * 1000)),
-    ],
+
+  const today = Date.now();
+  const tomorrow = today + 24 * 60 * 60 * 1000;
+
+  const [orderInfo, setOrderInfo] = useState({
+    userInfo: {},
+    date: { startDay: today, endDay: tomorrow },
     nights: 1,
-    roomNum: 1,
     options: options,
   });
 
   useEffect(() => {
-    const storedCustomer = localStorage.getItem("CUSTOMER-HOTEL");
-    if (storedCustomer === null) {
-      localStorage.setItem(
-        "CUSTOMER-HOTEL",
-        JSON.stringify({
-          date: [
-            moment(new Date()),
-            moment(new Date(new Date().getTime() + 24 * 60 * 60 * 1000)),
-          ],
-          nights: 1,
-          roomNum: 1,
-          options: options,
-        })
-      );
+    const userInfoStorage = localStorage.getItem("USER_INFO");
+    if (userInfoStorage === null) {
+      return;
+    } else {
+      setOrderInfo({ ...orderInfo, userInfo: JSON.parse(userInfoStorage) });
     }
-    setCustomerBook(JSON.parse(storedCustomer));
+    localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
+  }, []);
+
+  useEffect(() => {
+    const storedCustomer = localStorage.getItem("ORDER_INFO");
+
+    if (storedCustomer === null) {
+      localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
+    }
+    setOrderInfo(JSON.parse(storedCustomer));
   }, []);
 
   return (
     <CustomerContext.Provider
       value={{
-        customerBook,
-        setCustomerBook,
+        orderInfo,
+        setOrderInfo,
         options,
         setOptions,
+        availableRooms,
+        setAvailableRooms,
       }}
     >
       <BrowserRouter>

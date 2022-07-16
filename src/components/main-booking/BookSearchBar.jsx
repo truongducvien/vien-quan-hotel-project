@@ -10,44 +10,88 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import "./style/book-searchbar.scss";
 import moment from "moment";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRoomAction } from "../../stores/slices/roomsSlice";
+import { fetchOrderAction } from "../../stores/slices/ordersSlice";
 
 function BookSearchBar() {
-  const { customerBook, setCustomerBook, options } =
+  const { setOrderInfo, options, setAvailableRooms } =
     useContext(CustomerContext);
 
-  const tomorrowDate = new Date().getTime() + 24 * 60 * 60 * 1000;
-
-  const [dates, setDates] = useState([
-    moment(new Date()),
-    moment(tomorrowDate),
-  ]);
+  const orderState = useSelector((state) => state.order.orderState);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const nights = Math.floor(
-      (dates[1].toDate().getTime() - dates[0].toDate().getTime()) /
-        (24 * 60 * 60 * 1000)
-    );
-    setCustomerBook({ ...customerBook, nights: nights });
-  }, [dates]);
+    dispatch(fetchOrderAction());
+  }, []);
+
+  const orderList = orderState?.data;
+
+  const roomState = useSelector((state) => state.room.roomState);
+
+  useEffect(() => {
+    dispatch(fetchRoomAction());
+  }, []);
+
+  const roomList = roomState?.data;
+
+  const today = Date.now();
+  const tomorrow = today + 24 * 60 * 60 * 1000;
+
+  const [dates, setDates] = useState({
+    startDate: today,
+    endDate: tomorrow,
+  });
 
   const handleApply = (event, picker) => {
-    setDates([picker.startDate, picker.endDate]);
+    setDates({
+      startDate: picker.startDate.valueOf(),
+      endDate: picker.endDate.valueOf(),
+    });
   };
-  //.format("ddd, DD MMM YY")  //.toDate().getTime()
+
   const handleBookNowButton = () => {
+    const nights = Math.floor(
+      (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
+    );
     let newCustomer = {
-      date: [dates[0], dates[1]],
-      nights: Math.floor(
-        (dates[1].toDate().getTime() - dates[0].toDate().getTime()) /
-          (24 * 60 * 60 * 1000)
-      ),
-      roomNum: options.length,
+      userInfo: {},
+      date: {
+        startDay: dates.startDate,
+        endDay: dates.endDate,
+      },
+      nights: nights,
       options: options,
     };
+    setOrderInfo(newCustomer);
+    localStorage.setItem("ORDER_INFO", JSON.stringify(newCustomer));
 
-    setCustomerBook(newCustomer);
+    let canOrderDate = orderList.filter(
+      (order) =>
+        dates.endDate < order?.date.startDay ||
+        order?.date.endDay < dates.startDate
+    );
+    let cannotOrderDate = orderList.filter(
+      (order) => !canOrderDate.includes(order)
+    );
 
-    localStorage.setItem("CUSTOMER-HOTEL", JSON.stringify(newCustomer));
+    let cannotOptions = cannotOrderDate.map((order) => order.options);
+
+    let cannotRoomId = cannotOptions.map((options) =>
+      options.map((option) => option.roomId)
+    );
+
+    let mergeCannotRoomId = Array.from(new Set([].concat(...cannotRoomId)));
+
+    let newAvailableRooms = roomList.filter(
+      (room) => !mergeCannotRoomId.includes(room.id)
+    );
+    console.log(
+      "🚀 ~ file: BookSearchBar.jsx ~ line 92 ~ handleBookNowButton ~ newAvailableRooms",
+      newAvailableRooms
+    );
+
+    setAvailableRooms(newAvailableRooms);
   };
 
   return (
@@ -68,6 +112,7 @@ function BookSearchBar() {
                   <DateRangePicker
                     onApply={handleApply}
                     initialSettings={{
+                      timePicker: true,
                       startDate: moment().startOf("hour").toDate(),
                       endDate: moment()
                         .startOf("hour")

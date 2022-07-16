@@ -9,19 +9,19 @@ import { formatPrice } from "../../../utils";
 const { Panel } = Collapse;
 
 function PayBookingView() {
-  const { customerBook } = useContext(CustomerContext);
+  const { orderInfo } = useContext(CustomerContext);
 
-  const startDay = customerBook.date[0].format("ddd, DD MMM YY");
-  const endDay = customerBook.date[1].format("ddd, DD MMM YY");
+  const startDay = orderInfo?.date[0]?.format("ddd, DD MMM YY");
+  const endDay = orderInfo?.date[1]?.format("ddd, DD MMM YY");
 
   let sumGuests = 0;
-  customerBook.options.forEach((option) => {
+  orderInfo.options.forEach((option) => {
     sumGuests += parseFloat(option.adult) + parseFloat(option.children);
   });
 
   let totalPrice = 0;
-  customerBook.options.forEach((option) => {
-    totalPrice += option.roomPrice * customerBook.nights;
+  orderInfo.options.forEach((option) => {
+    totalPrice += option.roomPrice * orderInfo.nights;
   });
 
   let tax = parseFloat((totalPrice * 10) / 100).toFixed(0);
@@ -44,10 +44,10 @@ function PayBookingView() {
             <div className="date">
               {startDay} – {endDay}
             </div>
-            <div className="total-nights">{customerBook.nights} night</div>
+            <div className="total-nights">{orderInfo.nights} night</div>
           </div>
           <div className="occupancy-rooms">
-            {customerBook.options.length} room, {sumGuests} guests
+            {orderInfo.options.length} room, {sumGuests} guests
           </div>
         </div>
       </div>
@@ -66,7 +66,7 @@ function PayBookingView() {
         >
           <div className="pay-booking-body">
             <div className="room-select-list">
-              {customerBook.options.map((option, index) => (
+              {orderInfo.options.map((option, index) => (
                 <div key={option.id}>
                   {option.roomName !== "" && (
                     <PayRoomOrdered option={option} index={index} />
