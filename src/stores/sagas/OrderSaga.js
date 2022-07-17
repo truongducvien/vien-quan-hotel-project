@@ -1,4 +1,4 @@
-import { delay, put, takeEvery } from "redux-saga/effects";
+import { put, takeEvery } from "redux-saga/effects";
 import { OrderAPI } from "../../api/order.api";
 import {
   fetchOrderAction,

@@ -6,11 +6,4 @@ export const formatPrice = (num) => {
   return String(num).replace(/(.)(?=(\d{3})+$)/g, "$1,");
 };
 
-export const toLocaleStringDate = (date) => {
-  return date.toLocaleString("en-US", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-};
+export const dateString = (time) => new Date(time).toDateString();
