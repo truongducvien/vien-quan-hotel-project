@@ -2,12 +2,15 @@ import React, { useContext } from "react";
 import "../style/booking-view.scss";
 import { Button } from "antd";
 import { CustomerContext } from "../../../providers/CustomerContext";
+import { dateString } from "../../../utils";
 
 function BookViewNone() {
   const { orderInfo, options } = useContext(CustomerContext);
 
   const startDay = orderInfo.date.startDay;
+  const startDateString = dateString(startDay);
   const endDay = orderInfo.date.endDay;
+  const endDateString = dateString(endDay);
 
   let sumGuests = 0;
   orderInfo?.options.forEach((option) => {
@@ -22,7 +25,7 @@ function BookViewNone() {
           <div className="section-info">
             <div className="flex">
               <div className="date">
-                {startDay} – {endDay}
+                {startDateString} – {endDateString}
               </div>
               <div className="total-nights">{orderInfo.nights} night</div>
             </div>

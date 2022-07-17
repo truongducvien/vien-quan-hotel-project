@@ -5,7 +5,7 @@ import { DownOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import RoomOrdered from "./RoomOrdered";
-import { formatPrice } from "../../../utils";
+import { dateString, formatPrice } from "../../../utils";
 
 const { Panel } = Collapse;
 
@@ -13,7 +13,9 @@ function BookingView() {
   const { orderInfo, options } = useContext(CustomerContext);
 
   const startDay = orderInfo.date.startDay;
+  const startDateString = dateString(startDay);
   const endDay = orderInfo.date.endDay;
+  const endDateString = dateString(endDay);
 
   let sumGuests = 0;
   orderInfo.options.forEach((option) => {
@@ -43,7 +45,7 @@ function BookingView() {
         <div className="section-info">
           <div className="flex">
             <div className="date">
-              {startDay} – {endDay}
+              {startDateString} – {endDateString}
             </div>
             <div className="total-nights">{orderInfo.nights} night</div>
           </div>
