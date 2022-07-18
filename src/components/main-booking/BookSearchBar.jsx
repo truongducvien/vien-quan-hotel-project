@@ -40,14 +40,14 @@ function BookSearchBar() {
   const tomorrow = today + 24 * 60 * 60 * 1000;
 
   const [dates, setDates] = useState({
-    startDate: today,
-    endDate: tomorrow,
+    startDate: timeStartDay(today),
+    endDate: timeEndDay(tomorrow),
   });
 
   const handleApply = (event, picker) => {
     setDates({
-      startDate: picker.startDate.valueOf(),
-      endDate: picker.endDate.valueOf(),
+      startDate: timeStartDay(picker.startDate.valueOf()),
+      endDate: timeEndDay(picker.endDate.valueOf()),
     });
   };
 
@@ -58,8 +58,8 @@ function BookSearchBar() {
     let newCustomer = {
       userInfo: {},
       date: {
-        startDay: timeStartDay(dates.startDate),
-        endDay: timeEndDay(dates.endDate),
+        startDay: dates.startDate,
+        endDay: dates.endDate,
       },
       nights: nights,
       options: options,
