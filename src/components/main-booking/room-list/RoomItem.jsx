@@ -21,7 +21,7 @@ function RoomItem({ room, idOption }) {
         return {
           ...option,
           roomId: room.id,
-          roomName: room.nameRoom,
+          roomName: room.typeRoom,
           roomPrice: room.price,
         };
       }

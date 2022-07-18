@@ -4,15 +4,17 @@ import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import PayRoomOrdered from "./PayRoomOdered";
-import { formatPrice } from "../../../utils";
+import { dateString, formatPrice } from "../../../utils";
 
 const { Panel } = Collapse;
 
 function PayBookingView() {
   const { orderInfo } = useContext(CustomerContext);
 
-  const startDay = orderInfo?.date[0]?.format("ddd, DD MMM YY");
-  const endDay = orderInfo?.date[1]?.format("ddd, DD MMM YY");
+  const startDay = orderInfo.date.startDay;
+  const startDateString = dateString(startDay);
+  const endDay = orderInfo.date.endDay;
+  const endDateString = dateString(endDay);
 
   let sumGuests = 0;
   orderInfo.options.forEach((option) => {
@@ -42,7 +44,7 @@ function PayBookingView() {
         <div className="pay-section-info">
           <div className="flex">
             <div className="date">
-              {startDay} – {endDay}
+              {startDateString} – {endDateString}
             </div>
             <div className="total-nights">{orderInfo.nights} night</div>
           </div>

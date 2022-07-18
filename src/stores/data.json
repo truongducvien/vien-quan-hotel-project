@@ -23,17 +23,9 @@
       "lastName": "c",
       "phone": "111",
       "id": 3
-    },
-    {
-      "email": "d@d.com",
-      "password": "$2a$10$OtQjyOyQyZkOVpRSEsKYtusAb/HLEyO0OzuydleHwwWxg39PhIQMS",
-      "firstName": "d",
-      "lastName": "d",
-      "phone": "999999999",
-      "id": 4
     }
   ],
-  "orders": [
+  "bookings": [
     {
       "id": 1,
       "userInfo": {
@@ -44,18 +36,18 @@
         "phone": "8888888888"
       },
       "date": {
-        "startDay": 1657472400000,
-        "endDay": 1657558800000
+        "startDay": 1657515600000,
+        "endDay": 1657601940000
       },
       "nights": 1,
       "options": [
         {
-          "adult": 3,
+          "adult": 2,
           "children": 0,
-          "id": "c8bad13e-fe51-4c2c-8cc7-5b532dce87d3",
-          "roomId": 1,
-          "roomName": "1 Bedroom Luxury Apartment",
-          "roomPrice": 2443749
+          "id": "c8bad13e-fe51-4c2c-8cc7-5b532dce87d",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomPrice": 2475000
         }
       ],
       "payment": {
@@ -76,18 +68,18 @@
         "phone": "8888888888"
       },
       "date": {
-        "startDay": 1658937600000,
-        "endDay": 1659283200000
+        "startDay": 1657515600000,
+        "endDay": 1657601940000
       },
       "nights": 1,
       "options": [
         {
-          "adult": 3,
+          "adult": 2,
           "children": 0,
-          "id": "c8bad13e-fe51-4c2c-8cc7-5b532dce87d3",
-          "roomId": 1,
-          "roomName": "1 Bedroom Luxury Apartment",
-          "roomPrice": 2443749
+          "id": "c8bad13e-fe51-4c2c-8cc7-5b532ce87d3",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomPrice": 2475000
         }
       ],
       "payment": {
@@ -101,6 +93,134 @@
     {
       "id": 3,
       "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888"
+      },
+      "date": {
+        "startDay": 1657515600000,
+        "endDay": 1657601940000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "c8bad13e-fe1-4c2c-8cc7-5b532dce87d3",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomPrice": 2475000
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 4,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888"
+      },
+      "date": {
+        "startDay": 1657515600000,
+        "endDay": 1657601940000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "c8bad1e-fe51-4c2c-8cc7-5b532dce87d3",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomPrice": 2475000
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 5,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888"
+      },
+      "date": {
+        "startDay": 1658937600000,
+        "endDay": 1659283200000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "c8b3e-fe51-4c2c-8cc7-5b532dce87d3",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomPrice": 2475000
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 6,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888"
+      },
+      "date": {
+        "startDay": 1658898000000,
+        "endDay": 1659243540000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 3,
+          "children": 0,
+          "id": "c8bad13e-fe51-4c2c-8cc7-5b532dce87d3",
+          "typeRoomId": 3,
+          "typeRoom": "Garden Superior",
+          "roomPrice": 2149000
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 7,
+      "userInfo": {
         "id": 2,
         "email": "b@b.com",
         "firstName": "b",
@@ -108,8 +228,8 @@
         "phone": "9999999999"
       },
       "date": {
-        "startDay": 1661184000000,
-        "endDay": 1661702400000
+        "startDay": 1661144400000,
+        "endDay": 1661662740000
       },
       "nights": 12,
       "options": [
@@ -117,17 +237,89 @@
           "id": "f6a2bf72-2c28-460e-868f-0fdc15a37325",
           "adult": 2,
           "children": 0,
-          "roomId": 1,
-          "roomName": "1 Bedroom Luxury Apartment",
-          "roomPrice": 2443749
+          "typeRoomId": 2,
+          "typeRoom": "Ocean Deluxe",
+          "roomPrice": 1849000
         },
         {
           "id": "c702f2ea-38b5-4e89-8714-2876c0b4c9a1",
           "adult": 4,
           "children": 2,
-          "roomId": 3,
-          "roomName": "2 Bedrooms Pool Villa",
-          "roomPrice": 6581428
+          "typeRoomId": 5,
+          "typeRoom": "Beach Front Villa",
+          "roomPrice": 10249000
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 8,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888"
+      },
+      "date": {
+        "startDay": 1657472400000,
+        "endDay": 1657558800000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "c8bad13e-fe51-4c2c-c7-5b532dce87d3",
+          "typeRoomId": 2,
+          "typeRoom": "Ocean Deluxe",
+          "roomPrice": 1849000
+        },
+        {
+          "id": "cea-38b5-4e89-8714-2876c0b4c9a1",
+          "adult": 4,
+          "children": 1,
+          "typeRoomId": 5,
+          "typeRoom": "Beach Front Villa",
+          "roomPrice": 10249000
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 9,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888"
+      },
+      "date": {
+        "startDay": 1657472400000,
+        "endDay": 1657558800000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "c8bad13ec2c-8cc7-5b532dce87d3",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomPrice": 2475000
         }
       ],
       "payment": {
@@ -143,14 +335,13 @@
     {
       "id": 1,
       "key": 1,
-      "nameRoom": "1 Bedroom Luxury Apartment",
-      "price": 2443749,
-      "quantity": 3,
-      "maxPerson": 4,
+      "typeRoom": "Ocean Suite",
+      "price": 2475000,
+      "maxPerson": 2,
       "bed": "1 King bed",
       "bathrooms": "1 Bathrooms",
-      "convenient": "56m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
-      "introduction": "The popular 56-square-metre (183-square-foot) One Bedroom Apartments have everything you need for the perfect holiday or relaxing retreat – just unpack your suit case and enjoy your days and evenings in your very own suite. Featuring an open plan king bed, living area, fully equipped kitchenette and private balcony, the apartments are designed to provide everything you desire from a first-class resort at a reasonable price and are great for singles, couples or corporate guests.",
+      "convenient": "85.8m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "French colonial style blends charmingly with traditional Vietnamese interior design. Listen to the sound of the waves and watch the fishermen in their basket boats, while you are relaxing on one of the two outside sofas on the 24 sqm balcony. The suites are adorned with arched ceilings and offer a separate living room and bedroom, two marble bathrooms, two closets, TV for each room. Shiny, polished timber floors compliment the elegant and comfortable furniture.",
       "imageUrl": [
         "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/476411/476411/1BR_Apartment_.1.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
         "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/477239/477239/1BR_Apartment.2.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
@@ -158,59 +349,232 @@
         "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/477241/477241/1BR_Apartment.4.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
         "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/477242/477242/1BR_Apartment.5.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
         "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/floor_plans/476419/476419/1-bedroom-apartment-1.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55"
+      ],
+      "roomList": [
+        {
+          "id": "1a",
+          "key": "1a",
+          "roomName": "OS01",
+          "bookedDay": []
+        },
+        {
+          "id": "1b",
+          "key": "1b",
+          "roomName": "OS02",
+          "bookedDay": []
+        },
+        {
+          "id": "1c",
+          "key": "1c",
+          "roomName": "OS03",
+          "bookedDay": []
+        },
+        {
+          "id": "1d",
+          "key": "1d",
+          "roomName": "OS04",
+          "bookedDay": []
+        },
+        {
+          "id": "1e",
+          "key": "1e",
+          "roomName": "OS05",
+          "bookedDay": []
+        }
       ]
     },
     {
       "id": 2,
       "key": 2,
-      "nameRoom": "2 Bedrooms Apartment – 85m2",
-      "price": 3141964,
-      "quantity": 5,
-      "maxPerson": 3,
-      "bed": "1 Single bed and 1 King bed",
-      "bathrooms": "2 Bathrooms",
-      "convenient": "85m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
-      "introduction": "The Two bedroom Apartment a flowing single level design offering cameo views of the ocean and mountains. The 85-square-metre (278-square-foot) apartments feature two well-appointed bedrooms – one king-size with ensuite bathroom and one double-bed room configuration. There is plenty of space to feel both comfortable and private whilst having open lounge and living areas, kitchenette and a private outdoor balcony. A modern, neutral interior color palette with marine finishes create a beach house feel, a sense of cool airiness in the subtropical paradise.",
+      "typeRoom": "Ocean Deluxe",
+      "price": 1849000,
+      "maxPerson": 2,
+      "bed": "1 Double bed",
+      "bathrooms": "1 Bathrooms",
+      "convenient": "44m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "One double bed. Large balcony or patio with Bac My An sea view. 44 square meters (474 square feet). Asian-inspired décor, polished wood floors, walk-in closet, marble bathroom. Separate sitting area with loveseat, coffee table, armchair.",
       "imageUrl": [
-        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/476421/476421/2BR_Apartment.3.jpg",
-        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/477250/477250/2BR_Apartment.4.jpg",
-        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/478126/478126/6..jpg"
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-M.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-M3.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-M4.jpg"
+      ],
+      "roomList": [
+        {
+          "id": "2a",
+          "key": "2a",
+          "roomName": "OD01",
+          "bookedDay": []
+        },
+        {
+          "id": "2b",
+          "key": "2b",
+          "roomName": "OD02",
+          "bookedDay": []
+        },
+        {
+          "id": "2c",
+          "key": "2c",
+          "roomName": "OD03",
+          "bookedDay": []
+        },
+        {
+          "id": "2d",
+          "key": "2d",
+          "roomName": "OD04",
+          "bookedDay": []
+        },
+        {
+          "id": "2e",
+          "key": "2e",
+          "roomName": "OD05",
+          "bookedDay": []
+        }
       ]
     },
     {
       "id": 3,
       "key": 3,
-      "nameRoom": "2 Bedrooms Pool Villa",
-      "price": 6581428,
-      "quantity": 5,
-      "maxPerson": 6,
-      "bed": "1 Queen / Twin bed and 2 Double beds",
-      "bathrooms": "2 Bathrooms",
-      "convenient": "275m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
-      "introduction": "The two bedroom is perfect for families or friends travelling together, the two storey 275-square-metre (902-square-foot) Two Bedroom Pool Villa features two generously sized bedrooms, each with ensuite bathrooms. Sumptuous ground level living including a fully equipped kitchen and integrated lounge and living areas blend seamlessly, offering comfort and privacy. All villas boast a private outdoor swimming pool surrounded by tropical gardens.",
+      "typeRoom": "Garden Superior",
+      "price": 2149000,
+      "maxPerson": 2,
+      "bed": "1 Double bed",
+      "bathrooms": "1 Bathrooms",
+      "convenient": "40m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "Enjoy the sunset from the spacious balcony or terrace of this superior room. You will find everything you need to feel comfortable: elegant furniture, twin-sized bed, polished timber floor, walk-in closet, ceiling fan, and a generous marble bathroom with a luxury shower.",
       "imageUrl": [
-        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/478040/478040/1a._Landing_Photo.jpg",
-        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/478041/478041/6..jpg",
-        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/478042/478042/7..jpg",
-        "https://file4.batdongsan.com.vn/2020/06/03/JGcIp0rf/20200603142344-7089.jpg"
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Garden-Superior-TwinBed-1_M2.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Garden-Superior-double-bed-1-M.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-M4.jpg"
+      ],
+      "roomList": [
+        {
+          "id": "3a",
+          "key": "3a",
+          "roomName": "GS01",
+          "bookedDay": []
+        },
+        {
+          "id": "3b",
+          "key": "3b",
+          "roomName": "GS02",
+          "bookedDay": []
+        },
+        {
+          "id": "3c",
+          "key": "3c",
+          "roomName": "GS03",
+          "bookedDay": []
+        },
+        {
+          "id": "3d",
+          "key": "3d",
+          "roomName": "GS04",
+          "bookedDay": []
+        },
+        {
+          "id": "3e",
+          "key": "3e",
+          "roomName": "GS05",
+          "bookedDay": []
+        }
       ]
     },
     {
       "id": 4,
       "key": 4,
-      "nameRoom": "3 Bedrooms Pool Villa",
-      "price": 8081071,
-      "quantity": 5,
-      "maxPerson": 9,
-      "bed": "2 Single beds and 1 Queen bed",
-      "bathrooms": "3 Bathrooms",
-      "convenient": "373m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
-      "introduction": "The Three Bedroom Pool Villas are luxurious private retreats. Featuring three generously sized bedrooms, each with ensuite bathrooms, the two story 373-square-metre (1,223-square-foot) free-standing villa is ideal for families of groups of friends. The villa’s expansive lower level includes a fully equipped kitchen, open living and dining areas. The wrap around glass doors can be opened to integrate the outside landscape and capture the picturesque views of the golf course or waterways, or step outside onto the outdoor terrace and enjoy a refreshing dip in the private pool.",
+      "typeRoom": "Presidental Suit",
+      "price": 5149000,
+      "maxPerson": 2,
+      "bed": "1 Double bed",
+      "bathrooms": "1 Bathrooms",
+      "convenient": "130m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "The new Presidential Suite decorated in royal style with sea view offers its own unique features with oversized living room, large screen TV, bedroom with king bed, marble bathroom housing with bathtub and electric bidet.",
       "imageUrl": [
-        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/478047/478047/1b..jpg",
-        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/478048/478048/4..jpg",
-        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/478049/478049/6..jpg",
-        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/478050/478050/3..jpg"
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Presidential-Suite-M.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-president-suite_01.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-president-suite_03.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-president-suite_04.jpg"
+      ],
+      "roomList": [
+        {
+          "id": "4a",
+          "key": "4a",
+          "roomName": "PS01",
+          "bookedDay": []
+        },
+        {
+          "id": "4b",
+          "key": "4b",
+          "roomName": "PS02",
+          "bookedDay": []
+        },
+        {
+          "id": "4c",
+          "key": "4c",
+          "roomName": "PS03",
+          "bookedDay": []
+        },
+        {
+          "id": "4d",
+          "key": "4d",
+          "roomName": "PS04",
+          "bookedDay": []
+        },
+        {
+          "id": "4e",
+          "key": "4e",
+          "roomName": "PS05",
+          "bookedDay": []
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "key": 5,
+      "typeRoom": "Beach Front Villa",
+      "price": 10249000,
+      "maxPerson": 6,
+      "bed": "3 Double bed",
+      "bathrooms": "4 Bathrooms",
+      "convenient": "900m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "The new Presidential Suite decorated in royal style with sea view offers its own unique features with oversized living room, large screen TV, bedroom with king bed, marble bathroom housing with bathtub and electric bidet.",
+      "imageUrl": [
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas-_Exterior-1-F.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas-Sea-View.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas_Bedroom-2.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas_Bedroom-1.jpg"
+      ],
+      "roomList": [
+        {
+          "id": "5a",
+          "key": "5a",
+          "roomName": "BFV01",
+          "bookedDay": []
+        },
+        {
+          "id": "5b",
+          "key": "5b",
+          "roomName": "BFV02",
+          "bookedDay": []
+        },
+        {
+          "id": "5c",
+          "key": "5c",
+          "roomName": "BFV03",
+          "bookedDay": []
+        },
+        {
+          "id": "5d",
+          "key": "5d",
+          "roomName": "BFV04",
+          "bookedDay": []
+        },
+        {
+          "id": "5e",
+          "key": "5e",
+          "roomName": "BFV05",
+          "bookedDay": []
+        }
       ]
     }
   ]

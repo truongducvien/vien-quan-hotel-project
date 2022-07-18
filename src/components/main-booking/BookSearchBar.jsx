@@ -12,20 +12,21 @@ import "./style/book-searchbar.scss";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRoomAction } from "../../stores/slices/roomsSlice";
-import { fetchOrderAction } from "../../stores/slices/ordersSlice";
+import { fetchBookingAction } from "../../stores/slices/bookingsSlice";
+import { timeEndDay, timeStartDay } from "../../utils";
 
 function BookSearchBar() {
   const { setOrderInfo, options, setAvailableRooms } =
     useContext(CustomerContext);
 
-  const orderState = useSelector((state) => state.order.orderState);
+  const bookingState = useSelector((state) => state.booking.bookingState);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchOrderAction());
+    dispatch(fetchBookingAction());
   }, []);
 
-  const orderList = orderState?.data;
+  const bookingList = bookingState?.data;
 
   const roomState = useSelector((state) => state.room.roomState);
 
@@ -33,7 +34,7 @@ function BookSearchBar() {
     dispatch(fetchRoomAction());
   }, []);
 
-  const roomList = roomState?.data;
+  const rooms = roomState?.data;
 
   const today = Date.now();
   const tomorrow = today + 24 * 60 * 60 * 1000;
@@ -57,34 +58,63 @@ function BookSearchBar() {
     let newCustomer = {
       userInfo: {},
       date: {
-        startDay: dates.startDate,
-        endDay: dates.endDate,
+        startDay: timeStartDay(dates.startDate),
+        endDay: timeEndDay(dates.endDate),
       },
       nights: nights,
       options: options,
     };
     setOrderInfo(newCustomer);
     localStorage.setItem("ORDER_INFO", JSON.stringify(newCustomer));
+    console.log("newCustomer :>> ", newCustomer);
 
-    let canOrderDate = orderList.filter(
+    // dates filter type room ======>>>>>
+    let canOrderDate = bookingList.filter(
       (order) =>
         dates.endDate < order?.date.startDay ||
         order?.date.endDay < dates.startDate
     );
-    let cannotOrderDate = orderList.filter(
+    let cannotOrderDate = bookingList.filter(
       (order) => !canOrderDate.includes(order)
     );
 
-    let cannotOptions = cannotOrderDate.map((order) => order.options);
+    let orderedOptions = cannotOrderDate.map((order) => order.options);
 
-    let cannotRoomId = cannotOptions.map((options) =>
-      options.map((option) => option.roomId)
+    let OrderedTypeRoomId = orderedOptions.map((options) =>
+      options.map((option) => option.typeRoomId)
     );
 
-    let mergeCannotRoomId = Array.from(new Set([].concat(...cannotRoomId)));
+    let mergeOrderedTypeRoomId = Array.from([].concat(...OrderedTypeRoomId));
 
-    let newAvailableRooms = roomList.filter(
-      (room) => !mergeCannotRoomId.includes(room.id)
+    // get quantity typeRoomId of array ordered
+    const qtyTypeRoomIdOrdered = mergeOrderedTypeRoomId.reduce(
+      (acc, curr) => ((acc[curr] = (acc[curr] || 0) + 1), acc),
+      {}
+    );
+
+    let arrQtyRoomsOfTypeRoom = rooms.map((typeRoom) => [
+      `${typeRoom.id}`,
+      Number(`${typeRoom.roomList.length}`),
+    ]);
+
+    let objQtyRoomsOfTypeRoom = Object.fromEntries(arrQtyRoomsOfTypeRoom);
+
+    let diff = Object.keys(objQtyRoomsOfTypeRoom).reduce((diff, key) => {
+      if (qtyTypeRoomIdOrdered[key] === objQtyRoomsOfTypeRoom[key]) return diff;
+      return {
+        ...diff,
+        [key]: objQtyRoomsOfTypeRoom[key],
+      };
+    }, {});
+
+    let arrayDiff = Object.keys(diff);
+
+    const arrayDiffNum = arrayDiff.map((str) => {
+      return Number(str);
+    });
+
+    let newAvailableRooms = rooms.filter((typeRoom) =>
+      arrayDiffNum.includes(typeRoom.id)
     );
     console.log(
       "🚀 ~ file: BookSearchBar.jsx ~ line 92 ~ handleBookNowButton ~ newAvailableRooms",

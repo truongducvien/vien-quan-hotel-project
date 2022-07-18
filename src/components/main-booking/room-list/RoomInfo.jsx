@@ -7,7 +7,7 @@ function RoomInfo({ room }) {
   const [ellipsisIntroduction, setEllipsisIntroduction] = useState(false);
   return (
     <div>
-      <div className="room-type-heading">{room.nameRoom}</div>
+      <div className="room-type-heading">{room.typeRoom}</div>
       <div className="room-type-content">
         <ul className="room-type-list">
           <li>
