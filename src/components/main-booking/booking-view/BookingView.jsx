@@ -36,7 +36,7 @@ function BookingView() {
   let sumTotal = totalPrice + parseFloat(tax) + parseFloat(serviceCharge);
   let sumTotalString = formatPrice(sumTotal);
 
-  const findRoomNull = orderInfo.options.find((op) => op.roomName === "");
+  const findRoomNull = orderInfo.options.find((op) => op.typeRoom === "");
 
   return (
     <div className="booking-box">
@@ -57,7 +57,7 @@ function BookingView() {
         <div className="room-select-list">
           {options.map((option, index) => (
             <div key={option.id}>
-              {option.roomName !== "" && (
+              {option.typeRoom !== "" && (
                 <RoomOrdered option={option} index={index} />
               )}
             </div>

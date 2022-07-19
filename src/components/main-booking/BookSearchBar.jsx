@@ -53,7 +53,7 @@ function BookSearchBar() {
 
   const handleBookNowButton = () => {
     const nights = Math.floor(
-      (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000)
+      (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000 - 1000)
     );
     let newCustomer = {
       userInfo: {},
@@ -66,7 +66,6 @@ function BookSearchBar() {
     };
     setOrderInfo(newCustomer);
     localStorage.setItem("ORDER_INFO", JSON.stringify(newCustomer));
-    console.log("newCustomer :>> ", newCustomer);
 
     // dates filter type room ======>>>>>
     let canOrderDate = bookingList.filter(
@@ -86,7 +85,7 @@ function BookSearchBar() {
 
     let mergeOrderedTypeRoomId = Array.from([].concat(...OrderedTypeRoomId));
 
-    // get quantity typeRoomId of array ordered
+    // get object quantity typeRoomId of array ordered =====>>>>>>>>
     const qtyTypeRoomIdOrdered = mergeOrderedTypeRoomId.reduce(
       (acc, curr) => ((acc[curr] = (acc[curr] || 0) + 1), acc),
       {}
@@ -97,8 +96,10 @@ function BookSearchBar() {
       Number(`${typeRoom.roomList.length}`),
     ]);
 
+    // get object quantity room of 1 typeRoom in rooms-server =====>>>>>>>>
     let objQtyRoomsOfTypeRoom = Object.fromEntries(arrQtyRoomsOfTypeRoom);
 
+    // filter object different (quantity typeRoomId of ordered) & (quantity room of 1 typeRoom in rooms-server )
     let diff = Object.keys(objQtyRoomsOfTypeRoom).reduce((diff, key) => {
       if (qtyTypeRoomIdOrdered[key] === objQtyRoomsOfTypeRoom[key]) return diff;
       return {
@@ -107,6 +108,7 @@ function BookSearchBar() {
       };
     }, {});
 
+    // object different => array
     let arrayDiff = Object.keys(diff);
 
     const arrayDiffNum = arrayDiff.map((str) => {
@@ -115,10 +117,6 @@ function BookSearchBar() {
 
     let newAvailableRooms = rooms.filter((typeRoom) =>
       arrayDiffNum.includes(typeRoom.id)
-    );
-    console.log(
-      "🚀 ~ file: BookSearchBar.jsx ~ line 92 ~ handleBookNowButton ~ newAvailableRooms",
-      newAvailableRooms
     );
 
     setAvailableRooms(newAvailableRooms);
@@ -151,6 +149,7 @@ function BookSearchBar() {
                       locale: {
                         format: "ddd, DD MMM",
                       },
+                      minDate: new Date(),
                     }}
                   >
                     <input type="text" className="form-control search-input" />

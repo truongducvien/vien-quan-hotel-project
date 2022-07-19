@@ -1,5 +1,5 @@
 import { put, takeEvery } from "redux-saga/effects";
-import { OrderAPI } from "../../api/order.api";
+import { BookingAPI } from "../../api/booking.api";
 import {
   fetchBookingAction,
   fetchBookingActionFailed,
@@ -8,7 +8,7 @@ import {
 
 function* fetchOrder(action) {
   try {
-    const response = yield OrderAPI;
+    const response = yield BookingAPI;
 
     yield put(fetchBookingActionSuccess(response.data));
   } catch (e) {

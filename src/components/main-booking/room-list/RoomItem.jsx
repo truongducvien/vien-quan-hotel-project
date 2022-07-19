@@ -20,8 +20,8 @@ function RoomItem({ room, idOption }) {
       if (option.id === idOption) {
         return {
           ...option,
-          roomId: room.id,
-          roomName: room.typeRoom,
+          typeRoomId: room.id,
+          typeRoom: room.typeRoom,
           roomPrice: room.price,
         };
       }
@@ -30,6 +30,12 @@ function RoomItem({ room, idOption }) {
     setOptions(newOptions);
 
     setOrderInfo({ ...orderInfo, options });
+    console.log("🚀 ~ file: RoomItem.jsx ~ line 25 ~ newOptions ~ room", room);
+
+    console.log(
+      "🚀 ~ file: RoomItem.jsx ~ line 33 ~ handleSelect ~ options",
+      options
+    );
   };
 
   return (

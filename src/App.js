@@ -9,6 +9,7 @@ import { v4 } from "uuid";
 import UserLogin from "./components/user-login-register/UserLogin";
 import UserRegister from "./components/user-login-register/UserRegister";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { timeEndDay, timeStartDay } from "./utils";
 
 function App() {
   const [availableRooms, setAvailableRooms] = useState([]);
@@ -18,8 +19,8 @@ function App() {
       id: v4(),
       adult: 2,
       children: 0,
-      roomId: 0,
-      roomName: "",
+      typeRoomId: 0,
+      typeRoom: "",
       roomPrice: 0,
     },
   ]);
@@ -29,7 +30,7 @@ function App() {
 
   const [orderInfo, setOrderInfo] = useState({
     userInfo: {},
-    date: { startDay: today, endDay: tomorrow },
+    date: { startDate: timeStartDay(today), endDate: timeEndDay(tomorrow) },
     nights: 1,
     options: options,
   });

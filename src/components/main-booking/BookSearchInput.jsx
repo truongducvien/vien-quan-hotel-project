@@ -65,8 +65,8 @@ function BookSearchInput() {
         return {
           ...op,
           adult: op.adult,
-          roomId: 0,
-          roomName: "",
+          typeRoomId: 0,
+          typeRoom: "",
           roomPrice: 0,
         };
       }
@@ -82,8 +82,8 @@ function BookSearchInput() {
         return {
           ...op,
           children: op.children,
-          roomId: 0,
-          roomName: "",
+          typeRoomId: 0,
+          typeRoom: "",
           roomPrice: 0,
         };
       }
@@ -99,8 +99,8 @@ function BookSearchInput() {
         return {
           ...op,
           adult: op.adult,
-          roomId: 0,
-          roomName: "",
+          typeRoomId: 0,
+          typeRoom: "",
           roomPrice: 0,
         };
       }
@@ -116,8 +116,8 @@ function BookSearchInput() {
         return {
           ...op,
           children: op.children,
-          roomId: 0,
-          roomName: "",
+          typeRoomId: 0,
+          typeRoom: "",
           roomPrice: 0,
         };
       }
@@ -133,8 +133,8 @@ function BookSearchInput() {
         id: v4(),
         adult: 2,
         children: 0,
-        roomId: 0,
-        roomName: "",
+        typeRoomId: 0,
+        typeRoom: "",
         roomPrice: 0,
       },
     ]);

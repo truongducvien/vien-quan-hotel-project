@@ -70,7 +70,7 @@ function PayBookingView() {
             <div className="room-select-list">
               {orderInfo.options.map((option, index) => (
                 <div key={option.id}>
-                  {option.roomName !== "" && (
+                  {option.typeRoom !== "" && (
                     <PayRoomOrdered option={option} index={index} />
                   )}
                 </div>

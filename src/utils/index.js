@@ -17,7 +17,7 @@ export const timeStartDay = (time) => {
 
 export const timeEndDay = (time) => {
   const timeNow = new Date(time);
-  const setTime = timeNow.setHours(11, 59, 0);
+  const setTime = timeNow.setHours(11, 59, 59);
   let timeAfter = new Date(setTime);
   return timeAfter.getTime();
 };
