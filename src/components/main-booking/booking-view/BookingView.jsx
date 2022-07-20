@@ -55,7 +55,7 @@ function BookingView() {
         </div>
 
         <div className="room-select-list">
-          {options.map((option, index) => (
+          {orderInfo.options.map((option, index) => (
             <div key={option.id}>
               {option.typeRoom !== "" && (
                 <RoomOrdered option={option} index={index} />

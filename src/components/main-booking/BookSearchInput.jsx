@@ -10,6 +10,17 @@ function BookSearchInput() {
   const { orderInfo, setOrderInfo, options, setOptions } =
     useContext(CustomerContext);
 
+  // const [roomGuests, setRoomGuests] = useState([
+  //   {
+  //     id: v4(),
+  //     adult: 2,
+  //     children: 0,
+  //     typeRoomId: 0,
+  //     typeRoom: "",
+  //     roomPrice: 0,
+  //     roomName: "",
+  //   },
+  // ]);
   const [sumOptions, setSumOptions] = useState({
     sumRoom: 1,
     sumAdult: 2,
@@ -65,10 +76,6 @@ function BookSearchInput() {
         return {
           ...op,
           adult: op.adult,
-          typeRoomId: 0,
-          typeRoom: "",
-          roomPrice: 0,
-          roomName: "",
         };
       }
       return op;
@@ -83,10 +90,6 @@ function BookSearchInput() {
         return {
           ...op,
           children: op.children,
-          typeRoomId: 0,
-          typeRoom: "",
-          roomPrice: 0,
-          roomName: "",
         };
       }
       return op;
@@ -101,10 +104,6 @@ function BookSearchInput() {
         return {
           ...op,
           adult: op.adult,
-          typeRoomId: 0,
-          typeRoom: "",
-          roomPrice: 0,
-          roomName: "",
         };
       }
       return op;
@@ -119,10 +118,6 @@ function BookSearchInput() {
         return {
           ...op,
           children: op.children,
-          typeRoomId: 0,
-          typeRoom: "",
-          roomPrice: 0,
-          roomName: "",
         };
       }
       return op;

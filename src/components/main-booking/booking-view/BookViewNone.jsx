@@ -30,7 +30,7 @@ function BookViewNone() {
               <div className="total-nights">{orderInfo.nights} night</div>
             </div>
             <div className="occupancy-rooms">
-              {options.length} room, {sumGuests} guests
+              {orderInfo.options.length} room, {sumGuests} guests
             </div>
           </div>
 

@@ -1,10 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CheckOutlined } from "@ant-design/icons";
 import { CustomerContext } from "../../../../providers/CustomerContext";
 import { fetchBookingAction } from "../../../../stores/slices/bookingsSlice";
+import { Collapse } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+
+const { Panel } = Collapse;
 
 function BookingSection() {
+  const [ellipsisIntroduction, setEllipsisIntroduction] = useState(false);
+
   const { orderInfo } = useContext(CustomerContext);
   const bookingState = useSelector((state) => state.booking.bookingState);
   const dispatch = useDispatch();
@@ -75,6 +81,55 @@ function BookingSection() {
             </span>
           </h6>
         </div>
+        <Collapse
+          defaultActiveKey={["1"]}
+          bordered={false}
+          expandIcon={({ isActive }) => (
+            <DownOutlined rotate={isActive ? 180 : 0} />
+          )}
+          expandIconPosition="end"
+          className="pay-method"
+        >
+          <Panel header="Cancellation policy" key="1">
+            <div className="">
+              <div
+                className={ellipsisIntroduction ? "" : "ellipsis-text"}
+                onClick={() => {
+                  setEllipsisIntroduction(!ellipsisIntroduction);
+                }}
+              >
+                <p>
+                  Room rate book on standard rate: Any cancellation received
+                  within 7 days prior to arrival date will incur the full period
+                  charge. Failure to arrive at your hotel or property will be
+                  treated as a No-Show and no refund will be given
+                </p>
+                <p>
+                  Room rate book under promotion: Any cancellation received
+                  within 14 days prior to arrival date will incur the full
+                  period charge. Failure to arrive at your hotel or property
+                  will be treated as a No-Show and no refund will be given
+                </p>
+                <p>
+                  No-showed booking will be full charged for whole booking for
+                  full length stay
+                </p>
+              </div>
+              <div
+                style={{
+                  marginTop: "10px",
+                  cursor: "pointer",
+                  color: "#005e84",
+                }}
+                onClick={() => {
+                  setEllipsisIntroduction(!ellipsisIntroduction);
+                }}
+              >
+                {ellipsisIntroduction ? "Read less" : "Read more"}
+              </div>
+            </div>
+          </Panel>
+        </Collapse>
         <div className="pay-submit-contact">
           <button className="pay-submit-btn">OK</button>
         </div>
