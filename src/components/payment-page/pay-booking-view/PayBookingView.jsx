@@ -55,6 +55,7 @@ function PayBookingView() {
       </div>
 
       <Collapse
+        defaultActiveKey={["1"]}
         bordered={false}
         expandIcon={({ isActive }) => (
           <DownOutlined rotate={isActive ? 180 : 0} />
@@ -104,7 +105,6 @@ function PayBookingView() {
             </Collapse>
             <div className="tip-content">
               <p className="balance">Deposit: VND {sumTotalString}</p>
-              <p className="balance">Outstanding balance: VND 0</p>
             </div>
           </div>
         </Panel>

@@ -22,28 +22,32 @@ function App() {
       typeRoomId: 0,
       typeRoom: "",
       roomPrice: 0,
+      roomName: "",
     },
   ]);
+  const [userLoginId, setUserLoginId] = useState(0);
 
   const today = Date.now();
   const tomorrow = today + 24 * 60 * 60 * 1000;
 
   const [orderInfo, setOrderInfo] = useState({
     userInfo: {},
-    date: { startDate: timeStartDay(today), endDate: timeEndDay(tomorrow) },
+    date: {
+      startDay: timeStartDay(today),
+      endDay: timeEndDay(tomorrow),
+    },
     nights: 1,
     options: options,
+    payment: {
+      method: "",
+      payInfo: {
+        cardNumber: "",
+        nameOnCard: "",
+      },
+    },
   });
 
-  useEffect(() => {
-    const userInfoStorage = localStorage.getItem("USER_INFO");
-    if (userInfoStorage === null) {
-      return;
-    } else {
-      setOrderInfo({ ...orderInfo, userInfo: JSON.parse(userInfoStorage) });
-    }
-    localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
-  }, []);
+  const [currentPay, setCurrentPay] = useState(0);
 
   useEffect(() => {
     const storedCustomer = localStorage.getItem("ORDER_INFO");
@@ -63,6 +67,10 @@ function App() {
         setOptions,
         availableRooms,
         setAvailableRooms,
+        currentPay,
+        setCurrentPay,
+        userLoginId,
+        setUserLoginId,
       }}
     >
       <BrowserRouter>

@@ -7,10 +7,10 @@ import { dateString } from "../../../utils";
 function BookViewNone() {
   const { orderInfo, options } = useContext(CustomerContext);
 
-  const startDay = orderInfo.date.startDay;
-  const startDateString = dateString(startDay);
-  const endDay = orderInfo.date.endDay;
-  const endDateString = dateString(endDay);
+  const startDate = orderInfo.date.startDay;
+  const startDateString = dateString(startDate);
+  const endDate = orderInfo.date.endDay;
+  const endDateString = dateString(endDate);
 
   let sumGuests = 0;
   orderInfo?.options.forEach((option) => {

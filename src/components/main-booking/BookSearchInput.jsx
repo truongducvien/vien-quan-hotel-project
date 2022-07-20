@@ -68,6 +68,7 @@ function BookSearchInput() {
           typeRoomId: 0,
           typeRoom: "",
           roomPrice: 0,
+          roomName: "",
         };
       }
       return op;
@@ -85,6 +86,7 @@ function BookSearchInput() {
           typeRoomId: 0,
           typeRoom: "",
           roomPrice: 0,
+          roomName: "",
         };
       }
       return op;
@@ -102,6 +104,7 @@ function BookSearchInput() {
           typeRoomId: 0,
           typeRoom: "",
           roomPrice: 0,
+          roomName: "",
         };
       }
       return op;
@@ -119,6 +122,7 @@ function BookSearchInput() {
           typeRoomId: 0,
           typeRoom: "",
           roomPrice: 0,
+          roomName: "",
         };
       }
       return op;
@@ -136,6 +140,7 @@ function BookSearchInput() {
         typeRoomId: 0,
         typeRoom: "",
         roomPrice: 0,
+        roomName: "",
       },
     ]);
   };

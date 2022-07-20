@@ -14,27 +14,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRoomAction } from "../../stores/slices/roomsSlice";
 import { fetchBookingAction } from "../../stores/slices/bookingsSlice";
 import { timeEndDay, timeStartDay } from "../../utils";
+import { fetchPromotionAction } from "../../stores/slices/promotionsSlice";
 
 function BookSearchBar() {
-  const { setOrderInfo, options, setAvailableRooms } =
+  const { orderInfo, setOrderInfo, setAvailableRooms } =
     useContext(CustomerContext);
 
+  const roomState = useSelector((state) => state.room.roomState);
   const bookingState = useSelector((state) => state.booking.bookingState);
+  const promotionState = useSelector((state) => state.promotion.promotionState);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchBookingAction());
-  }, []);
-
-  const bookingList = bookingState?.data;
-
-  const roomState = useSelector((state) => state.room.roomState);
-
-  useEffect(() => {
     dispatch(fetchRoomAction());
+    dispatch(fetchBookingAction());
+    dispatch(fetchPromotionAction());
   }, []);
 
   const rooms = roomState?.data;
+  const bookingList = bookingState?.data;
+  const promotionList = promotionState?.data;
 
   const today = Date.now();
   const tomorrow = today + 24 * 60 * 60 * 1000;
@@ -55,25 +54,28 @@ function BookSearchBar() {
     const nights = Math.floor(
       (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000 - 1000)
     );
-    let newCustomer = {
-      userInfo: {},
-      date: {
-        startDay: dates.startDate,
-        endDay: dates.endDate,
-      },
-      nights: nights,
-      options: options,
+    let newDate = {
+      startDay: dates.startDate,
+      endDay: dates.endDate,
     };
-    setOrderInfo(newCustomer);
-    localStorage.setItem("ORDER_INFO", JSON.stringify(newCustomer));
+    setOrderInfo({ ...orderInfo, date: newDate, nights: nights });
+    localStorage.setItem(
+      "ORDER_INFO",
+      JSON.stringify({ ...orderInfo, date: newDate, nights: nights })
+    );
 
     // dates filter type room ======>>>>>
-    let canOrderDate = bookingList.filter(
+    let futureDateOrdered = bookingList.filter(
+      (order) => order?.date.startDay >= timeStartDay(today)
+    );
+
+    let canOrderDate = futureDateOrdered.filter(
       (order) =>
         dates.endDate < order?.date.startDay ||
         order?.date.endDay < dates.startDate
     );
-    let cannotOrderDate = bookingList.filter(
+
+    let cannotOrderDate = futureDateOrdered.filter(
       (order) => !canOrderDate.includes(order)
     );
 
@@ -141,7 +143,9 @@ function BookSearchBar() {
                     onApply={handleApply}
                     initialSettings={{
                       timePicker: true,
-                      startDate: moment().startOf("hour").toDate(),
+                      // startDate: timeStartDay(today),
+                      // endDate: timeEndDay(tomorrow),
+                      startDate: moment().startOf("hour").toDate().valueOf(),
                       endDate: moment()
                         .startOf("hour")
                         .add(24, "hour")

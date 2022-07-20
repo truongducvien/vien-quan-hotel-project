@@ -31,6 +31,13 @@ const bookingSlice = createSlice({
     fetchBookingActionFailed(state, action) {
       notification.error(action.payload);
     },
+
+    postBookingAction(state, action) {
+      state.userInfoState = {
+        ...state.userInfoState,
+        loading: true,
+      };
+    },
   },
 });
 
@@ -38,5 +45,6 @@ export const {
   fetchBookingAction,
   fetchBookingActionSuccess,
   fetchBookingActionFailed,
+  postBookingAction,
 } = bookingSlice.actions;
 export const bookingReducer = bookingSlice.reducer;

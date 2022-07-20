@@ -2,14 +2,13 @@ import React from "react";
 import "./style/payment-page.scss";
 import "antd/dist/antd.css";
 import { Row, Col } from "antd";
-import PayBookingView from "./pay-booking-view/PayBookingView";
-import PayFormContact from "./pay-form-contact/PayFormContact";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "../../stores/slices/UserSlice";
 import { useEffect } from "react";
+import { PaymentBooking } from "./payment-booking/PaymentBooking";
 
 function PaymentPage() {
   const dispatch = useDispatch();
@@ -48,16 +47,7 @@ function PaymentPage() {
         </Row>
       </div>
 
-      <div className="pay-main">
-        <Row className="pay-wrapper">
-          <Col className="pay-form" xs={24} sm={24} md={14} xl={15}>
-            <PayFormContact />
-          </Col>
-          <Col className="pay-booking-view" xs={24} sm={24} md={10} xl={9}>
-            <PayBookingView />
-          </Col>
-        </Row>
-      </div>
+      <PaymentBooking />
     </div>
   );
 }

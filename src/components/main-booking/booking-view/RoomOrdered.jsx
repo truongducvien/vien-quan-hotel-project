@@ -13,7 +13,13 @@ function RoomOrdered({ option, index }) {
   const handleRemoveRoomBook = (id) => {
     const findOptions = orderInfo.options.map((op) => {
       if (op.id === id) {
-        return { ...op, typeRoom: "", roomPrice: 0, typeRoomId: 0 };
+        return {
+          ...op,
+          typeRoom: "",
+          roomPrice: 0,
+          typeRoomId: 0,
+          roomName: "",
+        };
       }
       return op;
     });

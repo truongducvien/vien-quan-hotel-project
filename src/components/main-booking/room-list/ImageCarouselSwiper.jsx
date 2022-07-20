@@ -15,7 +15,7 @@ function ImageCarouselSwiper({ room }) {
         modules={[Navigation, A11y]}
         slidesPerView={1}
         navigation
-        autoplay={{ delay: 2500 }}
+        autoplay={{ delay: 3500 }}
       >
         {room.imageUrl.map((link, index) => (
           <SwiperSlide className="image" key={index}>

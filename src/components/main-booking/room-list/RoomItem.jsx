@@ -30,12 +30,6 @@ function RoomItem({ room, idOption }) {
     setOptions(newOptions);
 
     setOrderInfo({ ...orderInfo, options });
-    console.log("🚀 ~ file: RoomItem.jsx ~ line 25 ~ newOptions ~ room", room);
-
-    console.log(
-      "🚀 ~ file: RoomItem.jsx ~ line 33 ~ handleSelect ~ options",
-      options
-    );
   };
 
   return (

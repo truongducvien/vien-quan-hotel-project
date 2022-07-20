@@ -4,6 +4,7 @@ $labelColor: #b6b6b6;
 
 .payment-page {
   background-color: #f2f7f9;
+  height: 100vh;
   .pay-header {
     color: #fff;
     background-color: $bookHeader;
@@ -49,9 +50,9 @@ $labelColor: #b6b6b6;
   }
 }
 .pay-main {
-  max-width: 64rem;
-  margin: 40px auto;
-  padding: 0 40px;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 .pay-wrapper {
   width: 100%;
@@ -61,4 +62,49 @@ $labelColor: #b6b6b6;
   padding: 0 8px;
   border-radius: 4px;
   line-height: 1.618;
+}
+.pay-step {
+  .ant-steps {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 60rem;
+    .anticon svg {
+      padding-bottom: 5px;
+    }
+  }
+  .steps-action {
+    margin: 0 auto;
+    max-width: 60rem;
+  }
+}
+.ant-form-item-label {
+  overflow: none;
+}
+.pay-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  img {
+    height: 25px;
+  }
+}
+.ant-radio-group,
+.ant-space.ant-space-vertical {
+  width: 100%;
+}
+.ant-radio-wrapper.ant-radio-wrapper-checked,
+.ant-radio-wrapper.ant-radio-wrapper-checked > span {
+  width: 100%;
+}
+.ant-radio.ant-radio-checked {
+  width: 16px !important;
+}
+.booking-success {
+  .anticon-check {
+    color: #00c900;
+  }
+}
+.pay-method .ant-collapse-header-text {
+  font-size: 16px !important;
 }

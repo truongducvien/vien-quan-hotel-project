@@ -1,26 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Col, Row, Collapse, Select } from "antd";
 import {
   DownOutlined,
   PlusCircleOutlined,
   MinusCircleOutlined,
 } from "@ant-design/icons";
-import "../style/pay-form-contact.css";
+import "../..//style/pay-form-contact.scss";
+import { useContext } from "react";
+import { CustomerContext } from "../../../../providers/CustomerContext";
+import { useEffect } from "react";
 
 const { Panel } = Collapse;
 const { Option } = Select;
 const { TextArea } = Input;
 
-function PayFormContact() {
+function FormContact() {
+  const {
+    orderInfo,
+    setOrderInfo,
+    currentPay,
+    setCurrentPay,
+    userLoginId,
+    setUserLoginId,
+  } = useContext(CustomerContext);
   const validateMessages = {
     required: "This field is required!",
   };
+  const [textareaValue, setTextareaValue] = useState("");
+  const [arrivalTime, setArrivalTime] = useState("");
 
-  const onFinish = (contact) => {
-    console.log("Success:", contact);
+  const handleArrivalTime = (value) => {
+    setArrivalTime(`${value}`);
   };
-  const onChangeTexArea = (e) => {
-    console.log("Change:", e.target.value);
+
+  useEffect(() => {
+    let userLoginStorage = localStorage.getItem("USER_INFO");
+    if (userLoginStorage !== null) {
+      let userLoginAccount = JSON.parse(userLoginStorage);
+      setUserLoginId(userLoginAccount.id);
+    }
+  }, []);
+
+  const onAddUserInfoPay = (contact) => {
+    let newUserPay = {
+      id: userLoginId,
+      email: contact.email,
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      phone: contact.phone,
+      arrivalTime: arrivalTime,
+      requests: textareaValue,
+    };
+    setOrderInfo({ ...orderInfo, userInfo: newUserPay });
+    localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
+
+    setCurrentPay(currentPay + 1);
   };
 
   return (
@@ -47,7 +81,7 @@ function PayFormContact() {
             }}
             autoComplete="off"
             validateMessages={validateMessages}
-            onFinish={onFinish}
+            onFinish={onAddUserInfoPay}
           >
             <Row>
               <Col xs={24} sm={12} md={24} xl={12}>
@@ -145,6 +179,7 @@ function PayFormContact() {
                     name="arrivalTime"
                     size="large"
                     placeholder="Planned arrival time?"
+                    onChange={handleArrivalTime}
                   >
                     <Option value="03:00 PM (15:00)">03:00 PM (15:00)</Option>
                     <Option value="04:00 PM (16:00)">04:00 PM (16:00)</Option>
@@ -161,7 +196,6 @@ function PayFormContact() {
             </Row>
             <div className="pay-textarea">
               <Collapse
-                defaultActiveKey={["1"]}
                 bordered={false}
                 expandIcon={({ isActive }) =>
                   isActive ? <MinusCircleOutlined /> : <PlusCircleOutlined />
@@ -172,10 +206,39 @@ function PayFormContact() {
                   header="Any personal requests?"
                   key="1"
                 >
-                  <TextArea rows={4} allowClear onChange={onChangeTexArea} />
+                  <TextArea
+                    value={textareaValue}
+                    rows={4}
+                    allowClear
+                    onChange={(e) => setTextareaValue(e.target.value)}
+                  />
                 </Panel>
               </Collapse>
             </div>
+            <p style={{ color: "#999" }}>
+              By proceeding with this booking, I agree to{" "}
+              <span
+                style={{
+                  color: "#066a92",
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                }}
+              >
+                {" "}
+                Terms of Use
+              </span>{" "}
+              and{" "}
+              <span
+                style={{
+                  color: "#066a92",
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                }}
+              >
+                Privacy Policy
+              </span>
+              .
+            </p>
 
             <div className="pay-submit-contact">
               <button type="submit" className="pay-submit-btn">
@@ -189,4 +252,4 @@ function PayFormContact() {
   );
 }
 
-export default PayFormContact;
+export default FormContact;
