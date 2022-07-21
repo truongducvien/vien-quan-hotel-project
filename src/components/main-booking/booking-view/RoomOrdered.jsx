@@ -19,6 +19,7 @@ function RoomOrdered({ option, index }) {
           roomPrice: 0,
           typeRoomId: 0,
           roomName: "",
+          maxPerson: 0,
         };
       }
       return op;

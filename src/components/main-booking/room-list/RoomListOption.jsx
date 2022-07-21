@@ -6,7 +6,7 @@ import { CustomerContext } from "../../../providers/CustomerContext";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRoomAction } from "../../../stores/slices/roomsSlice";
 
-function RoomListOption({ sumPerson, idOption }) {
+function RoomListOption({ maxPerson, idOption }) {
   const { availableRooms } = useContext(CustomerContext);
   const roomState = useSelector((state) => state.room.roomState);
   const dispatch = useDispatch();
@@ -17,9 +17,9 @@ function RoomListOption({ sumPerson, idOption }) {
 
   const roomList = roomState?.data;
 
-  let filterRoom = roomList.filter((room) => room.maxPerson >= sumPerson);
+  let filterRoom = roomList.filter((room) => room.maxPerson >= maxPerson);
   let filterAvailableRooms = availableRooms.filter(
-    (room) => room.maxPerson >= sumPerson
+    (room) => room.maxPerson >= maxPerson
   );
 
   return (

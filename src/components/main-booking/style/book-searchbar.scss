@@ -41,7 +41,7 @@ $labelColor: #b6b6b6;
     padding: 0 10px;
     margin: -45px auto 10px;
     .ant-row {
-      padding: 10px;
+      padding: 22px 10px 0;
     }
     .ant-col {
       padding-right: 10px;
@@ -139,19 +139,7 @@ $labelColor: #b6b6b6;
         margin-right: 0;
       }
       button {
-        width: 32px;
-        height: 32px;
-        line-height: 27px;
-        font-size: 29px;
-        color: #828ea4;
-        padding: 0;
         margin: 0 7px;
-        transition: all 0.1s;
-        border-radius: 50%;
-        border: 2px solid #828ea3;
-        background-color: #fff;
-        overflow: hidden;
-        top: 0;
       }
       .noBorder-btn {
         border: none;

@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./style/book-header.scss";
 import { Row, Col } from "antd";
 import { Link } from "react-router-dom";
-import { CustomerContext } from "../../providers/CustomerContext";
 
 function BookHeader() {
   return (

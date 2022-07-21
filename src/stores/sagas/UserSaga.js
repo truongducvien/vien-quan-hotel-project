@@ -1,3 +1,4 @@
+import { notification } from "antd";
 import { put, takeEvery } from "redux-saga/effects";
 import { AuthAPI } from "../../api/auth.api.js";
 import {
@@ -19,7 +20,6 @@ function* login(action) {
     yield put(loginActionSuccess(response.data.user));
   } catch (error) {
     yield put(loginActionFailed(error.response.data));
-    console.log(error.response.data);
   }
 }
 function* register(action) {
@@ -36,7 +36,6 @@ function* register(action) {
     yield put(registerActionSuccess(response.data.user));
   } catch (error) {
     yield put(registerActionFailed(error.response.data));
-    console.log(error.response.data);
   }
 }
 

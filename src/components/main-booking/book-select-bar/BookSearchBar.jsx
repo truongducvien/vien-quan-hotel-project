@@ -1,20 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CustomerContext } from "../../providers/CustomerContext";
-import BookSearchInput from "./BookSearchInput";
 import { Col, Row } from "antd";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-daterangepicker/daterangepicker.css";
-import bookHeader from "../../assets/images/book-header.avif";
+import bookHeader from "../../../assets/images/book-header.avif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
-import "./style/book-searchbar.scss";
+import "../style/book-searchbar.scss";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRoomAction } from "../../stores/slices/roomsSlice";
-import { fetchBookingAction } from "../../stores/slices/bookingsSlice";
-import { timeEndDay, timeStartDay } from "../../utils";
-import { fetchPromotionAction } from "../../stores/slices/promotionsSlice";
+import { fetchRoomAction } from "../../../stores/slices/roomsSlice";
+import { fetchBookingAction } from "../../../stores/slices/bookingsSlice";
+import { timeEndDay, timeStartDay } from "../../../utils";
+import { fetchPromotionAction } from "../../../stores/slices/promotionsSlice";
+import { CustomerContext } from "../../../providers/CustomerContext";
+import SelectOptions from "./SelectOptions";
 
 function BookSearchBar() {
   const { orderInfo, setOrderInfo, setAvailableRooms } =
@@ -50,7 +50,7 @@ function BookSearchBar() {
     });
   };
 
-  const handleBookNowButton = () => {
+  useEffect(() => {
     const nights = Math.floor(
       (dates.endDate - dates.startDate) / (24 * 60 * 60 * 1000 - 1000)
     );
@@ -63,7 +63,9 @@ function BookSearchBar() {
       "ORDER_INFO",
       JSON.stringify({ ...orderInfo, date: newDate, nights: nights })
     );
+  }, [dates]);
 
+  useEffect(() => {
     // dates filter type room ======>>>>>
     let futureDateOrdered = bookingList.filter(
       (order) => order?.date.startDay >= timeStartDay(today)
@@ -122,13 +124,14 @@ function BookSearchBar() {
     );
 
     setAvailableRooms(newAvailableRooms);
-  };
+  }, []);
 
   return (
     <div>
       <div className="book-header-img">
         <img src={bookHeader} alt="" />
       </div>
+
       <div className="book-search">
         <div className="headerSearch">
           <Row align="middle">
@@ -163,16 +166,12 @@ function BookSearchBar() {
             </Col>
 
             <Col xs={24} sm={24} md={8} lg={7}>
-              <BookSearchInput />
+              <SelectOptions />
             </Col>
             <Col xs={24} sm={24} md={5} lg={6}>
               <span>Have a promo code?</span>
             </Col>
-            <Col xs={24} sm={24} md={5} lg={4}>
-              <button className="headerBtn" onClick={handleBookNowButton}>
-                Search
-              </button>
-            </Col>
+            <Col xs={24} sm={24} md={5} lg={4}></Col>
           </Row>
         </div>
       </div>

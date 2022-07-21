@@ -23,6 +23,7 @@ function App() {
       typeRoom: "",
       roomPrice: 0,
       roomName: "",
+      maxPerson: 6,
     },
   ]);
   const [userLoginId, setUserLoginId] = useState(0);

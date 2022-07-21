@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Col, Row } from "antd";
-import { CustomerContext } from "../../providers/CustomerContext";
 import "./style/user-register-login.scss";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { registerAction } from "../../stores/slices/UserSlice";
 
@@ -19,13 +18,17 @@ function UserRegister() {
     dispatch(registerAction(values));
   };
 
+  if (localStorage.getItem("REGISTER") === "register") {
+    return <Navigate to={"/login"} />;
+  }
+
   return (
     <div className="register-login-container">
       <div className="pay-header">
         <Row>
           <Col xs={1} sm={2} md={3} lg={3}></Col>
           <Col xs={2} sm={2} md={1} lg={1}>
-            <Link to="/booking">
+            <Link to="/login">
               <ArrowLeftOutlined />
             </Link>
           </Col>
@@ -145,7 +148,9 @@ function UserRegister() {
                     name="phone"
                     rules={[
                       {
+                        type: "tel",
                         required: true,
+                        message: "This is not a valid phone!",
                       },
                     ]}
                   >

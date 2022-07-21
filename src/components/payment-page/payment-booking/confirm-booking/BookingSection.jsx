@@ -5,13 +5,13 @@ import { CustomerContext } from "../../../../providers/CustomerContext";
 import { fetchBookingAction } from "../../../../stores/slices/bookingsSlice";
 import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import { v4 } from "uuid";
 
 const { Panel } = Collapse;
 
 function BookingSection() {
+  const { orderInfo, setOrderInfo } = useContext(CustomerContext);
   const [ellipsisIntroduction, setEllipsisIntroduction] = useState(false);
-
-  const { orderInfo } = useContext(CustomerContext);
   const bookingState = useSelector((state) => state.booking.bookingState);
   const dispatch = useDispatch();
 
@@ -27,6 +27,33 @@ function BookingSection() {
     orderInfo.userInfo.firstName + " " + orderInfo.userInfo.lastName;
   let bookingEmail = orderInfo.userInfo.email;
   let payMethod = orderInfo.payment.method;
+
+  const handleSuccessBooking = () => {
+    let newOptions = [
+      {
+        id: v4(),
+        adult: 2,
+        children: 0,
+        typeRoomId: 0,
+        typeRoom: "",
+        roomPrice: 0,
+        roomName: "",
+        maxPerson: 6,
+      },
+    ];
+    let newPayment = {
+      method: "",
+      payInfo: {
+        cardNumber: "",
+        nameOnCard: "",
+      },
+    };
+    setOrderInfo({ ...orderInfo, options: newOptions, payment: newPayment });
+    localStorage.setItem(
+      "ORDER_INFO",
+      JSON.stringify({ ...orderInfo, options: newOptions, payment: newPayment })
+    );
+  };
 
   return (
     <div className="pay-form-contact booking-success">
@@ -54,8 +81,9 @@ function BookingSection() {
               </span>
             ) : (
               <span>
-                You have chosen to pay by credit card, you will needn't to pay
-                at the hotel.
+                You have chosen to pay by credit card.{" "}
+                <span style={{ color: "#007fae" }}>Ocean Villa</span> will
+                charge your credit card.
               </span>
             )}
           </h6>
@@ -77,7 +105,7 @@ function BookingSection() {
             <CheckOutlined />
 
             <span>
-              Please present Booking number or this confirmation when check-in
+              Please present booking number or this confirmation when check-in
             </span>
           </h6>
         </div>
@@ -91,47 +119,47 @@ function BookingSection() {
           className="pay-method"
         >
           <Panel header="Cancellation policy" key="1">
-            <div className="">
-              <div
-                className={ellipsisIntroduction ? "" : "ellipsis-text"}
-                onClick={() => {
-                  setEllipsisIntroduction(!ellipsisIntroduction);
-                }}
-              >
-                <p>
-                  Room rate book on standard rate: Any cancellation received
-                  within 7 days prior to arrival date will incur the full period
-                  charge. Failure to arrive at your hotel or property will be
-                  treated as a No-Show and no refund will be given
-                </p>
-                <p>
-                  Room rate book under promotion: Any cancellation received
-                  within 14 days prior to arrival date will incur the full
-                  period charge. Failure to arrive at your hotel or property
-                  will be treated as a No-Show and no refund will be given
-                </p>
-                <p>
-                  No-showed booking will be full charged for whole booking for
-                  full length stay
-                </p>
-              </div>
-              <div
-                style={{
-                  marginTop: "10px",
-                  cursor: "pointer",
-                  color: "#005e84",
-                }}
-                onClick={() => {
-                  setEllipsisIntroduction(!ellipsisIntroduction);
-                }}
-              >
-                {ellipsisIntroduction ? "Read less" : "Read more"}
-              </div>
+            <div
+              className={ellipsisIntroduction ? "" : "ellipsis-text"}
+              onClick={() => {
+                setEllipsisIntroduction(!ellipsisIntroduction);
+              }}
+            >
+              <p>
+                Room rate book on standard rate: Any cancellation received
+                within 7 days prior to arrival date will incur the full period
+                charge. Failure to arrive at your hotel or property will be
+                treated as a No-Show and no refund will be given
+              </p>
+              <p>
+                Room rate book under promotion: Any cancellation received within
+                14 days prior to arrival date will incur the full period charge.
+                Failure to arrive at your hotel or property will be treated as a
+                No-Show and no refund will be given
+              </p>
+              <p>
+                No-showed booking will be full charged for whole booking for
+                full length stay
+              </p>
+            </div>
+            <div
+              style={{
+                marginTop: "10px",
+                cursor: "pointer",
+                color: "#005e84",
+              }}
+              onClick={() => {
+                setEllipsisIntroduction(!ellipsisIntroduction);
+              }}
+            >
+              {ellipsisIntroduction ? "Read less" : "Read more"}
             </div>
           </Panel>
         </Collapse>
         <div className="pay-submit-contact">
-          <button className="pay-submit-btn">OK</button>
+          <button onClick={handleSuccessBooking} className="pay-submit-btn">
+            OK
+          </button>
         </div>
       </div>
     </div>

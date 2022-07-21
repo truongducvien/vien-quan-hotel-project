@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Form, Input, Col, Row, Checkbox } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Navigate } from "react-router";
@@ -10,19 +10,19 @@ import { loginAction } from "../../stores/slices/UserSlice";
 import { CustomerContext } from "../../providers/CustomerContext";
 
 export default function UserLogin() {
-  const { orderInfo, setOrderInfo } = useContext(CustomerContext);
   const userInfo = useSelector((state) => state.user.userInfoState);
   const dispatch = useDispatch();
 
   const validateMessages = {
     required: "This field is required!",
   };
+  useEffect(() => {
+    localStorage.removeItem("REGISTER");
+  }, []);
 
   const onLogin = (values) => {
     dispatch(loginAction(values));
   };
-
-  console.log("orderInfo :>> ", orderInfo);
 
   if (localStorage.getItem("USER_INFO") !== null) {
     return <Navigate to={"/payment"} />;

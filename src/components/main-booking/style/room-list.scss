@@ -59,7 +59,11 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   margin-bottom: 10px;
+  p {
+    text-align: justify;
+  }
 }
+
 .room-rate-list {
   text-align: left;
   min-height: 80px;

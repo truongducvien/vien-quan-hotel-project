@@ -32,7 +32,7 @@ function RoomInfo({ room }) {
             setEllipsisConvenient(!ellipsisConvenient);
           }}
         >
-          {room.convenient}
+          <p> {room.convenient}</p>
         </div>
         <div
           style={{ marginTop: "16px" }}
@@ -41,7 +41,7 @@ function RoomInfo({ room }) {
             setEllipsisIntroduction(!ellipsisIntroduction);
           }}
         >
-          {room.introduction}
+          <p>{room.introduction}</p>
         </div>
         <div
           style={{

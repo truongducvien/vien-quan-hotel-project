@@ -12,14 +12,12 @@ import { DownOutlined } from "@ant-design/icons";
 const { Panel } = Collapse;
 
 function PayMethodSection() {
-  const bookingState = useSelector((state) => state.booking.bookingState);
   const dispatch = useDispatch();
   const { orderInfo, setOrderInfo, currentPay, setCurrentPay } =
     useContext(CustomerContext);
   const [payMethod, setPayMethod] = useState("Credit/Debit Card");
-  const [ellipsisIntroduction, setEllipsisIntroduction] = useState(false);
+  const [ellipsisCancel, setEllipsisCancel] = useState(false);
 
-  console.log("payMethod :>> ", payMethod);
   useEffect(() => {
     let newPayMethod = {
       method: payMethod,
@@ -82,9 +80,9 @@ function PayMethodSection() {
         <Panel header="Cancellation policy" key="1">
           <div className="">
             <div
-              className={ellipsisIntroduction ? "" : "ellipsis-text"}
+              className={ellipsisCancel ? "" : "ellipsis-text"}
               onClick={() => {
-                setEllipsisIntroduction(!ellipsisIntroduction);
+                setEllipsisCancel(!ellipsisCancel);
               }}
             >
               <p>
@@ -111,10 +109,10 @@ function PayMethodSection() {
                 color: "#005e84",
               }}
               onClick={() => {
-                setEllipsisIntroduction(!ellipsisIntroduction);
+                setEllipsisCancel(!ellipsisCancel);
               }}
             >
-              {ellipsisIntroduction ? "Read less" : "Read more"}
+              {ellipsisCancel ? "Read less" : "Read more"}
             </div>
           </div>
         </Panel>

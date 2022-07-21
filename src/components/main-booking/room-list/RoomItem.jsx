@@ -23,6 +23,7 @@ function RoomItem({ room, idOption }) {
           typeRoomId: room.id,
           typeRoom: room.typeRoom,
           roomPrice: room.price,
+          maxPerson: room.maxPerson,
         };
       }
       return option;

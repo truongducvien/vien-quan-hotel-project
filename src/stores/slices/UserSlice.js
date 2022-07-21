@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { notification } from "antd";
 
 const USER_INFO_KEY = "USER_INFO";
 
@@ -36,11 +37,9 @@ const userSlice = createSlice({
     },
     loginActionFailed(state, action) {
       localStorage.removeItem(USER_INFO_KEY);
-      state.userInfoState = {
-        ...state.userInfoState,
-        loading: false,
-        error: action.payload.error,
-      };
+      notification.error({
+        message: action.payload,
+      });
     },
 
     logoutAction(state, action) {
@@ -60,20 +59,21 @@ const userSlice = createSlice({
       };
     },
     registerActionSuccess(state, action) {
-      localStorage.removeItem(USER_INFO_KEY);
+      localStorage.setItem("REGISTER", "register");
       state.userInfoState = {
         ...state.userInfoState,
         loading: false,
         data: null,
       };
+      notification.success({
+        message: "Register success! Now you can Login",
+      });
     },
     registerActionFailed(state, action) {
       localStorage.removeItem(USER_INFO_KEY);
-      state.userInfoState = {
-        ...state.userInfoState,
-        loading: false,
-        error: action.payload.error,
-      };
+      notification.error({
+        message: action.payload,
+      });
     },
   },
 });

@@ -29,10 +29,6 @@ const roomSlice = createSlice({
       };
     },
     fetchRoomActionFailed(state, action) {
-      // state.roomState = {
-      //   ...state.roomState,
-      //   error: action.payload.error,
-      // };
       notification.error(action.payload);
     },
   },
