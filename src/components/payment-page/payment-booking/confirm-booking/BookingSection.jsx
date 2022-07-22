@@ -5,22 +5,21 @@ import { CustomerContext } from "../../../../providers/CustomerContext";
 import { fetchBookingAction } from "../../../../stores/slices/bookingsSlice";
 import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import { v4 } from "uuid";
+import { NavLink } from "react-router-dom";
 
 const { Panel } = Collapse;
 
 function BookingSection() {
-  const { orderInfo, setOrderInfo } = useContext(CustomerContext);
+  const bookingState = useSelector((state) => state?.booking?.bookingState);
+  const { orderInfo, options } = useContext(CustomerContext);
   const [ellipsisIntroduction, setEllipsisIntroduction] = useState(false);
-  const bookingState = useSelector((state) => state.booking.bookingState);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchBookingAction());
-  }, []);
-  const bookingList = bookingState.data;
+  }, [options]);
 
-  let bookingLength = bookingList.length;
+  let bookingLength = bookingState?.data?.length;
   let bookingNumber = bookingLength + 1;
 
   let bookingName =
@@ -28,37 +27,11 @@ function BookingSection() {
   let bookingEmail = orderInfo.userInfo.email;
   let payMethod = orderInfo.payment.method;
 
-  const handleSuccessBooking = () => {
-    let newOptions = [
-      {
-        id: v4(),
-        adult: 2,
-        children: 0,
-        typeRoomId: 0,
-        typeRoom: "",
-        roomPrice: 0,
-        roomName: "",
-        maxPerson: 6,
-      },
-    ];
-    let newPayment = {
-      method: "",
-      payInfo: {
-        cardNumber: "",
-        nameOnCard: "",
-      },
-    };
-    setOrderInfo({ ...orderInfo, options: newOptions, payment: newPayment });
-    localStorage.setItem(
-      "ORDER_INFO",
-      JSON.stringify({ ...orderInfo, options: newOptions, payment: newPayment })
-    );
-  };
-
   return (
     <div className="pay-form-contact booking-success">
       <div className="booking-success">
         <h2 style={{ paddingLeft: 0, color: "#004862" }}>Booking success</h2>
+
         <div>
           <h6 style={{ paddingLeft: "25px", color: "#004862" }}>
             <b>Hi {bookingName}!</b>
@@ -90,7 +63,11 @@ function BookingSection() {
           <h6>
             <CheckOutlined />
             &nbsp; Booking Number:{" "}
-            <b style={{ color: "blue" }}>{bookingNumber}</b>
+            {bookingLength === undefined ? (
+              ""
+            ) : (
+              <b style={{ color: "blue" }}>{bookingNumber}</b>
+            )}
           </h6>
 
           <h6 style={{ display: "flex" }}>
@@ -156,11 +133,11 @@ function BookingSection() {
             </div>
           </Panel>
         </Collapse>
-        <div className="pay-submit-contact">
-          <button onClick={handleSuccessBooking} className="pay-submit-btn">
-            OK
-          </button>
-        </div>
+        <NavLink to="/">
+          <div className="pay-submit-contact">
+            <button className="pay-submit-btn">OK! Come Home Page</button>
+          </div>
+        </NavLink>
       </div>
     </div>
   );

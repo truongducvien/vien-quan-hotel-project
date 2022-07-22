@@ -29,7 +29,6 @@ function PayMethodSection() {
     setOrderInfo({ ...orderInfo, payment: newPayMethod });
     localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
   }, [payMethod]);
-  console.log("orderInfo :>> ", orderInfo);
 
   const onAddUserInfoPay = () => {
     dispatch(postBookingAction(orderInfo));

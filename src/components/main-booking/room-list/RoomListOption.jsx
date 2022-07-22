@@ -6,7 +6,7 @@ import { CustomerContext } from "../../../providers/CustomerContext";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRoomAction } from "../../../stores/slices/roomsSlice";
 
-function RoomListOption({ maxPerson, idOption }) {
+function RoomListOption({ maxPerson, option }) {
   const { availableRooms } = useContext(CustomerContext);
   const roomState = useSelector((state) => state.room.roomState);
   const dispatch = useDispatch();
@@ -27,12 +27,12 @@ function RoomListOption({ maxPerson, idOption }) {
       {availableRooms < 1
         ? filterRoom.map((room) => (
             <div key={room.id} className="room">
-              <RoomItem room={room} idOption={idOption} />
+              <RoomItem option={option} room={room} />
             </div>
           ))
         : filterAvailableRooms.map((room) => (
             <div key={room.id} className="room">
-              <RoomItem room={room} idOption={idOption} />
+              <RoomItem option={option} room={room} />
             </div>
           ))}
     </div>

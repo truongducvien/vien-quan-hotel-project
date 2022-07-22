@@ -1,6 +1,6 @@
 import { Col, Row } from "antd";
 import React from "react";
-import PayBookingView from "../../pay-booking-view/PayBookingView";
+import BookViewCanBack from "../../pay-booking-view/BookViewCanBack";
 import FormContact from "./FormContact";
 
 export const CustomerInfo = () => {
@@ -11,7 +11,7 @@ export const CustomerInfo = () => {
           <FormContact />
         </Col>
         <Col className="pay-booking-view" xs={24} sm={24} md={10} xl={9}>
-          <PayBookingView />
+          <BookViewCanBack />
         </Col>
       </Row>
     </div>

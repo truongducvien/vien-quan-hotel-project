@@ -27,9 +27,9 @@ function PaymentPage() {
       <div className="pay-header">
         <Row justify="center">
           <Col xs={2} sm={2} md={1} lg={1}>
-            <Link to="/booking">
+            {/* <Link to="/booking">
               <ArrowLeftOutlined />
-            </Link>
+            </Link> */}
           </Col>
           <Col xs={9} sm={7} md={6} lg={4} className="text-logo">
             <Link to="/">

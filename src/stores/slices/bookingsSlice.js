@@ -20,7 +20,7 @@ const bookingSlice = createSlice({
       };
     },
     fetchBookingActionSuccess(state, action) {
-      const orderResponse = [...action.payload];
+      const orderResponse = [...action?.payload];
 
       state.bookingState = {
         ...state.bookingState,
@@ -33,10 +33,23 @@ const bookingSlice = createSlice({
     },
 
     postBookingAction(state, action) {
-      state.userInfoState = {
-        ...state.userInfoState,
+      state.bookingState = {
+        ...state.bookingState,
         loading: true,
       };
+    },
+    postBookingActionSuccess(state, action) {
+      const bookingResponse = { ...action.payload };
+      state.bookingState = {
+        ...state.bookingState,
+        loading: false,
+        data: bookingResponse,
+      };
+    },
+    postBookingActionFailed(state, action) {
+      notification.error({
+        message: action.payload,
+      });
     },
   },
 });
@@ -46,5 +59,7 @@ export const {
   fetchBookingActionSuccess,
   fetchBookingActionFailed,
   postBookingAction,
+  postBookingActionSuccess,
+  postBookingActionFailed,
 } = bookingSlice.actions;
 export const bookingReducer = bookingSlice.reducer;

@@ -14,7 +14,7 @@ const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
 const { Option } = Select;
 const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-export default function SearchBar() {
+export default function SearchBar({ handleBookNow }) {
   const [startDay, setStartDay] = useState(now.getTime());
   const [endDay, setEndDay] = useState(tomorrow.getTime());
   const [adultCount, setAdultCount] = useState(1);
@@ -45,21 +45,17 @@ export default function SearchBar() {
     }
   };
 
-  const handleBookNowButton = () => {
-    dispatch({
-      type: "set_book_now_info",
-      payload: {
-        startDay: startDay,
-        endDay: endDay,
-        adult: adultCount,
-        children: childrenCount,
-      },
-    });
-  };
-
-  // useEffect(() => {
-  //   console.log(state);
-  // }, [state]);
+  // const handleBookNowButton = () => {
+  //   dispatch({
+  //     type: "set_book_now_info",
+  //     payload: {
+  //       startDay: startDay,
+  //       endDay: endDay,
+  //       adult: adultCount,
+  //       children: childrenCount,
+  //     },
+  //   });
+  // };
 
   return (
     <div className="searchBar">
@@ -125,7 +121,7 @@ export default function SearchBar() {
         </div>
 
         <Link to="/booking">
-          <button onClick={handleBookNowButton} className="bookNowButton">
+          <button onClick={handleBookNow} className="bookNowButton">
             Book now
           </button>
         </Link>

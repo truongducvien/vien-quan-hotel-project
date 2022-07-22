@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "antd";
-import PayBookingView from "../../pay-booking-view/PayBookingView";
 import PayMethodSection from "./PayMethodSection";
+import BookViewCanBack from "../../pay-booking-view/BookViewCanBack";
 
 export const PaymentInfo = () => {
   return (
@@ -11,7 +11,7 @@ export const PaymentInfo = () => {
           <PayMethodSection />
         </Col>
         <Col className="pay-booking-view" xs={24} sm={24} md={10} xl={9}>
-          <PayBookingView />
+          <BookViewCanBack />
         </Col>
       </Row>
     </div>

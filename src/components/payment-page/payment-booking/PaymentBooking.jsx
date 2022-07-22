@@ -1,6 +1,9 @@
 import { Steps } from "antd";
 import React, { useContext } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { CustomerContext } from "../../../providers/CustomerContext";
+import { fetchBookingAction } from "../../../stores/slices/bookingsSlice";
 import { ConfirmBooking } from "./confirm-booking/ConfirmBooking";
 import { CustomerInfo } from "./customer-info/CustomerInfo";
 import { PaymentInfo } from "./payment-info/PaymentInfo";
@@ -21,11 +24,14 @@ const steps = [
 ];
 
 export const PaymentBooking = () => {
-  const { currentPay } = useContext(CustomerContext);
+  const { currentPay, setCurrentPay } = useContext(CustomerContext);
+  const dispatch = useDispatch();
 
-  // const prev = () => {
-  //   setCurrentPay(currentPay - 1);
-  // };
+  useEffect(() => {
+    setCurrentPay(0);
+
+    dispatch(fetchBookingAction());
+  }, []);
 
   return (
     <div className="pay-step">

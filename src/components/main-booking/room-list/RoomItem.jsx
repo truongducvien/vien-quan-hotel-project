@@ -4,11 +4,12 @@ import RoomInfo from "./RoomInfo";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import ImageCarouselSwiper from "./ImageCarouselSwiper";
 
-function RoomItem({ room, idOption }) {
+function RoomItem({ room, option }) {
   const { orderInfo, setOrderInfo, options, setOptions } =
     useContext(CustomerContext);
 
   let roomPriceString = String(room.price).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+  let sumGuest = option.adult + option.children;
 
   useEffect(() => {
     setOrderInfo({ ...orderInfo, options });
@@ -16,17 +17,17 @@ function RoomItem({ room, idOption }) {
   }, [options]);
 
   const handleSelect = (room) => {
-    const newOptions = options.map((option) => {
-      if (option.id === idOption) {
+    const newOptions = options.map((op) => {
+      if (op.id === option.id) {
         return {
-          ...option,
+          ...op,
           typeRoomId: room.id,
           typeRoom: room.typeRoom,
           roomPrice: room.price,
           maxPerson: room.maxPerson,
         };
       }
-      return option;
+      return op;
     });
     setOptions(newOptions);
 
@@ -59,7 +60,7 @@ function RoomItem({ room, idOption }) {
               <Row className="rate-price-select">
                 <Col xs={24} sm={16} md={16} xl={16}>
                   <p style={{ fontWeight: 700 }}>VND {roomPriceString} </p>
-                  <p>Max {room.maxPerson} guests, 1 night</p>
+                  <p>{sumGuest} guests, 1 night</p>
                 </Col>
 
                 <Col sx={24} sm={8} md={8} xl={8}>

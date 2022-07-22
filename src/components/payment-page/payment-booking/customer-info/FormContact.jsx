@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input, Col, Row, Collapse, Select } from "antd";
 import {
   DownOutlined,
@@ -8,7 +8,6 @@ import {
 import "../..//style/pay-form-contact.scss";
 import { useContext } from "react";
 import { CustomerContext } from "../../../../providers/CustomerContext";
-import { useEffect } from "react";
 
 const { Panel } = Collapse;
 const { Option } = Select;

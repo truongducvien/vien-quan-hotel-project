@@ -39,10 +39,7 @@ function MainBooking() {
             <Tabs defaultActiveKey="1">
               {orderInfo.options.map((option, index) => (
                 <TabPane key={index + 1} tab={`Room ${index + 1}`}>
-                  <RoomListOption
-                    maxPerson={option.adult}
-                    idOption={option.id}
-                  />
+                  <RoomListOption maxPerson={option.adult} option={option} />
                 </TabPane>
               ))}
             </Tabs>

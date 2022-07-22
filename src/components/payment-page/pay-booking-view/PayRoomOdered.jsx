@@ -23,6 +23,7 @@ function PayRoomOrdered({ option, index }) {
         </div>
         <span className="room-select-price">VND {totalRoomPriceString}</span>
       </div>
+      <div></div>
     </div>
   );
 }
