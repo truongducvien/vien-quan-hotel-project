@@ -1,4 +1,4 @@
-import { delay, put, takeEvery } from "redux-saga/effects";
+import { put, takeEvery } from "redux-saga/effects";
 import { PromotionAPI } from "../../api/promotion.api.js";
 import {
   fetchPromotionAction,
@@ -8,7 +8,6 @@ import {
 
 function* fetchPromotion(action) {
   try {
-    yield delay(500);
     const response = yield PromotionAPI;
     yield put(fetchPromotionActionSuccess(response.data));
   } catch (e) {

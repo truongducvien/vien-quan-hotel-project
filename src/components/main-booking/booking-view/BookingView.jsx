@@ -10,7 +10,7 @@ import { dateString, formatPrice } from "../../../utils";
 const { Panel } = Collapse;
 
 function BookingView() {
-  const { orderInfo, options } = useContext(CustomerContext);
+  const { orderInfo } = useContext(CustomerContext);
 
   const startDate = orderInfo.date.startDay;
   const startDateString = dateString(startDate);
@@ -57,9 +57,7 @@ function BookingView() {
         <div className="room-select-list">
           {orderInfo.options.map((option, index) => (
             <div key={option.id}>
-              {option.typeRoom !== "" && (
-                <RoomOrdered option={option} index={index} />
-              )}
+              <RoomOrdered option={option} index={index} />
             </div>
           ))}
         </div>

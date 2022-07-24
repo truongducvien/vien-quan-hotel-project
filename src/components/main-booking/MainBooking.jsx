@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./style/main-booking.scss";
 import "antd/dist/antd.css";
 import { Row, Col } from "antd";
@@ -9,11 +9,22 @@ import RoomListOption from "./room-list/RoomListOption";
 import { Tabs } from "antd";
 import BookViewNone from "./booking-view/BookViewNone";
 import BookSearchBar from "./book-select-bar/BookSearchBar";
+import { useDispatch, useSelector } from "react-redux";
+import { LoadingOutlined } from "@ant-design/icons";
+import { fetchBookingAction } from "../../stores/slices/bookingsSlice";
+
 const { TabPane } = Tabs;
 
 function MainBooking() {
   const { orderInfo } = useContext(CustomerContext);
+  const bookingState = useSelector((state) => state?.booking?.bookingState);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchBookingAction());
+  }, []);
+
+  const loading = bookingState.loading;
   let totalPrice = 0;
   orderInfo.options.forEach((option) => {
     totalPrice += option.roomPrice * orderInfo.nights;
@@ -21,34 +32,47 @@ function MainBooking() {
 
   return (
     <div>
+      {loading === true ? (
+        <div>
+          <LoadingOutlined />
+        </div>
+      ) : (
+        ""
+      )}
       <main className="main-container">
-        <BookHeader />
-        <BookSearchBar />
-        <Row className="room-booking">
-          <Col className="room-list" xs={24} sm={24} md={14} xl={16}>
-            {/* {orderInfo.options.length <= 1 ? (
-              orderInfo.options.map((option) => (
-                <div className="none-tab-mt" key={option.id}>
-                  <RoomListOption
-                    sumPerson={option.adult + option.children}
-                    idOption={option.id}
-                  />
-                </div>
-              ))
-            ) : ( */}
-            <Tabs defaultActiveKey="1">
-              {orderInfo.options.map((option, index) => (
-                <TabPane key={index + 1} tab={`Room ${index + 1}`}>
-                  <RoomListOption maxPerson={option.adult} option={option} />
-                </TabPane>
-              ))}
-            </Tabs>
-            {/* )} */}
-          </Col>
-          <Col className="booking-view" xs={24} sm={24} md={10} xl={8}>
-            {totalPrice === 0 ? <BookViewNone /> : <BookingView />}
-          </Col>
-        </Row>
+        <div style={{ position: "sticky", top: 0, zIndex: 4 }}>
+          <BookHeader />
+        </div>
+
+        <div className="bg-absolute"></div>
+
+        <div className="sticky-searchbar">
+          <BookSearchBar />
+        </div>
+        <div>
+          <Row className="room-booking">
+            <Col className="room-list" xs={24} sm={24} md={14} xl={16}>
+              {/* {orderInfo.options.length <= 1 ? (
+                orderInfo.options.map((option) => (
+                  <div className="none-tab-mt" key={option.id}>
+                    <RoomListOption option={option} />
+                  </div>
+                ))
+              ) : ( */}
+              <Tabs defaultActiveKey="1">
+                {orderInfo.options.map((option, index) => (
+                  <TabPane key={index + 1} tab={`Room ${index + 1}`}>
+                    <RoomListOption option={option} />
+                  </TabPane>
+                ))}
+              </Tabs>
+              {/* )} */}
+            </Col>
+            <Col className="booking-view" xs={24} sm={24} md={10} xl={8}>
+              {totalPrice === 0 ? <BookViewNone /> : <BookingView />}
+            </Col>
+          </Row>
+        </div>
       </main>
     </div>
   );

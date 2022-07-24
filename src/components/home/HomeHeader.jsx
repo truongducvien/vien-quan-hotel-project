@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
 import { Carousel } from "antd";
-
-import "../style/Header.scss";
-import logo from "../assets/images/ocean_villas_logo_6.png";
-import header1 from "../assets/images/header-image-1.jpg";
-import header2 from "../assets/images/header-image-2.jpg";
-import header3 from "../assets/images/header-image-3.jpg";
-import header4 from "../assets/images/header-image-4.jpg";
+import "../../style/Header.scss";
+import logo from "../../assets/images/ocean_villas_logo_6.png";
+import header1 from "../../assets/images/header-image-1.jpg";
+import header2 from "../../assets/images/header-image-2.jpg";
+import header3 from "../../assets/images/header-image-3.jpg";
+import header4 from "../../assets/images/header-image-4.jpg";
 
 export default function Header({ handleBookNow }) {
   return (

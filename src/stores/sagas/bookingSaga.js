@@ -1,4 +1,4 @@
-import { delay, put, takeEvery } from "redux-saga/effects";
+import { put, takeEvery } from "redux-saga/effects";
 import { BookingAPI } from "../../api/booking.api";
 import {
   fetchBookingAction,
@@ -11,7 +11,6 @@ import {
 
 function* fetchOrder(action) {
   try {
-    yield delay(500);
     const response = yield BookingAPI.getBooking;
 
     yield put(fetchBookingActionSuccess(response.data));
@@ -21,7 +20,6 @@ function* fetchOrder(action) {
 }
 function* postBooking(action) {
   try {
-    yield delay(300);
     const bookingPayload = action.payload;
     const response = yield BookingAPI.post({
       userInfo: bookingPayload.userInfo,

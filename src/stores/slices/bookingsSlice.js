@@ -20,7 +20,7 @@ const bookingSlice = createSlice({
       };
     },
     fetchBookingActionSuccess(state, action) {
-      const orderResponse = [...action?.payload];
+      const orderResponse = [...action.payload];
 
       state.bookingState = {
         ...state.bookingState,

@@ -11,21 +11,26 @@ const { Panel } = Collapse;
 
 function BookingSection() {
   const bookingState = useSelector((state) => state?.booking?.bookingState);
-  const { orderInfo, options } = useContext(CustomerContext);
+  const { orderInfo } = useContext(CustomerContext);
   const [ellipsisIntroduction, setEllipsisIntroduction] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchBookingAction());
-  }, [options]);
+    console.log("bookingState.data :>> ", bookingState?.data);
+  }, []);
 
-  let bookingLength = bookingState?.data?.length;
+  let bookingLength = bookingState?.data.length;
   let bookingNumber = bookingLength + 1;
 
   let bookingName =
     orderInfo.userInfo.firstName + " " + orderInfo.userInfo.lastName;
   let bookingEmail = orderInfo.userInfo.email;
   let payMethod = orderInfo.payment.method;
+
+  const handleComeBackHome = () => {
+    dispatch(fetchBookingAction());
+  };
 
   return (
     <div className="pay-form-contact booking-success">
@@ -135,7 +140,9 @@ function BookingSection() {
         </Collapse>
         <NavLink to="/">
           <div className="pay-submit-contact">
-            <button className="pay-submit-btn">OK! Come Home Page</button>
+            <button onClick={handleComeBackHome} className="pay-submit-btn">
+              OK! Come Home Page
+            </button>
           </div>
         </NavLink>
       </div>

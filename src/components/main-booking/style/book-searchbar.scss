@@ -6,6 +6,8 @@ $labelColor: #b6b6b6;
   width: 100%;
   img {
     width: 100%;
+    height: 150px;
+    object-fit: cover;
   }
 }
 
@@ -37,11 +39,11 @@ $labelColor: #b6b6b6;
     border-radius: 10px;
     width: 100%;
     max-width: 1110px;
-    min-height: 92px;
+    min-height: 82px;
     padding: 0 10px;
-    margin: -45px auto 10px;
+    // margin: -45px auto 10px;
     .ant-row {
-      padding: 22px 10px 0;
+      padding: 18px 10px 0;
     }
     .ant-col {
       padding-right: 10px;
@@ -102,7 +104,7 @@ $labelColor: #b6b6b6;
     box-shadow: 0 2px 12px 0 #0000001a;
     border-radius: 8px;
     border: 1px solid #e4e7ed;
-    margin-top: 36px;
+    margin-top: 42px;
     background: #fff;
     position: absolute;
     top: 20px;
@@ -110,9 +112,12 @@ $labelColor: #b6b6b6;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 16px;
-    width: 150%;
+    width: 160%;
     min-width: 100%;
     text-align: center;
+    max-height: 500px;
+    min-height: 100px;
+    overflow-y: auto;
     .select-options-head {
       h5 {
         text-align: center;
@@ -159,9 +164,6 @@ $labelColor: #b6b6b6;
   }
 
   .option-add-room-btn {
-    line-height: 36px;
-    padding-left: 24px;
-    padding-right: 24px;
     border-radius: 7px;
     transition: all 0.1s;
     white-space: nowrap;
@@ -170,7 +172,13 @@ $labelColor: #b6b6b6;
     font-weight: 700;
     background-color: #fff;
     color: #000000d9;
-    cursor: pointer;
+    &.disable:hover {
+      background: none;
+    }
+    &:hover {
+      background: #066a92;
+      color: #fff;
+    }
   }
   .option-style-btns {
     text-align: right;
@@ -197,5 +205,18 @@ $labelColor: #b6b6b6;
   }
   .done-option-rom-btn:hover {
     background: #005e84;
+  }
+}
+
+.bookNowButton {
+  width: 170px;
+  height: 45px;
+  margin-bottom: 12px;
+  border: unset;
+  background-color: $themeColor;
+  color: white;
+  &:hover {
+    background-color: #036f96;
+    cursor: pointer;
   }
 }

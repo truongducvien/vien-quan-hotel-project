@@ -234,13 +234,17 @@ export default function SelectOptions() {
                 </Row>
               ))}
               <div className="option-style-btns">
-                <button
-                  className="option-add-room-btn"
-                  type="button"
+                <Button
+                  disabled={options.length >= 7}
+                  type="primary"
+                  ghost
+                  className={`option-add-room-btn ${
+                    options.length >= 7 ? "disable" : ""
+                  }`}
                   onClick={handleAddFields}
                 >
                   Add additional room
-                </button>
+                </Button>
                 <button
                   className="option-done-rom-btn"
                   type="button"

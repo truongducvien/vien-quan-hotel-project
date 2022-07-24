@@ -1,16 +1,28 @@
 # json-server
 
-1. endDate: 1657558800000 12/7
-   startDate: 1657472400000 11/7
-2. endDate: 1659283200000 31/7
-   startDate: 1658937600000 27/7
+rooms change id:
+old new
+2 1
+3 2
+1 3
+4 4
+5 5
 
-3. endDate: 1661702400000 28/8
-   startDate: 1661184000000 22/8
+# filter dates
+
+# options rooms - guests
 
 # problem:
 
-1. bookingNumber (update length booking)
-2. sticky UI search
-3. searchBar in HomePage
-4.
+1. fetch data bookings before loading MainBookingPage.
+2. bookingNumber (update length booking)
+3. sticky UI search \* ok
+4. searchBar in HomePage \* ok
+5. Select button RoomItem:
+
+- Minus quantity room when onClick Select button, \* ok
+- When quantity (Room === 0) ===> disable Select Button,
+
+5. Remove button RoomOrdered: \* ok
+
+- Plus quantity room when onClick Remove button, \* ok

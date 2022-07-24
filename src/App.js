@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import HomePage from "./components/HomePage";
 import PaymentPage from "./components/payment-page/PaymentPage";
 import MainBooking from "./components/main-booking/MainBooking";
 import { CustomerContext } from "./providers/CustomerContext";
@@ -10,9 +9,12 @@ import UserLogin from "./components/user-login-register/UserLogin";
 import UserRegister from "./components/user-login-register/UserRegister";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { timeEndDay, timeStartDay } from "./utils";
+import HomePage from "./components/home/HomePage";
 
 function App() {
   const [availableRooms, setAvailableRooms] = useState([]);
+  const [objQtyTypeId, setObjQtyTypeId] = useState({});
+  const [soldOutId, setSoldOutId] = useState([]);
 
   const [options, setOptions] = useState([
     {
@@ -38,7 +40,18 @@ function App() {
       endDay: timeEndDay(tomorrow),
     },
     nights: 1,
-    options: options,
+    options: [
+      {
+        id: v4(),
+        adult: 2,
+        children: 0,
+        typeRoomId: 0,
+        typeRoom: "",
+        roomPrice: 0,
+        roomName: "",
+        maxPerson: 6,
+      },
+    ],
     payment: {
       method: "",
       payInfo: {
@@ -57,6 +70,13 @@ function App() {
       localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
     }
     setOrderInfo(JSON.parse(storedCustomer));
+
+    const qtyRoomStorage = localStorage.getItem("QTY-ROOM");
+
+    if (qtyRoomStorage === null) {
+      localStorage.setItem("QTY-ROOM", JSON.stringify(soldOutId));
+    }
+    setSoldOutId(JSON.parse(qtyRoomStorage));
   }, []);
 
   return (
@@ -68,10 +88,14 @@ function App() {
         setOptions,
         availableRooms,
         setAvailableRooms,
+        objQtyTypeId,
+        setObjQtyTypeId,
         currentPay,
         setCurrentPay,
         userLoginId,
         setUserLoginId,
+        soldOutId,
+        setSoldOutId,
       }}
     >
       <BrowserRouter>

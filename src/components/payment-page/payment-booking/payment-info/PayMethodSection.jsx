@@ -12,6 +12,7 @@ import { DownOutlined } from "@ant-design/icons";
 const { Panel } = Collapse;
 
 function PayMethodSection() {
+  const bookingState = useSelector((state) => state?.booking?.bookingState);
   const dispatch = useDispatch();
   const { orderInfo, setOrderInfo, currentPay, setCurrentPay } =
     useContext(CustomerContext);
