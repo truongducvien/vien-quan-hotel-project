@@ -3,7 +3,7 @@ import "./style/payment-page.scss";
 import "antd/dist/antd.css";
 import { Row, Col } from "antd";
 import { Navigate } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "../../stores/slices/user.slice";
 import { useEffect } from "react";
@@ -49,9 +49,11 @@ function PaymentPage() {
                 </span>
               )}
               &nbsp;
-              <button className="pay-btn-logout" onClick={handleLogOut}>
-                Logout
-              </button>
+              <NavLink to="/">
+                <button className="pay-btn-logout" onClick={handleLogOut}>
+                  Logout
+                </button>
+              </NavLink>
             </div>
           </Col>
 
