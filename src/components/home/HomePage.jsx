@@ -3,20 +3,16 @@ import { CustomerContext } from "../../providers/CustomerContext";
 import Header from "./HomeHeader";
 import { v4 } from "uuid";
 import BookSearchBar from "./HomeSearchBar";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchRoomAction } from "../../stores/slices/roomsSlice";
-import { fetchBookingAction } from "../../stores/slices/bookingsSlice";
+import { SectionViLla } from "./SectionViLla";
+import "./styles/home.scss";
+import { SectionCol } from "./SectionCol";
+import { SectionMap } from "./SectionMap";
+import { HomeFooter } from "./HomeFooter";
 
 export default function HomePage() {
   const { orderInfo, setOptions, setOrderInfo } = useContext(CustomerContext);
-  const roomState = useSelector((state) => state?.room?.roomState);
-  const bookingState = useSelector((state) => state?.booking?.bookingState);
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchRoomAction());
-    dispatch(fetchBookingAction());
-    console.log("bookingState.data :>> ", bookingState.data);
     let newOptions = [
       {
         id: v4(),
@@ -66,7 +62,10 @@ export default function HomePage() {
     <div className="homePage">
       <Header handleBookNow={handleBookNow} />
       <BookSearchBar handleBookNow={handleBookNow} />
-      <div style={{ height: "500px" }}></div>
+      <SectionCol />
+      <SectionViLla />
+      <SectionMap />
+      <HomeFooter />
     </div>
   );
 }

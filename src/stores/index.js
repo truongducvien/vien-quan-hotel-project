@@ -3,10 +3,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import { mySaga } from "./sagas";
-import { bookingReducer } from "./slices/bookingsSlice";
-import { promotionReducer } from "./slices/promotionsSlice";
-import { roomReducer } from "./slices/roomsSlice";
-import { userReducer } from "./slices/UserSlice";
+import { bookingReducer } from "./slices/booking.slice";
+import { postBookingReducer } from "./slices/postBooking.slice";
+import { promoCodeReducer } from "./slices/promoCode.slice";
+import { roomReducer } from "./slices/room.slice";
+import { userReducer } from "./slices/user.slice";
 
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
@@ -15,7 +16,8 @@ const rootReducer = {
   user: userReducer,
   room: roomReducer,
   booking: bookingReducer,
-  promotion: promotionReducer,
+  bookingInfo: postBookingReducer,
+  promoCode: promoCodeReducer,
 };
 
 export const appStore = configureStore({

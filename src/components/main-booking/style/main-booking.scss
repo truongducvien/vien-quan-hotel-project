@@ -3,23 +3,28 @@
   height: 100%;
   line-height: 1.618;
   position: relative;
+  background: #f2f7f9;
   .sticky-searchbar {
     position: sticky;
     top: 47.5px;
     z-index: 4;
-    background-color: #fff;
+    background-color: #f2f7f9;
     padding: 10px;
   }
   .room-booking {
     max-width: 1128px;
     margin: auto;
+    .ant-tabs {
+      background-color: #fff;
+    }
     .ant-tabs-top > .ant-tabs-nav {
       margin: 0;
       position: sticky;
       top: 149.5px;
       z-index: 3;
-      background-color: #fff;
-      display: none;
+      background-color: #f2f7f9;
+      // box-shadow: 0 7px 30px -10px rgb(150 170 180 / 50%);
+      // display: none;
     }
     .ant-tabs-tab {
       padding: 3px 0;

@@ -4,7 +4,7 @@ import "./style/user-register-login.scss";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Link, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { registerAction } from "../../stores/slices/UserSlice";
+import { registerAction } from "../../stores/slices/user.slice";
 
 function UserRegister() {
   const userInfo = useSelector((state) => state.user.userInfoState);

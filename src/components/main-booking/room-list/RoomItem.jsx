@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Row, Col } from "antd";
 import { v4 } from "uuid";
 import RoomInfo from "./RoomInfo";
@@ -15,10 +15,7 @@ function RoomItem({ room, option }) {
     setObjQtyTypeId,
     soldOutId,
     setSoldOutId,
-    hideSoldOut,
-    setHideSoldOut,
   } = useContext(CustomerContext);
-  const [findExitId, setFindExitId] = useState(true);
 
   let roomPriceString = String(room.price).replace(/(.)(?=(\d{3})+$)/g, "$1,");
   let sumGuest = option.adult + option.children;
@@ -74,8 +71,8 @@ function RoomItem({ room, option }) {
     //   return op;
     // });
     // setOptions(newOptions);
-    setOrderInfo({ ...orderInfo, options: options });
-    localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
+    // setOrderInfo({ ...orderInfo, options: options });
+    // localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
 
     //
     let minusValue = Object.keys(objQtyTypeId).reduce((minusValue, key) => {
@@ -90,7 +87,7 @@ function RoomItem({ room, option }) {
         [key]: objQtyTypeId[key],
       };
     }, {});
-    setObjQtyTypeId(minusValue);
+    // setObjQtyTypeId(minusValue);
 
     let filterValue0 = Object.keys(minusValue).reduce((filterValue0, key) => {
       if (minusValue[key] === 0)
@@ -103,30 +100,27 @@ function RoomItem({ room, option }) {
         [key]: minusValue[key],
       };
     }, {});
-
-    setObjQtyTypeId(filterValue0);
     console.log("TYPE ROOM ID :>> ", room.id);
-  };
+    console.log("objQtyTypeId - >>>>>", filterValue0);
+    setObjQtyTypeId(filterValue0);
 
-  useEffect(() => {
-    let filterValue0 = Object.keys(objQtyTypeId).reduce((filterValue0, key) => {
-      if (objQtyTypeId[key] === 0)
-        return {
-          ...filterValue0,
-          [key]: objQtyTypeId[key],
-        };
-      return filterValue0;
-    }, {});
-    console.log(
-      "🚀 ~ file: RoomItem.jsx ~ line 112 ~ filterValue0 ~ objQtyTypeId",
-      objQtyTypeId
+    let filterTypeSoldOut = Object.keys(filterValue0).reduce(
+      (filterTypeSoldOut, key) => {
+        if (filterValue0[key] === 0)
+          return {
+            ...filterTypeSoldOut,
+            [key]: filterValue0[key],
+          };
+        return filterTypeSoldOut;
+      },
+      {}
     );
 
-    const typeId = Object.keys(filterValue0);
+    const typeId = Object.keys(filterTypeSoldOut);
+    console.log("soldOut ID :>> ", typeId);
 
     setSoldOutId(typeId);
-    console.log("soldOutId :>> ", soldOutId);
-  }, [objQtyTypeId]);
+  };
 
   return (
     <div>

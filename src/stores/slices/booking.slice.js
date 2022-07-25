@@ -62,4 +62,5 @@ export const {
   postBookingActionSuccess,
   postBookingActionFailed,
 } = bookingSlice.actions;
+
 export const bookingReducer = bookingSlice.reducer;

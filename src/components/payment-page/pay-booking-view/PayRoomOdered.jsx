@@ -12,7 +12,7 @@ function PayRoomOrdered({ option, index }) {
     <div className="pay-room-select">
       <div className="flex">
         <div className="pay-booking-heading-room fs1-fw7">
-          <i>Room {index + 1}:</i> {option.typeRoom}
+          <b>Room {index + 1}:</b> &nbsp; {option.typeRoom}
         </div>
       </div>
       <div className="flex">

@@ -15,6 +15,12 @@ function App() {
   const [availableRooms, setAvailableRooms] = useState([]);
   const [objQtyTypeId, setObjQtyTypeId] = useState({});
   const [soldOutId, setSoldOutId] = useState([]);
+  const [promoCode, setPromoCode] = useState({
+    codeName: "",
+    value: 0,
+    description: "",
+    id: 0,
+  });
 
   const [options, setOptions] = useState([
     {
@@ -70,13 +76,6 @@ function App() {
       localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
     }
     setOrderInfo(JSON.parse(storedCustomer));
-
-    const qtyRoomStorage = localStorage.getItem("QTY-ROOM");
-
-    if (qtyRoomStorage === null) {
-      localStorage.setItem("QTY-ROOM", JSON.stringify(soldOutId));
-    }
-    setSoldOutId(JSON.parse(qtyRoomStorage));
   }, []);
 
   return (
@@ -96,6 +95,8 @@ function App() {
         setUserLoginId,
         soldOutId,
         setSoldOutId,
+        promoCode,
+        setPromoCode,
       }}
     >
       <BrowserRouter>

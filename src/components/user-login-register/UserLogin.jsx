@@ -6,7 +6,7 @@ import "./style/user-register-login.scss";
 import { Link } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
-import { loginAction } from "../../stores/slices/UserSlice";
+import { loginAction } from "../../stores/slices/user.slice";
 import { CustomerContext } from "../../providers/CustomerContext";
 
 export default function UserLogin() {

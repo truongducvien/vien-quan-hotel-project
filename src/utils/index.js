@@ -11,13 +11,11 @@ export const dateString = (time) => new Date(time).toDateString();
 export const timeStartDay = (time) => {
   const timeNow = new Date(time);
   const setTime = timeNow.setHours(12, 0, 0);
-  let timeAfter = new Date(setTime);
-  return timeAfter.getTime();
+  return setTime;
 };
 
 export const timeEndDay = (time) => {
   const timeNow = new Date(time);
-  const setTime = timeNow.setHours(11, 59, 59);
-  let timeAfter = new Date(setTime);
-  return timeAfter.getTime();
+  const setTime = timeNow.setHours(11, 59, 0);
+  return setTime;
 };

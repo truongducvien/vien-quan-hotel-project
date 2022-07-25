@@ -73,20 +73,47 @@ $labelColor: #b6b6b6;
           top: -14px;
           left: 12px;
         }
-        .search-input {
-          padding: 12px 10px;
-          cursor: pointer;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          font-size: 1rem;
-          font-weight: 400;
-          line-height: 1.5;
-          color: #212529;
-          background-color: #fff;
-          &:focus {
-            border: 1px solid #0071c2;
-          }
+      }
+    }
+    .search-input {
+      padding: 12px 10px;
+      cursor: pointer;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      background-color: #fff;
+      &:focus {
+        border: 1px solid #0071c2;
+      }
+    }
+    .search-input.search-promo {
+      cursor: text;
+      width: 100%;
+      padding: 5px 6px;
+      .input-promo {
+        padding: 6px;
+        border: 1px solid #ddd;
+        border-radius: 6px 0 0 6px;
+        width: 180px;
+        &:focus {
+          border: 1px solid #0071c2;
+          outline: #0071c2;
         }
+      }
+      .option-add-room-btn.apply-btn {
+        border-radius: 0 6px 6px 0;
+        &.ant-btn {
+          padding: 3px;
+        }
+      }
+      .icon-check {
+        color: #00b819;
+      }
+      .warning-info {
+        color: #f09638;
       }
     }
   }
@@ -115,7 +142,7 @@ $labelColor: #b6b6b6;
     width: 160%;
     min-width: 100%;
     text-align: center;
-    max-height: 500px;
+    max-height: 550px;
     min-height: 100px;
     overflow-y: auto;
     .select-options-head {

@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import RoomOrdered from "./RoomOrdered";
 import { dateString, formatPrice } from "../../../utils";
+import { useEffect } from "react";
 
 const { Panel } = Collapse;
 
 function BookingView() {
-  const { orderInfo } = useContext(CustomerContext);
+  const { orderInfo, promoCode } = useContext(CustomerContext);
 
   const startDate = orderInfo.date.startDay;
   const startDateString = dateString(startDate);
@@ -22,10 +23,15 @@ function BookingView() {
     sumGuests += parseFloat(option.adult) + parseFloat(option.children);
   });
 
-  let totalPrice = 0;
+  let totalPriceRoom = 0;
   orderInfo.options.forEach((option) => {
-    totalPrice += option.roomPrice * orderInfo.nights;
+    totalPriceRoom += option.roomPrice * orderInfo.nights;
   });
+
+  let promoValue = (promoCode.value * totalPriceRoom) / 100;
+  let promoValueString = formatPrice(promoValue);
+
+  let totalPrice = totalPriceRoom - promoValue;
 
   let tax = parseFloat((totalPrice * 10) / 100).toFixed(0);
   let taxString = formatPrice(tax);
@@ -61,7 +67,17 @@ function BookingView() {
             </div>
           ))}
         </div>
-
+        {promoCode.value !== 0 && (
+          <div className="line-discount flex">
+            <i className="line-discount name">{promoCode.description}</i>
+            <i
+              className="line-discount value"
+              style={{ textDecoration: "line-through" }}
+            >
+              VND {promoValueString}
+            </i>
+          </div>
+        )}
         <div className="line-total flex">
           <div className="line-total name">Total</div>
           <div className="line-total value">VND {sumTotalString}</div>

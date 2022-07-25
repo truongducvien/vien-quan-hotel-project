@@ -12,19 +12,11 @@ function RoomOrdered({ option, index }) {
     setOptions,
     objQtyTypeId,
     setObjQtyTypeId,
-    soldOutId,
     setSoldOutId,
-    hideSoldOut,
-    setHideSoldOut,
   } = useContext(CustomerContext);
 
   const totalRoomPrice = option.roomPrice * orderInfo.nights;
   const totalRoomPriceString = formatPrice(totalRoomPrice);
-
-  useEffect(() => {
-    console.log("objQtyTypeId Plus:>> ", objQtyTypeId);
-    console.log("soldOutId :>> ", soldOutId);
-  }, [objQtyTypeId]);
 
   const handleRemoveRoomBook = (option) => {
     const filterOption = orderInfo.options.filter((op) => op.id !== option.id);
@@ -66,6 +58,9 @@ function RoomOrdered({ option, index }) {
       };
     }, {});
 
+    console.log("TYPE ROOM ID :>> ", option.typeRoomId);
+    console.log("objQtyTypeID + :>> ", plusValue);
+
     setObjQtyTypeId(plusValue);
   };
 
@@ -80,9 +75,9 @@ function RoomOrdered({ option, index }) {
     }, {});
 
     const typeId = Object.keys(filterValue0);
+    console.log("soldOut ID :>> ", typeId);
 
     setSoldOutId(typeId);
-    //['4', '5']
   }, [objQtyTypeId]);
 
   return (

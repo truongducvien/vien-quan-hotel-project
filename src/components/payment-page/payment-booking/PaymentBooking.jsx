@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { CustomerContext } from "../../../providers/CustomerContext";
-import { fetchBookingAction } from "../../../stores/slices/bookingsSlice";
+import { fetchBookingAction } from "../../../stores/slices/booking.slice";
 import { ConfirmBooking } from "./confirm-booking/ConfirmBooking";
 import { CustomerInfo } from "./customer-info/CustomerInfo";
 import { PaymentInfo } from "./payment-info/PaymentInfo";

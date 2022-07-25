@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CheckOutlined } from "@ant-design/icons";
 import { CustomerContext } from "../../../../providers/CustomerContext";
-import { fetchBookingAction } from "../../../../stores/slices/bookingsSlice";
+import { fetchBookingAction } from "../../../../stores/slices/booking.slice";
 import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
@@ -20,17 +20,12 @@ function BookingSection() {
     console.log("bookingState.data :>> ", bookingState?.data);
   }, []);
 
-  let bookingLength = bookingState?.data.length;
-  let bookingNumber = bookingLength + 1;
+  let bookingNumber = bookingState?.data.length;
 
   let bookingName =
     orderInfo.userInfo.firstName + " " + orderInfo.userInfo.lastName;
   let bookingEmail = orderInfo.userInfo.email;
   let payMethod = orderInfo.payment.method;
-
-  const handleComeBackHome = () => {
-    dispatch(fetchBookingAction());
-  };
 
   return (
     <div className="pay-form-contact booking-success">
@@ -68,10 +63,10 @@ function BookingSection() {
           <h6>
             <CheckOutlined />
             &nbsp; Booking Number:{" "}
-            {bookingLength === undefined ? (
+            {bookingNumber === undefined ? (
               ""
             ) : (
-              <b style={{ color: "blue" }}>{bookingNumber}</b>
+              <b style={{ color: "blue" }}>{bookingNumber + 1}</b>
             )}
           </h6>
 
@@ -140,9 +135,7 @@ function BookingSection() {
         </Collapse>
         <NavLink to="/">
           <div className="pay-submit-contact">
-            <button onClick={handleComeBackHome} className="pay-submit-btn">
-              OK! Come Home Page
-            </button>
+            <button className="pay-submit-btn">OK! Come Home Page</button>
           </div>
         </NavLink>
       </div>

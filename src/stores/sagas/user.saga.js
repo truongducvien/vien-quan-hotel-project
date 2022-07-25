@@ -8,7 +8,7 @@ import {
   registerAction,
   registerActionFailed,
   registerActionSuccess,
-} from "../slices/UserSlice.js";
+} from "../slices/user.slice.js";
 
 function* login(action) {
   try {

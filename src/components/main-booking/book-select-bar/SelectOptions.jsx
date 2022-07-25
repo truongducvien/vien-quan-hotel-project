@@ -36,14 +36,16 @@ export default function SelectOptions() {
       sumChildren: sumChildren,
     });
     setOptions(options);
+    setOrderInfo({ ...orderInfo, options: options });
+    localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
   }, [options]);
 
-  useEffect(() => {
-    setOrderInfo(orderInfo);
-    localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
+  // useEffect(() => {
+  //   setOrderInfo(orderInfo);
+  //   localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
 
-    setOptions(options);
-  }, [orderInfo]);
+  //   setOptions(options);
+  // }, [orderInfo]);
 
   const handleChangeInput = (id, event) => {
     const newOptions = options.map((op) => {
@@ -136,6 +138,7 @@ export default function SelectOptions() {
     let removeOption = options.filter((op) => op.id !== id);
     setOptions(removeOption);
   };
+
   return (
     <div ref={ref}>
       <div
@@ -166,7 +169,7 @@ export default function SelectOptions() {
               </Col>
               <Col md={9} lg={9}>
                 <h5>Children</h5>
-                <p>Ages 1 - 11</p>
+                <p>Ages 11 or less</p>
               </Col>
               <Col md={1} lg={1}></Col>
             </Row>

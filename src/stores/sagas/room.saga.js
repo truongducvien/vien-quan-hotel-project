@@ -4,7 +4,7 @@ import {
   fetchRoomAction,
   fetchRoomActionFailed,
   fetchRoomActionSuccess,
-} from "../slices/roomsSlice.js";
+} from "../slices/room.slice.js";
 
 function* fetchRoom(action) {
   try {

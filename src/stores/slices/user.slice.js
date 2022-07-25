@@ -38,7 +38,7 @@ const userSlice = createSlice({
     loginActionFailed(state, action) {
       localStorage.removeItem(USER_INFO_KEY);
       notification.error({
-        message: action.payload,
+        message: `Login Failed: ${action.payload}`,
       });
     },
 

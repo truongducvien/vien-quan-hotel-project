@@ -6,13 +6,15 @@ import { CustomerContext } from "../../../../providers/CustomerContext";
 import { creditCards } from "./credit-cards.js";
 import FormCreditCard from "./form-credit-card/FormCreditCard";
 import { useDispatch, useSelector } from "react-redux";
-import { postBookingAction } from "../../../../stores/slices/bookingsSlice";
 import { DownOutlined } from "@ant-design/icons";
+import { postBookingAction } from "../../../../stores/slices/postBooking.slice";
 
 const { Panel } = Collapse;
 
 function PayMethodSection() {
-  const bookingState = useSelector((state) => state?.booking?.bookingState);
+  const bookingInfoState = useSelector(
+    (state) => state.bookingInfo.bookingInfoState
+  );
   const dispatch = useDispatch();
   const { orderInfo, setOrderInfo, currentPay, setCurrentPay } =
     useContext(CustomerContext);
