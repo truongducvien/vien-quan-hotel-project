@@ -8,6 +8,7 @@ import FormCreditCard from "./form-credit-card/FormCreditCard";
 import { useDispatch, useSelector } from "react-redux";
 import { DownOutlined } from "@ant-design/icons";
 import { postBookingAction } from "../../../../stores/slices/postBooking.slice";
+import { fetchBookingAction } from "../../../../stores/slices/booking.slice";
 
 const { Panel } = Collapse;
 
@@ -15,9 +16,16 @@ function PayMethodSection() {
   const bookingInfoState = useSelector(
     (state) => state.bookingInfo.bookingInfoState
   );
+  const bookingState = useSelector((state) => state.booking.bookingState);
   const dispatch = useDispatch();
-  const { orderInfo, setOrderInfo, currentPay, setCurrentPay } =
-    useContext(CustomerContext);
+  const {
+    orderInfo,
+    setOrderInfo,
+    currentPay,
+    setCurrentPay,
+    bookingInfo,
+    setBookingInfo,
+  } = useContext(CustomerContext);
   const [payMethod, setPayMethod] = useState("Credit/Debit Card");
   const [ellipsisCancel, setEllipsisCancel] = useState(false);
 
@@ -35,9 +43,26 @@ function PayMethodSection() {
 
   const onAddUserInfoPay = () => {
     dispatch(postBookingAction(orderInfo));
+    dispatch(fetchBookingAction());
 
     setCurrentPay(currentPay + 1);
+    const storageBookingPost = localStorage.getItem("BOOKING_INFO");
+
+    if (storageBookingPost === null) {
+      setBookingInfo({});
+    }
+    setBookingInfo(JSON.parse(storageBookingPost));
   };
+
+  useEffect(() => {
+    const storageBookingPost = localStorage.getItem("BOOKING_INFO");
+
+    if (storageBookingPost === null) {
+      setBookingInfo({});
+    }
+    setBookingInfo(JSON.parse(storageBookingPost));
+  }, [dispatch]);
+  console.log("bookingInfo :>> ", bookingInfo);
 
   return (
     <div className="pay-form-contact">

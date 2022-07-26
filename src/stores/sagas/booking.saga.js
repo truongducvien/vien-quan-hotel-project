@@ -5,6 +5,7 @@ import {
   fetchBookingActionFailed,
   fetchBookingActionSuccess,
 } from "../slices/booking.slice.js";
+import { postBookingActionSuccess } from "../slices/postBooking.slice";
 
 function* fetchOrder(action) {
   try {
@@ -18,4 +19,5 @@ function* fetchOrder(action) {
 
 export function* bookingSaga() {
   yield takeEvery(fetchBookingAction, fetchOrder);
+  yield takeEvery(postBookingActionSuccess, fetchOrder);
 }

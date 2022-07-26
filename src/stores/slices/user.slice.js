@@ -34,6 +34,9 @@ const userSlice = createSlice({
         loading: false,
         data: userInfoResponse,
       };
+      notification.success({
+        message: "Login success! Now you can Booking",
+      });
     },
     loginActionFailed(state, action) {
       localStorage.removeItem(USER_INFO_KEY);

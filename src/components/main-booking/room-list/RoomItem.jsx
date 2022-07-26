@@ -74,7 +74,6 @@ function RoomItem({ room, option }) {
     // setOrderInfo({ ...orderInfo, options: options });
     // localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
 
-    //
     let minusValue = Object.keys(objQtyTypeId).reduce((minusValue, key) => {
       if (Number(key) === room.id) {
         return {
@@ -87,7 +86,6 @@ function RoomItem({ room, option }) {
         [key]: objQtyTypeId[key],
       };
     }, {});
-    // setObjQtyTypeId(minusValue);
 
     let filterValue0 = Object.keys(minusValue).reduce((filterValue0, key) => {
       if (minusValue[key] === 0)

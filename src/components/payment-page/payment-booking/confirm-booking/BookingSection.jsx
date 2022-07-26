@@ -11,14 +11,15 @@ const { Panel } = Collapse;
 
 function BookingSection() {
   const bookingState = useSelector((state) => state?.booking?.bookingState);
-  const { orderInfo } = useContext(CustomerContext);
+  const { orderInfo, bookingInfo, setBookingInfo } =
+    useContext(CustomerContext);
   const [ellipsisIntroduction, setEllipsisIntroduction] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchBookingAction());
     console.log("bookingState.data :>> ", bookingState?.data);
-  }, []);
+  }, [dispatch]);
 
   let bookingNumber = bookingState?.data.length;
 
@@ -26,6 +27,19 @@ function BookingSection() {
     orderInfo.userInfo.firstName + " " + orderInfo.userInfo.lastName;
   let bookingEmail = orderInfo.userInfo.email;
   let payMethod = orderInfo.payment.method;
+
+  const handleComeHomePage = () => {
+    dispatch(fetchBookingAction());
+  };
+  useEffect(() => {
+    const storageBookingPost = localStorage.getItem("BOOKING_INFO");
+
+    if (storageBookingPost === null) {
+      setBookingInfo({});
+    }
+    setBookingInfo(JSON.parse(storageBookingPost));
+  }, [dispatch]);
+  console.log("bookingInfo :>> ", bookingInfo);
 
   return (
     <div className="pay-form-contact booking-success">
@@ -135,7 +149,9 @@ function BookingSection() {
         </Collapse>
         <NavLink to="/">
           <div className="pay-submit-contact">
-            <button className="pay-submit-btn">OK! Come Home Page</button>
+            <button onClick={handleComeHomePage} className="pay-submit-btn">
+              OK! Come Home Page
+            </button>
           </div>
         </NavLink>
       </div>

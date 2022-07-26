@@ -17,7 +17,6 @@ function* postBooking(action) {
       options: bookingPayload.options,
       payment: bookingPayload.payment,
     });
-    console.log("response.data.booking", response.data);
 
     yield put(postBookingActionSuccess(response.data));
   } catch (error) {

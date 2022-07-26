@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "../style/pay-booking-view.scss";
-import { Button, Collapse } from "antd";
+import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import PayRoomOrdered from "./PayRoomOdered";
@@ -128,7 +128,9 @@ function BookViewCanBack() {
       </Collapse>
       <div style={{ textAlign: "center" }}>
         <Link to="/booking">
-          <Button type="primary">Come back to booking room</Button>
+          <button type="button" className="pay-btn-back-booking">
+            Come back to booking room
+          </button>
         </Link>
       </div>
     </div>
