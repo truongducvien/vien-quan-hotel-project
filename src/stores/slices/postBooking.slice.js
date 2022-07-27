@@ -45,11 +45,6 @@ const bookingSlice = createSlice({
       notification.error({
         message: `Post Failed: ${action.payload}`,
       });
-      state.bookingInfoState = {
-        ...state.bookingInfoState,
-        loading: false,
-        error: action.payload,
-      };
     },
   },
 });

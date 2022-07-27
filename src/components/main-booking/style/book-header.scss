@@ -66,3 +66,20 @@ $labelColor: #b6b6b6;
 }
 
 ////
+.pay-btn-logout {
+  padding: 0px 8px;
+  border-radius: 4px;
+  transition: all 0.1s;
+  white-space: nowrap;
+  border: 2px solid;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 3px 10px;
+  background: #fff;
+  color: #004862;
+  cursor: pointer;
+  &:hover {
+    color: #fff;
+    background-color: #004a65;
+  }
+}

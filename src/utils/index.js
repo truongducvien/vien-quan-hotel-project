@@ -52,25 +52,29 @@ export const filterObjQtyTypeRoomId = (
 
   let arrQtyRoomsOfTypeRoom = roomStateData.map((typeRoom) => [
     `${typeRoom.id}`,
-    Number(`${typeRoom.roomList.length}`),
+    Number(`${typeRoom.roomsList.length}`),
   ]);
 
   let objQtyRoomsOfTypeRoom = Object.fromEntries(arrQtyRoomsOfTypeRoom);
 
-  let diffMinus = Object.keys(objQtyRoomsOfTypeRoom).reduce((diff, key) => {
-    if (qtyTypeRoomIdOrdered[key] >= objQtyRoomsOfTypeRoom[key]) {
-      return diff;
-    } else if (qtyTypeRoomIdOrdered[key] < objQtyRoomsOfTypeRoom[key]) {
-      return {
-        ...diff,
-        [key]: objQtyRoomsOfTypeRoom[key] - qtyTypeRoomIdOrdered[key],
-      };
-    } else
-      return {
-        ...diff,
-        [key]: objQtyRoomsOfTypeRoom[key],
-      };
-  }, {});
+  let qtyAvailableIdRoom = Object.keys(objQtyRoomsOfTypeRoom).reduce(
+    (diff, key) => {
+      if (qtyTypeRoomIdOrdered[key] >= objQtyRoomsOfTypeRoom[key]) {
+        return diff;
+      } else if (qtyTypeRoomIdOrdered[key] < objQtyRoomsOfTypeRoom[key]) {
+        return {
+          ...diff,
+          [key]: objQtyRoomsOfTypeRoom[key] - qtyTypeRoomIdOrdered[key],
+        };
+      } else
+        return {
+          ...diff,
+          [key]: objQtyRoomsOfTypeRoom[key],
+        };
+    },
+    {}
+  );
+  console.log("qtyAvailableIdRoom :>> ", qtyAvailableIdRoom);
   // Qty TypeRoomId of options of orderInfo >>>>>>>>
   let optionTypeRoomId = options.map((option) => option.typeRoomId);
 
@@ -81,21 +85,22 @@ export const filterObjQtyTypeRoomId = (
     {}
   );
   console.log("qtyTypeRoomIdOption :>> ", qtyTypeRoomIdOption);
-
-  let diffMinusOptions = Object.keys(diffMinus).reduce((diff, key) => {
-    if (qtyTypeRoomIdOption[key] > diffMinus[key]) {
-      return diff;
-    } else if (qtyTypeRoomIdOption[key] <= diffMinus[key]) {
+  // if qty rooms of optionsOrder === qty rooms of availableRoom ===> SOLD OUT
+  let diffMinusOptions = Object.keys(qtyAvailableIdRoom).reduce(
+    (diffMinusOptions, key) => {
+      if (qtyTypeRoomIdOption[key] === qtyAvailableIdRoom[key]) {
+        return {
+          ...diffMinusOptions,
+          [key]: Number(0),
+        };
+      }
       return {
-        ...diff,
-        [key]: diffMinus[key] - qtyTypeRoomIdOption[key],
+        ...diffMinusOptions,
+        [key]: qtyAvailableIdRoom[key],
       };
-    } else
-      return {
-        ...diff,
-        [key]: diffMinus[key],
-      };
-  }, {});
+    },
+    {}
+  );
 
   return diffMinusOptions;
 };
@@ -111,4 +116,36 @@ export const availableRooms = (objQtyTypeId, roomStateData) => {
     arrayDiffNum.includes(typeRoom.id)
   );
   return newAvailableRooms;
+};
+
+export const soldOutIdFilterValue0 = (objQtyTypeId) => {
+  let filterValue0 = Object.keys(objQtyTypeId).reduce((filterValue0, key) => {
+    if (objQtyTypeId[key] === 0)
+      return {
+        ...filterValue0,
+        [key]: objQtyTypeId[key],
+      };
+    return filterValue0;
+  }, {});
+
+  const typeId = Object.keys(filterValue0);
+  console.log("soldOut ID :>> ", typeId);
+  return typeId;
+};
+
+export const bookingSummaryPrice = (orderInfo, options) => {
+  let totalPriceRoom = 0;
+
+  options.forEach((option) => {
+    totalPriceRoom += option.roomPrice * orderInfo.nights;
+  });
+
+  let tax = parseFloat((totalPriceRoom * 10) / 100).toFixed(0);
+
+  let serviceCharge = parseFloat((totalPriceRoom * 5) / 100).toFixed(0);
+
+  let sumTotal = totalPriceRoom + parseFloat(tax) + parseFloat(serviceCharge);
+  let sumTotalString = formatPrice(sumTotal);
+
+  return sumTotalString;
 };

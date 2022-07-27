@@ -8,7 +8,7 @@ import header2 from "../../assets/images/header-image-2.jpg";
 import header3 from "../../assets/images/header-image-3.jpg";
 import header4 from "../../assets/images/header-image-4.jpg";
 
-export default function Header({ handleBookNow }) {
+export default function Header() {
   return (
     <div className="header">
       <div className="images-slide">
@@ -40,9 +40,7 @@ export default function Header({ handleBookNow }) {
       </div>
 
       <NavLink to="/booking">
-        <button onClick={handleBookNow} className="bookNowButton">
-          Book now
-        </button>
+        <button className="bookNowButton">Book now</button>
       </NavLink>
     </div>
   );

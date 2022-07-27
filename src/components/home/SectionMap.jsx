@@ -59,7 +59,9 @@ export const SectionMap = () => {
                 Policy and Terms of Service apply.
               </p>
               <p style={{ textAlign: "right" }}>
-                <button className="send-btn">SEND</button>
+                <button type="button" className="send-btn">
+                  SEND
+                </button>
               </p>
             </form>
           </div>

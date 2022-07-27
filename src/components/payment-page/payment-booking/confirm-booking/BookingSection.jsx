@@ -11,15 +11,13 @@ const { Panel } = Collapse;
 
 function BookingSection() {
   const bookingState = useSelector((state) => state?.booking?.bookingState);
+
   const { orderInfo, bookingInfo, setBookingInfo } =
     useContext(CustomerContext);
-  const [ellipsisIntroduction, setEllipsisIntroduction] = useState(false);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchBookingAction());
-    console.log("bookingState.data :>> ", bookingState?.data);
-  }, [dispatch]);
+  const [ellipsisIntroduction, setEllipsisIntroduction] = useState(false);
+
+  const dispatch = useDispatch();
 
   let bookingNumber = bookingState?.data.length;
 
@@ -30,16 +28,8 @@ function BookingSection() {
 
   const handleComeHomePage = () => {
     dispatch(fetchBookingAction());
+    localStorage.removeItem("BOOKING_INFO");
   };
-  useEffect(() => {
-    const storageBookingPost = localStorage.getItem("BOOKING_INFO");
-
-    if (storageBookingPost === null) {
-      setBookingInfo({});
-    }
-    setBookingInfo(JSON.parse(storageBookingPost));
-  }, [dispatch]);
-  console.log("bookingInfo :>> ", bookingInfo);
 
   return (
     <div className="pay-form-contact booking-success">

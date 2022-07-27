@@ -7,7 +7,7 @@ import SelectOptions from "../main-booking/book-select-bar/SelectOptions";
 import { SelectDate } from "../main-booking/book-select-bar/SelectDate";
 import { Link } from "react-router-dom";
 
-function BookSearchBar({ handleBookNow }) {
+function BookSearchBar() {
   return (
     <div className="book-search">
       <div
@@ -27,9 +27,7 @@ function BookSearchBar({ handleBookNow }) {
           </Col>
           <Col xs={24} sm={24} md={4} lg={4}>
             <Link to="/booking">
-              <button onClick={handleBookNow} className="bookNowButton">
-                Book now
-              </button>
+              <button className="bookNowButton">Book now</button>
             </Link>
           </Col>
         </Row>

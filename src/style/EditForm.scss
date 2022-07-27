@@ -1,0 +1,252 @@
+homePage {
+  form {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #8fb9db3b;
+    border-radius: 6px;
+    box-shadow: 1px 1px 6px 1px #80808096;
+
+    .form-group {
+      position: relative;
+      flex-basis: 31%;
+      height: 40px;
+      padding: 5px 10px;
+      display: flex;
+      justify-content: center;
+
+      span {
+        font-weight: 500;
+        padding: 3px;
+        margin-right: 5px;
+        text-align: left;
+      }
+      input {
+        width: 45%;
+        border: unset;
+        text-align: center;
+        background-color: #f6f5f5;
+        box-shadow: 1px 1px 6px 1px #80808096;
+      }
+      input:focus {
+        outline: unset;
+        background-color: white;
+      }
+    }
+    .roomName {
+      flex-basis: 100%;
+
+      input {
+        width: 84%;
+      }
+    }
+    .bed,
+    .bathrooms {
+      flex-basis: 47%;
+      input {
+        width: 75%;
+      }
+    }
+    .convenient,
+    .introduction {
+      display: block;
+      flex-basis: 100%;
+      width: fit-content;
+      height: fit-content;
+
+      span {
+        display: block;
+      }
+      textarea {
+        padding: 5px;
+        border: unset;
+        background-color: #f6f5f5;
+        box-shadow: 1px 1px 6px 1px #80808096;
+      }
+      textarea:focus {
+        background-color: white;
+        outline: unset;
+      }
+    }
+  }
+
+  .imageForm {
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #8fb9db3b;
+    border-radius: 6px;
+    box-shadow: 1px 1px 6px 1px #80808096;
+
+    .image-group {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+      height: fit-content;
+      padding: 0 20px;
+      margin: auto;
+
+      .image {
+        position: relative;
+        width: 110px;
+        height: 100px;
+        margin: 15px;
+
+        .image-container {
+          width: 120px;
+          height: 80px;
+          overflow: hidden;
+
+          img {
+            height: 80px;
+          }
+        }
+
+        .deleteButton {
+          font-size: 20px;
+          position: absolute;
+          top: -13px;
+          right: -20px;
+          color: #026082;
+
+          i {
+            border-radius: 50%;
+            background-color: white;
+          }
+
+          i:hover {
+            color: #005777;
+            cursor: pointer;
+            transform: scale(1.08);
+            transition: all 0.1s linear;
+          }
+        }
+      }
+    }
+    .imageLinkInput {
+      input {
+        text-align: center;
+        display: inline-block;
+        width: 80%;
+        margin: 0 10px;
+        border: unset;
+        background-color: #f6f5f5;
+      }
+      input:focus {
+        outline: unset;
+        background-color: white;
+      }
+      button {
+        width: 60px;
+        background-color: #026082;
+        border: unset;
+        color: white;
+      }
+      button:hover {
+        cursor: pointer;
+        background-color: #01688e;
+      }
+      button:active {
+        background-color: #0276a1;
+      }
+      button:disabled {
+        cursor: not-allowed;
+        color: grey;
+        background-color: rgb(223, 223, 223);
+      }
+    }
+  }
+
+  .roomsListForm {
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: #8fb9db3b;
+    border-radius: 6px;
+    box-shadow: 1px 1px 6px 1px #80808096;
+
+    .roomsListTitle {
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .rooms-group {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      padding: 10px;
+      background: white;
+      border-radius: 3px;
+
+      .room {
+        flex-basis: 33%;
+
+        .roomName {
+          display: inline-block;
+          width: 100px;
+        }
+      }
+    }
+    .deleteRoomButton {
+      width: fit-content;
+      padding: 4px;
+      border: unset;
+      margin: 4px;
+      background-color: #026082;
+      color: white;
+      font-size: smaller;
+    }
+    .deleteRoomButton:hover {
+      cursor: pointer;
+      background-color: #01688e;
+    }
+    .deleteRoomButton:active {
+      background-color: #0276a1;
+    }
+    .deleteRoomButton:disabled {
+      cursor: not-allowed;
+      color: grey;
+      background-color: rgb(223, 223, 223);
+    }
+
+    .roomInput {
+      input {
+        text-align: center;
+        display: inline-block;
+        width: 40%;
+        margin: 0 10px;
+        border: unset;
+        background-color: #f6f5f5;
+      }
+      input:focus {
+        outline: unset;
+        background-color: white;
+      }
+      button {
+        width: 60px;
+        background-color: #026082;
+        border: unset;
+        color: white;
+      }
+      button:hover {
+        cursor: pointer;
+        background-color: #01688e;
+      }
+      button:active {
+        background-color: #0276a1;
+      }
+      button:disabled {
+        cursor: not-allowed;
+        color: grey;
+        background-color: rgb(223, 223, 223);
+      }
+    }
+  }
+}

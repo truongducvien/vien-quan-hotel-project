@@ -13,6 +13,7 @@ import { fetchBookingAction } from "../../../stores/slices/booking.slice";
 import {
   availableRooms,
   filterObjQtyTypeRoomId,
+  soldOutIdFilterValue0,
   timeEndDay,
   timeStartDay,
 } from "../../../utils";
@@ -27,7 +28,9 @@ export const SelectDate = () => {
     setOrderInfo,
     setObjQtyTypeId,
     objQtyTypeId,
+    setSoldOutId,
     setAvailableRooms,
+    bookingInfo,
   } = useContext(CustomerContext);
 
   const roomState = useSelector((state) => state.room.roomState);
@@ -40,8 +43,7 @@ export const SelectDate = () => {
   useEffect(() => {
     dispatch(fetchRoomAction());
     dispatch(fetchBookingAction());
-  }, []);
-  // console.log("bookingState?.data :>> ", bookingState?.data);
+  }, [bookingInfoState, bookingInfo, dispatch]);
 
   const loadingBooking = bookingState?.loading;
   const loadingRoom = roomState?.loading;
@@ -120,6 +122,12 @@ export const SelectDate = () => {
     loadingRoom,
     orderInfo.options,
   ]);
+
+  useEffect(() => {
+    const typeId = soldOutIdFilterValue0(objQtyTypeId);
+
+    setSoldOutId(typeId);
+  }, [objQtyTypeId]);
 
   useEffect(() => {
     const newAvailableRooms = availableRooms(objQtyTypeId, roomState?.data);

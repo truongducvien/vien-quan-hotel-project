@@ -38,31 +38,17 @@ function PayMethodSection() {
       },
     };
     setOrderInfo({ ...orderInfo, payment: newPayMethod });
-    localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
+    localStorage.setItem(
+      "ORDER_INFO",
+      JSON.stringify({ ...orderInfo, payment: newPayMethod })
+    );
   }, [payMethod]);
 
   const onAddUserInfoPay = () => {
     dispatch(postBookingAction(orderInfo));
-    dispatch(fetchBookingAction());
 
     setCurrentPay(currentPay + 1);
-    const storageBookingPost = localStorage.getItem("BOOKING_INFO");
-
-    if (storageBookingPost === null) {
-      setBookingInfo({});
-    }
-    setBookingInfo(JSON.parse(storageBookingPost));
   };
-
-  useEffect(() => {
-    const storageBookingPost = localStorage.getItem("BOOKING_INFO");
-
-    if (storageBookingPost === null) {
-      setBookingInfo({});
-    }
-    setBookingInfo(JSON.parse(storageBookingPost));
-  }, [dispatch]);
-  console.log("bookingInfo :>> ", bookingInfo);
 
   return (
     <div className="pay-form-contact">

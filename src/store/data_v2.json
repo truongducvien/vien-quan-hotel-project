@@ -1,0 +1,902 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "key": 1,
+      "typeRoom": "Ocean Suite",
+      "price": 2475000,
+      "quantity": 5,
+      "maxPerson": 2,
+      "bed": "1 King bed",
+      "bathrooms": "1 Bathroom",
+      "convenient": "85.8m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "French colonial style blends charmingly with traditional Vietnamese interior design. Listen to the sound of the waves and watch the fishermen in their basket boats, while you are relaxing on one of the two outside sofas on the 24 sqm balcony. The suites are adorned with arched ceilings and offer a separate living room and bedroom, two marble bathrooms, two closets, TV for each room. Shiny, polished timber floors compliment the elegant and comfortable furniture.",
+      "imageUrl": [
+        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/476411/476411/1BR_Apartment_.1.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
+        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/477239/477239/1BR_Apartment.2.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
+        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/477240/477240/1BR_Apartment.3.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
+        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/477241/477241/1BR_Apartment.4.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
+        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/477242/477242/1BR_Apartment.5.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55",
+        "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/floor_plans/476419/476419/1-bedroom-apartment-1.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55"
+      ],
+      "roomsList": [
+        {
+          "id": "1a",
+          "key": "1a",
+          "roomName": "OS01",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "1b",
+          "key": "1b",
+          "roomName": "OS02",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "1c",
+          "key": "1c",
+          "roomName": "OS03",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "3cf8608d-7766-418a-a8aa-d38b047f5998",
+          "key": "5f59d5ae-0b67-49fc-953a-d659a4474b95",
+          "roomName": "OS04",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "d7173042-4b20-40c4-adf4-d6b3f84a8faa",
+          "key": "b1fb61e4-84e3-4019-9255-7284b77a531b",
+          "roomName": "OS05",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "key": 2,
+      "typeRoom": "Ocean Deluxe",
+      "price": 1849000,
+      "quantity": 5,
+      "maxPerson": 2,
+      "bed": "1 Double bed",
+      "bathrooms": "1 Bathroom",
+      "convenient": "44m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "One double bed. Large balcony or patio with Bac My An sea view. 44 square meters (474 square feet). Asian-inspired décor, polished wood floors, walk-in closet, marble bathroom. Separate sitting area with loveseat, coffee table, armchair.",
+      "imageUrl": [
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-M.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-M3.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-M4.jpg"
+      ],
+      "roomsList": [
+        {
+          "id": "2a",
+          "key": "2a",
+          "roomName": "OD01",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "2b",
+          "key": "2b",
+          "roomName": "OD02",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "2c",
+          "key": "2c",
+          "roomName": "OD03",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "2d",
+          "key": "2d",
+          "roomName": "OD04",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "2e",
+          "key": "2e",
+          "roomName": "OD05",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "key": 3,
+      "typeRoom": "Garden Superior",
+      "price": 2149000,
+      "quantity": 5,
+      "maxPerson": 2,
+      "bed": "1 Double bed",
+      "bathrooms": "1 Bathrooms",
+      "convenient": "40m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "Enjoy the sunset from the spacious balcony or terrace of this superior room. You will find everything you need to feel comfortable: elegant furniture, twin-sized bed, polished timber floor, walk-in closet, ceiling fan, and a generous marble bathroom with a luxury shower.",
+      "imageUrl": [
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Garden-Superior-TwinBed-1_M2.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Garden-Superior-double-bed-1-M.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-M4.jpg"
+      ],
+      "roomsList": [
+        {
+          "id": "3a",
+          "key": "3a",
+          "roomName": "GS01",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "3b",
+          "key": "3b",
+          "roomName": "GS02",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "3c",
+          "key": "3c",
+          "roomName": "GS03",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "3d",
+          "key": "3d",
+          "roomName": "GS04",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "3e",
+          "key": "3e",
+          "roomName": "GS05",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "key": 4,
+      "typeRoom": "Presidental Suit",
+      "price": 5149000,
+      "quantity": 5,
+      "maxPerson": 2,
+      "bed": "1 Double bed",
+      "bathrooms": "1 Bathrooms",
+      "convenient": "130m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "The new Presidential Suite decorated in royal style with sea view offers its own unique features with oversized living room, large screen TV, bedroom with king bed, marble bathroom housing with bathtub and electric bidet.",
+      "imageUrl": [
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Presidential-Suite-M.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-president-suite_01.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-president-suite_03.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-president-suite_04.jpg"
+      ],
+      "roomsList": [
+        {
+          "id": "4a",
+          "key": "4a",
+          "roomName": "PS01",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "4b",
+          "key": "4b",
+          "roomName": "PS02",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "4c",
+          "key": "4c",
+          "roomName": "PS03",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "4d",
+          "key": "4d",
+          "roomName": "PS04",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "4e",
+          "key": "4e",
+          "roomName": "PS05",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "key": 5,
+      "typeRoom": "Beach Front Villas",
+      "price": 10249000,
+      "quantity": 5,
+      "maxPerson": 6,
+      "bed": "3 Double bed",
+      "bathrooms": "4 Bathrooms",
+      "convenient": "250m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "The new Presidential Suite decorated in royal style with sea view offers its own unique features with oversized living room, large screen TV, bedroom with king bed, marble bathroom housing with bathtub and electric bidet.",
+      "imageUrl": [
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas-_Exterior-1-F.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas-Sea-View.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas_Bedroom-2.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas_Bedroom-1.jpg"
+      ],
+      "roomsList": [
+        {
+          "id": "5a",
+          "key": "5a",
+          "roomName": "BFV01",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "id": "5a",
+            "key": "5a",
+            "roomName": "BFV01",
+            "BookedDay": [],
+            "roomStatus": "available",
+            "currentBooking": {
+              "bookingId": "",
+              "userFullName": ""
+            }
+          }
+        },
+        {
+          "id": "5b",
+          "key": "5b",
+          "roomName": "BFV02",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": 7,
+            "userFullName": "b b"
+          }
+        },
+        {
+          "id": "5c",
+          "key": "5c",
+          "roomName": "BFV03",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "5d",
+          "key": "5d",
+          "roomName": "BFV04",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "5e",
+          "key": "5e",
+          "roomName": "BFV05",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "key": 6,
+      "typeRoom": "Pool Villas",
+      "price": 14269000,
+      "quantity": 5,
+      "maxPerson": 10,
+      "bed": "5 Double/Twin bed",
+      "bathrooms": "6 Bathrooms",
+      "convenient": "320m² • Pool view • Non-smoking • Kitchen • Wireless Internet • Iron/Ironing board • Air conditioned • Laundry Facilities • Room Safe • Tea/Coffee Maker • Room Service • Daily Room Service • Fridge • DVD Player • Mini Bar • Balcony • Telephone • Bathrobes Provided • Microwave • Television • Hairdryer • Heating • Alarm Clock",
+      "introduction": "This is a living with natural sunlight and the sophistication of traditional and contemporary design. The ground floor is completely flanked by floor-to-ceiling windows covered with beautiful mahogany wooden shutters. The kitchen, modern and beautiful, is open to the deck and cobalt tiled pool, with sleek and modern appliances and a marble counter surface, and a rich mahogany dining area.",
+      "imageUrl": [
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Pool_Villas-1024x550.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Pool_Villas_Twin-Bedroom-1024x550.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Pool_Villas_Kitchen-Area-1024x550.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Pool_Villas_Pool-1024x550.jpg",
+        "https://furamavietnam.com/wp-content/uploads/2018/08/DSC08265-1024x550.jpg"
+      ],
+      "roomsList": [
+        {
+          "id": "6a",
+          "key": "6a",
+          "roomName": "PV01",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "6b",
+          "key": "6b",
+          "roomName": "PV02",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "6c",
+          "key": "6c",
+          "roomName": "PV03",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "6d",
+          "key": "6d",
+          "roomName": "PV04",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "6e",
+          "key": "6e",
+          "roomName": "PV05",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2fffd05-3db0-4f56-9494-10fbbd320fe9",
+      "key": "d0c243c9-bda7-4adf-9ac0-8beab6cdb85c",
+      "typeRoom": "VIP",
+      "price": "123456",
+      "quantity": 6,
+      "maxPerson": "9",
+      "bed": "4",
+      "bathrooms": "5",
+      "convenient": "jkhkjh",
+      "introduction": "ljhlj",
+      "imageUrl": [
+        "https://camranhmystery.com.vn/images/hoboi2.jpg",
+        "https://cdn.asahiluxstay.com//uploads/big/image/asahi/resources/2021/09/16/25dc7-1631763234353.jpg?s=aHR0cHM6Ly9jZG4uYXNhaGlsdXhzdGF5LmNvbS9pbWFnZS9hc2FoaS9yZXNvdXJjZXMvMjAyMS8wOS8xNi8yNWRjNy0xNjMxNzYzMjM0MzUzLnBuZw=="
+      ],
+      "roomsList": [
+        {
+          "id": "f08ff81c-3968-4edb-b186-4e296fb62532",
+          "key": "3a87eb9a-507e-4525-8780-83443471945a",
+          "roomName": "VIP01",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "5326fbe1-e13a-4768-9918-ed211413251f",
+          "key": "6dfe8ebc-d6dc-460a-b751-9d8137bc6cfe",
+          "roomName": "VIP02",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "a47b1b48-70a3-482c-beca-1c6784eabfe3",
+          "key": "e042bd24-6acd-4fa1-98e9-a6037778c6f5",
+          "roomName": "VIP03",
+          "BookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "6aec546d-b5bc-4dcf-9e28-46bc24553a72",
+          "key": "e089605c-6470-4e15-b531-e7bd2dfb12cc",
+          "roomName": "VIP04",
+          "bookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "b582ecc3-69b7-40db-ae64-7606f0624da6",
+          "key": "1b64e540-0910-4367-89ee-29feafde4a14",
+          "roomName": "VIP05",
+          "bookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        },
+        {
+          "id": "9fb7c706-5612-47a1-a25e-b4068f8e64f3",
+          "key": "7661e4ce-48bb-48e3-b2c5-6d64c8b4635d",
+          "roomName": "Special VIP",
+          "bookedDay": [],
+          "roomStatus": "available",
+          "currentBooking": {
+            "bookingId": "",
+            "userFullName": ""
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "ducvien",
+      "email": "truongducvien@gmail.com"
+    },
+    {
+      "username": "cvin.trng",
+      "email": "cvin.trng@gmail.com"
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888",
+        "arrivalTime": "03:00 PM (15:00)",
+        "requests": ""
+      },
+      "date": {
+        "startDay": 1660798800000,
+        "endDay": 1660885140000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "c8bad13e-fe51-4c2c-8cc7-5b532dce87d",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomName": "",
+          "roomPrice": 2475000,
+          "status": "Booked"
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 2,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888",
+        "arrivalTime": "03:00 PM (15:00)",
+        "requests": ""
+      },
+      "date": {
+        "startDay": 1660798800000,
+        "endDay": 1660885140000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "c8bad13e-fe51-4c2c-8cc7-5b532ce87d3",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomName": "",
+          "roomPrice": 2475000,
+          "status": "Booked"
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 3,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888",
+        "arrivalTime": "03:00 PM (15:00)",
+        "requests": ""
+      },
+      "date": {
+        "startDay": 1660798800000,
+        "endDay": 1660885140000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "92761d6c-1736-4b94-8315-20f68d6bf7ca",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomName": "",
+          "roomPrice": 2475000,
+          "status": "Booked"
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 4,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888",
+        "arrivalTime": "03:00 PM (15:00)",
+        "requests": ""
+      },
+      "date": {
+        "startDay": 1660798800000,
+        "endDay": 1660885140000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "9d899e1c-4dab-4c11-bdc2-d5b4bf5847fb",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomName": "",
+          "roomPrice": 2475000,
+          "status": "Booked"
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 5,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888",
+        "arrivalTime": "03:00 PM (15:00)",
+        "requests": ""
+      },
+      "date": {
+        "startDay": 1660798800000,
+        "endDay": 1660885140000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "22c9d64f-9e84-427b-ab4c-8f2e293c6420",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomName": "",
+          "roomPrice": 2475000,
+          "status": "Booked"
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 6,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888",
+        "arrivalTime": "03:00 PM (15:00)",
+        "requests": ""
+      },
+      "date": {
+        "startDay": 1658898000000,
+        "endDay": 1659243540000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 3,
+          "children": 0,
+          "id": "acbb9492-18d8-4fda-98c1-a01a7efcfd64",
+          "typeRoomId": 3,
+          "typeRoom": "Garden Superior",
+          "roomName": "",
+          "roomPrice": 2149000,
+          "status": "Booked"
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 7,
+      "userInfo": {
+        "id": 2,
+        "email": "b@b.com",
+        "firstName": "b",
+        "lastName": "b",
+        "phone": "9999999999",
+        "arrivalTime": "03:00 PM (15:00)",
+        "requests": ""
+      },
+      "date": {
+        "startDay": 1661144400000,
+        "endDay": 1661662740000
+      },
+      "nights": 12,
+      "options": [
+        {
+          "id": "cb238eae-555e-4e68-9a1d-38c33aa619da",
+          "adult": 2,
+          "children": 0,
+          "typeRoomId": 2,
+          "typeRoom": "Ocean Deluxe",
+          "roomName": "",
+          "roomPrice": 1849000,
+          "status": "Booked"
+        },
+        {
+          "id": "c702f2ea-38b5-4e89-8714-2876c0b4c9a1",
+          "adult": 4,
+          "children": 2,
+          "typeRoomId": 5,
+          "typeRoom": "Beach Front Villas",
+          "roomName": "",
+          "roomPrice": 10249000,
+          "status": "Booked"
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 8,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888",
+        "arrivalTime": "03:00 PM (15:00)",
+        "requests": ""
+      },
+      "date": {
+        "startDay": 1657472400000,
+        "endDay": 1657558800000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "824ae356-e7b6-457e-a7fc-bd95c1089505",
+          "typeRoomId": 2,
+          "typeRoom": "Ocean Deluxe",
+          "roomName": "",
+          "roomPrice": 1849000,
+          "status": "Booked"
+        },
+        {
+          "id": "ebd78965-39f8-4daa-b4ec-1b7873488127",
+          "adult": 4,
+          "children": 1,
+          "typeRoomId": 5,
+          "typeRoom": "Beach Front Villas",
+          "roomName": "",
+          "roomPrice": 10249000,
+          "status": "Booked"
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    },
+    {
+      "id": 9,
+      "userInfo": {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "a",
+        "lastName": "a",
+        "phone": "8888888888",
+        "arrivalTime": "03:00 PM (15:00)",
+        "requests": ""
+      },
+      "date": {
+        "startDay": 1657472400000,
+        "endDay": 1657558800000
+      },
+      "nights": 1,
+      "options": [
+        {
+          "adult": 2,
+          "children": 0,
+          "id": "7bf413fd-b280-430a-9ce4-23aa633a3c19",
+          "typeRoomId": 1,
+          "typeRoom": "Ocean Suite",
+          "roomName": "",
+          "roomPrice": 2475000,
+          "status": "Booked"
+        }
+      ],
+      "payment": {
+        "method": "",
+        "payInfo": {
+          "cardNumber": "",
+          "nameOnCard": ""
+        }
+      }
+    }
+  ]
+}

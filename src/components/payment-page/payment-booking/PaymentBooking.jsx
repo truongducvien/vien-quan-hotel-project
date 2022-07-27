@@ -25,12 +25,9 @@ const steps = [
 
 export const PaymentBooking = () => {
   const { currentPay, setCurrentPay } = useContext(CustomerContext);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setCurrentPay(0);
-
-    dispatch(fetchBookingAction());
   }, []);
 
   return (

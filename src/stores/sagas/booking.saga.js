@@ -1,4 +1,4 @@
-import { put, takeEvery } from "redux-saga/effects";
+import { delay, put, takeEvery } from "redux-saga/effects";
 import { BookingAPI } from "../../api/booking.api";
 import {
   fetchBookingAction,
@@ -9,7 +9,11 @@ import { postBookingActionSuccess } from "../slices/postBooking.slice";
 
 function* fetchOrder(action) {
   try {
+    yield delay(100);
+
     const response = yield BookingAPI;
+
+    console.log("fetchBooking :>> ", response.data);
 
     yield put(fetchBookingActionSuccess(response.data));
   } catch (e) {

@@ -1,0 +1,42 @@
+.typeTitle{
+   display: block;
+   text-align: left;
+   padding-left: 30px;
+   font-weight: 500;
+   color: #026082;
+}
+
+.room-group{
+   display: flex;
+   justify-content: flex-start;
+   flex-wrap: wrap;
+   padding: 5px;
+   background-color: #f0f0f0;
+   border-radius: 2px;
+   box-shadow: 1px 1px 4px #026082;
+
+   .room{
+      width: 100px;
+      height: 40px;
+      padding: 5px;
+      margin: 10px;
+      line-height: 30px;
+      border-radius: 3px;
+      box-shadow: 1px 1px 2px #80808078;
+      font-weight: 500;
+   }
+   .room:hover{
+      cursor: pointer;;
+      opacity: 0.8;
+   }
+   .available{
+      background-color: #65e065;
+   }
+   .active{
+      background-color: #4747fffb;
+      color: white;
+   }
+   .busy{
+      background-color: #ea6666;
+   }
+}

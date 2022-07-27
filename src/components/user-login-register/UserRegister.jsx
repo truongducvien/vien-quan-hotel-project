@@ -107,6 +107,9 @@ function UserRegister() {
                     rules={[
                       {
                         required: true,
+                        // type: "regexp",
+                        // pattern: new RegExp(/\d+/g),
+                        // message: "Wrong format!",
                       },
                       ({ getFieldValue }) => ({
                         validator(_, value) {

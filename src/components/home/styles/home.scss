@@ -1,38 +1,99 @@
-.villas-suites {
-  background-image: url(https://dmaevvtdousx6.cloudfront.net/uploads/2018/08/DSC_8462.jpg);
-  overflow: hidden;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  .section-inner {
-    width: 100%;
-    padding: 200px 8%;
-    position: relative;
+.home-page {
+  .villas-suites {
+    background-image: url(https://dmaevvtdousx6.cloudfront.net/uploads/2018/08/DSC_8462.jpg);
     overflow: hidden;
-    .section-content {
-      padding: 40px 30px;
-      max-width: 932px;
-      background: rgba(255, 255, 255, 0.8);
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .section-inner {
+      width: 100%;
+      padding: 200px 8%;
+      position: relative;
+      overflow: hidden;
+      .section-content {
+        padding: 40px 30px;
+        max-width: 932px;
+        background: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        margin: auto;
+        overflow: hidden;
+        font-size: 16px;
+        font-weight: 300;
+        text-align: center;
+        letter-spacing: 0.05em;
+        line-height: 28px;
+        h2 {
+          font-size: 40px;
+          margin-bottom: 20px;
+          font-weight: 100;
+          letter-spacing: 0.05em;
+          line-height: 1;
+          color: #005371;
+        }
+
+        .section-villa-btn {
+          background-color: #005371;
+          color: #fff;
+          border: 1px solid #005371;
+          padding: 5px 36px;
+          &:hover {
+            background-color: #00445d;
+          }
+        }
+      }
+    }
+  }
+  .section-col {
+    max-height: 500px;
+    background-color: #005371;
+    .ant-col-md-12 {
+      padding: 0;
+    }
+    img {
+      max-height: 500px;
+      min-height: 499px;
+      object-fit: cover;
+    }
+    .content {
+      padding: 100px 80px;
+      background: #005371;
       text-align: center;
       margin: auto;
       overflow: hidden;
       font-size: 16px;
       font-weight: 300;
-      text-align: center;
+      text-align: left;
       letter-spacing: 0.05em;
       line-height: 28px;
+      color: #fff;
       h2 {
         font-size: 40px;
         margin-bottom: 20px;
         font-weight: 100;
         letter-spacing: 0.05em;
         line-height: 1;
-        color: #005371;
+        color: #fff;
       }
-
-      .section-villa-btn {
+    }
+    .carousel {
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+  .section-map {
+    .contact {
+      padding: 60px 30px;
+      font-weight: 500;
+      font-size: 14px;
+      background-color: #fff;
+      input,
+      textarea {
+        background-color: #f4f4f4;
+        color: #222;
+      }
+      .send-btn {
         background-color: #005371;
         color: #fff;
         border: 1px solid #005371;
@@ -43,65 +104,9 @@
       }
     }
   }
-}
-.section-col {
-  max-height: 500px;
-  background-color: #005371;
-  img {
-    max-height: 500px;
-    min-height: 499px;
-    object-fit: cover;
-  }
-  .content {
-    padding: 100px 80px;
-    background: #005371;
-    text-align: center;
-    margin: auto;
-    overflow: hidden;
-    font-size: 16px;
-    font-weight: 300;
-    text-align: left;
-    letter-spacing: 0.05em;
-    line-height: 28px;
+  .home-footer {
+    background-color: #00445d;
     color: #fff;
-    h2 {
-      font-size: 40px;
-      margin-bottom: 20px;
-      font-weight: 100;
-      letter-spacing: 0.05em;
-      line-height: 1;
-      color: #fff;
-    }
+    padding: 16px 100px;
   }
-  .carousel {
-    width: 100%;
-    overflow: hidden;
-  }
-}
-.section-map {
-  .contact {
-    padding: 60px 30px;
-    font-weight: 500;
-    font-size: 14px;
-    input,
-    textarea {
-      background-color: #f4f4f4;
-      color: #222;
-    }
-    .send-btn {
-      background-color: #005371;
-      color: #fff;
-      border: 1px solid #005371;
-      padding: 5px 36px;
-      &:hover {
-        background-color: #00445d;
-      }
-    }
-  }
-}
-.home-footer {
-  background-color: #00445d;
-  color: #fff;
-  padding: 16px 100px;
-  
 }

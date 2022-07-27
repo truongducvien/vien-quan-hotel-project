@@ -3,7 +3,7 @@ import "./style/main-booking.scss";
 import "antd/dist/antd.css";
 import { Row, Col } from "antd";
 import BookingView from "./booking-view/BookingView";
-import BookHeader from "./BookHeader";
+import { BookHeader } from "./BookHeader";
 import { CustomerContext } from "../../providers/CustomerContext";
 import RoomListOption from "./room-list/RoomListOption";
 import { Tabs } from "antd";

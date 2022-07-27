@@ -5,15 +5,8 @@ import { formatPrice } from "../../../utils";
 import { v4 } from "uuid";
 
 function RoomOrdered({ option, index }) {
-  const {
-    orderInfo,
-    setOrderInfo,
-    options,
-    setOptions,
-    objQtyTypeId,
-    setObjQtyTypeId,
-    setSoldOutId,
-  } = useContext(CustomerContext);
+  const { orderInfo, setOrderInfo, options, setOptions } =
+    useContext(CustomerContext);
 
   const totalRoomPrice = option.roomPrice * orderInfo.nights;
   const totalRoomPriceString = formatPrice(totalRoomPrice);
@@ -45,40 +38,30 @@ function RoomOrdered({ option, index }) {
       localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
     }
 
-    let plusValue = Object.keys(objQtyTypeId).reduce((plusValue, key) => {
-      if (Number(key) === option.typeRoomId) {
-        return {
-          ...plusValue,
-          [key]: objQtyTypeId[key] + 1,
-        };
-      }
-      return {
-        ...plusValue,
-        [key]: objQtyTypeId[key],
-      };
-    }, {});
+    // let plusValue = Object.keys(objQtyTypeId).reduce((plusValue, key) => {
+    //   if (Number(key) === option.typeRoomId) {
+    //     return {
+    //       ...plusValue,
+    //       [key]: objQtyTypeId[key] + 1,
+    //     };
+    //   }
+    //   return {
+    //     ...plusValue,
+    //     [key]: objQtyTypeId[key],
+    //   };
+    // }, {});
 
-    console.log("TYPE ROOM ID :>> ", option.typeRoomId);
-    console.log("objQtyTypeID + :>> ", plusValue);
+    // console.log("TYPE ROOM ID :>> ", option.typeRoomId);
+    // console.log("objQtyTypeID + :>> ", plusValue);
 
-    setObjQtyTypeId(plusValue);
+    // setObjQtyTypeId(plusValue);
   };
 
-  useEffect(() => {
-    let filterValue0 = Object.keys(objQtyTypeId).reduce((filterValue0, key) => {
-      if (objQtyTypeId[key] === 0)
-        return {
-          ...filterValue0,
-          [key]: objQtyTypeId[key],
-        };
-      return filterValue0;
-    }, {});
+  // useEffect(() => {
+  //  const typeId = soldOutIdFilterValue0(objQtyTypeId);
 
-    const typeId = Object.keys(filterValue0);
-    console.log("soldOut ID :>> ", typeId);
-
-    setSoldOutId(typeId);
-  }, [objQtyTypeId]);
+  //   setSoldOutId(typeId);
+  // }, [objQtyTypeId]);
 
   return (
     <div className="room-select">

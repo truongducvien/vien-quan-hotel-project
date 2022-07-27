@@ -1,0 +1,73 @@
+.booking-report {
+  .book-header {
+    position: relative;
+  }
+  .booking-report-header {
+    margin: 20px 0 0 11%;
+    .title {
+      font-weight: 700;
+      color: #204166;
+    }
+    hr {
+      width: 10%;
+      height: 6px;
+      color: #204166;
+    }
+  }
+  .ant-table-thead > tr > th {
+    font-weight: 700;
+    color: #204166;
+    background-color: #e7f5f5;
+    text-align: center;
+  }
+  .ant-table-pagination-right {
+    justify-content: center;
+  }
+  .booking-report-table {
+    margin: 0 150px;
+    img {
+      width: 100px;
+    }
+    .ant-table-tbody > tr > td {
+      text-align: center;
+    }
+  }
+  .ant-modal-body {
+    padding-top: 0;
+  }
+  .report-img-carousel {
+    .swiper-button-prev,
+    .swiper-button-next {
+      opacity: 0.4;
+      color: #363636;
+      background: #fff;
+      width: 44px;
+      height: 44px;
+      text-align: center;
+      font-size: 24px;
+      line-height: 38px;
+      border-radius: 50%;
+      transition: opacity 0.3s;
+    }
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+      font-size: 24px;
+    }
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+      background: #fff;
+      color: #000;
+      opacity: 1;
+    }
+    .swiper-button-prev,
+    .swiper-button-prev:hover {
+      left: 16px;
+      z-index: 2;
+    }
+    .swiper-button-next,
+    .swiper-button-next:hover {
+      right: 16px;
+      z-index: 2;
+    }
+  }
+}

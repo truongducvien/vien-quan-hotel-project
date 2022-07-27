@@ -75,7 +75,7 @@ const userSlice = createSlice({
     registerActionFailed(state, action) {
       localStorage.removeItem(USER_INFO_KEY);
       notification.error({
-        message: action.payload,
+        message: `Register Failed: ${action.payload}`,
       });
     },
   },

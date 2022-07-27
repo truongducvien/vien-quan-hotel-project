@@ -1,21 +1,13 @@
 import React, { useContext, useEffect } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Button } from "antd";
 import { v4 } from "uuid";
 import RoomInfo from "./RoomInfo";
 import { CustomerContext } from "../../../providers/CustomerContext";
 import ImageCarouselSwiper from "./ImageCarouselSwiper";
 
 function RoomItem({ room, option }) {
-  const {
-    orderInfo,
-    setOrderInfo,
-    options,
-    setOptions,
-    objQtyTypeId,
-    setObjQtyTypeId,
-    soldOutId,
-    setSoldOutId,
-  } = useContext(CustomerContext);
+  const { orderInfo, setOrderInfo, options, setOptions, soldOutId } =
+    useContext(CustomerContext);
 
   let roomPriceString = String(room.price).replace(/(.)(?=(\d{3})+$)/g, "$1,");
   let sumGuest = option.adult + option.children;
@@ -40,6 +32,11 @@ function RoomItem({ room, option }) {
       return op;
     });
     setOptions(newOptions);
+    setOrderInfo({ ...orderInfo, options: newOptions });
+    localStorage.setItem(
+      "ORDER_INFO",
+      JSON.stringify({ ...orderInfo, options: newOptions })
+    );
 
     const findOption = options.find((op) => op.id === option.id);
     if (findOption.typeRoom !== "") {
@@ -57,6 +54,11 @@ function RoomItem({ room, option }) {
         },
       ];
       setOptions(newAddOptions);
+      setOrderInfo({ ...orderInfo, options: newAddOptions });
+      localStorage.setItem(
+        "ORDER_INFO",
+        JSON.stringify({ ...orderInfo, options: newAddOptions })
+      );
     }
     // const newOptions = options.map((op) => {
     //   if (op.id === option.id) {
@@ -74,50 +76,37 @@ function RoomItem({ room, option }) {
     // setOrderInfo({ ...orderInfo, options: options });
     // localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
 
-    let minusValue = Object.keys(objQtyTypeId).reduce((minusValue, key) => {
-      if (Number(key) === room.id) {
-        return {
-          ...minusValue,
-          [key]: objQtyTypeId[key] - 1,
-        };
-      }
-      return {
-        ...minusValue,
-        [key]: objQtyTypeId[key],
-      };
-    }, {});
+    // let minusValue = Object.keys(objQtyTypeId).reduce((minusValue, key) => {
+    //   if (Number(key) === room.id) {
+    //     return {
+    //       ...minusValue,
+    //       [key]: objQtyTypeId[key] - 1,
+    //     };
+    //   }
+    //   return {
+    //     ...minusValue,
+    //     [key]: objQtyTypeId[key],
+    //   };
+    // }, {});
 
-    let filterValue0 = Object.keys(minusValue).reduce((filterValue0, key) => {
-      if (minusValue[key] === 0)
-        return {
-          ...filterValue0,
-          [key]: Number(0),
-        };
-      return {
-        ...filterValue0,
-        [key]: minusValue[key],
-      };
-    }, {});
-    console.log("TYPE ROOM ID :>> ", room.id);
-    console.log("objQtyTypeId - >>>>>", filterValue0);
-    setObjQtyTypeId(filterValue0);
+    // let filterValue0 = Object.keys(minusValue).reduce((filterValue0, key) => {
+    //   if (minusValue[key] === 0)
+    //     return {
+    //       ...filterValue0,
+    //       [key]: Number(0),
+    //     };
+    //   return {
+    //     ...filterValue0,
+    //     [key]: minusValue[key],
+    //   };
+    // }, {});
+    // console.log("TYPE ROOM ID :>> ", room.id);
+    // console.log("objQtyTypeId - >>>>>", filterValue0);
+    // setObjQtyTypeId(filterValue0);
 
-    let filterTypeSoldOut = Object.keys(filterValue0).reduce(
-      (filterTypeSoldOut, key) => {
-        if (filterValue0[key] === 0)
-          return {
-            ...filterTypeSoldOut,
-            [key]: filterValue0[key],
-          };
-        return filterTypeSoldOut;
-      },
-      {}
-    );
+    // const typeId = soldOutIdFilterValue0(filterValue0);
 
-    const typeId = Object.keys(filterTypeSoldOut);
-    console.log("soldOut ID :>> ", typeId);
-
-    setSoldOutId(typeId);
+    // setSoldOutId(typeId);
   };
 
   return (
@@ -152,7 +141,7 @@ function RoomItem({ room, option }) {
 
                   <Col sx={24} sm={8} md={8} xl={8}>
                     <div>
-                      <div className="sold-out">Sold out</div>
+                      <Button disabled>Sold out</Button>
                     </div>
                   </Col>
                 </Row>
@@ -186,7 +175,7 @@ function RoomItem({ room, option }) {
 
                   <Col sx={24} sm={8} md={8} xl={8}>
                     <div>
-                      <div className="sold-out">Sold out</div>
+                      <Button disabled>Sold out</Button>
                     </div>
                   </Col>
                 </Row>

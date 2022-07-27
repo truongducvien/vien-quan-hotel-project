@@ -71,7 +71,7 @@ export const DataProvider = ({ children }) => {
   });
 
   const [currentPay, setCurrentPay] = useState(0);
-  const [bookingInfo, setBookingInfo] = useState({});
+  const [bookingInfo, setBookingInfo] = useState(null);
 
   return (
     <CustomerContext.Provider
