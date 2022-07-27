@@ -28,7 +28,6 @@ function BookingSection() {
 
   const handleComeHomePage = () => {
     dispatch(fetchBookingAction());
-    localStorage.removeItem("BOOKING_INFO");
   };
 
   return (

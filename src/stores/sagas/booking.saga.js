@@ -10,7 +10,6 @@ import { postBookingActionSuccess } from "../slices/postBooking.slice";
 function* fetchOrder(action) {
   try {
     yield delay(100);
-
     const response = yield BookingAPI;
 
     console.log("fetchBooking :>> ", response.data);

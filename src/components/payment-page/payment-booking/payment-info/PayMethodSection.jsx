@@ -8,7 +8,6 @@ import FormCreditCard from "./form-credit-card/FormCreditCard";
 import { useDispatch, useSelector } from "react-redux";
 import { DownOutlined } from "@ant-design/icons";
 import { postBookingAction } from "../../../../stores/slices/postBooking.slice";
-import { fetchBookingAction } from "../../../../stores/slices/booking.slice";
 
 const { Panel } = Collapse;
 
@@ -16,7 +15,6 @@ function PayMethodSection() {
   const bookingInfoState = useSelector(
     (state) => state.bookingInfo.bookingInfoState
   );
-  const bookingState = useSelector((state) => state.booking.bookingState);
   const dispatch = useDispatch();
   const {
     orderInfo,
@@ -49,6 +47,20 @@ function PayMethodSection() {
 
     setCurrentPay(currentPay + 1);
   };
+
+  let loadingInfo = bookingInfoState?.loading;
+
+  useEffect(() => {
+    if (
+      bookingInfoState?.data !== null &&
+      bookingInfoState?.data !== undefined &&
+      bookingInfoState?.data >= 0 &&
+      !loadingInfo
+    ) {
+      setBookingInfo(bookingInfoState?.data);
+    }
+  }, [bookingInfoState, dispatch]);
+  console.log("bookingInfo :>> ", bookingInfo);
 
   return (
     <div className="pay-form-contact">

@@ -42,7 +42,6 @@ export default function HomePage() {
       JSON.stringify({ ...orderInfo, options: newOptions })
     );
     setOrderInfo(JSON.parse(storedOrderInfo));
-    localStorage.removeItem("BOOKING_INFO");
   }, []);
 
   return (

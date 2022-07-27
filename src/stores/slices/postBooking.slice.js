@@ -1,15 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { notification } from "antd";
 
-const BOOKING_INFO_KEY = "BOOKING_INFO";
-
-const postBookingFromStorage = localStorage.getItem(BOOKING_INFO_KEY)
-  ? JSON.parse(localStorage.getItem(BOOKING_INFO_KEY))
-  : null;
-
 const initialState = {
   bookingInfoState: {
-    data: postBookingFromStorage,
+    data: null,
     loading: false,
     error: null,
   },
@@ -20,8 +14,6 @@ const bookingSlice = createSlice({
   initialState,
   reducers: {
     postBookingAction(state, action) {
-      localStorage.removeItem(BOOKING_INFO_KEY);
-
       state.bookingInfoState = {
         ...state.bookingInfoState,
         loading: true,
@@ -29,10 +21,7 @@ const bookingSlice = createSlice({
     },
     postBookingActionSuccess(state, action) {
       const bookingInfoResponse = { ...action.payload };
-      localStorage.setItem(
-        BOOKING_INFO_KEY,
-        JSON.stringify(bookingInfoResponse)
-      );
+
       state.bookingInfoState = {
         ...state.bookingInfoState,
         loading: false,
@@ -40,8 +29,6 @@ const bookingSlice = createSlice({
       };
     },
     postBookingActionFailed(state, action) {
-      localStorage.removeItem(BOOKING_INFO_KEY);
-
       notification.error({
         message: `Post Failed: ${action.payload}`,
       });

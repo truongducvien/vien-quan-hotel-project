@@ -16,7 +16,6 @@
 //   const dispatch = useDispatch();
 //   const handleLogOut = () => {
 //     dispatch(logoutAction());
-//     localStorage.removeItem("BOOKING_INFO");
 //   };
 
 //   useEffect(() => {

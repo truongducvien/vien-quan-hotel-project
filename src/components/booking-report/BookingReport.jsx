@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBookingIdAction } from "../../stores/slices/fetchBookingId.slice";
 import { bookingSummaryPrice } from "../../utils";
 import { BookHeader } from "../main-booking/BookHeader";
-import PayRoomOrdered from "../payment-page/pay-booking-view/PayRoomOdered";
 import ReportBookingView from "./ReportBookingView";
 import "./style.scss";
 
