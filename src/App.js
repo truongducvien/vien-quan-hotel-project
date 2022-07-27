@@ -10,6 +10,12 @@ import { AppLayout } from "./layout/app-layout/AppLayout";
 import { PaymentBooking } from "./components/payment-page/payment-booking/PaymentBooking";
 import { BookingReport } from "./components/booking-report/BookingReport";
 import { RoomPagination } from "./components/room-pagination/RoomPagination";
+import RoomManagement from "./admin-src/components/main-layout/rooms/RoomManagement";
+import EditPage from "./admin-src/components/main-layout/rooms/EditPage";
+import UsersManagement from "./admin-src/components/main-layout/users/UsersManagement";
+import BookingManagement from "./admin-src/components/main-layout/booking/BookingManagement";
+import AddRoomPage from "./admin-src/components/main-layout/rooms/AddRoomPage";
+import AdminPage from "./admin-src/components/main-layout/HomePage";
 
 function App() {
   return (
@@ -22,7 +28,7 @@ function App() {
             <Route path="/register" element={<UserRegister />} />
             <Route path="/booking" element={<MainBooking />} />
             <Route
-              path="/bookingreport"
+              path="/bookinghistory"
               element={
                 <ProtectedRoute>
                   <BookingReport />
@@ -44,6 +50,13 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/room_management" element={<RoomManagement />} />
+            <Route path="/room_management/edit" element={<EditPage />} />
+            <Route path="/room_management/new" element={<AddRoomPage />} />
+
+            <Route path="/users_management" element={<UsersManagement />} />
+            <Route path="/booking_management" element={<BookingManagement />} />
           </Routes>
         </div>
       </BrowserRouter>

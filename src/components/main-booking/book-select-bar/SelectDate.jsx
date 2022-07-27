@@ -38,8 +38,8 @@ export const SelectDate = () => {
   const bookingInfoState = useSelector(
     (state) => state.bookingInfo.bookingInfoState
   );
-
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchRoomAction());
     dispatch(fetchBookingAction());

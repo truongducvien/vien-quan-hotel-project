@@ -42,4 +42,4 @@ export const {
   fetchBookingActionFailed,
 } = bookingSlice.actions;
 
-export const bookingReducer = bookingSlice.reducer;
+export const bookingHomeReducer = bookingSlice.reducer;

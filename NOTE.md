@@ -16,9 +16,9 @@ old new
 
 1. fetch data bookings again after post data bookingInfo to server.
 2. bookingNumber (save data bookingInfoState local)
-3. list user Booking History
-4. Cancel Booking
+3. Cancel Booking
 
+4. list user Booking History \*
 5. fetch data bookings before loading MainBookingPage. \* ok
 6. bookingNumber (update length booking) \* ok
 7. sticky UI search \* ok

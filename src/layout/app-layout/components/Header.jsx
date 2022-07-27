@@ -38,7 +38,7 @@ export const AppHeader = () => {
       items={[
         {
           label: (
-            <Link to="/bookingreport">
+            <Link to="/bookinghistory">
               <span>Booking Report</span>
             </Link>
           ),

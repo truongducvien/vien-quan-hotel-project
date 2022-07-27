@@ -33,8 +33,8 @@ export const BookHeader = () => {
       items={[
         {
           label: (
-            <Link to="/bookingreport">
-              <span>Booking Report</span>
+            <Link to="/bookinghistory">
+              <span>Booking History</span>
             </Link>
           ),
           key: "1",

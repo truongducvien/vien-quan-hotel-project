@@ -1,0 +1,49 @@
+.editPage{
+   position: relative;
+   padding: 20px;
+
+   .backToRomListButton{
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      background-color: #026082;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 2px;
+      font-size: 11px;
+   }
+   .backToRomListButton:hover{
+      background-color: #01678d;
+   }
+   .backToRomListButton:active{
+      background-color: #00739d;
+   }
+
+   .editForm{
+      position: relative;
+      width: 80vw;
+      margin: auto;
+
+      .button{
+         width: 100px;
+         border: unset;
+         padding: 5px;
+         margin: 20px;
+         color: white;
+         background-color: #026082;
+         box-shadow: 1px 1px 4px 1px #8080808c;
+      }
+      .button:hover{
+         cursor: pointer;
+         background-color: #01688e;
+      }
+      .button:active{
+         background-color: #0276a1;
+      }
+      .button:disabled{
+         cursor: not-allowed;
+         color: grey;
+         background-color: rgb(223, 223, 223);
+      }
+   }
+} 

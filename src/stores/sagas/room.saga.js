@@ -15,6 +15,6 @@ function* fetchRoom(action) {
   }
 }
 
-export function* roomSaga() {
+export function* roomHomeSaga() {
   yield takeEvery(fetchRoomAction, fetchRoom);
 }

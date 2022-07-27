@@ -39,4 +39,4 @@ export const {
   fetchRoomActionSuccess,
   fetchRoomActionFailed,
 } = roomSlice.actions;
-export const roomReducer = roomSlice.reducer;
+export const roomHomeReducer = roomSlice.reducer;

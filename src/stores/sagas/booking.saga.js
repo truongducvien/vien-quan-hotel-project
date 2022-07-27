@@ -20,7 +20,7 @@ function* fetchOrder(action) {
   }
 }
 
-export function* bookingSaga() {
+export function* bookingHomeSaga() {
   yield takeEvery(fetchBookingAction, fetchOrder);
   yield takeEvery(postBookingActionSuccess, fetchOrder);
 }

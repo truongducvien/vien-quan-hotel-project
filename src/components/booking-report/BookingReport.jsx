@@ -46,7 +46,21 @@ export function BookingReport() {
   const handleView = (booking) => {
     setSelectedRecord(booking);
     setShowAddModal(true);
-    console.log("selectedRecord :>> ", selectedRecord);
+  };
+  const handleCancelBooking = (booking) => {
+    console.log("booking :>> ", booking);
+    // let newPayMethod = {
+    //   method: payMethod,
+    //   payInfo: {
+    //     cardNumber: "",
+    //     nameOnCard: "",
+    //   },
+    // };
+    // setOrderInfo({ ...orderInfo, payment: newPayMethod });
+    // localStorage.setItem(
+    //   "ORDER_INFO",
+    //   JSON.stringify({ ...orderInfo, payment: newPayMethod })
+    // );
   };
 
   const columns = [
@@ -102,7 +116,10 @@ export function BookingReport() {
             >
               View
             </Typography.Link>
-            <Popconfirm title="Sure to cancel?" onConfirm={() => {}}>
+            <Popconfirm
+              title="Sure to cancel?"
+              onConfirm={() => handleCancelBooking(booking)}
+            >
               <a>Cancel</a>
             </Popconfirm>
           </span>
@@ -116,7 +133,7 @@ export function BookingReport() {
     <div className="booking-report">
       <BookHeader />
       <div className="booking-report-header">
-        <h1 className="title">Booking Report</h1>
+        <h1 className="title">Booking History</h1>
         <hr />
       </div>
 
