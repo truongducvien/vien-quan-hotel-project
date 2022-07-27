@@ -1,145 +1,143 @@
-.home-page {
-  $themeColor: #026082;
-  $bookHeader: #00729c;
-  $labelColor: #b6b6b6;
+$themeColor: #026082;
+$bookHeader: #00729c;
+$labelColor: #b6b6b6;
 
-  .register-login-container {
-    width: 100%;
-    height: 100vh;
-    background-color: #f2f7f9;
-    .pay-header {
-      color: #fff;
-      background-color: $bookHeader;
-      .ant-row-cente {
-        align-items: center;
-      }
-      .text-logo {
-        a {
-          color: #fff;
-          text-decoration: none;
-        }
-        p {
-          font-size: 2rem;
-          font-weight: 500;
-          margin-bottom: 0;
-        }
-      }
-      .pay-btn-logout {
-        line-height: 36px;
-        padding: 0px 24px;
-        border-radius: 4px;
-        transition: all 0.1s;
-        white-space: nowrap;
-        border: 2px solid;
-        font-size: 1.125rem;
-        font-weight: 700;
-        margin: 5px 0;
-        background: #fff;
-        color: #004862;
-        cursor: pointer;
-        &:hover {
-          color: #fff;
-          background-color: #004a65;
-        }
-      }
-      .anticon svg {
-        font-size: 40px;
+.register-login-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f7f9;
+  .pay-header {
+    color: #fff;
+    background-color: $bookHeader;
+    .ant-row-cente {
+      align-items: center;
+    }
+    .text-logo {
+      a {
         color: #fff;
-        &:hover {
-          background-color: #0296cc;
-        }
+        text-decoration: none;
+      }
+      p {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 0;
       }
     }
-    .register-login-center {
-      max-width: 600px;
-      margin: 50px auto 0;
-      padding: 20px;
-      .register-login {
-        border: 1px solid $themeColor;
-        border-radius: 10px;
-        padding: 10px;
-        .user-form-contact {
-          background-color: #fff;
-          box-shadow: 0 7px 30px -10px #96aab480;
-          padding: 16px;
-          input {
-            padding: 10px 10px;
-            border-radius: 8px;
-          }
-          legend h2 {
-            color: #0296cc;
-          }
-          .user-submit-contact {
-            width: 90%;
-            margin: 0 auto 30px;
-
-            .user-submit-btn {
-              text-align: center;
-              width: 100%;
-              line-height: 36px;
-              padding-left: 24px;
-              padding: 5px 24px;
-              border-radius: 10px;
-              transition: all 0.1s;
-              white-space: nowrap;
-              border: 2px solid;
-              font-size: 1.2rem;
-              font-weight: 700;
-              background: #066a92;
-              color: #fff;
-              cursor: pointer;
-            }
-            .user-submit-btn:hover {
-              background: #005e84;
-            }
-          }
-          .ant-input-prefix {
-            margin-left: 10px;
-            color: $labelColor;
-          }
-        }
-        .ant-input-affix-wrapper-lg {
-          padding: 0 11px 0 0;
+    .pay-btn-logout {
+      line-height: 36px;
+      padding: 0px 24px;
+      border-radius: 4px;
+      transition: all 0.1s;
+      white-space: nowrap;
+      border: 2px solid;
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin: 5px 0;
+      background: #fff;
+      color: #004862;
+      cursor: pointer;
+      &:hover {
+        color: #fff;
+        background-color: #004a65;
+      }
+    }
+    .anticon svg {
+      font-size: 40px;
+      color: #fff;
+      &:hover {
+        background-color: #0296cc;
+      }
+    }
+  }
+  .register-login-center {
+    max-width: 600px;
+    margin: 50px auto 0;
+    padding: 20px;
+    .register-login {
+      border: 1px solid $themeColor;
+      border-radius: 10px;
+      padding: 10px;
+      .user-form-contact {
+        background-color: #fff;
+        box-shadow: 0 7px 30px -10px #96aab480;
+        padding: 16px;
+        input {
+          padding: 10px 10px;
           border-radius: 8px;
         }
-        .ant-col-md-12,
-        .ant-col-sm-12 {
-          padding: 0 8px;
+        legend h2 {
+          color: #0296cc;
         }
-        .ant-form-item-explain-error {
-          font-weight: 500;
+        .user-submit-contact {
+          width: 90%;
+          margin: 0 auto 30px;
+
+          .user-submit-btn {
+            text-align: center;
+            width: 100%;
+            line-height: 36px;
+            padding-left: 24px;
+            padding: 5px 24px;
+            border-radius: 10px;
+            transition: all 0.1s;
+            white-space: nowrap;
+            border: 2px solid;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: #066a92;
+            color: #fff;
+            cursor: pointer;
+          }
+          .user-submit-btn:hover {
+            background: #005e84;
+          }
         }
-        .user-form-contact
-          > .ant-collapse
-          > .ant-collapse-item
-          > .ant-collapse-header
-          > .ant-collapse-header-text {
-          font-weight: 700;
-          font-size: 1.5rem;
+        .ant-input-prefix {
+          margin-left: 10px;
+          color: $labelColor;
         }
-        .ant-collapse-content > .ant-collapse-content-box {
-          padding: 16px 0;
-        }
-        .ant-collapse-borderless {
-          background-color: #fff;
-        }
+      }
+      .ant-input-affix-wrapper-lg {
+        padding: 0 11px 0 0;
+        border-radius: 8px;
+      }
+      .ant-col-md-12,
+      .ant-col-sm-12 {
+        padding: 0 8px;
+      }
+      .ant-form-item-explain-error {
+        font-weight: 500;
+      }
+      .user-form-contact
+        > .ant-collapse
+        > .ant-collapse-item
+        > .ant-collapse-header
+        > .ant-collapse-header-text {
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+      .ant-collapse-content > .ant-collapse-content-box {
+        padding: 16px 0;
+      }
+      .ant-collapse-borderless {
+        background-color: #fff;
       }
     }
   }
+}
 
-  .ant-tabs-tab {
-    font-size: 18px;
-    font-weight: 700;
-    width: 50%;
-    justify-content: center;
-  }
-  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap {
-    justify-content: center;
-  }
-  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list {
-    width: 90%;
-  }
-  .ant-notification-notice {
-    top: 50px;
-  }
+.ant-tabs-tab {
+  font-size: 18px;
+  font-weight: 700;
+  width: 50%;
+  justify-content: center;
+}
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap {
+  justify-content: center;
+}
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-list {
+  width: 90%;
+}
+.ant-notification-notice {
+  top: 50px;
 }

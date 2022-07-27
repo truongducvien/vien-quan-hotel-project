@@ -10,12 +10,6 @@ import { AppLayout } from "./layout/app-layout/AppLayout";
 import { PaymentBooking } from "./components/payment-page/payment-booking/PaymentBooking";
 import { BookingReport } from "./components/booking-report/BookingReport";
 import { RoomPagination } from "./components/room-pagination/RoomPagination";
-import RoomManagement from "./components/main-layout/rooms/RoomManagement";
-import EditPage from "./components/main-layout/rooms/EditPage";
-import AddRoomPage from "./components/main-layout/rooms/AddRoomPage";
-import BookingManagement from "./components/main-layout/booking/BookingManagement";
-import UsersManagement from "./components/main-layout/users/UsersManagement";
-import AdminPage from "./components/main-layout/AdminPage";
 
 function App() {
   return (
@@ -51,13 +45,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/" element={<AdminPage />} />
-            <Route path="/room_management" element={<RoomManagement />} />
-            <Route path="/room_management/edit" element={<EditPage />} />
-            <Route path="/room_management/new" element={<AddRoomPage />} />
-
-            <Route path="/users_management" element={<UsersManagement />} />
-            <Route path="/booking_management" element={<BookingManagement />} />
           </Routes>
         </div>
       </BrowserRouter>
