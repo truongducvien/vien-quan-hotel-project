@@ -32,3 +32,37 @@
     transform: rotate(360deg);
   }
 }
+
+.App header {
+  position: sticky;
+  top: 0;
+  z-index: 16;
+  background-color: #026082;
+  color: white;
+  padding: 3px;
+  text-align: center;
+}
+.App .backgroundImage {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+.App .backgroundImage img {
+  transform: translateY(-200px);
+  width: 100%;
+}
+
+.App .title {
+  position: absolute;
+  top: 120px;
+  left: calc(50% - 25vw);
+  display: block;
+  width: 50vw;
+  padding: 7px;
+  border: 2px solid #026082;
+  border-radius: 12px;
+  font-size: 30px;
+  color: #026082;
+  background-color: white;
+}
