@@ -51,6 +51,7 @@ function RoomItem({ room, option }) {
           roomPrice: room.price,
           roomName: "",
           maxPerson: room.maxPerson,
+          status: "Booked",
         },
       ];
       setOptions(newAddOptions);
@@ -60,53 +61,6 @@ function RoomItem({ room, option }) {
         JSON.stringify({ ...orderInfo, options: newAddOptions })
       );
     }
-    // const newOptions = options.map((op) => {
-    //   if (op.id === option.id) {
-    //     return {
-    //       ...op,
-    //       typeRoomId: room.id,
-    //       typeRoom: room.typeRoom,
-    //       roomPrice: room.price,
-    //       maxPerson: room.maxPerson,
-    //     };
-    //   }
-    //   return op;
-    // });
-    // setOptions(newOptions);
-    // setOrderInfo({ ...orderInfo, options: options });
-    // localStorage.setItem("ORDER_INFO", JSON.stringify(orderInfo));
-
-    // let minusValue = Object.keys(objQtyTypeId).reduce((minusValue, key) => {
-    //   if (Number(key) === room.id) {
-    //     return {
-    //       ...minusValue,
-    //       [key]: objQtyTypeId[key] - 1,
-    //     };
-    //   }
-    //   return {
-    //     ...minusValue,
-    //     [key]: objQtyTypeId[key],
-    //   };
-    // }, {});
-
-    // let filterValue0 = Object.keys(minusValue).reduce((filterValue0, key) => {
-    //   if (minusValue[key] === 0)
-    //     return {
-    //       ...filterValue0,
-    //       [key]: Number(0),
-    //     };
-    //   return {
-    //     ...filterValue0,
-    //     [key]: minusValue[key],
-    //   };
-    // }, {});
-    // console.log("TYPE ROOM ID :>> ", room.id);
-    // console.log("objQtyTypeId - >>>>>", filterValue0);
-    // setObjQtyTypeId(filterValue0);
-
-    // const typeId = soldOutIdFilterValue0(filterValue0);
-
-    // setSoldOutId(typeId);
   };
 
   return (
@@ -132,11 +86,11 @@ function RoomItem({ room, option }) {
           ></Col>
           <Col xs={24} sm={13} md={13} xl={11}>
             {soldOutId.length === 1 ? (
-              room.id === Number(soldOutId[0]) ? (
+              room.id === soldOutId[0] ? (
                 <Row className="rate-price-select">
                   <Col xs={24} sm={16} md={16} xl={16}>
                     <p style={{ fontWeight: 700 }}>VND {roomPriceString} </p>
-                    <p>{sumGuest} guests, 1 night</p>
+                    <p> 1 night</p>
                   </Col>
 
                   <Col sx={24} sm={8} md={8} xl={8}>

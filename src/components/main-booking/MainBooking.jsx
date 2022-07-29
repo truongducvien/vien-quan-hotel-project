@@ -10,6 +10,7 @@ import { Tabs } from "antd";
 import BookViewNone from "./booking-view/BookViewNone";
 import BookSearchBar from "./book-select-bar/BookSearchBar";
 import { PageFooter } from "../footer-pages/PageFooter";
+import { RoomPagination } from "../room-pagination/RoomPagination";
 
 const { TabPane } = Tabs;
 
@@ -36,13 +37,6 @@ function MainBooking() {
         <div style={{ minHeight: "100vh" }}>
           <Row className="room-booking">
             <Col className="room-list" xs={24} sm={24} md={14} xl={16}>
-              {/* {orderInfo.options.length <= 1 ? (
-                orderInfo.options.map((option) => (
-                  <div className="none-tab-mt" key={option.id}>
-                    <RoomListOption option={option} />
-                  </div>
-                ))
-              ) : ( */}
               <Tabs defaultActiveKey="1">
                 {orderInfo.options.map((option, index) => (
                   <TabPane key={index + 1} tab={`Room ${index + 1}`}>
@@ -50,7 +44,6 @@ function MainBooking() {
                   </TabPane>
                 ))}
               </Tabs>
-              {/* )} */}
             </Col>
             <Col className="booking-view" xs={24} sm={24} md={10} xl={8}>
               {totalPrice === 0 ? <BookViewNone /> : <BookingView />}

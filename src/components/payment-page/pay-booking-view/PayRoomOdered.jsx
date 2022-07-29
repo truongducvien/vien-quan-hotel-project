@@ -18,7 +18,8 @@ function PayRoomOrdered({ option, index }) {
       <div className="flex">
         <div>
           <p className="fs0875">
-            {option.adult + option.children} guests {orderInfo.nights} night
+            {option.adult} adults • {option.children} children •{" "}
+            {orderInfo.nights} night
           </p>
         </div>
         <span className="room-select-price">VND {totalRoomPriceString}</span>

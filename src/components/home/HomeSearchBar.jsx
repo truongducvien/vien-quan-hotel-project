@@ -7,7 +7,8 @@ import SelectOptions from "../main-booking/book-select-bar/SelectOptions";
 import { SelectDate } from "../main-booking/book-select-bar/SelectDate";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBookingAction } from "../../stores/slices/booking.slice";
+import { fetchBookingAction } from "../../stores/slices/bookingHome.slice";
+import { useEffect } from "react";
 
 function BookSearchBar() {
   const bookingState = useSelector((state) => state.booking.bookingState);
@@ -16,6 +17,9 @@ function BookSearchBar() {
   const handleFetchBookingData = () => {
     dispatch(fetchBookingAction());
   };
+  useEffect(() => {
+    console.log("bookingState?.data :>> ", bookingState?.data);
+  }, [bookingState?.data]);
 
   return (
     <div className="book-search">

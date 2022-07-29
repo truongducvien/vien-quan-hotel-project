@@ -3,7 +3,6 @@ import ImageCarousel from "./ImageCarousel";
 import { Space } from "antd";
 
 import TableButton from "./TableButton";
-import CollapseAntd from "./CollapseAntd";
 
 export const columns = [
   {
@@ -47,24 +46,14 @@ export const columns = [
     dataIndex: "convenient",
     key: "convenient",
     render: (text) =>
-      text.length > 250 ? (
-        //  <TextCollapsed text={text} />
-        <CollapseAntd text={text} />
-      ) : (
-        text
-      ),
+      text.length > 250 ? <TextCollapsed text={text} /> : text,
   },
   {
     title: "Introduction",
     dataIndex: "introduction",
     key: "introduction",
     render: (text) =>
-      text.length > 250 ? (
-        // <TextCollapsed text={text} />
-        <CollapseAntd text={text} />
-      ) : (
-        text
-      ),
+      text.length > 250 ? <TextCollapsed text={text} /> : text,
   },
   {
     title: "Image",

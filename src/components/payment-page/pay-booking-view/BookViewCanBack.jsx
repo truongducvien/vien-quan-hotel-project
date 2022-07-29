@@ -17,9 +17,13 @@ function BookViewCanBack() {
   const endDay = orderInfo.date.endDay;
   const endDateString = dateString(endDay);
 
-  let sumGuests = 0;
+  let adultGuests = 0;
   orderInfo.options.forEach((option) => {
-    sumGuests += parseFloat(option.adult) + parseFloat(option.children);
+    adultGuests += parseFloat(option.adult);
+  });
+  let childrenGuests = 0;
+  orderInfo.options.forEach((option) => {
+    childrenGuests += parseFloat(option.children);
   });
 
   let totalPriceRoom = 0;
@@ -55,7 +59,8 @@ function BookViewCanBack() {
             <div className="total-nights">{orderInfo.nights} night</div>
           </div>
           <div className="occupancy-rooms">
-            {orderInfo.options.length} room, {sumGuests} guests
+            {orderInfo.options.length} room • {adultGuests} adult •{" "}
+            {childrenGuests} children
           </div>
         </div>
       </div>

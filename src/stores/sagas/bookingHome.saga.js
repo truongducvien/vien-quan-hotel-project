@@ -1,18 +1,18 @@
-import { delay, put, takeEvery } from "redux-saga/effects";
-import { BookingAPI } from "../../api/booking.api";
+import { put, takeEvery } from "redux-saga/effects";
+import { FetchBookingHomeAPI } from "../../api/booking.api";
 import {
   fetchBookingAction,
   fetchBookingActionFailed,
   fetchBookingActionSuccess,
-} from "../slices/booking.slice.js";
+} from "../slices/bookingHome.slice";
+import { patchBookingStatusActionSuccess } from "../slices/patchStatusBooking.slice";
 import { postBookingActionSuccess } from "../slices/postBooking.slice";
 
 function* fetchOrder(action) {
   try {
-    yield delay(100);
-    const response = yield BookingAPI;
+    const response = yield FetchBookingHomeAPI();
 
-    console.log("fetchBooking :>> ", response.data);
+    console.log("fetchBooking again:>> ", response.data);
 
     yield put(fetchBookingActionSuccess(response.data));
   } catch (e) {
@@ -23,4 +23,5 @@ function* fetchOrder(action) {
 export function* bookingHomeSaga() {
   yield takeEvery(fetchBookingAction, fetchOrder);
   yield takeEvery(postBookingActionSuccess, fetchOrder);
+  yield takeEvery(patchBookingStatusActionSuccess, fetchOrder);
 }

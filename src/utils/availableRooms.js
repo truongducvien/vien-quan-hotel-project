@@ -1,12 +1,8 @@
-export const availableRooms = (objQtyTypeId, roomStateData) => {
+export const availableRoomsFunction = (objQtyTypeId, roomStateData) => {
   let arrayDiff = Object.keys(objQtyTypeId);
 
-  const arrayDiffNum = arrayDiff.map((str) => {
-    return Number(str);
-  });
-
   let newAvailableRooms = roomStateData.filter((typeRoom) =>
-    arrayDiffNum.includes(typeRoom.id)
+    arrayDiff.includes(typeRoom.id)
   );
   return newAvailableRooms;
 };

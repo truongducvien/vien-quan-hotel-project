@@ -7,15 +7,19 @@ import { dateString, formatPrice } from "../../utils";
 
 const { Panel } = Collapse;
 
-function ReportBookingView({ booking }) {
+function BookingHistoryView({ booking }) {
   const startDay = booking.date.startDay;
   const startDateString = dateString(startDay);
   const endDay = booking.date.endDay;
   const endDateString = dateString(endDay);
 
-  let sumGuests = 0;
+  let adultGuests = 0;
   booking.options.forEach((option) => {
-    sumGuests += parseFloat(option.adult) + parseFloat(option.children);
+    adultGuests += parseFloat(option.adult);
+  });
+  let childrenGuests = 0;
+  booking.options.forEach((option) => {
+    childrenGuests += parseFloat(option.children);
   });
 
   let totalPrice = 0;
@@ -46,7 +50,8 @@ function ReportBookingView({ booking }) {
             <div className="total-nights">{booking.nights} night</div>
           </div>
           <div className="occupancy-rooms">
-            {booking.options.length} room, {sumGuests} guests
+            {booking.options.length} room • {adultGuests} adult •{" "}
+            {childrenGuests} children
           </div>
         </div>
       </div>
@@ -111,4 +116,4 @@ function ReportBookingView({ booking }) {
   );
 }
 
-export default ReportBookingView;
+export default BookingHistoryView;
