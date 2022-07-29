@@ -105,8 +105,11 @@ export function BookingHistory() {
           <span style={{ color: "red" }}>Cancel</span>
         ) : booking.status === "Booked" ? (
           <span style={{ color: "green" }}>Booked</span>
-        ) : booking.date.startDay <= timeStartDay(Date.now()) &&
-          booking.date.endDay >= timeStartDay(Date.now()) ? (
+        ) : booking.date.startDay <=
+          timeStartDay(Date.now()) <=
+          booking.date.endDay ? (
+          // &&
+          // booking.date.endDay >= timeStartDay(Date.now())
           <span style={{ color: "blue" }}>Checked-in</span>
         ) : (
           ""
