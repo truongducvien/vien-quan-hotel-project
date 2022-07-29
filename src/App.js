@@ -50,13 +50,13 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/room_management" element={<RoomManagement />} />
-            <Route path="/room_management/edit" element={<EditPage />} />
-            <Route path="/room_management/new" element={<AddRoomPage />} />
+            <Route path="/admin/*" element={<AdminPage />} />
+            {/* <Route path="/admin/room_management" element={<RoomManagement />} />
+            <Route path="/admin/room_management/edit" element={<EditPage />} />
+            <Route path="/admin/room_management/new" element={<AddRoomPage />} />
 
-            <Route path="/users_management" element={<UsersManagement />} />
-            <Route path="/booking_management" element={<BookingManagement />} />
+            <Route path="/admin/users_management" element={<UsersManagement />} />
+            <Route path="/admin/booking_management" element={<BookingManagement />} /> */}
           </Routes>
         </div>
       </BrowserRouter>

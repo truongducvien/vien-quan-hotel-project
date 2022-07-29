@@ -1,0 +1,81 @@
+.adminHomePage{
+   margin-top: 30px;
+   margin: auto;
+
+   header{
+      display: flex;
+      justify-content: flex-start;
+      position: sticky;
+      top: 0;
+      z-index: 16;
+      background-color: #026082;
+      color: white;
+      padding: 3px;
+      
+      .adminLogo{
+         display: flex;
+         justify-content: center;
+         flex-wrap: wrap;
+         width: 20%;
+         border-right: 1px solid grey;
+         
+         
+         .headerLogo{
+            width: 100%;
+            text-align: center;
+         }
+      }
+      .adminNavLink{
+         display: flex;
+         justify-content: flex-start;
+
+         .button{
+            width: 180px;
+            height: 40px;
+            padding: 3px;
+            color: white ;
+            line-height: 40px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+         }
+         .button:hover{
+            color: white ;
+            background-color: #01678b ;
+         }
+         .button:active{
+            background-color: #0085b6 ;
+         }
+         .active{
+            border-bottom: 2px solid white;
+         }
+      }
+   }
+
+   .backgroundImage{
+      width: 100%;
+      height: 120px;
+      margin-bottom: 50px;
+      overflow: hidden;
+
+      img{
+         transform: translateY(-200px);
+         width: 100%;
+      }
+   }
+
+   .title{
+      position: absolute;
+      top: 140px;
+      left: calc(50% - 25vw);
+      display: block;
+      width: 50vw;
+      padding: 7px;
+      border: 2px solid #026082;
+      border-radius: 12px;
+      font-size: 30px;
+      color: #026082;
+      background-color: white;
+      text-align: center;
+   }
+}

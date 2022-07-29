@@ -6,19 +6,23 @@
    box-shadow: 1px 1px 3px 1px rgb(128 128 128 / 42%);
    background-image: linear-gradient(to right bottom, #9bd5ec, #f8fdff);
 
-}
 
-.ant-tabs-tab{
-   font-weight: 600;
-   font-size: 20px;
-   color: grey
-}
-.ant-tabs-tab-active{
+   .bookingManagementTab{
 
-   .ant-tabs-tab-btn{
-      color: #026082 !important;
+      .ant-tabs-tab{
+         font-weight: 600;
+         font-size: 20px;
+         color: grey;
+         width: unset;
+      }
+      .ant-tabs-tab-active{
+      
+         .ant-tabs-tab-btn{
+            color: #026082 !important;
+         }
+      }
+      .ant-tabs-ink-bar{
+         background-color: #026082 !important;
+      }
    }
-}
-.ant-tabs-ink-bar{
-   background-color: #026082 !important;
 }
