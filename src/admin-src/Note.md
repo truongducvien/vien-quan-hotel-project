@@ -19,5 +19,6 @@ Extra feature:
 - Show notification when click save/add-new button
 - Show confirm box before clicking reset/delete button
 - Navigation bar on top
+- Booking List display: By booking id (Click detail button to show booking options)
 
 
