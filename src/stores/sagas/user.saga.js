@@ -26,6 +26,7 @@ function* register(action) {
   try {
     const registerPayload = action.payload;
     const response = yield AuthAPI.register({
+      role: registerPayload.role,
       email: registerPayload.email,
       password: registerPayload.password,
       firstName: registerPayload.firstName,

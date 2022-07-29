@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Col, Row } from "antd";
 import "./style/user-register-login.scss";
 import { ArrowLeftOutlined } from "@ant-design/icons";
@@ -15,6 +15,7 @@ function UserRegister() {
   };
 
   const onRegister = (values) => {
+    values.role = "user";
     dispatch(registerAction(values));
   };
 
