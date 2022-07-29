@@ -9,12 +9,13 @@ import { PostBookingAPI } from "../../api/booking.api";
 function* postBooking(action) {
   try {
     const bookingPayload = action.payload;
-    // delay(300);
+
     const response = yield PostBookingAPI({
       userInfo: bookingPayload.userInfo,
       date: bookingPayload.date,
       nights: bookingPayload.nights,
       options: bookingPayload.options,
+      status: bookingPayload.status,
       payment: bookingPayload.payment,
     });
 

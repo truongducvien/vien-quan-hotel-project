@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CheckOutlined } from "@ant-design/icons";
 import { CustomerContext } from "../../../../providers/CustomerContext";
-import { fetchBookingAction } from "../../../../stores/slices/booking.slice";
+import { fetchBookingAction } from "../../../../stores/slices/bookingHome.slice";
 import { Collapse } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
@@ -20,6 +20,7 @@ function BookingSection() {
   const dispatch = useDispatch();
 
   let bookingNumber = bookingState?.data.length;
+  // let bookingNumber = bookingInfo.id;
 
   let bookingName =
     orderInfo.userInfo.firstName + " " + orderInfo.userInfo.lastName;
@@ -37,7 +38,9 @@ function BookingSection() {
 
         <div>
           <h6 style={{ paddingLeft: "25px", color: "#004862" }}>
-            <b>Hi {bookingName}!</b>
+            <b>
+              Hi <span style={{ color: "#007fae" }}>{bookingName}</span>!
+            </b>
           </h6>
           <h6>
             <CheckOutlined />
@@ -69,7 +72,7 @@ function BookingSection() {
             {bookingNumber === undefined ? (
               ""
             ) : (
-              <b style={{ color: "blue" }}>{bookingNumber + 1}</b>
+              <b style={{ color: "blue" }}>{bookingNumber}</b>
             )}
           </h6>
 

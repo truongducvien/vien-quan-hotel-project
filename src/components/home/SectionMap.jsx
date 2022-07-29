@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Input, Row } from "antd";
-// import MyMapGoogle from "./map/MyMapGoogle";
 import TextArea from "antd/lib/input/TextArea";
 import mapImg from "../../assets/images/map.png";
 
@@ -9,7 +8,6 @@ export const SectionMap = () => {
     <div className="section-map">
       <Row>
         <Col xs={24} sm={24} md={12} lg={12}>
-          {/* <MyMapGoogle /> */}
           <img src={mapImg} alt="" />
         </Col>
         <Col xs={24} sm={24} md={12} lg={12}>
@@ -39,31 +37,30 @@ export const SectionMap = () => {
               Require further information? Send us a message and we will attend
               to you as soon as possible.
             </p>
-            <form>
-              <Row>
-                <Col xs={24} sm={24} md={12} lg={12}>
-                  <Input placeholder="Your Name" type="text" />
-                </Col>
-                <Col xs={24} sm={24} md={12} lg={12}>
-                  <Input type="text" placeholder="Your Email" />
-                </Col>
-              </Row>
-              <TextArea
-                placeholder="Your Message"
-                cols="90"
-                rows="10"
-                style={{ margin: " 20px 0" }}
-              />
-              <p>
-                This site is protected by reCAPTCHA and the Google Privacy
-                Policy and Terms of Service apply.
-              </p>
-              <p style={{ textAlign: "right" }}>
-                <button type="button" className="send-btn">
-                  SEND
-                </button>
-              </p>
-            </form>
+
+            <Row>
+              <Col xs={24} sm={24} md={12} lg={12}>
+                <Input placeholder="Your Name" type="text" />
+              </Col>
+              <Col xs={24} sm={24} md={12} lg={12}>
+                <Input type="text" placeholder="Your Email" />
+              </Col>
+            </Row>
+            <TextArea
+              placeholder="Your Message"
+              cols="90"
+              rows="10"
+              style={{ margin: " 20px 0" }}
+            />
+            <p>
+              This site is protected by reCAPTCHA and the Google Privacy Policy
+              and Terms of Service apply.
+            </p>
+            <p style={{ textAlign: "right" }}>
+              <button type="button" className="send-btn">
+                SEND
+              </button>
+            </p>
           </div>
         </Col>
       </Row>

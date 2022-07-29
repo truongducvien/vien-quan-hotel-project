@@ -8,17 +8,8 @@ import "./styles/home.scss";
 import { SectionCol } from "./SectionCol";
 import { SectionMap } from "./SectionMap";
 import { HomeFooter } from "./HomeFooter";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchBookingAction } from "../../stores/slices/booking.slice";
 
 export default function HomePage() {
-  const bookingState = useSelector((state) => state?.booking?.bookingState);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchBookingAction());
-  }, []);
-  console.log("bookingState?.data :>> ", bookingState.data);
-
   const { orderInfo, setOptions, setOrderInfo } = useContext(CustomerContext);
 
   useEffect(() => {
@@ -31,7 +22,8 @@ export default function HomePage() {
         typeRoom: "",
         roomPrice: 0,
         roomName: "",
-        maxPerson: 6,
+        maxPerson: 10,
+        status: "Booked",
       },
     ];
     setOptions(newOptions);

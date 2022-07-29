@@ -1,16 +1,16 @@
 import { put, takeEvery, delay } from "redux-saga/effects";
-import { FetchBookingIdAPI } from "../../api/fecthBookingId.api";
+import { FetchBookingIdAPI } from "../../api/booking.api";
 import {
   fetchBookingIdAction,
   fetchBookingIdActionFailed,
   fetchBookingIdActionSuccess,
 } from "../slices/fetchBookingId.slice";
+import { patchBookingStatusActionSuccess } from "../slices/patchStatusBooking.slice";
 
 function* fetchBookingId(action) {
   try {
-    yield delay(100);
     const id = action.payload;
-    const response = yield FetchBookingIdAPI.fetchBookingId(id);
+    const response = yield FetchBookingIdAPI(id);
 
     console.log("fetchBookingIdData", response.data);
     yield put(fetchBookingIdActionSuccess(response.data));
@@ -21,4 +21,5 @@ function* fetchBookingId(action) {
 
 export function* fetchBookingIdSaga() {
   yield takeEvery(fetchBookingIdAction, fetchBookingId);
+  yield takeEvery(patchBookingStatusActionSuccess, fetchBookingId);
 }

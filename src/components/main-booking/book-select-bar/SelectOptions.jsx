@@ -124,7 +124,8 @@ export default function SelectOptions() {
         typeRoom: "",
         roomPrice: 0,
         roomName: "",
-        maxPerson: 6,
+        maxPerson: 10,
+        status: "Booked",
       },
     ]);
   };

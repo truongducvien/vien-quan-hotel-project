@@ -42,24 +42,30 @@ function PayMethodSection() {
     );
   }, [payMethod]);
 
+  let loadingInfo = bookingInfoState?.loading;
   const onAddUserInfoPay = () => {
     dispatch(postBookingAction(orderInfo));
 
     setCurrentPay(currentPay + 1);
-  };
 
-  let loadingInfo = bookingInfoState?.loading;
-
-  useEffect(() => {
     if (
       bookingInfoState?.data !== null &&
       bookingInfoState?.data !== undefined &&
-      bookingInfoState?.data >= 0 &&
       !loadingInfo
     ) {
       setBookingInfo(bookingInfoState?.data);
     }
-  }, [bookingInfoState, dispatch]);
+  };
+
+  // useEffect(() => {
+  //   if (
+  //     bookingInfoState?.data !== null &&
+  //     bookingInfoState?.data !== undefined &&
+  //     !loadingInfo
+  //   ) {
+  //     setBookingInfo(bookingInfoState?.data);
+  //   }
+  // }, [bookingInfoState?.data, dispatch]);
   console.log("bookingInfo :>> ", bookingInfo);
 
   return (

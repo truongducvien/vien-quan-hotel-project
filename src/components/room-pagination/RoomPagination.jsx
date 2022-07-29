@@ -8,7 +8,6 @@ import {
 } from "../../stores/slices/roomPagination.slice";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { CarouselPagination } from "./CarouselPagination";
 import { getParamValue, paramValueToUrlParam } from "../../utils/urlParamUtils";
 
 export const RoomPagination = React.memo(function _RoomPagination() {
@@ -52,7 +51,6 @@ export const RoomPagination = React.memo(function _RoomPagination() {
 
   return (
     <div className="home-page">
-      <CarouselPagination />
       <h1>Room Pagination Listing</h1>
       {loading && (
         <div>
