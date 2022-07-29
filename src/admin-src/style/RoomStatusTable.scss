@@ -1,9 +1,10 @@
 .roomStatus{
    
    .bookingHeader{
+      position: absolute;
       width: 100%;
-      padding: 4px;
-      margin: 5px auto;
+      // padding: 4px;
+      // margin: 5px auto;
 
       .definition-container{
          display: flex;

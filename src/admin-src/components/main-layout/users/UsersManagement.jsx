@@ -5,7 +5,7 @@ export default function UsersManagement () {
    return (
       <>
          <div className='backButton-container'>
-            <NavLink className='backButton' to='/'>
+            <NavLink className='backButton' to='/admin'>
                <i className="fa-solid fa-arrow-left"></i>
             </NavLink>
          </div>

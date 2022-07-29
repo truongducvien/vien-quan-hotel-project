@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { v4 as uuid } from 'uuid'
 
 import '../../style/EditForm.scss'
@@ -60,80 +60,85 @@ export default function EditForm ({
 
    return(
       <>
-         <form action=""> 
-            <div className="form-group roomName">
-               <span>Room type: </span>
-               <input 
-                  type="text" 
-                  value={roomInfoChange.typeRoom}
-                  onChange={(e) => handleChange('typeRoom', e.target.value)}
-               />
-               <div className="animation"></div>
+         <form className='adminEditForm' action=""> 
+            <div className='form-group'>
+               <div className="input-container roomName">
+                  <span>Room type: </span>
+                  <input 
+                     type="text" 
+                     value={roomInfoChange.typeRoom}
+                     onChange={(e) => handleChange('typeRoom', e.target.value)}
+                  />
+               </div>
             </div>
 
-            <div className="form-group">
-               <span>Price: </span>
-               <input 
-                  type="text"
-                  value={roomInfoChange.price}
-                  onChange={(e) => handleChange('price', e.target.value)}
-               />
+            <div className='form-group'>
+               <div className="input-container">
+                  <span>Price: </span>
+                  <input 
+                     type="text"
+                     value={roomInfoChange.price}
+                     onChange={(e) => handleChange('price', e.target.value)}
+                  />
+               </div>
+
+               <div className="input-container">
+                  <span>Total rooms: </span>
+                  <input 
+                     type="number" 
+                     value={roomInfoChange.quantity}
+                     onChange={(e) => handleChange('quantity', e.target.value)}
+                  />
+               </div>
+
+               <div className="input-container">
+                  <span>Max guests: </span>
+                  <input 
+                     type="number" 
+                     value={roomInfoChange.maxPerson}
+                     onChange={(e) => handleChange('maxPerson', e.target.value)}
+                  />
+               </div>
             </div>
 
-            <div className="form-group">
-               <span>Room available: </span>
-               <input 
-                  type="number" 
-                  value={roomInfoChange.quantity}
-                  onChange={(e) => handleChange('quantity', e.target.value)}
-               />
+            <div className='form-group'>
+               <div className="input-container bed">
+                  <span>Bed: </span>
+                  <input 
+                     type="text" 
+                     value={roomInfoChange.bed}
+                     onChange={(e) => handleChange('bed', e.target.value)}
+                  />
+               </div>
+
+               <div className="input-container bathrooms">
+                  <span>Bathrooms: </span>
+                  <input 
+                     type="text" 
+                     value={roomInfoChange.bathrooms}
+                     onChange={(e) => handleChange('bathrooms', e.target.value)}
+                  />
+               </div>
             </div>
 
-            <div className="form-group">
-               <span>Maximum guests: </span>
-               <input 
-                  type="number" 
-                  value={roomInfoChange.maxPerson}
-                  onChange={(e) => handleChange('maxPerson', e.target.value)}
-               />
-            </div>
+            <div className='form-group'>
+               <div className="input-container convenient">
+                  <span>Convenient: </span>
+                  <textarea
+                     rows="4"
+                     value={roomInfoChange.convenient}
+                     onChange={(e) => handleChange('convenient', e.target.value)}
+                  />
+               </div>
 
-            <div className="form-group bed">
-               <span>Bed: </span>
-               <input 
-                  type="text" 
-                  value={roomInfoChange.bed}
-                  onChange={(e) => handleChange('bed', e.target.value)}
-               />
-            </div>
-
-            <div className="form-group bathrooms">
-               <span>Bathrooms: </span>
-               <input 
-                  type="text" 
-                  value={roomInfoChange.bathrooms}
-                  onChange={(e) => handleChange('bathrooms', e.target.value)}
-               />
-            </div>
-
-            <div className="form-group convenient">
-               <span>Convenient: </span>
-               <textarea
-                  rows='4' 
-                  cols='110'
-                  value={roomInfoChange.convenient}
-                  onChange={(e) => handleChange('convenient', e.target.value)}
-               />
-            </div>
-
-            <div className="form-group introduction">
-               <span>Introduction: </span>
-               <textarea
-                  rows='7' 
-                  cols='110'
-                  value={roomInfoChange.introduction}
-                  onChange={(e) => handleChange('introduction', e.target.value)}
-               />
+               <div className="input-container introduction">
+                  <span>Introduction: </span>
+                  <textarea
+                     rows="4"
+                     value={roomInfoChange.introduction}
+                     onChange={(e) => handleChange('introduction', e.target.value)}
+                  />
+               </div>
             </div>
          </form>
 
@@ -171,7 +176,7 @@ export default function EditForm ({
 
             <div className='rooms-group'>
                {roomInfoChange.roomsList.map((room, index) => (
-                  <div className='room' key={room.id}>
+                  <div className='roomEditList' key={room.id}>
                      <input 
                         type="checkbox" 
                         value={room.id}

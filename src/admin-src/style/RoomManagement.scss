@@ -26,16 +26,16 @@
 
    .addNewRoomButton{
       position: absolute;
-      left: unset !important;
       right: 30px;
       top: 180px;
-      z-index: 17;
       width: 150px;
       padding: 5px;
       background-color: #026082;
       color: white;
       line-height: 25px;
       font-size: 15px;
+      text-decoration: none;
+      text-align: center;
    }
    .addNewRoomButton:hover{
       background-color: #01688e;
@@ -47,6 +47,19 @@
 
    table{
       font-size: 80%;
+
+      thead{
+         th{
+            font-weight: 600;
+            color: #026082;
+            text-align: center;
+         }
+      }
+      tbody{
+         td{
+            font-size: 11px;
+         }
+      }
    }
 }
 

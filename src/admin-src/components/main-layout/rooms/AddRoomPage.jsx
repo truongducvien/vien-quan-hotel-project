@@ -130,8 +130,10 @@ export default function AddRoomPage (){
                   addNewRoom={addNewRoom}
                />
 
-               <button className="button" disabled={isSaved} onClick={handleSaveChange}>Save</button>
-               <button className="button" disabled={isSaved} onClick={handleReset}>Reset</button>
+               <div className="addFormButton-container">
+                  <button className="button" disabled={isSaved} onClick={handleSaveChange}>Save</button>
+                  <button className="button" disabled={isSaved} onClick={handleReset}>Reset</button>
+               </div>
          </div>
       </>
    )

@@ -1,7 +1,4 @@
-form{
-   display: flex;
-   justify-content: space-evenly;
-   flex-wrap: wrap;
+.adminEditForm{
    width: 100%;
    margin: 10px auto;
    padding: 20px;
@@ -10,62 +7,77 @@ form{
    box-shadow: 1px 1px 6px 1px #80808096;
 
    .form-group{
-      position: relative;
-      flex-basis: 31%;
-      height: 40px;
-      padding: 5px 10px;
       display: flex;
-      justify-content:center;
-
-      span{
-         font-weight: 500;
-         padding: 3px;
-         margin-right: 5px;
-         text-align: left;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      
+      .input-container{
+         position: relative;
+         flex-basis: 31%;
+         height: 40px;
+         padding: 5px 10px;
+         display: flex;
+         justify-content:center;
+   
+         span{
+            width: 100px;
+            flex-grow: 1;
+            padding: 3px;
+            margin-right: 5px;
+            text-align: left;
+            color: #026082;
+            font-weight: 600;
+            font-size: 15px;
+         }
+         input{
+            flex-grow: 1;
+            border: unset;
+            text-align: center;
+            background-color: #f6f5f5;
+            box-shadow: 1px 1px 6px 1px #80808096;
+         }
+         input:focus{
+            outline: unset;
+            background-color: white;
+         }
       }
-      input{
-         width: 45%;
-         border: unset;
-         text-align: center;
-         background-color: #f6f5f5;
-         box-shadow: 1px 1px 6px 1px #80808096;
+      .roomName{
+         flex-basis: 100%;
+   
+         input{
+            width: 84%;
+         }
       }
-      input:focus{
-         outline: unset;
-         background-color: white;
+      .bed, .bathrooms{
+         flex-basis: 47%;
+         input{
+            width: 75%;
+         }
       }
-   }
-   .roomName{
-      flex-basis: 100%;
-
-      input{
-         width: 84%;
-      }
-   }
-   .bed, .bathrooms{
-      flex-basis: 47%;
-      input{
-         width: 75%;
-      }
-   }
-   .convenient, .introduction{
-      display: block;
-      flex-basis: 100%;
-      width: fit-content;
-      height: fit-content;
-
-      span{
-         display: block;
-      }
-      textarea{
-         padding: 5px;
-         border: unset;
-         background-color: #f6f5f5;
-         box-shadow: 1px 1px 6px 1px #80808096;
-      }
-      textarea:focus{
-         background-color: white;
-         outline: unset
+      .convenient, .introduction{
+         display: flex;
+         flex-wrap: wrap;
+         flex-basis: 100%;
+         height: fit-content;
+   
+         span{
+            display: block;
+            flex-basis: 100%;
+         }
+         textarea{
+            flex-grow: 1;
+            height: fit-content;
+            padding: 5px;
+            border: unset;
+            background-color: #f6f5f5;
+            box-shadow: 1px 1px 6px 1px #80808096;
+            font-size: 14px;
+            text-indent: 30px;
+         }
+         textarea:focus{
+            background-color: white;
+            outline: unset
+         }
       }
    }
    
@@ -165,7 +177,7 @@ form{
 .roomsListForm{
    width: 100%;
    height: fit-content;
-   padding: 10px;
+   padding: 20px 30px;
    margin: 0 auto;
    background-color: #8fb9db3b;
    border-radius: 6px;
@@ -174,6 +186,9 @@ form{
    .roomsListTitle{
       text-align: left;
       font-weight: 500;
+      color: #026082;
+      font-weight: 600;
+      font-size: 15px;
    }
 
    .rooms-group{
@@ -181,12 +196,16 @@ form{
       justify-content: flex-start;
       flex-wrap: wrap;
       padding: 10px;
+      margin: 5px 0;
       background: white;
       border-radius: 3px;
 
-      .room{
+      .roomEditList{
          flex-basis: 33%;
 
+         input{
+            margin: 5px;
+         }
          .roomName{
             display: inline-block;
             width: 100px;
@@ -194,10 +213,11 @@ form{
       }
    }
    .deleteRoomButton{
+      display: block;
       width: fit-content;
       padding: 4px;
       border: unset;
-      margin: 4px;
+      margin: 4px auto;
       background-color: #026082;
       color: white;
       font-size: smaller;
@@ -216,11 +236,14 @@ form{
    }
 
    .roomInput{
+      width: 60%;
+      margin: 10px auto;
 
       input{
          text-align: center;
          display: inline-block;
-         width: 40%;
+         width: 80%;
+         padding: 3px;
          margin: 0 10px;
          border: unset;
          background-color: #f6f5f5;

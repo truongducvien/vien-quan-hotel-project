@@ -132,7 +132,7 @@ export default function EditPage () {
    return (
       <>
          <div className='backButton-container'>
-            <NavLink className='backButton' to='/room_management'>
+            <NavLink className='backButton' to='/admin/room_management'>
                <i className="fa-solid fa-arrow-left"></i>
             </NavLink>
          </div>
@@ -161,9 +161,11 @@ export default function EditPage () {
                      addNewRoom={addNewRoom}
                   />
 
-                  <button className="button" disabled={isSaved} onClick={handleSaveChange}>Save</button>
-                  <button className="button" disabled={isSaved} onClick={handleReset}>Reset</button>
-                  <button className="button" onClick={handleDeleteRoomType}>Delete</button>
+                  <div className="editFormButton-container">
+                     <button className="button" disabled={isSaved} onClick={handleSaveChange}>Save</button>
+                     <button className="button" disabled={isSaved} onClick={handleReset}>Reset</button>
+                     <button className="button" onClick={handleDeleteRoomType}>Delete</button>
+                  </div>
                </div>
             )}
          </div>
