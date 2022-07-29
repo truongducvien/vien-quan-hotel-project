@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from "react-redux";
 import "../../../style/RoomManagement.scss";
 import { columns } from "../../shared-components/tableData";
 import { fetchRoomDataAction } from "../../../store/slices/roomSlice";
-import { HeaderShare } from "../../shared-components/HeaderShare";
 
 export default function RoomManagement() {
   const roomDispatch = useDispatch();
@@ -21,7 +20,6 @@ export default function RoomManagement() {
 
   return (
     <>
-      <HeaderShare />
       <div className="backButton-container">
         <NavLink className="backButton" to="/admin">
           <i className="fa-solid fa-arrow-left"></i>
