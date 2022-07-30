@@ -12,15 +12,15 @@ const { Panel } = Collapse;
 function BookingSection() {
   const bookingState = useSelector((state) => state?.booking?.bookingState);
 
-  const { orderInfo, bookingInfo, setBookingInfo } =
-    useContext(CustomerContext);
+  const { orderInfo } = useContext(CustomerContext);
 
   const [ellipsisIntroduction, setEllipsisIntroduction] = useState(false);
 
   const dispatch = useDispatch();
+  console.log("bookingState :>> ", bookingState.data);
 
-  // let bookingNumber = bookingState?.data.length;
-  let bookingNumber = bookingState.id;
+  let bookingLast = bookingState?.data.length;
+  let bookingNumber = bookingState?.data[bookingLast - 1].id;
 
   let bookingName =
     orderInfo.userInfo.firstName + " " + orderInfo.userInfo.lastName;

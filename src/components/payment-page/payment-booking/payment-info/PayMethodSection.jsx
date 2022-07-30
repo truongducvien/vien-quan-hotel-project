@@ -16,14 +16,8 @@ function PayMethodSection() {
     (state) => state.bookingInfo.bookingInfoState
   );
   const dispatch = useDispatch();
-  const {
-    orderInfo,
-    setOrderInfo,
-    currentPay,
-    setCurrentPay,
-    bookingInfo,
-    setBookingInfo,
-  } = useContext(CustomerContext);
+  const { orderInfo, setOrderInfo, currentPay, setCurrentPay } =
+    useContext(CustomerContext);
   const [payMethod, setPayMethod] = useState("Credit/Debit Card");
   const [ellipsisCancel, setEllipsisCancel] = useState(false);
 
@@ -42,31 +36,11 @@ function PayMethodSection() {
     );
   }, [payMethod]);
 
-  let loadingInfo = bookingInfoState?.loading;
   const onAddUserInfoPay = () => {
     dispatch(postBookingAction(orderInfo));
 
     setCurrentPay(currentPay + 1);
-
-    if (
-      bookingInfoState?.data !== null &&
-      bookingInfoState?.data !== undefined &&
-      !loadingInfo
-    ) {
-      setBookingInfo(bookingInfoState?.data);
-    }
   };
-
-  // useEffect(() => {
-  //   if (
-  //     bookingInfoState?.data !== null &&
-  //     bookingInfoState?.data !== undefined &&
-  //     !loadingInfo
-  //   ) {
-  //     setBookingInfo(bookingInfoState?.data);
-  //   }
-  // }, [bookingInfoState?.data, dispatch]);
-  console.log("bookingInfo :>> ", bookingInfo);
 
   return (
     <div className="pay-form-contact">
