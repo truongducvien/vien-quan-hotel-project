@@ -7,11 +7,6 @@ export function ProtectedRoute(props) {
   const { children } = props;
   const userInfo = useSelector((state) => state.user.userInfoState);
   if (!userInfo.data) return <Navigate to={"/booking"} />;
-  // // if (userInfo.data) {
-  // //   if (userInfo.data.role === "admin") {
-  // //     return <Navigate to={"/admin"} />;
-  // //   }
-  // }
 
   return <>{children}</>;
 }

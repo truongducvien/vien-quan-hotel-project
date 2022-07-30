@@ -27,7 +27,7 @@ export default function UserLogin() {
     if (userInfo.data.role === "admin") {
       return <Navigate to={"/admin"} />;
     }
-    return <Navigate to={"/home"} />;
+    return <Navigate to={"/"} />;
   }
 
   return (

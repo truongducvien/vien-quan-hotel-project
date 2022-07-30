@@ -19,8 +19,8 @@ function BookingSection() {
 
   const dispatch = useDispatch();
 
-  let bookingNumber = bookingState?.data.length;
-  // let bookingNumber = bookingInfo.id;
+  // let bookingNumber = bookingState?.data.length;
+  let bookingNumber = bookingState.id;
 
   let bookingName =
     orderInfo.userInfo.firstName + " " + orderInfo.userInfo.lastName;

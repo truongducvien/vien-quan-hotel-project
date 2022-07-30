@@ -26,6 +26,7 @@ export const DataProvider = ({ children }) => {
   ]);
 
   const [orderInfo, setOrderInfo] = useState({
+    id: v4(),
     userInfo: {},
     date: dates,
     nights: 1,
