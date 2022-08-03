@@ -1,0 +1,52 @@
+.usersList{
+
+   thead{
+      th{
+         font-weight: 600;
+         color: #026082;
+         text-align: center;
+      }
+   }
+
+   .usersDetailButton{
+      display: block;
+      width: 60px;
+      padding: 3px;
+      margin: 2px auto;
+      border: unset;
+      border-radius: 1px;
+      background-color: #026082;
+      color: white;
+      font-size: 9px;
+      text-align: center;
+   }
+   .usersDetailButton:hover{
+      background-color: #006d94
+   }
+   .active{
+      background-color: #005675;
+   }
+}
+
+
+.userDetail-container{
+   .ant-modal-title{
+      font-weight: 600;
+      color: #026082;
+      font-size: 20px;
+   }
+   .modalButton{
+      color: white;
+      background-color: #026082;
+
+      span{
+         font-size: 12px;
+      }
+   }
+   .modalButton:hover{
+      background-color: #006d94;
+   }
+   .modalButton:focus{
+      background-color: #005675;
+   }
+}

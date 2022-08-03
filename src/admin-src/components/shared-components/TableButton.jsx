@@ -11,7 +11,7 @@ export default function TableButton ({ record }){
    const rooms = useSelector( state => state.roomReducer.rooms)
    
    const handleDelete = (record) => {
-      if(window.confirm(`Are you sure to delete "${record.nameRoom}"?`)){
+      if(window.confirm(`Are you sure to delete "${record.typeRoom}"?`)){
          dispatch(deleteRoomType(record.id))
       }
    }

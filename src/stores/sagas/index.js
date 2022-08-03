@@ -1,7 +1,8 @@
 import { all, fork } from "redux-saga/effects";
 import { bookingSaga } from "../../admin-src/store/saga/bookingSaga";
 import { roomSaga } from "../../admin-src/store/saga/roomSaga";
-import { bookingHomeSaga } from "./bookingHome.saga";
+import { usersSaga } from "../../admin-src/store/saga/usersSaga";
+import { bookingHomeSaga } from "./booking.saga";
 import { fetchBookingIdSaga } from "./fetchBookingId.saga";
 import { patchBookingStatusSaga } from "./patchStatusBooking.saga";
 import { postBookingSaga } from "./postBooking.saga";
@@ -23,5 +24,6 @@ export function* mySaga() {
     fork(patchBookingStatusSaga),
     fork(roomSaga),
     fork(bookingSaga),
+    fork(usersSaga)
   ]);
 }

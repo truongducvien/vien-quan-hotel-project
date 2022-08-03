@@ -12,7 +12,7 @@ function getBookingDataFromAPI () {
    return API.get(`${API_URL}/bookings`).then(res => res.data)
    // return fetch(`${API_URL}/bookings`).then( res => res.json())
 }
- 
+
 function* fetchBookingData () {
    try{
       const data = yield call(getBookingDataFromAPI)
@@ -30,6 +30,7 @@ function patchBookingData (change) {
 function* updateBookings (change) {
    try{  
       yield call(patchBookingData, change)
+      yield delay(200)
       yield call(fetchBookingData)
    } catch (e) {
       console.log('Error: ', e)
@@ -38,7 +39,7 @@ function* updateBookings (change) {
 
 function* bookingSaga (){
    yield takeEvery(fetchBookingDataAction, fetchBookingData);
-   // yield takeEvery(updateBookingAction, updateBookings)
+   yield takeEvery(updateBookingAction, updateBookings)
 }
 
 export { bookingSaga };

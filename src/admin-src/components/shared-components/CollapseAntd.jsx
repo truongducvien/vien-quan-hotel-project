@@ -1,5 +1,4 @@
-
-import ReactTextCollapse from "react-text-collapse/dist/ReactTextCollapse";
+import { Collapse } from "antd";
 
 const TEXT_COLLAPSE_OPTIONS = {
   collapse: false,
@@ -13,13 +12,11 @@ const TEXT_COLLAPSE_OPTIONS = {
   },
 };
 
-export default function TextCollapsed({ text }) {
+export default function CollapseAntd({ text }) {
   return (
     <div>
-      <ReactTextCollapse options={TEXT_COLLAPSE_OPTIONS}>
-        {text}
-      </ReactTextCollapse>
+      {/* <Collapse>{text}</Collapse> */}
+      <p>{text}</p>
     </div>
   );
 }
-

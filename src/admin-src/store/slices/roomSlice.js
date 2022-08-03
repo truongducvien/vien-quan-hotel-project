@@ -42,7 +42,7 @@ const roomSlice = createSlice({
          state.rooms = [...state.rooms, action.payload]
       },
       updateRoomsAction (state, action) {
-         state.rooms = action.payload;
+         state.isLoading = true;
       }
    }
 })

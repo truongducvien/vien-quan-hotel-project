@@ -6,17 +6,20 @@ import "../../../style/BookingManagement.scss";
 import BookingList from "./BookingList";
 import RoomStatusTable from "./RoomStatusTable";
 import CurrentTime from "../../shared-components/CurrentTime";
+import { HeaderShare } from "../../shared-components/HeaderShare";
 
 export default function BookingManagement() {
   const { TabPane } = Tabs;
+  
+   return (
+      <>
+         <h3 className="bookingsTitle">Bookings management</h3>
 
-  return (
-    <>
-      <div className="backButton-container">
-        <NavLink className="backButton" to="/">
-          <i className="fa-solid fa-arrow-left"></i>
-        </NavLink>
-      </div>
+         <div className='backButton-container'>
+            <NavLink className='backButton' to='/admin'>
+               <i className="fa-solid fa-arrow-left"></i>
+            </NavLink>
+         </div>
 
       <div className="bookingManagement">
         <CurrentTime />

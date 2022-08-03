@@ -1,7 +1,7 @@
 
 .bookingManagementTab{
    span{
-      display:block;
+      display:inline-block;
       width: fit-content;
       padding: 3px;
       font-size: 15px;
@@ -9,43 +9,33 @@
       color: #026082;
    }
 }
-.status{
-   text-align: center;
-   border-radius: 50%;
-   margin-right: 5px;
-   background-color: transparent;
-   box-shadow: 1px 1px 0px 1px rgba(128, 128, 128, 0.542);
-}
-.Booked{
-   color: rgb(255, 255, 32);
-}
-.Checked-in{
-   color: rgba(71, 71, 255, 0.986);
-}
-.Checked-out{
-   color: rgb(0, 137, 152);
-}
-.Expired{
-   color: rgb(211, 0, 0);
-}
 
-.changeStatusButton{
-   background-color: #026082;
-   color: white;
-   display: block;
-   width: 60px;
-   padding: 3px;
-   margin: 2px;
-   font-size: 9px;
-   border: unset;
-   border-radius: 1px;
-   text-align: center;
-}
-
-.changeStatusButton:hover{
-   cursor: pointer;
-   background-color: #00688e;
-}
-.changeStatusButton:active{
-   background-color: #02729b;
+.bookingListTable{
+   thead{
+      th{
+         font-weight: 600;
+         color: #026082;
+         text-align: center;
+         height: 20px;
+      }
+   }
+   tbody{
+      td{
+         height: 20px;
+      }
+      a{
+         display: block;
+         background-color: #026082;
+         text-align: center;
+         color: white;
+         text-decoration: unset;
+         font-size: 12px;
+      }
+      a:hover{
+         background-color: #00688e;
+      }
+      a:active{
+         background-color: #02729b;
+      }
+   }
 }

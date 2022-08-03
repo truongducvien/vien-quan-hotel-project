@@ -1,0 +1,62 @@
+$main-color: #026082;
+
+.bookingReport{ 
+   outline: 1px dashed $main-color;
+   padding: 5px;
+
+   .header{
+      width: 100%;
+      height: 100%;
+      padding-bottom: 5px;
+      border-bottom: 1px solid $main-color;
+
+      span, div{
+         display: block;
+         width: fit-content;
+         margin: auto;
+         color:#026082 
+      }
+      span{
+         font-weight: 600;
+      }
+   }
+
+   .content{
+      .basisInfo{
+         border-bottom: 1px solid $main-color;
+         padding-bottom: 5px;
+
+         span{
+            display: inline-block;
+            width: 22%;
+            color: $main-color;
+         }
+      }
+      .roomBookedInfo{
+         .bookingReportTable{
+            thead{
+               th{
+                  font-weight: 600;
+                  color: #026082;
+                  text-align: center;
+               }
+            }
+         }
+         .totalCost{
+            padding: 5px;
+            text-align: right;
+            font-weight: 600;
+
+            span{
+               display: inline-block;
+               width: 20%;
+               text-align: left;
+               color: #026082;
+            }
+         }
+      }
+   }
+   .footer{
+      text-align: center;
+   }
+}

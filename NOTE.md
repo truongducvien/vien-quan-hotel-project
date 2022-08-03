@@ -12,7 +12,9 @@ old new
 
 # options rooms - guests
 
+
 # problem:
+
 
 1. bookingNumber (save data bookingInfoState local) \ error get data old not update new data
 

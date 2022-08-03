@@ -13,7 +13,7 @@ const RoomDataURL = `${API_URL}/rooms`
 function getRoomsFromAPI () {
    return fetch(RoomDataURL).then( res => res.json())
 }
- 
+
 function* fetchRoomData () {
    try{ 
       const data = yield call(getRoomsFromAPI)
@@ -31,6 +31,7 @@ function patchData (change){
 function* updateRooms (change) {
    try {
       yield call(patchData, change)
+      yield delay(200)
       yield call(fetchRoomData)
    } catch (e){
       console.log("Error: ", e)
@@ -39,5 +40,5 @@ function* updateRooms (change) {
 
 export function* roomSaga () {
    yield takeEvery(fetchRoomDataAction, fetchRoomData)
-   // yield takeEvery( updateRoomsAction, updateRooms )
+   yield takeEvery( updateRoomsAction, updateRooms )
 } 
