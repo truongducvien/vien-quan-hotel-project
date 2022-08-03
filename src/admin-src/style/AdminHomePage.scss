@@ -1,4 +1,5 @@
 .adminHomePage{
+   position: relative;
    margin-top: 30px;
    margin: auto;
 
@@ -17,20 +18,23 @@
          justify-content: center;
          flex-wrap: wrap;
          width: 20%;
+         margin-left: 10px;
          border-right: 1px solid grey;
-         
          
          .headerLogo{
             width: 100%;
             text-align: center;
          }
       }
+      .adminLogo:hover{
+         cursor: pointer;
+      }
       .adminNavLink{
          display: flex;
          justify-content: flex-start;
 
          .button{
-            width: 180px;
+            width: 95px;
             height: 40px;
             padding: 3px;
             color: white ;
@@ -41,7 +45,8 @@
          }
          .button:hover{
             color: white ;
-            background-color: #01678b ;
+            background-color: #01678b;
+            border-bottom: 2px solid white;
          }
          .button:active{
             background-color: #0085b6 ;
@@ -77,5 +82,24 @@
       color: #026082;
       background-color: white;
       text-align: center;
+   }
+
+   .adminContent{
+      padding-bottom: 10px;
+   }
+
+   .home-footer{
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      height: 40px;
+      background-color: #026082;
+      
+      span{
+         height: 100%;
+         line-height: 40px;
+         padding: 5px;
+         color: white
+      }
    }
 }

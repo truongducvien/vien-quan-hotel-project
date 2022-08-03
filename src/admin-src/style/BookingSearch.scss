@@ -1,0 +1,22 @@
+.search-area{
+   position: absolute;
+   z-index: 1;
+   display: flex;
+   right: 5px;
+   top: 73px;
+
+   .search-group{
+      margin-left: 3px;
+
+      input{
+         width: 200px;
+         padding: 3px;
+         border: unset;
+         background-color: rgba(242, 242, 242, 0.756);
+      }
+      input:focus{
+         outline: unset;
+         background-color: white;
+      }
+   }
+}

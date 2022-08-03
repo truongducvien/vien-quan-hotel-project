@@ -4,6 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import { bookingReducer } from "../admin-src/store/slices/bookingSlice";
 import { roomReducer } from "../admin-src/store/slices/roomSlice";
+import { usersReducers } from "../admin-src/store/slices/usersSlice";
 import { mySaga } from "./sagas";
 import { bookingHomeReducer } from "./slices/booking.slice";
 import { fetchBookingIdReducer } from "./slices/fetchBookingId.slice";
@@ -26,6 +27,7 @@ const rootReducer = {
   roomPagination: roomPaginationReducer,
   roomReducer: roomReducer,
   bookingReducer: bookingReducer,
+  usersReducers: usersReducers
 };
 
 export const appStore = configureStore({

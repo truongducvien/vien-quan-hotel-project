@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid'
+import { toVND } from '../../general function';
 
 import '../../style/EditForm.scss'
 
@@ -74,7 +75,7 @@ export default function EditForm ({
 
             <div className='form-group'>
                <div className="input-container">
-                  <span>Price: </span>
+                  <span>Price (VND): </span>
                   <input 
                      type="text"
                      value={roomInfoChange.price}

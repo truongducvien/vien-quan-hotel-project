@@ -7,6 +7,7 @@ import '../../../style/RoomStatusTable.scss'
 import { fetchRoomDataAction } from '../../../store/slices/roomSlice'
 import { fetchBookingDataAction } from '../../../store/slices/bookingSlice'
 import ShowRoom from "./ShowRoom";
+import { Loading } from "../../shared-components/Loading";
 
 export default function RoomStatusTable () {
    const dispatch = useDispatch()
@@ -33,12 +34,7 @@ export default function RoomStatusTable () {
          </div>
 
          {isBookingLoading? (
-            <>
-               <br /><br />
-               <Space>
-                  <Spin size='large'/>
-               </Space>
-         </>
+            <Loading />
          ):(
             <div className="bookingContent">
                {rooms.map((roomsGroup, index) => (

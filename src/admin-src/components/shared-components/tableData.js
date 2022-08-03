@@ -1,15 +1,18 @@
-import TextCollapsed from './TextCollapsed'
+// import TextCollapsed from './TextCollapsed'
 import ImageCarousel from './ImageCarousel';
 import { Space } from 'antd'
 
 import TableButton from './TableButton';
+import { toVND } from '../../general function';
 
-export const columns = [
+export const roomsColumnTable = [
    {
       title: 'Index',
       dataIndex: 'key',
       key: 'index',
-      render: (item, obj, index) => (index + 1)
+      render: (item, obj, index) => (
+         <div style={{textAlign: 'center'}}>{index + 1}</div>
+      )
    },
    {
       title: 'Room Type',
@@ -20,16 +23,25 @@ export const columns = [
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
+      render: (item) => (
+         <div style={{textAlign: 'center'}}>{toVND(item)}</div>
+      )
    },
    {
       title: 'Rooms Quantity',
       dataIndex: 'quantity',
       key: 'quantity',
+      render: (item) => (
+         <div style={{textAlign: 'center'}}>{item}</div>
+      )
    },
    {
       title: 'Maximum Guests',
       dataIndex: 'maxPerson',
       key: 'maxPerson',
+      render: (item) => (
+         <div style={{textAlign: 'center'}}>{item}</div>
+      )
    },
    {
       title: 'Bed',
@@ -45,13 +57,13 @@ export const columns = [
       title: 'Convenient',
       dataIndex: 'convenient',
       key: 'convenient',
-      render: ( text => text.length > 250? <TextCollapsed text={text} /> : text)
+      // render: ( text => text.length > 250? <TextCollapsed text={text} /> : text)
    },
    {
       title: 'Introduction',
       dataIndex: 'introduction',
       key: 'introduction',
-      render: ( text => text.length > 250? <TextCollapsed text={text} /> : text)
+      // render: ( text => text.length > 250? <TextCollapsed text={text} /> : text)
    },
    {
       title: 'Image',

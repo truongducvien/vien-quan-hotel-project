@@ -12,6 +12,7 @@ old new
 
 # options rooms - guests
 
+
 # problem:
 
 1. fetch data bookings again after post data bookingInfo to server.

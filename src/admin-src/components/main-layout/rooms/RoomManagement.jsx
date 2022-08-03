@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
-import { Table, Space, Spin } from "antd";
+import { Table } from "antd";
 
+import { Loading } from "../../shared-components/Loading";
 import { useSelector, useDispatch } from "react-redux";
 
 import "../../../style/RoomManagement.scss";
-import { columns } from "../../shared-components/tableData";
+import { roomsColumnTable } from "../../shared-components/tableData";
 import { fetchRoomDataAction } from "../../../store/slices/roomSlice";
 
 export default function RoomManagement() {
@@ -20,6 +21,8 @@ export default function RoomManagement() {
 
   return (
     <>
+      <h3 className="roomsTitle">Rooms management</h3>
+
       <div className="backButton-container">
         <NavLink className="backButton" to="/admin">
           <i className="fa-solid fa-arrow-left"></i>
@@ -28,20 +31,14 @@ export default function RoomManagement() {
 
       <div className="roomManagement">
         <NavLink className="addNewRoomButton" to="new">
-          Add new room type
+          + Add new room type
         </NavLink>
 
         {isLoading ? (
-          <>
-            <br />
-            <br />
-            <Space>
-              <Spin size="large" />
-            </Space>
-          </>
+          <Loading />
         ) : (
           <>
-            <Table columns={columns} dataSource={rooms} />
+            <Table columns={roomsColumnTable} dataSource={rooms} size='small'/>
           </>
         )}
       </div>

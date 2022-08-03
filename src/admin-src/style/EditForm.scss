@@ -140,6 +140,10 @@
       }
    }
    .imageLinkInput{
+      width: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: center;
       
       input{
          text-align: center;

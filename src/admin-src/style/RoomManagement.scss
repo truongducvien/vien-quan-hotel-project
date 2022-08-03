@@ -1,6 +1,17 @@
+.roomsTitle{
+   display: block;
+   width: 270px;
+   padding-bottom: 5px;
+   border-bottom: 2px solid #026082f0;
+   margin: 20px;
+   color: #026082;
+}
+
+
 .backButton-container{
    position: absolute;
    top: 0;
+   left: 10px;
    width: 50px;
    height: 100%;
 
@@ -9,7 +20,8 @@
       z-index: 16;
       position: sticky;
       top: 6px;
-      width: 50px;
+      width: fit-content;
+      padding: 0 10px;
       font-size: 24px;
       color: white;
    }
@@ -27,7 +39,7 @@
    .addNewRoomButton{
       position: absolute;
       right: 30px;
-      top: 180px;
+      top: 230px;
       width: 150px;
       padding: 5px;
       background-color: #026082;
