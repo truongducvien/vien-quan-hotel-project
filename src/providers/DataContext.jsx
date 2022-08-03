@@ -20,11 +20,13 @@ export const DataProvider = ({ children }) => {
       typeRoom: "",
       roomPrice: 0,
       roomName: "",
-      maxPerson: 6,
+      maxPerson: 10,
+      status: "Booked",
     },
   ]);
 
   const [orderInfo, setOrderInfo] = useState({
+    id: v4(),
     userInfo: {},
     date: dates,
     nights: 1,
@@ -37,9 +39,11 @@ export const DataProvider = ({ children }) => {
         typeRoom: "",
         roomPrice: 0,
         roomName: "",
-        maxPerson: 6,
+        maxPerson: 10,
+        status: "Booked",
       },
     ],
+    status: "Booked",
     payment: {
       method: "",
       payInfo: {
@@ -59,6 +63,13 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   const [userLoginId, setUserLoginId] = useState(0);
+  useEffect(() => {
+    let userLoginStorage = localStorage.getItem("USER_INFO");
+    if (userLoginStorage !== null) {
+      let userLoginAccount = JSON.parse(userLoginStorage);
+      setUserLoginId(userLoginAccount.id);
+    }
+  }, [localStorage.getItem("USER_INFO")]);
   const [availableRooms, setAvailableRooms] = useState([]);
   const [soldOutId, setSoldOutId] = useState([]);
   const [objQtyTypeId, setObjQtyTypeId] = useState({});

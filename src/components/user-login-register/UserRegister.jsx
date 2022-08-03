@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Col, Row } from "antd";
 import "./style/user-register-login.scss";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Link, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { v4 } from "uuid";
 import { registerAction } from "../../stores/slices/user.slice";
 
 function UserRegister() {
@@ -15,6 +16,8 @@ function UserRegister() {
   };
 
   const onRegister = (values) => {
+    values.id = v4();
+    values.role = "user";
     dispatch(registerAction(values));
   };
 

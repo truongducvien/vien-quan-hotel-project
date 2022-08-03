@@ -4,6 +4,7 @@ import { roomSaga } from "../../admin-src/store/saga/roomSaga";
 import { usersSaga } from "../../admin-src/store/saga/usersSaga";
 import { bookingHomeSaga } from "./booking.saga";
 import { fetchBookingIdSaga } from "./fetchBookingId.saga";
+import { patchBookingStatusSaga } from "./patchStatusBooking.saga";
 import { postBookingSaga } from "./postBooking.saga";
 import { promoCodeSaga } from "./promoCode.saga";
 import { roomHomeSaga } from "./room.saga";
@@ -20,6 +21,7 @@ export function* mySaga() {
     fork(promoCodeSaga),
     fork(fetchBookingIdSaga),
     fork(RoomPaginationSaga),
+    fork(patchBookingStatusSaga),
     fork(roomSaga),
     fork(bookingSaga),
     fork(usersSaga)

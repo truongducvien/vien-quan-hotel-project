@@ -9,10 +9,11 @@ import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import { fetchRoomAction } from "../../../stores/slices/room.slice";
-import { fetchBookingAction } from "../../../stores/slices/booking.slice";
+import { fetchBookingAction } from "../../../stores/slices/bookingHome.slice";
 import {
-  availableRooms,
+  availableRoomsFunction,
   filterObjQtyTypeRoomId,
+  qtyTypeIdBookedFunction,
   soldOutIdFilterValue0,
   timeEndDay,
   timeStartDay,
@@ -30,29 +31,30 @@ export const SelectDate = () => {
     objQtyTypeId,
     setSoldOutId,
     setAvailableRooms,
-    bookingInfo,
   } = useContext(CustomerContext);
 
   const roomState = useSelector((state) => state.room.roomState);
   const bookingState = useSelector((state) => state.booking.bookingState);
-  const bookingInfoState = useSelector(
-    (state) => state.bookingInfo.bookingInfoState
-  );
+
+  const loadingBooking = bookingState?.loading;
+  const loadingRoom = roomState?.loading;
+
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchBookingAction());
+  }, []);
 
   useEffect(() => {
     dispatch(fetchRoomAction());
     dispatch(fetchBookingAction());
-  }, [bookingInfoState, bookingInfo, dispatch]);
-
-  const loadingBooking = bookingState?.loading;
-  const loadingRoom = roomState?.loading;
+  }, [dates]);
 
   const handleApply = (event, picker) => {
     setDates({
       startDay: timeStartDay(picker.startDate.valueOf()),
       endDay: timeEndDay(picker.endDate.valueOf()),
     });
+    dispatch(fetchBookingAction());
   };
 
   useEffect(() => {
@@ -73,6 +75,7 @@ export const SelectDate = () => {
         roomPrice: 0,
         roomName: "",
         maxPerson: 6,
+        status: "Booked",
       },
     ];
     setOptions(newOptions);
@@ -94,26 +97,14 @@ export const SelectDate = () => {
   }, [dates]);
 
   useEffect(() => {
-    if (
-      bookingState?.data !== null &&
-      bookingState?.data !== undefined &&
-      bookingState?.data.length >= 0 &&
-      roomState?.data !== null &&
-      roomState?.data !== undefined &&
-      roomState?.data.length >= 0 &&
-      dates != null &&
-      !loadingBooking &&
-      !loadingRoom
-    ) {
-      let newObjQtyTypeId = filterObjQtyTypeRoomId(
-        bookingState?.data,
-        roomState?.data,
-        dates,
-        orderInfo.options
-      );
-      console.log("objQtyTypeId >>>>>", newObjQtyTypeId);
-      setObjQtyTypeId(newObjQtyTypeId);
-    }
+    let newQtyTypeIdBooked = qtyTypeIdBookedFunction(bookingState?.data, dates);
+    let newObjQtyTypeId = filterObjQtyTypeRoomId(
+      newQtyTypeIdBooked,
+      roomState?.data,
+      orderInfo.options
+    );
+    console.log("objQtyTypeId >>>>>", newObjQtyTypeId);
+    setObjQtyTypeId(newObjQtyTypeId);
   }, [
     bookingState?.data,
     roomState?.data,
@@ -125,12 +116,11 @@ export const SelectDate = () => {
 
   useEffect(() => {
     const typeId = soldOutIdFilterValue0(objQtyTypeId);
-
     setSoldOutId(typeId);
-  }, [objQtyTypeId]);
-
-  useEffect(() => {
-    const newAvailableRooms = availableRooms(objQtyTypeId, roomState?.data);
+    const newAvailableRooms = availableRoomsFunction(
+      objQtyTypeId,
+      roomState?.data
+    );
     setAvailableRooms(newAvailableRooms);
   }, [objQtyTypeId]);
 

@@ -52,6 +52,7 @@
       padding: 0;
     }
     img {
+      width: 100%;
       max-height: 500px;
       min-height: 499px;
       object-fit: cover;
@@ -102,6 +103,22 @@
           background-color: #00445d;
         }
       }
+    }
+    p {
+      margin: 20px 0;
+    }
+    h2,
+    h4 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      font-weight: 100;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      color: #000;
+    }
+    h4 {
+      font-size: 30px;
+      font-weight: 500;
     }
   }
   .home-footer {

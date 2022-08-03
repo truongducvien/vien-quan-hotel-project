@@ -15,11 +15,12 @@ old new
 
 # problem:
 
-1. fetch data bookings again after post data bookingInfo to server.
-2. bookingNumber (save data bookingInfoState local)
-3. Cancel Booking
-4. Collapse at admin tableData.js
 
+1. bookingNumber (save data bookingInfoState local) \ error get data old not update new data
+
+2. Cancel Booking \* ok \*
+3. Collapse at admin tableData.js \* ok \* ok old
+4. fetch data bookings again after post data bookingInfo to server. \* ok \* error because api not function
 5. list user Booking History \*
 6. fetch data bookings before loading MainBookingPage. \* ok
 7. bookingNumber (update length booking) \* ok

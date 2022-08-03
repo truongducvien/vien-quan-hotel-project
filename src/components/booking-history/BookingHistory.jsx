@@ -1,27 +1,30 @@
-import { Modal, Popconfirm, Table, Typography } from "antd";
+import { Col, Modal, Popconfirm, Row, Table, Typography } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBookingIdAction } from "../../stores/slices/fetchBookingId.slice";
-import { bookingSummaryPrice } from "../../utils";
+import { patchBookingStatusAction } from "../../stores/slices/patchStatusBooking.slice";
+import { bookingSummaryPrice, timeStartDay } from "../../utils";
 import { BookHeader } from "../main-booking/BookHeader";
-import ReportBookingView from "./ReportBookingView";
+import BookingHistoryView from "./BookingHistoryView";
 import "./style.scss";
 
-export function BookingReport() {
+export function BookingHistory() {
   const userInfo = useSelector((state) => state.user.userInfoState);
+  const patchBookingStatus = useSelector(
+    (state) => state.patchBookingStatus.patchBookingStatusState
+  );
   const dispatch = useDispatch();
   const [tableData, setTableData] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
-  const [selectedRecord, setSelectedRecord] = useState();
+  const [bookingRecord, setBookingRecord] = useState();
 
   const fetchBookingIdState = useSelector(
     (state) => state.fetchBookingId.fetchBookingIdState
   );
 
   useEffect(() => {
-    console.log("userInfo.id :>> ", userInfo.data.id);
-    dispatch(fetchBookingIdAction(userInfo.data.id));
-  }, []);
+    dispatch(fetchBookingIdAction(userInfo?.data.id));
+  }, [patchBookingStatus?.data]);
 
   useEffect(() => {
     let newTableData = [];
@@ -36,6 +39,7 @@ export function BookingReport() {
           qtyRoom: booking.options.length,
           bookingSummary: bookingSummaryPrice(booking, booking.options),
           payMethod: booking.payment.method,
+          status: booking.status,
           booking: booking,
         },
       ];
@@ -44,23 +48,12 @@ export function BookingReport() {
   }, [fetchBookingIdState?.data]);
 
   const handleView = (booking) => {
-    setSelectedRecord(booking);
+    setBookingRecord(booking);
     setShowAddModal(true);
   };
+
   const handleCancelBooking = (booking) => {
-    console.log("booking :>> ", booking);
-    // let newPayMethod = {
-    //   method: payMethod,
-    //   payInfo: {
-    //     cardNumber: "",
-    //     nameOnCard: "",
-    //   },
-    // };
-    // setOrderInfo({ ...orderInfo, payment: newPayMethod });
-    // localStorage.setItem(
-    //   "ORDER_INFO",
-    //   JSON.stringify({ ...orderInfo, payment: newPayMethod })
-    // );
+    dispatch(patchBookingStatusAction(booking));
   };
 
   const columns = [
@@ -102,11 +95,40 @@ export function BookingReport() {
       key: "payMethod",
     },
     {
+      title: "Status",
+      dataIndex: "booking",
+      key: "booking",
+      render: (booking) => {
+        return booking.date.endDay < timeStartDay(Date.now()) ? (
+          <span style={{ color: "purple" }}>Checked-out</span>
+        ) : booking.status === "Cancel" ? (
+          <span style={{ color: "red" }}>Cancel</span>
+        ) : booking.status === "Booked" ? (
+          <span style={{ color: "green" }}>Booked</span>
+        ) : booking.date.startDay <=
+          timeStartDay(Date.now()) <=
+          booking.date.endDay ? (
+          // &&
+          // booking.date.endDay >= timeStartDay(Date.now())
+          <span style={{ color: "blue" }}>Checked-in</span>
+        ) : (
+          ""
+        );
+      },
+    },
+    {
       title: "operation",
       dataIndex: "booking",
       key: "booking",
       render: (booking) => {
-        return true ? (
+        return booking.status === "Cancel" ||
+          booking.date.endDay < timeStartDay(Date.now()) ? (
+          <span>
+            <Typography.Link onClick={() => handleView(booking)}>
+              View
+            </Typography.Link>
+          </span>
+        ) : (
           <span>
             <Typography.Link
               onClick={() => handleView(booking)}
@@ -120,11 +142,9 @@ export function BookingReport() {
               title="Sure to cancel?"
               onConfirm={() => handleCancelBooking(booking)}
             >
-              <a>Cancel</a>
+              <a style={{ color: "red" }}>Cancel</a>
             </Popconfirm>
           </span>
-        ) : (
-          <Typography.Link onClick={() => {}}>Edit</Typography.Link>
         );
       },
     },
@@ -133,28 +153,30 @@ export function BookingReport() {
     <div className="booking-report">
       <BookHeader />
       <div className="booking-report-header">
-        <h1 className="title">Booking History</h1>
+        <h1 className="booking-report-title">Booking History</h1>
         <hr />
       </div>
 
       <div className="booking-report-table">
-        <Table
-          columns={columns}
-          dataSource={tableData}
-          pagination={{
-            pageSize: 9,
-          }}
-        />
-        <Modal
-          title="Your Booking"
-          visible={showAddModal}
-          onOk={() => setShowAddModal(false)}
-          onCancel={() => setShowAddModal(false)}
-          okText={"ok"}
-          footer={null}
-        >
-          <ReportBookingView booking={selectedRecord} />
-        </Modal>
+        <Row>
+          <Col xs={24} sm={24} md={24} lg={24}>
+            <Table
+              columns={columns}
+              dataSource={tableData}
+              pagination={{
+                pageSize: 9,
+              }}
+            />
+            <Modal
+              title="Your Booking"
+              visible={showAddModal}
+              onCancel={() => setShowAddModal(false)}
+              footer={null}
+            >
+              <BookingHistoryView booking={bookingRecord} />
+            </Modal>
+          </Col>
+        </Row>
       </div>
     </div>
   );

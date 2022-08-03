@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Col, Row, Checkbox } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Navigate } from "react-router";
@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { loginAction } from "../../stores/slices/user.slice";
-import { CustomerContext } from "../../providers/CustomerContext";
 
 export default function UserLogin() {
   const userInfo = useSelector((state) => state.user.userInfoState);
@@ -24,8 +23,11 @@ export default function UserLogin() {
     dispatch(loginAction(values));
   };
 
-  if (localStorage.getItem("USER_INFO") !== null) {
-    return <Navigate to={"/payment"} />;
+  if (userInfo.data) {
+    if (userInfo.data.role === "admin") {
+      return <Navigate to={"/admin"} />;
+    }
+    return <Navigate to={"/"} />;
   }
 
   return (

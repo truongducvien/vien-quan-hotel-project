@@ -6,8 +6,9 @@ import { bookingReducer } from "../admin-src/store/slices/bookingSlice";
 import { roomReducer } from "../admin-src/store/slices/roomSlice";
 import { usersReducers } from "../admin-src/store/slices/usersSlice";
 import { mySaga } from "./sagas";
-import { bookingHomeReducer } from "./slices/booking.slice";
+import { bookingHomeReducer } from "./slices/bookingHome.slice";
 import { fetchBookingIdReducer } from "./slices/fetchBookingId.slice";
+import { patchBookingStatusReducer } from "./slices/patchStatusBooking.slice";
 import { postBookingReducer } from "./slices/postBooking.slice";
 import { promoCodeReducer } from "./slices/promoCode.slice";
 import { roomHomeReducer } from "./slices/room.slice";
@@ -25,6 +26,7 @@ const rootReducer = {
   promoCode: promoCodeReducer,
   fetchBookingId: fetchBookingIdReducer,
   roomPagination: roomPaginationReducer,
+  patchBookingStatus: patchBookingStatusReducer,
   roomReducer: roomReducer,
   bookingReducer: bookingReducer,
   usersReducers: usersReducers

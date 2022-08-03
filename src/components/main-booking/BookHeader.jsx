@@ -1,12 +1,12 @@
+import React from "react";
 import { Button, Dropdown, Menu, Row, Col } from "antd";
 import "antd/dist/antd.css";
 import "../payment-page/style/payment-page.scss";
 import "./style/book-header.scss";
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../../stores/slices/user.slice";
 import "../main-booking/style/book-header.scss";
-import { Link, Navigate, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
@@ -33,14 +33,37 @@ export const BookHeader = () => {
       items={[
         {
           label: (
-            <Link to="/bookinghistory">
-              <span>Booking History</span>
-            </Link>
+            <NavLink to="/bookinghistory">
+              <button className="pay-btn-logout">Booking History</button>
+            </NavLink>
           ),
           key: "1",
         },
         {
-          label: "Logout",
+          label: <button className="pay-btn-logout">Logout</button>,
+          key: "2",
+        },
+      ]}
+    />
+  );
+  const menuLogin = (
+    <Menu
+      onClick={onClick}
+      items={[
+        {
+          label: (
+            <NavLink to="/login">
+              <button className="pay-btn-logout">Sign in</button>
+            </NavLink>
+          ),
+          key: "1",
+        },
+        {
+          label: (
+            <NavLink to="/register">
+              <button className="pay-btn-logout">Sign up</button>
+            </NavLink>
+          ),
           key: "2",
         },
       ]}
@@ -63,19 +86,20 @@ export const BookHeader = () => {
             <div style={{ margin: "6px" }}>
               {userInfo.data !== null ? (
                 <Dropdown overlay={menu}>
-                  <Button>
+                  <Button className="pay-btn-logout">
                     <FontAwesomeIcon icon={faUser} /> &nbsp;
                     {userInfo.data.email}
                   </Button>
                 </Dropdown>
               ) : (
-                <NavLink to="/login">
-                  <button className="pay-btn-logout">Login</button>
-                </NavLink>
+                <Dropdown overlay={menuLogin}>
+                  <Button className="pay-btn-logout">
+                    <FontAwesomeIcon icon={faUser} /> &nbsp; Account
+                  </Button>
+                </Dropdown>
               )}
             </div>
           </Col>
-
           <Col xs={1} sm={1} md={1} lg={1}></Col>
         </Row>
       </div>

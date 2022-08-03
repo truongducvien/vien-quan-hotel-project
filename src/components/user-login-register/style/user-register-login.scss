@@ -6,6 +6,23 @@ $labelColor: #b6b6b6;
   width: 100%;
   height: 100vh;
   background-color: #f2f7f9;
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap {
+    justify-content: center;
+  }
+  .ant-tabs-tab {
+    font-size: 18px;
+    font-weight: 700;
+    width: 50%;
+    justify-content: center;
+  }
+
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list {
+    width: 90%;
+  }
+  .ant-notification-notice {
+    top: 50px;
+  }
+
   .pay-header {
     color: #fff;
     background-color: $bookHeader;
@@ -124,20 +141,4 @@ $labelColor: #b6b6b6;
       }
     }
   }
-}
-
-.ant-tabs-tab {
-  font-size: 18px;
-  font-weight: 700;
-  width: 50%;
-  justify-content: center;
-}
-.ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap {
-  justify-content: center;
-}
-.ant-tabs > .ant-tabs-nav .ant-tabs-nav-list {
-  width: 90%;
-}
-.ant-notification-notice {
-  top: 50px;
 }

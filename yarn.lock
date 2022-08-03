@@ -8860,6 +8860,13 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-text-collapse@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/react-text-collapse/-/react-text-collapse-0.6.1.tgz#69d39b2a94dcbe3fc7f812187543b0f946945939"
+  integrity sha512-v1xCCs78Os+XXk3MPVLVkdd+Wbrq0RPi5vv71gZsHyXWJ14p6UW4MFyB9nbL8TBOr8WyAlONfhD16B+6mjIIlA==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-transition-group@^4.4.2:
   version "4.4.2"
   resolved "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.2.tgz"

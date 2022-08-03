@@ -10,8 +10,7 @@ import { HeaderShare } from "../../shared-components/HeaderShare";
 
 export default function BookingManagement() {
   const { TabPane } = Tabs;
-
-<<<<<<< HEAD
+  
    return (
       <>
          <h3 className="bookingsTitle">Bookings management</h3>
@@ -21,16 +20,6 @@ export default function BookingManagement() {
                <i className="fa-solid fa-arrow-left"></i>
             </NavLink>
          </div>
-=======
-  return (
-    <>
-      <HeaderShare />
-      <div className="backButton-container">
-        <NavLink className="backButton" to="/">
-          <i className="fa-solid fa-arrow-left"></i>
-        </NavLink>
-      </div>
->>>>>>> 53da8ceb35ed51f2ca52f7ed5caf561057e5969b
 
       <div className="bookingManagement">
         <CurrentTime />

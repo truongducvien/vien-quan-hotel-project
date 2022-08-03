@@ -28,7 +28,8 @@ function RoomOrdered({ option, index }) {
             roomPrice: 0,
             typeRoomId: 0,
             roomName: "",
-            maxPerson: 6,
+            maxPerson: 10,
+            status: "Booked",
           };
         }
         return op;
@@ -80,7 +81,8 @@ function RoomOrdered({ option, index }) {
       <div className="flex">
         <div>
           <p>
-            {option.adult + option.children} guests {orderInfo.nights} night
+            {option.adult} adults • {option.children} children •{" "}
+            {orderInfo.nights} night
           </p>
         </div>
         <span className="room-select-price">VND {totalRoomPriceString}</span>
