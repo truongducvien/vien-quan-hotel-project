@@ -18,8 +18,6 @@ export default function Revenue ( {bookings} ) {
       setRevenue(totalRevenue);
    }, [bookings]);
 
-   console.log(toVND);
-
    return (
       <>
          <div className="analysisTitle">
