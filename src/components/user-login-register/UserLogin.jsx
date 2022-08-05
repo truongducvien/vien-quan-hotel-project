@@ -24,9 +24,9 @@ export default function UserLogin() {
   };
 
   if (userInfo.data) {
-    if (userInfo.data.role === "admin") {
-      return <Navigate to={"/admin"} />;
-    }
+    // if (userInfo.data.role === "admin") {
+    //   return <Navigate to={"/admin"} />;
+    // }
     return <Navigate to={"/"} />;
   }
 

@@ -10,6 +10,7 @@ import { Button, Modal, Table } from "antd";
 
 import { Loading } from '../../shared-components/Loading';
 import UserEditForm from "./UserEditForm";
+import UsersFilter from './UsersFilter'
 import '../../../style/UsersList.scss'
 
 export default function UsersList () {
@@ -18,6 +19,8 @@ export default function UsersList () {
    const isLoading = useSelector(state => state.usersReducers.isLoading);
 
    const [tableData, setTableData] = useState([])
+   const [tableDataToShow, setTableDataToShow] = useState([])
+
    const [isRoomModalVisible, setIsRoomModalVisible] = useState(false)
    const [currentUserSelection, setCurrentUserSelection] = useState()
    const [currentUserChange, setCurrentUserChange] = useState()
@@ -40,8 +43,19 @@ export default function UsersList () {
          }
       })
 
-      setTableData(data)
+      // Set latest users on top:
+      let formatedData = []
+      data.forEach( item => {
+         formatedData = [item ,...formatedData]
+      })
+
+      setTableData(formatedData)
+      setTableDataToShow(formatedData)
    }, [users])
+
+   const handleFilter = (data) => {
+      setTableDataToShow(data)
+   }
 
    const columns = [
       {
@@ -152,7 +166,12 @@ export default function UsersList () {
             <Loading />
          ):(
             <>
-               <Table columns={columns} dataSource={tableData} />
+               <UsersFilter 
+                  tableData={tableData}
+                  handleFilter={handleFilter}
+               />
+
+               <Table columns={columns} dataSource={tableDataToShow} />
 
                <Modal
                   className="userDetail-container"

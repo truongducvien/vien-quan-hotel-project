@@ -1,20 +1,21 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid'
-import { toVND } from '../../general function';
 
 import '../../style/EditForm.scss'
 
 export default function EditForm ({
    roomInfoChange, 
-   handleChange, 
+   handleChange,  
 
    handleDeleteImage, 
    setNewImageLink,
    newImageLink,
-   handleAddImage,
+   handleAddImage, 
 
    deleteRoom,
-   addNewRoom,
+   addNewRoom, 
+   setIsValid
 }){
 
    const [roomChecked, setRoomChecked] = useState([])
@@ -28,8 +29,63 @@ export default function EditForm ({
       currentBooking: {
          bookingId: '',
          userFullName: ''
-      }
+      } 
    });
+
+   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true)
+   const [isPriceValid, setIsPriceValid] = useState(true)
+   const [isQuantityValid, setIsQuantityValid] = useState(true)
+   const [isMaxPersonValid, setIsMaxPersonValid] = useState(true)
+   const [isBedValid, setIsBedValid] = useState(true)
+   const [isBathRoomValid, setIsBathRoomValid] = useState(true)
+   const [isConvenientValid, setIsConvenientValid] = useState(true)
+   const [isIntroductionValid, setIsIntroductionValid] = useState(true)
+   
+
+   useEffect(() => {
+      if(
+         isRoomTypeValid && isPriceValid && isQuantityValid && isMaxPersonValid &&
+         isBedValid && isBathRoomValid && isConvenientValid && isIntroductionValid) {
+            setIsValid(true)
+         } else setIsValid(false)
+   }, [isRoomTypeValid,isPriceValid, isQuantityValid, isMaxPersonValid, 
+      isBedValid, isBathRoomValid, isConvenientValid, isIntroductionValid]);
+
+   const handleOnInputChange = (e, type) => {
+      handleChange(type, e.target.value)
+      
+      // Form Validation:
+      const inputVal = e.target.value
+      switch (type) {
+         case 'typeRoom':
+            inputVal !== '' && inputVal!== ' '? setIsRoomTypeValid(true) : setIsRoomTypeValid(false)
+            break;
+         case 'price':
+            inputVal !== '' && !isNaN(inputVal) ? setIsPriceValid(true) : setIsPriceValid(false)
+            break;
+         case 'quantity':
+            inputVal !== '' && inputVal > 0 ? setIsQuantityValid(true) : setIsQuantityValid(false)
+            break;
+         case 'maxPerson':
+            inputVal !== '' && inputVal > 0 ? setIsMaxPersonValid(true) : setIsMaxPersonValid(false)
+            break;
+         case 'bed':
+            inputVal !== '' ? setIsBedValid(true) : setIsBedValid(false)
+            break;
+         case 'bathrooms':
+            inputVal !== '' ? setIsBathRoomValid(true) : setIsBathRoomValid(false)
+            break;
+         case 'convenient':
+            inputVal !== '' ? setIsConvenientValid(true) : setIsConvenientValid(false)
+            break; 
+         case 'introduction':
+            inputVal !== '' ? setIsIntroductionValid(true) : setIsIntroductionValid(false)
+            break; 
+         default:
+            console.log('Invalid type!');  
+            break;
+      } 
+   }
 
    const handleCheckBoxChange = (e) => {
       if(e.target.checked){
@@ -65,80 +121,128 @@ export default function EditForm ({
             <div className='form-group'>
                <div className="input-container roomName">
                   <span>Room type: </span>
-                  <input 
-                     type="text" 
-                     value={roomInfoChange.typeRoom}
-                     onChange={(e) => handleChange('typeRoom', e.target.value)}
-                  />
+                  <div>
+                     <input 
+                        className={`${isRoomTypeValid? '': 'empty-input'}`}
+                        type="text" 
+                        value={roomInfoChange.typeRoom}
+                        onChange={(e) => handleOnInputChange(e, 'typeRoom')}
+                     />
+                  <p 
+                     className={`error-message ${isRoomTypeValid? '': 'active'}`}
+                  >* This is required!</p>
+                  </div>
                </div>
             </div>
 
             <div className='form-group'>
                <div className="input-container">
                   <span>Price (VND): </span>
-                  <input 
-                     type="text"
-                     value={roomInfoChange.price}
-                     onChange={(e) => handleChange('price', e.target.value)}
-                  />
+                  <div>
+                     <input 
+                        className={`${isPriceValid? '': 'empty-input'}`}
+                        type="text"
+                        value={roomInfoChange.price}
+                        onChange={(e) => handleOnInputChange(e, 'price')}
+                     />
+                     <p 
+                        className={`error-message ${isPriceValid? '': 'active'}`}
+                     >* Price seems incorrect!</p>
+                  </div>
                </div>
 
                <div className="input-container">
                   <span>Total rooms: </span>
-                  <input 
-                     type="number" 
-                     value={roomInfoChange.quantity}
-                     onChange={(e) => handleChange('quantity', e.target.value)}
-                  />
+                  <div>
+                     <input 
+                        className={`${isQuantityValid? '': 'empty-input'}`}
+                        type="number" 
+                        value={roomInfoChange.quantity}
+                        onChange={(e) => handleOnInputChange(e, 'quantity')}
+                     />
+                     <p 
+                        className={`error-message ${isQuantityValid? '': 'active'}`}
+                     >* Wrong!</p>
+                  </div>
                </div>
 
                <div className="input-container">
                   <span>Max guests: </span>
-                  <input 
-                     type="number" 
-                     value={roomInfoChange.maxPerson}
-                     onChange={(e) => handleChange('maxPerson', e.target.value)}
-                  />
+                  <div>
+                     <input 
+                        className={`${isMaxPersonValid? '': 'empty-input'}`}
+                        type="number" 
+                        value={roomInfoChange.maxPerson}
+                        onChange={(e) => handleOnInputChange(e, 'maxPerson')}
+                     />
+                     <p 
+                        className={`error-message ${isMaxPersonValid? '': 'active'}`}
+                     >* Wrong!</p>
+                  </div>
                </div>
             </div>
 
             <div className='form-group'>
                <div className="input-container bed">
                   <span>Bed: </span>
-                  <input 
-                     type="text" 
-                     value={roomInfoChange.bed}
-                     onChange={(e) => handleChange('bed', e.target.value)}
-                  />
+                  <div>
+                     <input 
+                        className={`${isBedValid? '': 'empty-input'}`}
+                        type="text" 
+                        value={roomInfoChange.bed}
+                        onChange={(e) => handleOnInputChange(e, 'bed')}
+                     />
+                     <p 
+                        className={`error-message ${isBedValid? '': 'active'}`}
+                     >* This is required!</p>
+                  </div>
                </div>
 
                <div className="input-container bathrooms">
                   <span>Bathrooms: </span>
-                  <input 
-                     type="text" 
-                     value={roomInfoChange.bathrooms}
-                     onChange={(e) => handleChange('bathrooms', e.target.value)}
-                  />
+                  <div>
+                     <input 
+                        className={`${isBathRoomValid? '': 'empty-input'}`}
+                        type="text" 
+                        value={roomInfoChange.bathrooms}
+                        onChange={(e) => handleOnInputChange(e, 'bathrooms')}
+                     />
+                     <p 
+                        className={`error-message ${isBathRoomValid? '': 'active'}`}
+                     >* This is required!</p>
+                  </div>
                </div>
             </div>
 
             <div className='form-group'>
                <div className="input-container convenient">
                   <span>Convenient: </span>
-                  <textarea
-                     rows="4"
-                     value={roomInfoChange.convenient}
-                     onChange={(e) => handleChange('convenient', e.target.value)}
-                  />
+                  <div>
+                     <textarea
+                        className={`${isConvenientValid? '': 'empty-input'}`}
+                        rows="4"
+                        value={roomInfoChange.convenient}
+                        onChange={(e) => handleOnInputChange(e, 'convenient')}
+                     />
+                     <p 
+                        className={`error-message ${isConvenientValid? '': 'active'}`}
+                     >* This is required!</p>
+                  </div>
                </div>
 
                <div className="input-container introduction">
                   <span>Introduction: </span>
-                  <textarea
-                     rows="4"
-                     value={roomInfoChange.introduction}
-                     onChange={(e) => handleChange('introduction', e.target.value)}
-                  />
+                  <div>
+                     <textarea
+                        className={`${isIntroductionValid? '': 'empty-input'}`}
+                        rows="4"
+                        value={roomInfoChange.introduction}
+                        onChange={(e) => handleOnInputChange(e, 'introduction')}
+                     />
+                     <p 
+                        className={`error-message ${isIntroductionValid? '': 'active'}`}
+                     >* This is required!</p>
+                  </div>
                </div>
             </div>
          </form>

@@ -1,4 +1,16 @@
 .usersList{
+   position: relative;
+   padding-top: 50px;
+
+   .search-area{
+      position: absolute;
+      top: 15px;
+      input{
+         font-size: 14px;
+         padding-left: 5px;
+         box-shadow: 1px 1px 2px rgb(128 128 128 / 85%);
+      }
+   }
 
    thead{
       th{

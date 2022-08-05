@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import '../../../style/BookingSearch.scss'
 
 export default function BookingSearch ( {tableData, handleSearch} ) {
-   const [searchResult, setSearchResult] = useState()
    const [userNameInput, setUserNameInput] = useState('')
    const [bookingIdInput, setBookingIdInput] = useState('')
 
@@ -12,11 +11,11 @@ export default function BookingSearch ( {tableData, handleSearch} ) {
 
    const handleBookingIdChange = (value) => {
       setBookingIdInput(value)
-   }
+   } 
 
    useEffect(() => {
       const newTableData1 = tableData.filter( 
-         item => item.userFullName.toLowerCase().includes(userNameInput.toLocaleLowerCase())
+         item => item.userFullName.toLowerCase().includes(userNameInput.toLowerCase())
          )
       const newTableData2 = newTableData1.filter(item => item.bookingId.toString().includes(bookingIdInput))
       handleSearch(newTableData2);

@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { NavLink } from "react-router-dom"
 
 import '../../../style/Analysis.scss'
 
@@ -32,38 +33,47 @@ export default function Analysis () {
    }, [])
 
    return (
-      <div className="analysis">
-         <div className="analysis-group">
-            {isBookingsLoading? (
-               <Loading />
-            ):(
-               <Revenue bookings={bookings}/>
-            )}
-         </div>
+      <>
 
-         <div className="analysis-group">
-            {isRoomsLoading? (
-               <Loading />
-            ):(
-               <Rooms rooms={rooms}/>
-            )}
-         </div>
+         <div className="analysis">
+            <div className="backButton-container">
+               <NavLink className="backButton" to="/admin">
+                  <i className="fa-solid fa-arrow-left"></i>
+               </NavLink>
+            </div>
 
-         <div className="analysis-group">
-            {isUsersLoading? (
-               <Loading />
-            ):(
-               <Users users={users}/>
-            )}
-         </div>
+            <div className="analysis-group">
+               {isBookingsLoading? (
+                  <Loading />
+               ):(
+                  <Revenue bookings={bookings}/>
+               )}
+            </div>
 
-         <div className="analysis-group">
-            {isBookingsLoading? (
-               <Loading />
-            ):(
-               <Bookings bookings={bookings}/>
-            )}
+            <div className="analysis-group">
+               {isRoomsLoading? (
+                  <Loading />
+               ):(
+                  <Rooms rooms={rooms}/>
+               )}
+            </div>
+
+            <div className="analysis-group">
+               {isUsersLoading? (
+                  <Loading />
+               ):(
+                  <Users users={users}/>
+               )}
+            </div>
+
+            <div className="analysis-group">
+               {isBookingsLoading? (
+                  <Loading />
+               ):(
+                  <Bookings bookings={bookings}/>
+               )}
+            </div>
          </div>
-      </div>
+      </>
    )
 }

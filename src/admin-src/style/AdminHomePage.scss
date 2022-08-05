@@ -3,9 +3,31 @@
    margin-top: 30px;
    margin: auto;
 
+   .exit-admin-btn{
+      position: absolute;
+      top: 60px;
+      left: 15px;
+      width: 50px;
+      height: 50px;
+      border-radius: 3px;
+      box-shadow: 1px 1px 2px #808080a3;
+      line-height: 45px;
+      text-align: center;
+
+      img{
+         width: 30px;
+      }
+   }
+   .exit-admin-btn:hover{
+      cursor: pointer;
+      transform: scale(1.1);
+      transition: all .1s ease-in-out;
+   }
+
    header{
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
       position: sticky;
       top: 0;
       z-index: 16;
@@ -13,46 +35,54 @@
       color: white;
       padding: 3px;
       
-      .adminLogo{
+      .header-group{
          display: flex;
          justify-content: center;
-         flex-wrap: wrap;
-         width: 20%;
-         margin-left: 10px;
-         border-right: 1px solid grey;
-         
-         .headerLogo{
-            width: 100%;
-            text-align: center;
-         }
-      }
-      .adminLogo:hover{
-         cursor: pointer;
-      }
-      .adminNavLink{
-         display: flex;
-         justify-content: flex-start;
 
-         .button{
-            width: 95px;
-            height: 40px;
-            padding: 3px;
-            color: white ;
-            line-height: 40px;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
+         .adminLogo{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 200px;
+            margin-left: 20px;
+            border-right: 1px solid grey;
+            
+            .headerLogo{
+               width: 100%;
+               text-align: center;
+            }
+            i{
+               font-size: 12px;
+            }
          }
-         .button:hover{
-            color: white ;
-            background-color: #01678b;
-            border-bottom: 2px solid white;
+         .adminLogo:hover{
+            cursor: pointer;
          }
-         .button:active{
-            background-color: #0085b6 ;
-         }
-         .active{
-            border-bottom: 2px solid white;
+         .adminNavLink{
+            display: flex;
+            justify-content: flex-start;
+   
+            .button{
+               width: 107px;
+               height: 40px;
+               padding: 3px;
+               color: white ;
+               line-height: 40px;
+               font-weight: 600;
+               text-align: center;
+               text-decoration: none;
+            }
+            .button:hover{
+               color: white ;
+               background-color: #01678b;
+               border-bottom: 2px solid white;
+            }
+            .button:active{
+               background-color: #0085b6 ;
+            }
+            .active{
+               border-bottom: 2px solid white;
+            }
          }
       }
    }
@@ -85,7 +115,8 @@
    }
 
    .adminContent{
-      padding-bottom: 10px;
+      min-height: 86vh;
+      background-color: #a1bcee24;
    }
 
    .home-footer{

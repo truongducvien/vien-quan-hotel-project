@@ -11,7 +11,7 @@ import EditForm from "../../shared-components/EditForm";
 
 const initialRoomState = {
    id: uuidv4(),
-   key: uuidv4(),
+   key: uuidv4(), 
    typeRoom: '',
    price: '',
    quantity: '',
@@ -27,6 +27,7 @@ const initialRoomState = {
 export default function AddRoomPage (){
    const [roomInfoChange, setRoomInfoChange] = useState({...initialRoomState})
    const [newImageLink, setNewImageLink] = useState('')
+   const [isValid, setIsValid] = useState(false)
    const [isSaved, setIsSaved] = useState(true)
 
    const roomsDispatch = useDispatch()
@@ -65,6 +66,9 @@ export default function AddRoomPage (){
          case 'newRoom':
             setRoomInfoChange({...roomInfoChange, roomsList: [...roomInfoChange.roomsList, value] });
             break;
+         default:
+            console.log('Invalid type!');  
+            break;
       }
    }
 
@@ -94,11 +98,35 @@ export default function AddRoomPage (){
       handleChange('newRoom', newRoom);
    }
 
+
+   useEffect(() => {
+      if(
+         roomInfoChange.typeRoom !== '' &&
+         roomInfoChange.price !== '' &&
+         roomInfoChange.quantity !== '' &&
+         roomInfoChange.maxPerson !== '' &&
+         roomInfoChange.bed !== '' &&
+         roomInfoChange.bathrooms !== '' &&
+         roomInfoChange.convenient !== '' &&
+         roomInfoChange.introduction !== '' &&
+         roomInfoChange.imageUrl.length !== 0 &&
+         roomInfoChange.roomsList.length !== 0
+         ){
+            setIsValid(true)
+         } else setIsValid(false)
+   }, [roomInfoChange])
+
    const handleSaveChange = () => {
-      roomsDispatch(addNewRoomType(roomInfoChange))
-      API.post(roomDataUrl, roomInfoChange);
-      setIsSaved(true);
-      setRoomInfoChange({...initialRoomState});
+      if(isValid){
+         if(window.confirm("Save changes?")){
+            roomsDispatch(addNewRoomType(roomInfoChange))
+            API.post(roomDataUrl, roomInfoChange);
+            setIsSaved(true);
+            setRoomInfoChange({...initialRoomState});
+         }
+      } else {
+         alert("Can't save new room, please check again and fill in all fields!")
+      }
    }
 
    const handleReset = () => {
@@ -128,6 +156,7 @@ export default function AddRoomPage (){
 
                   deleteRoom={deleteRoom}
                   addNewRoom={addNewRoom}
+                  setIsValid={setIsValid}
                />
 
                <div className="addFormButton-container">
