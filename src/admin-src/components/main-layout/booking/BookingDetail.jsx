@@ -131,11 +131,14 @@ export default function BookingDetail () {
 
    const handleClickCheckIn = (record) => { 
       const now = moment()._d.getTime()
-      const offset = booking.date.startDay - now;
-      if(offset < 0){
+      const startDay = booking.date.startDay;
+
+      if(startDay + 43199000 < now){
          if(window.confirm("This booking is expired, note Expired?")) {
             updateBookings ('Expired', "", bookingId, record.key)
          }
+      } else if( startDay > now) {
+         alert(`Check-in is enabled after ${moment(startDay).format("MMMM Do YYYY h:mm:ss a")}!`)
       } else{
          setCurrentTypeSelection(record)
          setIsRoomModalVisible(true);

@@ -24,8 +24,9 @@ export default function EditPage () {
    const isLoading = useSelector(state => state.roomReducer.isLoading)
 
    const [isSaved, setIsSaved] = useState(true);
+   const [isValid, setIsValid] = useState(false)
    
-   const [roomInfoChange, setRoomInfoChange] = useState({});
+   const [roomInfoChange, setRoomInfoChange] = useState();
    const [newImageLink, setNewImageLink] = useState('');
    
    
@@ -42,6 +43,9 @@ export default function EditPage () {
             break;
          case 'price':
             setRoomInfoChange({...roomInfoChange, price: value });
+            break;
+         case 'quantity':
+            setRoomInfoChange({...roomInfoChange, quantity: value });
             break;
          case 'maxPerson':
             setRoomInfoChange({...roomInfoChange, maxPerson: value });
@@ -64,6 +68,8 @@ export default function EditPage () {
          case 'newRoom':
             setRoomInfoChange({...roomInfoChange, roomsList: [...roomInfoChange.roomsList, value] });
             break;
+         default:
+            console.log("Invalid type!");
       }
    }
 
@@ -87,30 +93,48 @@ export default function EditPage () {
          {...state, roomsList: newRoomsList}
       ))
       setIsSaved(false)
-      console.log('call function');
    }
 
    const addNewRoom = (newRoom) => {
       handleChange('newRoom', newRoom);
-   }
+   } 
 
-   // Update room quantity when roomsList changed:
-   useEffect(()=> {
-      if(roomInfoChange.roomsList){
-         setRoomInfoChange({...roomInfoChange, quantity: roomInfoChange.roomsList.length })
+   // Validate:
+   useEffect(() => {
+      if(roomInfoChange){
+         if(
+            roomInfoChange.typeRoom !== '' &&
+            roomInfoChange.price !== '' &&
+            roomInfoChange.quantity !== '' &&
+            roomInfoChange.maxPerson !== '' &&
+            roomInfoChange.bed !== '' &&
+            roomInfoChange.bathrooms !== '' &&
+            roomInfoChange.convenient !== '' &&
+            roomInfoChange.introduction !== '' &&
+            roomInfoChange.imageUrl.length !== 0 &&
+            roomInfoChange.roomsList.length !== 0
+            ){
+               setIsValid(true)
+            } else setIsValid(false)
       }
-   }, [roomInfoChange.roomsList])
+   }, [roomInfoChange])
 
    const handleSaveChange = () => {
-      roomDispatch(updateRoomTypeInfo(roomInfoChange));
-      setIsSaved(true)
+      if(isValid){
+         if(window.confirm("Save changes?")){
+            roomDispatch(updateRoomTypeInfo(roomInfoChange));
+            setIsSaved(true)
+         }
+      } else {
+         alert("Can't save change, please check again and fill in all fields!")
+      }
    }
    
 
    const handleReset = () => {
       if (roomTypes){
          //If reload page, rooms will be empty, re-call API to get the room data:
-         if (roomTypes.length != 0){
+         if (roomTypes.length !== 0){
             const roomInfo = roomTypes.filter( item => item.id === roomTypeId)
             setRoomInfoChange(...roomInfo)
          } else{
@@ -159,6 +183,7 @@ export default function EditPage () {
 
                      deleteRoom={deleteRoom}
                      addNewRoom={addNewRoom}
+                     setIsValid={setIsValid}
                   />
 
                   <div className="editFormButton-container">

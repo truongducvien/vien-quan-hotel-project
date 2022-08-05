@@ -47,11 +47,17 @@ export const roomsColumnTable = [
       title: 'Bed',
       dataIndex: 'bed',
       key: 'bed',
+      render: (item) => (
+         <div style={{textAlign: 'center'}}>{item}</div>
+      )
    },
    {
       title: 'Bathrooms',
       dataIndex: 'bathrooms',
       key: 'bathrooms',
+      render: (item) => (
+         <div style={{textAlign: 'center'}}>{item}</div>
+      )
    },
    {
       title: 'Convenient',

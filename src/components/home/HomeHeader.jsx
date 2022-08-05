@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "antd/dist/antd.css";
 import { Carousel } from "antd";
 import "../../style/Header.scss";
@@ -16,10 +16,12 @@ import { logoutAction } from "../../stores/slices/user.slice";
 import "../main-booking/style/book-header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import admin_symbol from '../../assets/images/admin_symbol.png'
 
 export default function Header() {
   const userInfo = useSelector((state) => state.user.userInfoState);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onClick = ({ key }) => {
     switch (key) {
@@ -76,6 +78,11 @@ export default function Header() {
       ]}
     />
   );
+
+  const handleAdminButtonClick = () => {
+    navigate('admin')
+  }
+
   return (
     <div className="header">
       <div className="images-slide">
@@ -108,12 +115,21 @@ export default function Header() {
 
       <div style={{ margin: "6px" }} className="home-account">
         {userInfo.data !== null ? (
-          <Dropdown overlay={menu}>
-            <Button className="pay-btn-logout">
-              <FontAwesomeIcon icon={faUser} /> &nbsp;
-              {userInfo.data.email}
-            </Button>
-          </Dropdown>
+          <>
+            {userInfo.data.role === 'admin' &&
+              <div className="to-admin-page" onClick={handleAdminButtonClick}>
+                <img src={admin_symbol} alt="" />
+                <span>Admin</span>
+              </div>
+            }
+
+            <Dropdown overlay={menu}>
+              <Button className="pay-btn-logout">
+                <FontAwesomeIcon icon={faUser} /> &nbsp;
+                {userInfo.data.email}
+              </Button>
+            </Dropdown>
+          </>
         ) : (
           <Dropdown overlay={menuLogin}>
             <Button className="pay-btn-logout">

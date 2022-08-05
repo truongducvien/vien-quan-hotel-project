@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import { Space, Spin, DatePicker } from 'antd';
-import moment from 'moment';
 import { useSelector, useDispatch } from 'react-redux';
 
 import '../../../style/RoomStatusTable.scss'

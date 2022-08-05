@@ -14,8 +14,8 @@
       .input-container{
          position: relative;
          flex-basis: 31%;
-         height: 40px;
-         padding: 5px 10px;
+         height: fit-content;
+         padding: 6px 10px;
          display: flex;
          justify-content:center;
    
@@ -29,28 +29,43 @@
             font-weight: 600;
             font-size: 15px;
          }
-         input{
+         div{
             flex-grow: 1;
-            border: unset;
-            text-align: center;
-            background-color: #f6f5f5;
-            box-shadow: 1px 1px 6px 1px #80808096;
-         }
-         input:focus{
-            outline: unset;
-            background-color: white;
+
+            input{
+               width: 100%;
+               border: unset;
+               text-align: center;
+               background-color: #f6f5f5;
+               box-shadow: 1px 1px 6px 1px #80808096;
+            }
+            input:focus{
+               outline: unset;
+               background-color: white;
+            }
+            .empty-input{
+               border: 1px solid #ff000073
+            }
+
+            .error-message{
+               display: none;
+            }
+            .active{
+               display: block;
+               color: red;
+               font-size: 10px;
+            }
          }
       }
       .roomName{
          flex-basis: 100%;
-   
-         input{
+         div{
             width: 84%;
          }
       }
       .bed, .bathrooms{
          flex-basis: 47%;
-         input{
+         div{
             width: 75%;
          }
       }
@@ -64,19 +79,22 @@
             display: block;
             flex-basis: 100%;
          }
-         textarea{
-            flex-grow: 1;
-            height: fit-content;
-            padding: 5px;
-            border: unset;
-            background-color: #f6f5f5;
-            box-shadow: 1px 1px 6px 1px #80808096;
-            font-size: 14px;
-            text-indent: 30px;
-         }
-         textarea:focus{
-            background-color: white;
-            outline: unset
+         div{
+            width: 84%;
+            textarea{
+               width: 100%;
+               height: fit-content;
+               padding: 5px;
+               border: unset;
+               background-color: #f6f5f5;
+               box-shadow: 1px 1px 6px 1px #80808096;
+               font-size: 14px;
+               text-indent: 30px;
+            }
+            textarea:focus{
+               background-color: white;
+               outline: unset
+            }
          }
       }
    }

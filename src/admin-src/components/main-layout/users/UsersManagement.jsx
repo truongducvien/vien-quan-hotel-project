@@ -11,9 +11,7 @@ export default function UsersManagement () {
                <i className="fa-solid fa-arrow-left"></i>
             </NavLink>
          </div>
-      
-         <h3 className="usersTitle">Users management</h3>
-
+         
          <UsersList />
       </div>
    )

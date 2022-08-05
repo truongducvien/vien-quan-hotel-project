@@ -1,37 +1,34 @@
-.bookingsTitle{
-   display: block;
-   width: 300px;
-   padding-bottom: 5px;
-   border-bottom: 2px solid #026082f0;
-   margin: 20px;
-   color: #026082;
-}
+.bookingManagement-container{
+   padding-top: 30px;
 
-.bookingManagement{
-   position: relative;
-   width: 90%;
-   padding: 5px;
-   margin: auto;
-   box-shadow: 1px 1px 3px 1px rgb(128 128 128 / 42%);
-   background-image: linear-gradient(to right bottom, #9bd5ec, #f8fdff);
-
-
-   .bookingManagementTab{
-
-      .ant-tabs-tab{
-         font-weight: 600;
-         font-size: 20px;
-         color: grey;
-         width: unset;
-      }
-      .ant-tabs-tab-active{
-      
-         .ant-tabs-tab-btn{
-            color: #026082 !important;
+   .bookingManagement{
+      position: relative;
+      width: 90%;
+      padding: 5px;
+      margin: 0 auto 10px;
+      box-shadow: 1px 1px 3px 1px rgb(128 128 128 / 42%);
+      background-image: linear-gradient(to right bottom, #9bd5ec, #f8fdff);
+   
+   
+      .bookingManagementTab{
+   
+         .ant-tabs-tab{
+            font-weight: 600;
+            font-size: 17px;
+            color: grey;
+            width: unset;
+            height: 40px;
          }
-      }
-      .ant-tabs-ink-bar{
-         background-color: #026082 !important;
+         .ant-tabs-tab-active{
+         
+            .ant-tabs-tab-btn{
+               color: #026082 !important;
+            }
+         }
+         .ant-tabs-ink-bar{
+            background-color: #026082 !important;
+         }
       }
    }
 }
+
