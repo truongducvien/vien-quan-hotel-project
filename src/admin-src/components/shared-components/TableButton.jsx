@@ -11,8 +11,12 @@ export default function TableButton ({ record }){
    const rooms = useSelector( state => state.roomReducer.rooms)
    
    const handleDelete = (record) => {
-      if(window.confirm(`Are you sure to delete "${record.typeRoom}"?`)){
-         dispatch(deleteRoomType(record.id))
+      if(record.roomsList.some( room => room.roomStatus === 'active')){
+         alert(`Can't delete ${record.typeRoom} because there is an active room now, check-out all and try again!`)
+      } else {
+         if(window.confirm(`Are you sure to delete "${record.typeRoom}"?`)){
+            dispatch(deleteRoomType(record.id))
+         }
       }
    }
 
