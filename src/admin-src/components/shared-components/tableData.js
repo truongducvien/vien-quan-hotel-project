@@ -85,5 +85,5 @@ export const roomsColumnTable = [
             <TableButton record={record}/>
          </Space>
       ),
-    },
+   },
 ];
