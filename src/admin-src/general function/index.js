@@ -1,3 +1,5 @@
+
+// VND currency format:
 const toVND = function (number) {
    const string = number.toString();
    const length = string.length;
@@ -9,11 +11,12 @@ const toVND = function (number) {
       result = `${string.substr(length - i*3,3)},${result}`
    }
    result = `${string.substr(0, b)},${result}`
+
    if( result.indexOf(',') == 0){
       result = result.substr(1)
    }
    if( result.lastIndexOf(',') == result.length - 1){
-      result = result.substr(0,result.length - 1)
+      result = result.substr(0, result.length - 1)
    }
    return `${result} VND`
 };

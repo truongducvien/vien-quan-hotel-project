@@ -7,8 +7,6 @@
 # Need to fix:
 - Responsive
 - Auto set booking status when booking is expired
-- Click logo => navigate to home
-- One-page display
 
 # Extra feature
 - Add icons for every NavLink

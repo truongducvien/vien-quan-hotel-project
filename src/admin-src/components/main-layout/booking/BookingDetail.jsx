@@ -138,7 +138,7 @@ export default function BookingDetail () {
             updateBookings ('Expired', "", bookingId, record.key)
          }
       } else if( startDay > now) {
-         alert(`Check-in is enabled after ${moment(startDay).format("MMMM Do YYYY h:mm:ss a")}!`)
+         alert(`Can't check-in before ${moment(startDay).format("MMMM Do YYYY h:mm:ss a")}!`)
       } else{
          setCurrentTypeSelection(record)
          setIsRoomModalVisible(true);

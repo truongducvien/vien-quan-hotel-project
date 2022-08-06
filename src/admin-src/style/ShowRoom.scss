@@ -40,6 +40,25 @@
       color: white;
    }
    .busy{
-      background-color: #ea6666;
+      background-color: #e14848;
+   }
+
+}
+
+.rooms-modal{
+   .rooms-modal-btn{
+      border: unset;
+   }
+   .rooms-modal-btn:hover{
+      background-color: #006d94;
+      color: white;
+   }
+   .rooms-modal-btn:active{
+      background-color: #005675;
+      color: white;
+   }
+   .set-status-btn{
+      background-color: #026082;
+      color: white;
    }
 }
